@@ -1,0 +1,125 @@
+{
+  "cliente": "Casa de Vídeo Produções Audiovisuais",
+  "metodologia": "STAG (Single Theme Ad Groups)",
+  "estrategiaLancesAtual": "Maximizar Conversões (Transição para tCPA R$ 180 pós-30 conversões)",
+  "campanhas": [
+    {
+      "nomeCampanha": "Search | Lead | Marca | SP",
+      "orcamentoDiario": "R$ 30,00",
+      "gruposAnuncios": [
+        {
+          "nomeGrupo": "STAG - Casa de Vídeo Marca",
+          "palavrasChave": [
+            "[casa de video]",
+            "\"casa de video\"",
+            "[casa de video producoes]",
+            "\"produtora casa de video\""
+          ],
+          "rsaAnuncio": {
+            "titulo1": "Casa de Vídeo Produções",
+            "titulo2": "Produtora Audiovisual SP",
+            "titulo3": "Filmes Publicitários e B2B",
+            "titulosAdicionais": [
+              "Vídeos Corporativos 4K",
+              "Produtora de Vídeo em SP",
+              "Showreel & Portfólio 2026",
+              "Orçamento em 24 Horas",
+              "Equipamentos de Cinema",
+              "Atendimento Corporativo B2B",
+              "Vídeos para Grandes Marcas",
+              "Fale com Nossos Diretores"
+            ],
+            "descricoes": [
+              "Produtora especializada em filmes publicitários, institucionais e vídeos corporativos de alta performance.",
+              "Eleve a comunicação da sua marca com produções cinematográficas B2B em São Paulo. Peça uma proposta!",
+              "Estrutura completa de produção audiovisual para empresas, marcas e agências. Confira nosso showreel.",
+              "Mais de 15 anos produzindo vídeos de impacto para o mercado publicitário e corporativo. Solicite orçamento!"
+            ],
+            "triadePAPScore": "10/10"
+          }
+        }
+      ]
+    },
+    {
+      "nomeCampanha": "Search | Lead | Produtora-Video-B2B | SP",
+      "orcamentoDiario": "R$ 120,00",
+      "gruposAnuncios": [
+        {
+          "nomeGrupo": "STAG - Produtora de Vídeo B2B",
+          "palavrasChave": [
+            "[produtora de video b2b]",
+            "\"produtora de video corporativo\"",
+            "\"produtora de filmes publicitarios\"",
+            "[produtora audiovisual sao paulo]",
+            "\"produtora de video sp\""
+          ],
+          "rsaAnuncio": {
+            "titulo1": "Produtora de Vídeo B2B em SP",
+            "titulo2": "Filmes Corporativos & Comerciais",
+            "titulo3": "Peça uma Proposta Audiovisual",
+            "titulosAdicionais": [
+              "Vídeos Institucionais 4K",
+              "Produtora de Filmes Publicitários",
+              "Vídeos para Marcas & Agências",
+              "Qualidade Cinematográfica B2B",
+              "Roteiro e Produção Completa",
+              "Atendimento em São Paulo",
+              "Equipe Técnica Especializada",
+              "Vídeos de Alta Performance"
+            ],
+            "descricoes": [
+              "Sua empresa precisa de vídeos que geram resultados reais? Produção audiovisual B2B com roteiro estratégico.",
+              "Transforme sua comunicação corporativa com filmes publicitários e institucionais de alto impacto.",
+              "Atendemos Diretores de Marketing e Agências de Publicidade em SP. Receba seu orçamento em 24h!",
+              "Produções em 4K e Cinema com equipe completa de direção, captação e pós-produção. Fale conosco!"
+            ],
+            "triadePAPScore": "9.8/10"
+          }
+        }
+      ]
+    },
+    {
+      "nomeCampanha": "Search | Lead | Concorrentes | SP",
+      "orcamentoDiario": "R$ 50,00",
+      "gruposAnuncios": [
+        {
+          "nomeGrupo": "STAG - Concorrentes Audiovisuais SP",
+          "palavrasChave": [
+            "\"o2 filmes produtora\"",
+            "\"sentimental filme\"",
+            "\"conspiracao filmes sp\""
+          ],
+          "rsaAnuncio": {
+            "titulo1": "Casa de Vídeo — Produtora B2B",
+            "titulo2": "Alta Qualidade & Entrega Ágil",
+            "titulo3": "Compare Orçamento Audiovisual",
+            "titulosAdicionais": [
+              "Filmes Publicitários em SP",
+              "Atendimento Personalizado B2B",
+              "Showreel Cinematográfico 4K"
+            ],
+            "descricoes": [
+              "Buscando produtora audiovisual em São Paulo? Conheça a Casa de Vídeo e receba uma proposta competitiva.",
+              "Filmes publicitários e corporativos de alto nível para marcas exigentes. Solicite seu orçamento hoje mesmo!"
+            ],
+            "triadePAPScore": "9.5/10"
+          }
+        }
+      ]
+    },
+    {
+      "nomeCampanha": "PMax | Lead | Performance-Showreel | SP",
+      "orcamentoDiario": "R$ 100,00",
+      "canais": ["Search", "YouTube", "Display", "Gmail", "Maps"],
+      "sinaisPublico": {
+        "interesses": ["Produção Audiovisual", "Marketing B2B", "Publicidade e Propaganda", "Direção de Criação"],
+        "dadosProprios": "Visitantes do site casadevideo.com.br e lista de clientes CRM"
+      },
+      "recursosMidia": {
+        "videos": ["https://youtube.com/watch?v=showreel_casadevideo_4k"],
+        "imagens": ["hero_banner_casadevideo.webp", "set_filmagens_4k.webp"],
+        "logos": ["logo_casadevideo_dark.png"]
+      }
+    }
+  ]
+}

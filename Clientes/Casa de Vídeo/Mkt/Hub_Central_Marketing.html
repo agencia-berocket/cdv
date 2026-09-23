@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hub Central & Relatório Semanal | b.rocket • Casa de Vídeo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/session-guard.js"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* 
+    =========================================
+    TACTILE CLAYMORPHIC & NEUMORPHIC SYSTEM (b.rocket Official)
+    =========================================
+    */
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tactile-raised:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.01),
+        12px 20px 36px -6px rgba(13, 20, 33, 0.08),
+        -12px -12px 32px -4px rgba(255, 255, 255, 0.98),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.95),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.015);
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(13, 20, 33, 0.12),
+        6px 8px 14px rgba(13, 20, 33, 0.08),
+        12px 16px 28px rgba(13, 20, 33, 0.04);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+      position: relative;
+    }
+
+    /* Service Color Accents */
+    .accent-google { color: #4353ff; }
+    .bg-accent-google { background-color: #4353ff; }
+
+    .accent-seo { color: #10B981; }
+    .bg-accent-seo { background-color: #10B981; }
+
+    .accent-geo { color: #8B5CF6; }
+    .bg-accent-geo { background-color: #8B5CF6; }
+
+    .stat-badge-up {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #047857;
+    }
+
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      .no-print { display: none !important; }
+      .tactile-raised { background: #ffffff !important; border: 1px solid #cccccc !important; color: #000 !important; box-shadow: none !important; }
+      h1, h2, h3, h4, span, p, strong { color: #000000 !important; }
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white pb-24">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-4 px-6 md:px-12">
+    <div id="nav-container" class="max-w-7xl mx-auto px-6 md:px-8 py-3.5 flex justify-between items-center transition-all duration-300 bg-white/85 backdrop-blur-md border border-zinc-200/80 shadow-sm rounded-2xl">
+      
+      <!-- Logo b.rocket -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
+          <div class="w-[24px] h-[24px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+            <div class="w-[16px] h-[11px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+              <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+              <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+            </div>
+            <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
+          </div>
+          <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-r"></div>
+          <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-l"></div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base tracking-[0.08em] text-zinc-950 uppercase leading-none">b.rocket <span class="text-indigo-600">*</span></span>
+          <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-bold uppercase">Hub Central Semanal</span>
+        </div>
+      </a>
+
+      <!-- Date Filter Controls -->
+      <div class="flex flex-wrap items-center gap-3 no-print">
+        <div class="tactile-sunken px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono">
+          <span class="text-zinc-500 font-bold">📅 Período:</span>
+          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-600 font-bold outline-none cursor-pointer">
+            <option value="sem39" selected>Semana Atual: 17/Set - 23/Set 2026</option>
+            <option value="sem38">Semana Anterior: 10/Set - 16/Set 2026</option>
+            <option value="sem37">Semana 37: 03/Set - 09/Set 2026</option>
+          </select>
+        </div>
+
+        <button onclick="window.print()" class="tactile-raised !bg-[#4353ff] text-white font-mono text-xs font-bold px-4 py-2 hover:bg-[#3240e6] uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl shadow-md border-t border-[#606fff] hover:scale-105 cursor-pointer">
+          <span>🖨️ Exportar PDF</span>
+        </button>
+
+        <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3.5 py-2 uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl hover:bg-red-50 hover:border-red-200 cursor-pointer">
+          <span>🔒 Sair</span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="pt-32 pb-10 px-6 md:px-12 border-b border-zinc-200 relative overflow-hidden">
+    <!-- Ambient Decor -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-indigo-100/40 blur-[100px]"></div>
+      <div class="absolute -top-20 right-0 w-80 h-80 rounded-full bg-emerald-100/30 blur-[80px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-10 items-end justify-between">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3.5 py-1.5 rounded-lg border border-indigo-200 font-bold mb-4 shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Cliente: Casa de Vídeo Produções Ltda</span>
+        </div>
+        <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.1] uppercase text-tactile-3d-dark mb-4">
+          Hub Central & Relatório Semanal<br/>
+          <span class="text-indigo-600 inline-block">Evolução 360°</span>
+        </h1>
+        <p class="font-sans text-base text-zinc-600 leading-relaxed font-light">
+          Acompanhamento transparente das métricas de performance da Casa de Vídeo nos 3 pilares: **Tráfego Pago (Google Ads)**, **SEO Orgânico** e **GEO (Inteligência Artificial)** com comparativos de evolução semana a semana.
+        </p>
+      </div>
+
+      <!-- Quick Stats Card Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto shrink-0">
+        <div class="tactile-sunken p-4 text-center">
+          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Investimento Ads</span>
+          <strong id="kpiInvestimento" class="font-display font-black text-xl text-indigo-600 block mt-1">R$ 875,00</strong>
+          <span id="diffInvestimento" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +5% WoW</span>
+        </div>
+        <div class="tactile-sunken p-4 text-center">
+          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Leads B2B</span>
+          <strong id="kpiLeads" class="font-display font-black text-xl text-emerald-600 block mt-1">6 Leads</strong>
+          <span id="diffLeads" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +20% WoW</span>
+        </div>
+        <div class="tactile-sunken p-4 text-center">
+          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Tráfego Orgânico</span>
+          <strong id="kpiTrafego" class="font-display font-black text-xl text-zinc-950 block mt-1">420 Sessões</strong>
+          <span id="diffTrafego" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +14% WoW</span>
+        </div>
+        <div class="tactile-sunken p-4 text-center">
+          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">GEO Score (IAs)</span>
+          <strong id="kpiGeoScore" class="font-display font-black text-xl text-violet-600 block mt-1">84 / 100</strong>
+          <span id="diffGeoScore" class="font-mono text-[10px] text-violet-700 font-bold block mt-0.5">↑ +6 pts WoW</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="max-w-7xl mx-auto pt-10 px-6 md:px-12 space-y-10">
+
+    <!-- VISUAL CHARTS DASHBOARD SECTION -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-zinc-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
+            <span>📊 Visão Gráfica Dinâmica</span>
+          </div>
+          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Evolução Gráfica 360° — Semana a Semana
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Comparativo visual de volume de leads, investimento, tráfego orgânico e GEO Score em tempo real</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <span class="w-3 h-3 rounded-full bg-[#4353ff] inline-block"></span> <span class="text-zinc-600 font-medium">Google Ads</span>
+          <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">SEO Orgânico</span>
+          <span class="w-3 h-3 rounded-full bg-[#8B5CF6] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">GEO (IAs)</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Chart 1: Evolução Semanal -->
+        <div class="lg:col-span-2 tactile-sunken p-5 rounded-2xl bg-[#f8f9fc]">
+          <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3 flex items-center justify-between">
+            <span>📈 Tendência de Crescimento (Leads & Tráfego)</span>
+            <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-200">↑ High Performance</span>
+          </h3>
+          <div class="h-64 relative">
+            <canvas id="chartEvolucaoSemanal"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Origem dos Leads -->
+        <div class="tactile-sunken p-5 rounded-2xl bg-[#f8f9fc] flex flex-col justify-between">
+          <div>
+            <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3">
+              🎯 Distribuição de Leads por Canal
+            </h3>
+            <div class="h-48 relative flex items-center justify-center">
+              <canvas id="chartOrigemLeads"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-zinc-200/80 font-mono text-[11px] space-y-1.5">
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#4353ff]"></span> Google Ads:</span>
+              <strong class="font-bold text-zinc-950">55% (6 Leads)</strong>
+            </div>
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span> SEO Orgânico:</span>
+              <strong class="font-bold text-zinc-950">30% (3 Leads)</strong>
+            </div>
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#8B5CF6]"></span> GEO (IAs):</span>
+              <strong class="font-bold text-zinc-950">15% (2 Leads)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 PILLARS SECTION -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- ================= PILAR 1: GOOGLE ADS ================= -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
+        <div>
+          <!-- Pillar Header -->
+          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-zinc-950">Google Ads</h3>
+                <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">agente-trafego-pago</span>
+              </div>
+            </div>
+            <a href="./Google_Ads/Dashboard_Google_Ads.html" class="font-mono text-xs font-bold text-indigo-600 hover:underline no-print">Painel →</a>
+          </div>
+
+          <!-- Weekly KPIs Grid -->
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CPL Semanal</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="adsCpl" class="font-display font-bold text-xl text-indigo-600">R$ 145,83</span>
+                <span id="adsCplDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↓ -8%</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Meta Teto: R$ 180</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CTR Anúncios</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="adsCtr" class="font-display font-bold text-xl text-zinc-950">6.8%</span>
+                <span id="adsCtrDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +0.6%</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Tríade P-A-P: 9.8/10</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Leads B2B</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="adsConversoes" class="font-display font-bold text-xl text-emerald-600">6 Leads</span>
+                <span id="adsConversoesDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +1</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">WhatsApp & Form</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Índice Qualidade</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="adsIq" class="font-display font-bold text-xl text-indigo-600">9.4 / 10</span>
+                <span id="adsIqDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Excelente</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Economia de CPC</span>
+            </div>
+          </div>
+
+          <!-- Weekly Log -->
+          <div class="space-y-2">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
+            <ul class="font-sans text-xs space-y-2 text-zinc-700">
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Negativagem de 34 termos desqualificados no Google Ads.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Lançamento da campanha STAG de Concorrentes B2B em SP.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Audit GTM: Vinculador de Conversões ativo em All Pages.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-zinc-100">
+          <a href="./Google_Ads/Passo_a_Passo_Google_Ads.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
+            <span>Guia e Checklist Google Ads</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= PILAR 2: SEO ORGÂNICO ================= -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
+        <div>
+          <!-- Pillar Header -->
+          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-bold text-emerald-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-zinc-950">SEO Orgânico</h3>
+                <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider">agente-seo</span>
+              </div>
+            </div>
+            <a href="./SEO/Dashboard_SEO.html" class="font-mono text-xs font-bold text-emerald-600 hover:underline no-print">Painel →</a>
+          </div>
+
+          <!-- Weekly KPIs Grid -->
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Impressões GSC</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="seoImpressoes" class="font-display font-bold text-xl text-emerald-600">4.820</span>
+                <span id="seoImpressoesDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +18%</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Buscas em SP</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Top 10 no Google</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="seoTop10" class="font-display font-bold text-xl text-zinc-950">16 Termos</span>
+                <span id="seoTop10Diff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +2 novos</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Termos Produtora B2B</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Core Web Vitals</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="seoLcp" class="font-display font-bold text-xl text-indigo-600">1.8s (LCP)</span>
+                <span id="seoLcpDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Aprovado</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">CLS: 0.02 | INP: 110ms</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Answer-First Block</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="seoAnswerFirst" class="font-display font-bold text-xl text-violet-600">100%</span>
+                <span id="seoAnswerFirstDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Ativo</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Posição Zero Snippet</span>
+            </div>
+          </div>
+
+          <!-- Weekly Log -->
+          <div class="space-y-2">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
+            <ul class="font-sans text-xs space-y-2 text-zinc-700">
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Title Tag (60 chars) e Meta Description ajustadas com CTA.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Bloco Answer-First de 54 palavras publicado na Home.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Google Business Profile atualizado com fotos de set e dados NAP.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-zinc-100">
+          <a href="./SEO/Passo_a_Passo_SEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
+            <span>Guia e Checklist SEO</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= PILAR 3: GEO (INTELIGÊNCIA ARTIFICIAL) ================= -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
+        <div>
+          <!-- Pillar Header -->
+          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-zinc-950">GEO (b.rocket GEO Engine)</h3>
+                <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider">agente-geo (9 Sub-Agentes)</span>
+              </div>
+            </div>
+            <a href="./GEO/Dashboard_GEO.html" class="font-mono text-xs font-bold text-violet-600 hover:underline no-print">Painel →</a>
+          </div>
+
+          <!-- Weekly KPIs Grid -->
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">GEO Score Composto</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="geoScore" class="font-display font-bold text-xl text-violet-600">84 / 100</span>
+                <span id="geoScoreDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +6 pts</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Audit 7 Pilares</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Citation Share (IAs)</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="geoCitation" class="font-display font-bold text-xl text-emerald-600">75%</span>
+                <span id="geoCitationDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +10%</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">20 Prompts x 4 LLMs</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Grafo JSON-LD</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="geoGraph" class="font-display font-bold text-xl text-zinc-950">5 Entidades</span>
+                <span id="geoGraphDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">@graph OK</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Org, Service, Video, Local</span>
+            </div>
+
+            <div class="tactile-sunken p-3.5">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Arquivo llms.txt</span>
+              <div class="flex items-baseline justify-between mt-1">
+                <span id="geoLlms" class="font-display font-bold text-xl text-indigo-600">Publicado</span>
+                <span id="geoLlmsDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">100% Valid</span>
+              </div>
+              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Indexação Direta IA</span>
+            </div>
+          </div>
+
+          <!-- Weekly Log -->
+          <div class="space-y-2">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
+            <ul class="font-sans text-xs space-y-2 text-zinc-700">
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Publicação do arquivo /llms.txt com resumo corporativo.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Grafo JSON-LD (@graph) unificando VideoObject do Showreel 4K.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                <span>Execução de 20 testes no ChatGPT, Claude, Gemini e Perplexity.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-zinc-100">
+          <a href="./GEO/Passo_a_Passo_GEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
+            <span>Guia e Checklist GEO</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== WOW COMPARATIVE TABLE ==================== -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-zinc-200">
+        <div>
+          <h3 class="font-display font-bold text-xl text-zinc-950">Tabela Comparativa Semanal (WoW — Week-over-Week)</h3>
+          <p class="font-sans text-xs text-zinc-500 mt-1">Evolução dos principais indicadores para relatórios semanais de resultados</p>
+        </div>
+        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold">
+          Data do Relatório: 23/09/2026
+        </span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse font-mono text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[11px] bg-zinc-50/50">
+              <th class="py-3.5 px-4">Pilar</th>
+              <th class="py-3.5 px-4">Indicador / KPI</th>
+              <th class="py-3.5 px-4">Semana Anterior (10-16/Set)</th>
+              <th class="py-3.5 px-4">Semana Atual (17-23/Set)</th>
+              <th class="py-3.5 px-4">Variação (WoW)</th>
+              <th class="py-3.5 px-4 text-right">Status / Meta</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaComparativa" class="divide-y divide-zinc-200 text-zinc-800 font-sans">
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
+              <td class="py-3.5 px-4 font-semibold">Leads B2B Qualificados</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">5 Leads</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">6 Leads</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +20.0%</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta Atingida</td>
+            </tr>
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
+              <td class="py-3.5 px-4 font-semibold">Custo por Lead (CPL)</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 158,50</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 145,83</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↓ -8.0% (Melhor)</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Abaixo da Meta (R$ 180)</td>
+            </tr>
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
+              <td class="py-3.5 px-4 font-semibold">Impressões Search Console</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">4.080</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">4.820</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +18.1%</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Em Crescimento</td>
+            </tr>
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
+              <td class="py-3.5 px-4 font-semibold">Termos no Top 10 Google</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">14 Termos</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">16 Termos</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +2 Termos</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Evolução Sustentável</td>
+            </tr>
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
+              <td class="py-3.5 px-4 font-semibold">GEO Score Composto (0-100)</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">78 pts</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts</td>
+              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">↑ +6 pts</td>
+              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">Nível Avançado</td>
+            </tr>
+            <tr class="hover:bg-zinc-50 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
+              <td class="py-3.5 px-4 font-semibold">Citation Share em LLMs (%)</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">65%</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75%</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +10.0%</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Alta Citabilidade</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-7xl mx-auto pt-16 px-6 md:px-12 text-center font-mono text-xs text-zinc-500 border-t border-zinc-200 mt-16">
+    <p>Casa de Vídeo Produções Audiovisuais Ltda • Desenvolvido por <strong>b.rocket Digital Engine *</strong></p>
+  </footer>
+
+  <!-- Dynamic Data Connection & Date Selector Script -->
+  <script>
+    let bancoDadosSemanas = [];
+    let chart1Instance = null;
+    let chart2Instance = null;
+
+    async function carregarBancoDados() {
+      try {
+        const response = await fetch('./data/historico_semanal.json');
+        if (response.ok) {
+          const data = await response.json();
+          bancoDadosSemanas = data.semanas || [];
+          popularDropdownSemanas();
+          atualizarDadosSemana();
+          inicializarGraficos();
+        } else {
+          console.warn("Usando fallback de dados locais");
+          inicializarGraficos();
+        }
+      } catch (e) {
+        console.error("Erro ao carregar historico_semanal.json:", e);
+        inicializarGraficos();
+      }
+    }
+
+    function popularDropdownSemanas() {
+      const select = document.getElementById("selectSemana");
+      if (!select || bancoDadosSemanas.length === 0) return;
+      select.innerHTML = "";
+      bancoDadosSemanas.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s.id;
+        opt.innerText = s.rotulo;
+        if (s.status === "atual") opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    function atualizarDadosSemana() {
+      const select = document.getElementById("selectSemana");
+      const semId = select.value;
+      const sem = bancoDadosSemanas.find(s => s.id === semId);
+      if (!sem) return;
+
+      // Header KPIs
+      document.getElementById("kpiInvestimento").innerText = sem.google_ads.investimento_fmt;
+      document.getElementById("diffInvestimento").innerText = sem.google_ads.diff_investimento;
+      document.getElementById("kpiLeads").innerText = sem.google_ads.leads_fmt;
+      document.getElementById("diffLeads").innerText = sem.google_ads.diff_leads;
+      document.getElementById("kpiTrafego").innerText = sem.seo.impressoes_fmt + " Impressões";
+      document.getElementById("diffTrafego").innerText = sem.seo.diff_impressoes;
+      document.getElementById("kpiGeoScore").innerText = sem.geo.score_fmt;
+      document.getElementById("diffGeoScore").innerText = sem.geo.diff_score;
+
+      // Google Ads Card
+      document.getElementById("adsCpl").innerText = sem.google_ads.cpl_fmt;
+      document.getElementById("adsCplDiff").innerText = sem.google_ads.diff_cpl;
+      document.getElementById("adsCtr").innerText = sem.google_ads.ctr_fmt;
+      document.getElementById("adsCtrDiff").innerText = sem.google_ads.diff_ctr;
+      document.getElementById("adsConversoes").innerText = sem.google_ads.leads_fmt;
+      document.getElementById("adsConversoesDiff").innerText = sem.google_ads.diff_leads;
+      document.getElementById("adsIq").innerText = sem.google_ads.iq_score;
+      document.getElementById("adsIqDiff").innerText = "Excelente";
+
+      // SEO Card
+      document.getElementById("seoImpressoes").innerText = sem.seo.impressoes_fmt;
+      document.getElementById("seoImpressoesDiff").innerText = sem.seo.diff_impressoes;
+      document.getElementById("seoTop10").innerText = sem.seo.top10_fmt;
+      document.getElementById("seoTop10Diff").innerText = sem.seo.diff_top10;
+      document.getElementById("seoLcp").innerText = sem.seo.lcp;
+      document.getElementById("seoLcpDiff").innerText = sem.seo.lcp_status;
+      document.getElementById("seoAnswerFirst").innerText = sem.seo.answer_first_pct;
+      document.getElementById("seoAnswerFirstDiff").innerText = sem.seo.answer_first_status;
+
+      // GEO Card
+      document.getElementById("geoScore").innerText = sem.geo.score_fmt;
+      document.getElementById("geoScoreDiff").innerText = sem.geo.diff_score;
+      document.getElementById("geoCitation").innerText = sem.geo.citation_share_fmt;
+      document.getElementById("geoCitationDiff").innerText = sem.geo.diff_citation;
+      document.getElementById("geoGraph").innerText = sem.geo.grafo_fmt;
+      document.getElementById("geoGraphDiff").innerText = "@graph OK";
+      document.getElementById("geoLlms").innerText = "Publicado";
+      document.getElementById("geoLlmsDiff").innerText = sem.geo.llms_txt_status;
+
+      // Atualizar Doughnut Chart se existente
+      if (chart2Instance && sem.origem_leads) {
+        chart2Instance.data.datasets[0].data = [
+          sem.origem_leads.google_ads_pct,
+          sem.origem_leads.seo_organico_pct,
+          sem.origem_leads.geo_ias_pct
+        ];
+        chart2Instance.update();
+      }
+    }
+
+    function inicializarGraficos() {
+      if (chart1Instance) chart1Instance.destroy();
+      if (chart2Instance) chart2Instance.destroy();
+
+      // Labels e Data dinâmicos
+      const labels = bancoDadosSemanas.slice().reverse().map(s => s.rotulo.split(':')[0]);
+      const leadsData = bancoDadosSemanas.slice().reverse().map(s => s.google_ads.leads);
+      const impressoesData = bancoDadosSemanas.slice().reverse().map(s => s.seo.impressoes_gsc / 1000);
+      const geoData = bancoDadosSemanas.slice().reverse().map(s => s.geo.score / 10);
+
+      // 1. Line Chart: Evolução Semanal
+      const ctx1 = document.getElementById('chartEvolucaoSemanal').getContext('2d');
+      chart1Instance = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: labels.length ? labels : ['Semana 37', 'Semana 38', 'Semana 39'],
+          datasets: [
+            {
+              label: 'Leads Qualificados B2B',
+              data: leadsData.length ? leadsData : [4, 5, 6],
+              borderColor: '#4353ff',
+              backgroundColor: 'rgba(67, 83, 255, 0.1)',
+              fill: true,
+              tension: 0.4,
+              borderWidth: 3,
+              pointRadius: 6,
+              pointBackgroundColor: '#4353ff'
+            },
+            {
+              label: 'Impressões SEO (x1.000)',
+              data: impressoesData.length ? impressoesData : [3.64, 4.08, 4.82],
+              borderColor: '#10B981',
+              backgroundColor: 'transparent',
+              tension: 0.4,
+              borderWidth: 2,
+              borderDash: [5, 5],
+              pointRadius: 4,
+              pointBackgroundColor: '#10B981'
+            },
+            {
+              label: 'GEO Score (x10 pts)',
+              data: geoData.length ? geoData : [7.4, 7.8, 8.4],
+              borderColor: '#8B5CF6',
+              backgroundColor: 'transparent',
+              tension: 0.4,
+              borderWidth: 2,
+              pointRadius: 4,
+              pointBackgroundColor: '#8B5CF6'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { font: { family: 'Inter', size: 11 } } }
+          },
+          scales: {
+            y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { family: 'JetBrains Mono', size: 10 } } },
+            x: { grid: { display: false }, ticks: { font: { family: 'JetBrains Mono', size: 10 } } }
+          }
+        }
+      });
+
+      // 2. Doughnut Chart: Origem dos Leads
+      const ctx2 = document.getElementById('chartOrigemLeads').getContext('2d');
+      chart2Instance = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Google Ads', 'SEO Orgânico', 'GEO (IAs)'],
+          datasets: [{
+            data: [55, 30, 15],
+            backgroundColor: ['#4353ff', '#10B981', '#8B5CF6'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          cutout: '72%'
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', carregarBancoDados);
+  </script>
+
+</body>
+</html>

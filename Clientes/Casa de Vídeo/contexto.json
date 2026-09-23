@@ -1,0 +1,37 @@
+{
+  "cliente": {
+    "nome": "Casa de Vídeo",
+    "razaoSocial": "Casa de Vídeo Produções Audiovisuais",
+    "site": "https://www.casadevideo.com.br",
+    "nicho": "Produtora Audiovisual B2B",
+    "descricao": "Produtora especializada em filmes publicitários, vídeos corporativos, institucionais e vídeos de alta performance para marcas e agências.",
+    "segmentoTarget": "Empresas B2B, Diretores de Marketing, Gerentes de Comunicação e Agências de Publicidade",
+    "cidadeEstado": "São Paulo, SP"
+  },
+  "servicosContratados": {
+    "trafegoPago": {
+      "plataformas": ["Google Ads (Search & PMax)"],
+      "metaCPL": "R$ 150 - R$ 250",
+      "focoCampanhas": ["Filmes Publicitários", "Vídeos Corporativos B2B", "Produtora de Vídeo SP"]
+    },
+    "seo": {
+      "foco": ["SEO On-Page", "Core Web Vitals", "Google Search Console", "Google Meu Negócio"],
+      "palavrasChaveAlvo": [
+        "produtora de video b2b",
+        "produtora de filmes publicitarios",
+        "video corporativo sp",
+        "produtora audiovisual sao paulo"
+      ]
+    },
+    "geo": {
+      "foco": ["Citabilidade em LLMs", "Schema Organization & VideoObject", "llms.txt", "E-E-A-T Audiovisual"],
+      "plataformasAlvo": ["ChatGPT", "Perplexity", "Google Gemini", "Claude", "AI Overviews"]
+    }
+  },
+  "concorrentesMapeados": [
+    "O2 Filmes",
+    "Produtora Sentimental",
+    "Ketchum Audiovisual",
+    "Conspiração Filmes"
+  ]
+}

@@ -1,0 +1,1267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano de Implantação e Onboarding | Casa de Vídeo — b.rocket</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* 
+    =========================================
+    TACTILE CLAYMORPHIC & NEUMORPHIC SYSTEM 
+    =========================================
+    */
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-raised-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tactile-raised-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.01),
+        12px 20px 36px -6px rgba(13, 20, 33, 0.08),
+        -12px -12px 32px -4px rgba(255, 255, 255, 0.98),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.95),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.015);
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(13, 20, 33, 0.12),
+        6px 8px 14px rgba(13, 20, 33, 0.08),
+        12px 16px 28px rgba(13, 20, 33, 0.04);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+      position: relative;
+    }
+
+    /* Input styling */
+    .form-input {
+      background-color: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #18181b;
+      width: 100%;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #4353ff;
+      box-shadow: 0 0 0 3px rgba(67, 83, 255, 0.15);
+    }
+
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid #a1a1aa;
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .custom-checkbox:checked {
+      background-color: #10B981;
+      border-color: #10B981;
+    }
+    .custom-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      top: -2px;
+      left: 3px;
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-4 px-6 md:px-12">
+    <div id="nav-container" class="max-w-7xl mx-auto px-6 md:px-8 py-3.5 flex justify-between items-center transition-all duration-300 bg-white/80 backdrop-blur-md border border-zinc-200/80 shadow-sm rounded-2xl">
+      
+      <!-- Logo b.rocket -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
+          <div class="w-[22px] h-[22px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+            <div class="w-[15px] h-[10px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+              <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+              <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+            </div>
+            <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
+          </div>
+          <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-r"></div>
+          <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-l"></div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base tracking-[0.08em] text-zinc-950 uppercase leading-none">b.rocket <span class="text-indigo-600">*</span></span>
+          <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-semibold uppercase">Plano de Implantação</span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex items-center gap-6">
+        <a href="#alinhamento" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Alinhamento</a>
+        <a href="#cronograma" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Cronograma 30d</a>
+        <a href="#acessos" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Plataformas</a>
+        <a href="#google-ads" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Google Ads</a>
+        <a href="#seo-geo" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">SEO e GEO</a>
+        <a href="#anamnese" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Anamnese Estratégica</a>
+        <a href="#responsabilidades" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors py-1">Entregas</a>
+      </div>
+
+      <!-- Status Badge -->
+      <div class="flex items-center gap-3">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-zinc-600 uppercase tracking-widest bg-zinc-100 px-3 py-1.5 rounded-lg border border-zinc-200 font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Plano Mês 1
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HEADER / HERO ==================== -->
+  <section id="hero" class="pt-36 sm:pt-32 pb-16 px-6 md:px-12 border-b border-zinc-200 relative overflow-hidden">
+    <!-- Ambient Blur -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-blue-100/40 blur-[100px]"></div>
+      <div class="absolute -top-20 right-0 w-80 h-80 rounded-full bg-emerald-100/30 blur-[80px]"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row gap-12 items-end justify-between">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-emerald-700 uppercase tracking-widest bg-emerald-50 px-3.5 py-1.5 rounded-lg border border-emerald-200 font-bold mb-6 shadow-xs">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+          Proposta Aprovada · Execução Iniciada
+        </div>
+        <h1 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-zinc-950 tracking-tight leading-[1.1] uppercase text-tactile-3d-dark mb-6">
+          Plano de Implantação<br/>
+          <span class="text-indigo-600 inline-block">Casa de Vídeo</span>
+        </h1>
+        <p class="font-sans text-base md:text-lg text-zinc-600 leading-relaxed font-light">
+          Cronograma detalhado e etapas técnicas para o primeiro mês de atuação. Estruturação completa de campanhas de tráfego pago e otimizações de SEO e GEO para atrair projetos corporativos e publicitários de alto impacto.
+        </p>
+      </div>
+      
+      <!-- Right Status Summary Card -->
+      <div class="flex flex-col gap-4 min-w-[300px] w-full md:w-auto">
+        <div class="tactile-sunken p-6 flex flex-col gap-3">
+          <div class="flex justify-between items-center border-b border-zinc-200/80 pb-2.5">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Cliente</span>
+            <span class="font-mono text-xs text-zinc-950 font-bold">Casa de Vídeo</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-zinc-200/80 pb-2.5">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Atuação</span>
+            <span class="font-mono text-xs text-zinc-950 font-bold">Produtora Audiovisual</span>
+          </div>
+          <div class="flex justify-between items-center pb-1">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Agência</span>
+            <span class="font-mono text-xs text-zinc-950 font-bold">b.rocket</span>
+          </div>
+        </div>
+
+        <!-- Note Badge -->
+        <div class="tactile-raised p-4 flex items-center gap-3 bg-white border border-indigo-100 rounded-2xl shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Objetivo Mês 1</div>
+            <div class="font-sans text-xs font-semibold text-zinc-950">Conexões Técnicas e Lançamento de Mídia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ALINHAMENTO INICIAL ==================== -->
+  <section id="alinhamento" class="py-16 px-6 md:px-12 border-b border-zinc-200 bg-white/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="font-mono text-[10px] text-indigo-600 uppercase tracking-widest font-bold bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">Definições Objetivas</span>
+        <h2 class="font-display font-bold text-2xl md:text-4xl text-zinc-950 uppercase tracking-tight mt-3">
+          Alinhamento Inicial do Projeto
+        </h2>
+        <p class="font-sans text-sm md:text-base text-zinc-600 mt-3 font-light">
+          Organização direta das obrigações técnicas da b.rocket e dos itens necessários por parte da Casa de Vídeo para dar início imediato às campanhas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- O que entregar (b.rocket) -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 relative overflow-hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold shadow-md">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-widest">Entregas Técnicas</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">O que a b.rocket entrega</h3>
+            </div>
+          </div>
+          
+          <ul class="space-y-4 font-sans text-sm text-zinc-600">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+              <span><strong class="text-zinc-950">Setup das Contas:</strong> Configuração e integração do Google Ads, GA4, Tag Manager, Search Console e Google My Business.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+              <span><strong class="text-zinc-950">Criação das Campanhas de Pesquisa e PMax:</strong> Copywriting e anúncios direcionados para empresas e marcas que buscam contratação de produtora audiovisual.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+              <span><strong class="text-zinc-950">Dashboard Didático em Tempo Real:</strong> Disponibilização de um painel transparente para acompanhamento constante de orçamentos e performance.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+              <span><strong class="text-zinc-950">Otimização Semanal de Tráfego:</strong> Negativação periódica de termos desqualificados e ajuste de lances para maximizar o investimento.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
+              <span><strong class="text-zinc-950">Estruturação SEO e GEO:</strong> Ajuste do perfil da produtora no Google My Business e marcação Schema para recomendação por IAs (ChatGPT, Gemini, Perplexity).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- O que precisamos (Casa de Vídeo) -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 relative overflow-hidden">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-bold shadow-md">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-amber-600 uppercase font-bold tracking-widest">Insumos Necessários</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">O que precisamos da Casa de Vídeo</h3>
+            </div>
+          </div>
+          
+          <ul class="space-y-4 font-sans text-sm text-zinc-600">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">!</span>
+              <span><strong class="text-zinc-950">Reunião Inicial:</strong> Alinhamento das expectativas do projeto e concessão dos acessos às ferramentas na primeira conversa.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">!</span>
+              <span><strong class="text-zinc-950">Concessão de Acessos de Mídia:</strong> Acesso de administrador à conta do Google Ads, GA4, GTM e Google My Business.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">!</span>
+              <span><strong class="text-zinc-950">Preenchimento da Anamnese Estratégica:</strong> Envio das informações detalhadas sobre projetos, perfil de contratantes e diferenciais para alimentar as inteligências de anúncios.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">!</span>
+              <span><strong class="text-zinc-950">Aprovação de Anúncios e Definição do Orçamento de Mídia:</strong> No momento em que os anúncios e a estrutura das campanhas forem aprovados, definiremos o valor final do investimento diário/mensal de verba para veiculação no Google Ads.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">!</span>
+              <span><strong class="text-zinc-950">Feedback de Oportunidades:</strong> Retorno periódico sobre o perfil das empresas que entraram em contato para calibração das campanhas.</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100 text-xs text-indigo-900 font-sans">
+            <strong>Gestão do Site:</strong> Como o site já foi desenvolvido por mim (b.rocket), todo o ambiente web e os códigos de rastreamento já estão sob meu controle técnico.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PIPELINE / CRONOGRAMA 30 DIAS ==================== -->
+  <section id="cronograma" class="py-16 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-[10px] text-indigo-600 uppercase tracking-widest font-bold bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">Roadmap Operacional</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-zinc-950 uppercase tracking-tight mt-2">
+            Cronograma do Primeiro Mês
+          </h2>
+        </div>
+        <p class="font-sans text-sm text-zinc-500 max-w-md font-light">
+          Organização em etapas claras para execução técnica ágil das campanhas de tráfego pago e SEO.
+        </p>
+      </div>
+
+      <!-- Timeline Cards -->
+      <div class="space-y-6">
+        
+        <!-- Semana 1 -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border-l-4 border-l-indigo-600 border border-zinc-200">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-100 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-white bg-indigo-600 px-3 py-1 rounded-lg shadow-xs">SEMANA 1</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">Reunião de Kickoff e Setup de Acessos</h3>
+            </div>
+            <span class="font-mono text-xs text-zinc-400 font-semibold">Dias 01 a 07</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-indigo-600 font-bold uppercase mb-1">Reunião Inicial</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Kickoff e Conexão de Plataformas</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Alinhamento das expectativas do projeto e concessão direta de acessos às contas de Google Ads, GA4, GTM e Google My Business.</p>
+            </div>
+            
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-emerald-600 font-bold uppercase mb-1">Infraestrutura Web</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Tagging e Rastreamento</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Implementação das tags de conversão via GTM para mensurar cliques no WhatsApp, chamadas e formulários de orçamento no site.</p>
+            </div>
+
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-violet-600 font-bold uppercase mb-1">Anamnese</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Anamnese Estratégica Completa</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Envio do questionário de briefing para extrair os diferenciais, ICP, dores e objeções reais dos contratantes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 2 -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border-l-4 border-l-emerald-500 border border-zinc-200">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-100 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-white bg-emerald-600 px-3 py-1 rounded-lg shadow-xs">SEMANA 2</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">Montagem dos Anúncios, Aprovação e Definição da Verba</h3>
+            </div>
+            <span class="font-mono text-xs text-zinc-400 font-semibold">Dias 08 a 14</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-indigo-600 font-bold uppercase mb-1">Copywriting e Ads</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Construção dos Anúncios</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Mapeamento de palavras-chave B2B e criação das estruturas de anúncios na Rede de Pesquisa e Performance Max.</p>
+            </div>
+
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-amber-600 font-bold uppercase mb-1">Aprovação e Verba</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Validação de Anúncios e Orçamento de Mídia</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Aprovação dos anúncios e definição do orçamento final diário/mensal que será inserido no Google Ads para o disparo.</p>
+            </div>
+
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-violet-600 font-bold uppercase mb-1">SEO e GEO</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Google My Business e IA</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Otimização do perfil institucional no Google My Business e aplicação de marcações Schema de IA no site.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 3 -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border-l-4 border-l-violet-600 border border-zinc-200">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-100 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-white bg-violet-600 px-3 py-1 rounded-lg shadow-xs">SEMANA 3</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">Ativação das Campanhas e Monitoramento Semanal</h3>
+            </div>
+            <span class="font-mono text-xs text-zinc-400 font-semibold">Dias 15 a 21</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-emerald-600 font-bold uppercase mb-1">Go-Live de Mídia</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Ativação no Google Ads</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Publicação das campanhas de alta intenção comercial no Google Search e exibição de portfólio via PMax/YouTube com a verba alocada.</p>
+            </div>
+            
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-violet-600 font-bold uppercase mb-1">Otimização Semanal</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Filtragem de Termos</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Análise semanal das pesquisas reais para negativar termos irrelevantes (como cursos, vagas ou aluguel de equipamento).</p>
+            </div>
+
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-indigo-600 font-bold uppercase mb-1">Painel Interativo</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Dashboard Didático em Tempo Real</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Liberação do dashboard em tempo real para acompanhamento contínuo de orçamentos e métricas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 4 -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border-l-4 border-l-amber-500 border border-zinc-200">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-100 pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-white bg-amber-600 px-3 py-1 rounded-lg shadow-xs">SEMANA 4</span>
+              <h3 class="font-display font-bold text-xl text-zinc-950">Ajustes Finos, Relatório do Mês 1 e Plano Mês 2</h3>
+            </div>
+            <span class="font-mono text-xs text-zinc-400 font-semibold">Dias 22 a 30</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-indigo-600 font-bold uppercase mb-1">Análise de Conversão</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Métricas de Oportunidades</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Levantamento do volume de solicitações de orçamento geradas e custo por oportunidade recebida.</p>
+            </div>
+            
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-emerald-600 font-bold uppercase mb-1">Reunião Mensal</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Alinhamento de Resultados</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Apresentação dos resultados do Mês 1 e validação dos dados registrados no dashboard didático.</p>
+            </div>
+
+            <div class="tactile-sunken p-4 rounded-2xl">
+              <div class="font-mono text-[10px] text-violet-600 font-bold uppercase mb-1">Planejamento Futuro</div>
+              <div class="font-sans font-semibold text-sm text-zinc-900 mb-2">Estratégia de Escala Mês 2</div>
+              <p class="font-sans text-xs text-zinc-600 font-light">Ajustes de orçamento e inclusão de novas linhas de produção audiovisual prioritárias para o segundo mês.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SETUP DE PLATAFORMAS & ACESSOS ==================== -->
+  <section id="acessos" class="py-16 px-6 md:px-12 border-b border-zinc-200 bg-white/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="font-mono text-[10px] text-indigo-600 uppercase tracking-widest font-bold bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">Plataformas Necessárias</span>
+        <h2 class="font-display font-bold text-2xl md:text-4xl text-zinc-950 uppercase tracking-tight mt-3">
+          Acessos de Ferramentas
+        </h2>
+        <p class="font-sans text-sm md:text-base text-zinc-600 mt-3 font-light">
+          Conexões necessárias para a gestão direta das campanhas no Google e acompanhamento de dados. Faremos a liberação conjunta na reunião inicial.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Google Ads -->
+        <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-bold text-blue-600">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+              </div>
+              <span class="font-mono text-[9px] text-blue-600 bg-blue-50 px-2 py-0.5 rounded font-bold uppercase">Anúncios Pagos</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-zinc-950 mb-2">Google Ads</h3>
+            <p class="font-sans text-xs text-zinc-600 font-light leading-relaxed mb-4">
+              Plataforma onde estruturaremos as campanhas da Casa de Vídeo na Rede de Pesquisa e PMax.
+            </p>
+          </div>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-zinc-700">
+            <strong>Acesso:</strong> Convite por e-mail ou vínculo pela conta MCC da b.rocket.
+          </div>
+        </div>
+
+        <!-- Google Analytics 4 -->
+        <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center font-bold text-amber-600">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2v-10h2v10zm4 0h-2v-4h2v4z"/></svg>
+              </div>
+              <span class="font-mono text-[9px] text-amber-600 bg-amber-50 px-2 py-0.5 rounded font-bold uppercase">Métricas</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-zinc-950 mb-2">Google Analytics 4</h3>
+            <p class="font-sans text-xs text-zinc-600 font-light leading-relaxed mb-4">
+              Monitoramento do volume de acessos, comportamento dos visitantes e origem do tráfego.
+            </p>
+          </div>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-zinc-700">
+            <strong>Acesso:</strong> Adicionar o e-mail da b.rocket no painel do GA4.
+          </div>
+        </div>
+
+        <!-- Google Tag Manager -->
+        <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10v10H7z"></path></svg>
+              </div>
+              <span class="font-mono text-[9px] text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded font-bold uppercase">Rastreamento</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-zinc-950 mb-2">Tag Manager (GTM)</h3>
+            <p class="font-sans text-xs text-zinc-600 font-light leading-relaxed mb-4">
+              Gerenciamento dos códigos de conversão para mensurar cliques no WhatsApp e envios de formulário.
+            </p>
+          </div>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-zinc-700">
+            <strong>Acesso:</strong> Adicionar permissão de usuário no container do GTM.
+          </div>
+        </div>
+
+        <!-- Google My Business -->
+        <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+              </div>
+              <span class="font-mono text-[9px] text-violet-600 bg-violet-50 px-2 py-0.5 rounded font-bold uppercase">SEO Institucional</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-zinc-950 mb-2">Google My Business</h3>
+            <p class="font-sans text-xs text-zinc-600 font-light leading-relaxed mb-4">
+              Perfil da empresa no Google para consolidação da marca, catálogo de produções e otimização GEO.
+            </p>
+          </div>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-zinc-700">
+            <strong>Acesso:</strong> Adicionar o e-mail da b.rocket como administrador do perfil.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ESTRATÉGIA DE GOOGLE ADS (MÊS 1) ==================== -->
+  <section id="google-ads" class="py-16 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md border border-blue-200 uppercase tracking-widest">Tráfego Comercial Focado</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-zinc-950 uppercase tracking-tight mt-2">
+            Estratégia do Mês 1 no Google Ads
+          </h2>
+        </div>
+        <p class="font-sans text-sm text-zinc-500 max-w-md font-light">
+          Captação de demanda qualificada: atrair empresas, marcas e agências que buscam contratar uma produtora audiovisual.
+        </p>
+      </div>
+
+      <!-- Callout Box sobre Orçamento de Mídia -->
+      <div class="tactile-raised p-6 rounded-2xl bg-amber-50/60 border border-amber-200/80 mb-8 flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white font-bold flex items-center justify-center shrink-0">
+          💡
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-base text-zinc-950">Aporte de Verba de Mídia</h4>
+          <p class="font-sans text-xs text-zinc-700 mt-1 leading-relaxed">
+            O orçamento final de investimento direto no Google Ads será formalmente definido e ativado no momento da aprovação oficial das campanhas e anúncios pela Casa de Vídeo.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        
+        <!-- Campanha 1: Pesquisa Fundo de Funil -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-100/40 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold text-blue-600 uppercase bg-blue-50 px-2.5 py-1 rounded-lg mb-4">
+              Campanha 1 · Pesquisa Comercial
+            </div>
+            <h3 class="font-display font-bold text-2xl text-zinc-950 mb-3">Produção Audiovisual (Search)</h3>
+            <p class="font-sans text-xs text-zinc-600 leading-relaxed font-light mb-6">
+              Anúncios diretos nos resultados de busca do Google para tomadores de decisão em empresas que precisam contratar produção em vídeo de alto nível.
+            </p>
+            
+            <div class="space-y-3 mb-6">
+              <div class="font-mono text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Mapeamento de Termos de Busca:</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-[11px] bg-zinc-100 px-3 py-1.5 rounded-lg text-zinc-800 font-medium">"produtora audiovisual"</span>
+                <span class="font-mono text-[11px] bg-zinc-100 px-3 py-1.5 rounded-lg text-zinc-800 font-medium">"produtora de vídeo institucional"</span>
+                <span class="font-mono text-[11px] bg-zinc-100 px-3 py-1.5 rounded-lg text-zinc-800 font-medium">"produção de vídeo corporativo"</span>
+                <span class="font-mono text-[11px] bg-zinc-100 px-3 py-1.5 rounded-lg text-zinc-800 font-medium">"produtora de comerciais para tv"</span>
+                <span class="font-mono text-[11px] bg-zinc-100 px-3 py-1.5 rounded-lg text-zinc-800 font-medium">"produção de conteúdo audiovisual"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tactile-sunken p-4 rounded-2xl flex items-center justify-between">
+            <div class="text-xs font-mono text-zinc-500 font-bold">Foco do Lance:</div>
+            <div class="text-xs font-mono text-zinc-950 font-bold">Maximizar Cliques / Conversões Qualificadas</div>
+          </div>
+        </div>
+
+        <!-- Campanha 2: Performance Max / Remarketing -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-100/40 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold text-emerald-600 uppercase bg-emerald-50 px-2.5 py-1 rounded-lg mb-4">
+              Campanha 2 · Portfólio & Remarketing
+            </div>
+            <h3 class="font-display font-bold text-2xl text-zinc-950 mb-3">Performance Max & Portfólio</h3>
+            <p class="font-sans text-xs text-zinc-600 leading-relaxed font-light mb-6">
+              Exibição visual dos grandes projetos e produções já realizadas pela Casa de Vídeo no YouTube, Gmail e Display para reforço de autoridade de marca.
+            </p>
+            
+            <div class="space-y-3 mb-6">
+              <div class="font-mono text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Recursos de Mídia e Conteúdo:</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-[11px] bg-emerald-50 px-3 py-1.5 rounded-lg text-emerald-800 font-medium">Showreel e Cases de Projetos</span>
+                <span class="font-mono text-[11px] bg-emerald-50 px-3 py-1.5 rounded-lg text-emerald-800 font-medium">Vídeos Publicitários de Destaque</span>
+                <span class="font-mono text-[11px] bg-emerald-50 px-3 py-1.5 rounded-lg text-emerald-800 font-medium">Retargeting de Visitantes do Site</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tactile-sunken p-4 rounded-2xl flex items-center justify-between">
+            <div class="text-xs font-mono text-zinc-500 font-bold">Objetivo:</div>
+            <div class="text-xs font-mono text-emerald-700 font-bold">Geração de Orçamentos de Alto Valor</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Negativação de Termos Irrelevantes -->
+      <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-zinc-900 text-white relative overflow-hidden">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-6 border-b border-zinc-800 pb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center font-bold">
+              🚫
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-red-400 uppercase font-bold tracking-widest">Proteção de Orçamento</span>
+              <h3 class="font-display font-bold text-lg text-white">Filtro de Palavras-Chave Negativas</h3>
+            </div>
+          </div>
+          <span class="font-mono text-xs text-zinc-400">Eliminação de cliques desqualificados</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3 font-mono text-xs text-zinc-300">
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- aluguel estúdio</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- locação câmera</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- curso edição</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- vagas emprego</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- app vídeo celular</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- editor grátis</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- como fazer</div>
+          <div class="bg-zinc-800/80 p-2.5 rounded-xl border border-zinc-700/60 text-center">- aluguel equipamento</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ESTRATÉGIA DE SEO & GEO (ERA DA IA) ==================== -->
+  <section id="seo-geo" class="py-16 px-6 md:px-12 border-b border-zinc-200 bg-white/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-[10px] font-bold text-violet-600 bg-violet-50 px-3 py-1 rounded-md border border-violet-200 uppercase tracking-widest">Presença em Buscadores e IA</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-zinc-950 uppercase tracking-tight mt-2">
+            Plano SEO e GEO (Generative Engine Optimization)
+          </h2>
+        </div>
+        <p class="font-sans text-sm text-zinc-500 max-w-md font-light">
+          Posicionamento institucional da Casa de Vídeo no Google orgânico e respostas geradas por inteligências artificiais (ChatGPT, Gemini e Perplexity).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pilar 1 -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+          <div class="w-12 h-12 rounded-2xl bg-violet-600 text-white flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
+            1
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-950 mb-3">Google My Business</h3>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed font-light mb-4">
+            Padronização e otimização do perfil institucional no Google My Business com apresentação da produtora, serviços audiovisuais oferecidos e histórico de marcas atendidas.
+          </p>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-violet-700 font-semibold">
+            Meta Mês 1: Perfil 100% atualizado e verificado.
+          </div>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
+            2
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-950 mb-3">Dados Estruturados Schema (IA)</h3>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed font-light mb-4">
+            Inclusão de metadados Schema.org (`Organization` e `Service`) no site para garantir que robôs de IA reconheçam a Casa de Vídeo como referência em produção audiovisual.
+          </p>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-emerald-700 font-semibold">
+            Meta Mês 1: Validação de Rich Snippets de produção em vídeo.
+          </div>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
+            3
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-950 mb-3">Auditoria On-Page & Performance</h3>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed font-light mb-4">
+            Como fui o desenvolvedor do site, farei o ajuste fino contínuo de SEO on-page, tempo de carregamento de vídeos e otimização para dispositivos móveis.
+          </p>
+          <div class="tactile-sunken p-3 rounded-xl font-mono text-[11px] text-indigo-700 font-semibold">
+            Meta Mês 1: Manutenção do score máximo de velocidade e indexação.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== QUESTIONÁRIO DE ANAMNESE ESTRATÉGICA PROFUNDA ==================== -->
+  <section id="anamnese" class="py-16 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="font-mono text-[10px] text-indigo-600 uppercase tracking-widest font-bold bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">Briefing Estratégico de Alta Precisão</span>
+        <h2 class="font-display font-bold text-2xl md:text-4xl text-zinc-950 uppercase tracking-tight mt-3">
+          Questionário de Anamnese Estratégica
+        </h2>
+        <p class="font-sans text-sm md:text-base text-zinc-600 mt-3 font-light">
+          Este briefing aprofundado coletará os insumos comerciais e estratégicos cruciais para que a criação dos anúncios, copys, estruturas de busca e respostas de inteligência artificial (GEO) sejam de extrema precisão.
+        </p>
+      </div>
+
+      <div class="tactile-raised p-6 md:p-10 rounded-3xl bg-white border border-zinc-200 shadow-md">
+        
+        <!-- Interactive Progress Header -->
+        <div class="border-b border-zinc-200 pb-6 mb-8">
+          <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-wider">Formulário Estratégico Profundo</span>
+          <h3 class="font-display font-bold text-xl text-zinc-950">Insumos para Inteligência de Ads, Copywriting e GEO</h3>
+        </div>
+
+        <!-- Form Questions Grid (8 Modules) -->
+        <form id="form-anamnese" class="space-y-10">
+          
+          <!-- Módulo 1: Posicionamento & Proposta Única de Valor (PUV) -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">1</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Posicionamento Institucional & Tese de Valor</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">1.1 Como a Casa de Vídeo se define no mercado (Posicionamento)?</label>
+                <textarea id="q1_1" rows="3" class="form-input" placeholder="Ex: Produtora cinematográfica para filmes corporativos de alta liderança, produtora especialista em comerciais de TV/web de forte apelo visual..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">1.2 Proposta Única de Valor (PUV): Por que uma grande empresa escolhe vocês?</label>
+                <textarea id="q1_2" rows="3" class="form-input" placeholder="Ex: Unimos estética cinematográfica de cinema a um cumprimento rigoroso de prazos e visão de negócios para o cliente..."></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">1.3 Prova Social de Peso: Quais prêmios, anos de mercado e top 5 marcas atendidas devem estar nos anúncios?</label>
+                <textarea id="q1_3" rows="2" class="form-input" placeholder="Ex: X anos de mercado, produções veiculadas em horário nobre, marcas parceiras: [Marca A, Marca B, Marca C...]"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 2: Produtos & Serviços Prioritários -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">2</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Matriz de Serviços Audiovisuais Prioritários</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">2.1 QUAIS as 3 linhas de serviço que devem ter prioridade total no Mês 1?</label>
+                <textarea id="q2_1" rows="3" class="form-input" placeholder="Ex: 1) Vídeos Institucionais / Manifestos de Marca; 2) Comerciais para TV e Redes Sociais; 3) Séries de Vídeos Corporativos / Endomarketing..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">2.2 Diferenciais Técnicos de Produção (Tecnologia, Direção e Pós-produção):</label>
+                <textarea id="q2_2" rows="3" class="form-input" placeholder="Ex: Câmeras de cinema 4K/6K/8K, direção de fotografia experiente, color grading de alto padrão, estúdio de edição próprio, equipe de roteiristas..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 3: ICP (Ideal Customer Profile) & Decisores -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">3</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Perfil do Cliente Ideal (ICP) & Cargos dos Decisores</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">3.1 Quem são os cargos exatos das pessoas que procuram e contratam a produtora?</label>
+                <textarea id="q3_1" rows="3" class="form-input" placeholder="Ex: CMO, Diretor de Marketing, Gerente de Comunicação Corporativa, Head de Growth, Diretor de Criação de Agências de Publicidade..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">3.2 Qual o segmento e porte das empresas compradoras mais lucrativas?</label>
+                <textarea id="q3_2" rows="3" class="form-input" placeholder="Ex: Médias e Grandes Empresas B2B, Multinacionais, Agências de Live Marketing, Marcas de consumo de alto padrão..."></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">3.3 Nível de Sofisticação do Comprador (Como eles chegam até vocês?):</label>
+                <textarea id="q3_3" rows="2" class="form-input" placeholder="Ex: Já chegam com o roteiro/briefing pronto precisando da produção, ou buscam criação completa desde a ideia inicial?"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 4: Psicologia do Comprador (Dores, Medos & Objeções) -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">4</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Psicologia do Comprador: Dores, Medos & Objeções Reais</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">4.1 Do que os diretores de marketing mais reclamam de outras produtoras do mercado?</label>
+                <textarea id="q4_1" rows="3" class="form-input" placeholder="Ex: Atraso na entrega de prazos de veiculação, refações infinitas, estética genérica que não emociona, estouro de orçamento no meio da produção..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">4.2 Quais são as principais objeções de fechamento comercial?</label>
+                <textarea id="q4_2" rows="3" class="form-input" placeholder="Ex: Percepção de orçamento elevado vs retorno, receio de complexidade na logística de gravação, aprovações internas da diretoria..."></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">4.3 Gatilhos de Urgência de Contratação (O que faz o cliente fechar agora?):</label>
+                <textarea id="q4_3" rows="2" class="form-input" placeholder="Ex: Lançamento de produto com data fixa, convenção anual da empresa, campanha de final de ano, mudança de marca..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 5: Concorrência & Benchmarks de Mercado -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">5</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Inteligência de Concorrência & Benchmarks</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">5.1 Quem são as 3 a 5 produtoras concorrentes diretas em concorrências comerciais?</label>
+                <textarea id="q5_1" rows="3" class="form-input" placeholder="Ex: Produtora A, Produtora B, Produtora C..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">5.2 Em quais pontos a Casa de Vídeo vence a concorrência com clareza?</label>
+                <textarea id="q5_2" rows="3" class="form-input" placeholder="Ex: Agilidade na entrega, relação custo-benefício de cinema, atendimento próximo da direção, acabamento técnico..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 6: Termos de Busca & Palavras Negativas (Google Ads) -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">6</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Termos de Busca, Intenção & Palavras Negativas</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">6.1 Frases exatas que o seu cliente ideal digita no Google ao procurar vocês:</label>
+                <textarea id="q6_1" rows="3" class="form-input" placeholder="Ex: 'contratar produtora de vídeo institucional', 'produtora de vídeo para empresas SP', 'produtora de filme publicitário'..."></textarea>
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">6.2 Buscas que DEVEMOS BLOQUEAR (Palavras Negativas):</label>
+                <textarea id="q6_2" rows="3" class="form-input" placeholder="Ex: trabalhos escolares, curso de edição, vagas de estágio em produtora, edição avulsa barata, aluguel de equipamento..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Módulo 7: SEO & GEO (Inteligência Artificial) -->
+          <div class="border-b border-zinc-100 pb-8">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">7</span>
+              <h4 class="font-display font-bold text-lg text-zinc-950 uppercase">Estratégia GEO (Respostas em Ferramentas de IA)</h4>
+            </div>
+            <div>
+              <label class="block font-sans text-xs font-semibold text-zinc-800 mb-2">7.1 Quando alguém perguntar ao ChatGPT, Gemini ou Perplexity "Quais as melhores produtoras audiovisuais para vídeos corporativos?", o que deve ser destacado sobre a Casa de Vídeo?</label>
+              <textarea id="q7_1" rows="3" class="form-input" placeholder="Ex: Destacar o portfólio de grandes marcas atendidas, histórico de produções de alto impacto, equipe premiada e capacidade de entrega nacional..."></textarea>
+            </div>
+          </div>
+
+          <!-- Módulo 8: Assets & Material de Apoio Comercial -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-mono font-bold text-xs flex items-center justify-center">8</span>
+              <h4 class="font-display font-bold text-base text-zinc-950 uppercase">Assets de Mídia & Links do Portfólio</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-1.5">Link do Showreel / Vídeos Principais do Portfólio (Vimeo/YouTube/Drive):</label>
+                <input type="text" id="q8_1" class="form-input" placeholder="https://vimeo.com/... ou https://youtube.com/..." />
+              </div>
+              <div>
+                <label class="block font-sans text-xs font-semibold text-zinc-800 mb-1.5">Link do Apresentação Comercial em PDF / Imagens em alta resolução:</label>
+                <input type="text" id="q8_2" class="form-input" placeholder="https://drive.google.com/drive/folders/..." />
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Barra de Ação de Rodapé da Anamnese -->
+        <div class="mt-8 pt-6 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-4 bg-zinc-50 p-6 rounded-2xl border border-zinc-200">
+          <div>
+            <h4 class="font-display font-bold text-sm text-zinc-950">Concluiu o preenchimento do Briefing?</h4>
+            <p class="font-sans text-xs text-zinc-600 font-light">Clique no botão ao lado para baixar uma cópia do arquivo HTML com todas as suas respostas salvas para nos enviar.</p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <button type="button" onclick="baixarHtmlPreenchido()" class="!bg-emerald-600 hover:!bg-emerald-700 !text-white font-mono font-bold text-sm px-6 py-3 rounded-xl transition-all flex items-center gap-2.5 cursor-pointer shadow-lg hover:scale-105 border-t border-emerald-400">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              📥 Baixar HTML com Respostas
+            </button>
+          </div>
+        </div>
+
+        <div id="anamnese-status" class="mt-4 text-xs font-mono font-semibold text-emerald-600 hidden text-center">
+          ✓ Briefing salvo com sucesso no navegador!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MATRIZ DE RESPONSABILIDADES & CHECKLIST ==================== -->
+  <section id="responsabilidades" class="py-16 px-6 md:px-12 border-b border-zinc-200 bg-white/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-[10px] text-indigo-600 uppercase tracking-widest font-bold bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">Acompanhamento</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-zinc-950 uppercase tracking-tight mt-2">
+            Matriz de Entregas & Progresso
+          </h2>
+        </div>
+        <div class="tactile-raised px-4 py-2 bg-white rounded-xl border border-zinc-200 flex items-center gap-3">
+          <span class="font-mono text-xs font-bold text-zinc-500">Progresso Geral:</span>
+          <span id="progress-percent" class="font-mono text-sm font-extrabold text-emerald-600">35%</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Itens do Cliente -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border border-zinc-200">
+          <div class="flex items-center justify-between border-b border-zinc-100 pb-4 mb-6">
+            <h3 class="font-display font-bold text-lg text-zinc-950 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+              Pendente do Cliente (Casa de Vídeo)
+            </h3>
+            <span class="font-mono text-[10px] text-amber-600 bg-amber-50 px-2 py-0.5 rounded font-bold uppercase">Ações Necessárias</span>
+          </div>
+
+          <div class="space-y-4">
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Conceder acesso ao Google Ads (ou informar ID de 10 dígitos)</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Conceder acesso ao Google Analytics 4 (GA4) e Google Tag Manager</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Conceder acesso ao perfil no Google My Business e Search Console</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Preencher as perguntas da Anamnese Estratégica Profunda (Seção acima)</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Aprovar anúncios e definir o orçamento mensal de mídia para veiculação no Google Ads</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Entregas da Agência -->
+        <div class="tactile-raised p-6 md:p-8 rounded-3xl bg-white border border-zinc-200">
+          <div class="flex items-center justify-between border-b border-zinc-100 pb-4 mb-6">
+            <h3 class="font-display font-bold text-lg text-zinc-950 flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              Entregáveis b.rocket (Mês 1)
+            </h3>
+            <span class="font-mono text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-bold uppercase">Compromisso Técnico</span>
+          </div>
+
+          <div class="space-y-4">
+            <label class="flex items-start gap-3 p-3 rounded-xl bg-emerald-50/40 cursor-default">
+              <input type="checkbox" class="custom-checkbox task-check" checked onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-800 font-semibold leading-relaxed">Desenvolvimento do Plano de Implantação e Cronograma de Mídia</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl bg-emerald-50/40 cursor-default">
+              <input type="checkbox" class="custom-checkbox task-check" checked onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-800 font-semibold leading-relaxed">Gerenciamento Técnico do Site e Infraestrutura Web (Desenvolvido por mim)</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Configuração de Tags de Conversão de Orçamento no GTM e GA4</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Criação da estrutura de Campanhas na Rede de Pesquisa e PMax</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Otimização institucional do perfil no Google My Business e Dados Schema (GEO)</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer">
+              <input type="checkbox" class="custom-checkbox task-check" onchange="updateProgress()" />
+              <span class="font-sans text-xs text-zinc-700 leading-relaxed">Disponibilização do Dashboard Didático em Tempo Real para acompanhamento</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DASHBOARD DIDÁTICO EM TEMPO REAL ==================== -->
+  <section id="dashboard" class="py-16 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Card Escuro - Estilo Proposta Comercial -->
+      <div style="background: #111113; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; box-shadow: 0 12px 36px rgba(0,0,0,0.22);" class="p-8 md:p-12 text-white relative overflow-hidden">
+        
+        <!-- Ambient Glow Lighting -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none" style="border-radius: 24px;">
+          <div class="absolute -top-10 right-0 w-80 h-80 rounded-full bg-violet-600/20 blur-[80px]"></div>
+          <div class="absolute -bottom-10 left-0 w-80 h-80 rounded-full bg-blue-600/15 blur-[80px]"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 rounded-full bg-emerald-500/8 blur-[60px]"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start lg:items-center justify-between">
+          
+          <!-- Lado Esquerdo -->
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-yellow-400 uppercase tracking-widest font-bold mb-3 bg-yellow-400/10 px-3 py-1 rounded-md border border-yellow-400/30">
+              <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></span>
+              ★ MONITORAMENTO CONTÍNUO E TRANSPARENTE
+            </div>
+            
+            <h2 class="font-display font-black text-2xl sm:text-3xl md:text-4xl text-white uppercase tracking-tight mb-3 leading-tight">
+              Dashboard Didático em Tempo Real
+            </h2>
+            
+            <p class="text-zinc-300 font-light text-sm md:text-base leading-relaxed max-w-xl mb-6">
+              Para garantir controle total e clareza, disponibilizarei um painel didático em tempo real para acompanhamento contínuo de todas as métricas essenciais de tráfego, orçamentos e investimento.
+            </p>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-[9px] px-2.5 py-1 rounded-md bg-[#4285F4]/20 border border-[#4285F4]/40 text-[#93bbff] font-bold uppercase tracking-wider">
+                GOOGLE ADS
+              </span>
+              <span class="font-mono text-[9px] px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-bold uppercase tracking-wider">
+                GA4 / MÉTRICAS
+              </span>
+              <span class="font-mono text-[9px] px-2.5 py-1 rounded-md bg-violet-500/20 border border-violet-500/40 text-violet-300 font-bold uppercase tracking-wider">
+                GESTÃO DE VERBA
+              </span>
+            </div>
+          </div>
+
+          <!-- Lado Direito: Box Destacado Dourado -->
+          <div class="w-full lg:w-auto shrink-0">
+            <div class="bg-gradient-to-br from-yellow-400/10 to-yellow-500/5 border border-yellow-400/30 rounded-xl p-6 shadow-lg backdrop-blur-sm min-w-[280px] sm:min-w-[320px]">
+              
+              <div class="font-mono text-[10px] text-yellow-400 uppercase tracking-widest font-bold mb-1 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></span>
+                PAINEL DIDÁTICO AO VIVO
+              </div>
+              
+              <div class="font-display font-black text-3xl text-white tracking-tight">
+                Métricas 24/7
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-yellow-400/20 text-left space-y-2">
+                <div class="font-mono text-[11px] text-yellow-300 font-bold">
+                  Recursos do Dashboard:
+                </div>
+                <div class="font-mono text-[10px] text-zinc-300 space-y-1.5">
+                  <div><span class="text-yellow-400">• Visualização imediata</span> de contatos e leads</div>
+                  <div><span class="text-yellow-400">• Acompanhamento ao vivo</span> da verba alocada</div>
+                  <div><span class="text-yellow-400">• Transparência total</span> em conversões e resultados</div>
+                  <div><span class="text-yellow-400">• Relatórios semanais</span> de pesquisas e palavras-chave</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER & CONFIRMAÇÃO ==================== -->
+  <footer class="py-12 px-6 md:px-12 bg-white text-zinc-950 border-t border-zinc-200">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-zinc-950 flex items-center justify-center text-white font-bold font-display text-sm">
+          b.
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-base uppercase tracking-wider text-zinc-950">b.rocket *</div>
+          <div class="font-mono text-[10px] text-zinc-500">Parceiro Estratégico de Crescimento Digital</div>
+        </div>
+      </div>
+
+      <div class="text-center md:text-right font-mono text-xs text-zinc-500">
+        <div>Casa de Vídeo · Plano de Implantação e Onboarding Mês 1</div>
+        <div class="text-zinc-400 text-[10px] mt-1">Desenvolvido por b.rocket</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE JAVASCRIPT ==================== -->
+  <script>
+    // LocalStorage Key
+    const STORAGE_KEY = 'anamnese_casa_de_video_v4';
+
+    // Auto-load saved anamnese responses
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          Object.keys(data).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = data[id];
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      updateProgress();
+    });
+
+    // Save anamnese to local storage
+    function salvarAnamneseLocal() {
+      const form = document.getElementById('form-anamnese');
+      const inputs = form.querySelectorAll('textarea, input[type="text"]');
+      const data = {};
+      inputs.forEach(input => {
+        data[input.id] = input.value;
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      
+      const status = document.getElementById('anamnese-status');
+      if (status) {
+        status.classList.remove('hidden');
+        setTimeout(() => status.classList.add('hidden'), 4000);
+      }
+    }
+
+    // Download filled HTML file directly with embedded answers
+    function baixarHtmlPreenchido() {
+      salvarAnamneseLocal();
+      
+      const form = document.getElementById('form-anamnese');
+      const textareas = form.querySelectorAll('textarea');
+      textareas.forEach(ta => {
+        ta.textContent = ta.value;
+      });
+      
+      const inputs = form.querySelectorAll('input[type="text"]');
+      inputs.forEach(inp => {
+        inp.setAttribute('value', inp.value);
+      });
+
+      const checks = document.querySelectorAll('.task-check');
+      checks.forEach(c => {
+        if (c.checked) {
+          c.setAttribute('checked', 'checked');
+        } else {
+          c.removeAttribute('checked');
+        }
+      });
+
+      const fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Plano_de_Implantação_Casa_de_Video_PREENCHIDO.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      alert("🎉 Arquivo HTML baixado com sucesso!\n\nTodas as respostas foram salvas dentro do novo arquivo baixado.\n\nAgora você só precisa enviar esse arquivo ('Plano_de_Implantação_Casa_de_Video_PREENCHIDO.html') por WhatsApp ou E-mail para nós.");
+    }
+
+    // Copy anamnese responses to clipboard
+    function copiarRespostasAnamnese() {
+      salvarAnamneseLocal();
+      const form = document.getElementById('form-anamnese');
+      const inputs = form.querySelectorAll('textarea, input[type="text"]');
+      let text = "=== BRIEFING ESTRATÉGICO DE ANAMNESE - CASA DE VÍDEO ===\n\n";
+      
+      inputs.forEach((input, index) => {
+        const label = input.previousElementSibling ? input.previousElementSibling.innerText : `Pergunta ${index + 1}`;
+        const val = input.value.trim() || '[Não preenchido]';
+        text += `${label}\nRESPOSTA: ${val}\n\n`;
+      });
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Respostas do briefing copiadas com sucesso para a área de transferência!");
+      }).catch(err => {
+        console.error("Erro ao copiar:", err);
+      });
+    }
+
+    // Dynamic progress bar calculation
+    function updateProgress() {
+      const checks = document.querySelectorAll('.task-check');
+      let checkedCount = 0;
+      checks.forEach(c => {
+        if (c.checked) checkedCount++;
+      });
+
+      const total = checks.length;
+      const percent = Math.round((checkedCount / total) * 100);
+      
+      const progressEl = document.getElementById('progress-percent');
+      if (progressEl) {
+        progressEl.innerText = `${percent}%`;
+      }
+    }
+  </script>
+</body>
+</html>
