@@ -1,0 +1,159 @@
+{
+  "cliente": "Casa de Vídeo Produções Ltda",
+  "ultima_atualizacao": "2026-09-23T17:00:00Z",
+  "semanas": [
+    {
+      "id": "sem39",
+      "rotulo": "Semana 39: 17/Set - 23/Set 2026 (Atual)",
+      "data_inicio": "2026-09-17",
+      "data_fim": "2026-09-23",
+      "status": "atual",
+      "google_ads": {
+        "investimento": 875.00,
+        "investimento_fmt": "R$ 875,00",
+        "diff_investimento": "↑ +5% WoW",
+        "leads": 6,
+        "leads_fmt": "6 Leads",
+        "diff_leads": "↑ +20% WoW",
+        "cpl": 145.83,
+        "cpl_fmt": "R$ 145,83",
+        "diff_cpl": "↓ -8% (Melhor)",
+        "ctr": 6.8,
+        "ctr_fmt": "6.8%",
+        "diff_ctr": "↑ +0.6%",
+        "iq_score": "9.4 / 10",
+        "status_cpl": "Abaixo da Meta (R$ 180)"
+      },
+      "seo": {
+        "impressoes_gsc": 4820,
+        "impressoes_fmt": "4.820",
+        "diff_impressoes": "↑ +18.1%",
+        "top10_termos": 16,
+        "top10_fmt": "16 Termos",
+        "diff_top10": "↑ +2 Termos",
+        "lcp": "1.8s (LCP)",
+        "lcp_status": "Aprovado",
+        "answer_first_pct": "100%",
+        "answer_first_status": "Ativo (Posição Zero)"
+      },
+      "geo": {
+        "score": 84,
+        "score_fmt": "84 / 100",
+        "diff_score": "↑ +6 pts",
+        "citation_share": 75,
+        "citation_share_fmt": "75%",
+        "diff_citation": "↑ +10.0%",
+        "grafo_entidades": 5,
+        "grafo_fmt": "5 Entidades",
+        "llms_txt_status": "Publicado (100% Valid)"
+      },
+      "origem_leads": {
+        "google_ads_pct": 55,
+        "seo_organico_pct": 30,
+        "geo_ias_pct": 15
+      }
+    },
+    {
+      "id": "sem38",
+      "rotulo": "Semana 38: 10/Set - 16/Set 2026",
+      "data_inicio": "2026-09-10",
+      "data_fim": "2026-09-16",
+      "status": "passada",
+      "google_ads": {
+        "investimento": 833.00,
+        "investimento_fmt": "R$ 833,00",
+        "diff_investimento": "↑ +2% WoW",
+        "leads": 5,
+        "leads_fmt": "5 Leads",
+        "diff_leads": "↑ +10% WoW",
+        "cpl": 158.50,
+        "cpl_fmt": "R$ 158,50",
+        "diff_cpl": "↓ -4%",
+        "ctr": 6.2,
+        "ctr_fmt": "6.2%",
+        "diff_ctr": "↑ +0.3%",
+        "iq_score": "9.1 / 10",
+        "status_cpl": "Abaixo da Meta (R$ 180)"
+      },
+      "seo": {
+        "impressoes_gsc": 4080,
+        "impressoes_fmt": "4.080",
+        "diff_impressoes": "↑ +12.0%",
+        "top10_termos": 14,
+        "top10_fmt": "14 Termos",
+        "diff_top10": "↑ +1 Termo",
+        "lcp": "1.9s (LCP)",
+        "lcp_status": "Aprovado",
+        "answer_first_pct": "100%",
+        "answer_first_status": "Ativo"
+      },
+      "geo": {
+        "score": 78,
+        "score_fmt": "78 / 100",
+        "diff_score": "↑ +4 pts",
+        "citation_share": 65,
+        "citation_share_fmt": "65%",
+        "diff_citation": "↑ +5.0%",
+        "grafo_entidades": 4,
+        "grafo_fmt": "4 Entidades",
+        "llms_txt_status": "Publicado"
+      },
+      "origem_leads": {
+        "google_ads_pct": 60,
+        "seo_organico_pct": 25,
+        "geo_ias_pct": 15
+      }
+    },
+    {
+      "id": "sem37",
+      "rotulo": "Semana 37: 03/Set - 09/Set 2026 (Baseline)",
+      "data_inicio": "2026-09-03",
+      "data_fim": "2026-09-09",
+      "status": "baseline",
+      "google_ads": {
+        "investimento": 816.00,
+        "investimento_fmt": "R$ 816,00",
+        "diff_investimento": "— Baseline",
+        "leads": 4,
+        "leads_fmt": "4 Leads",
+        "diff_leads": "— Baseline",
+        "cpl": 165.00,
+        "cpl_fmt": "R$ 165,00",
+        "diff_cpl": "— Baseline",
+        "ctr": 5.9,
+        "ctr_fmt": "5.9%",
+        "diff_ctr": "— Baseline",
+        "iq_score": "8.8 / 10",
+        "status_cpl": "Abaixo da Meta"
+      },
+      "seo": {
+        "impressoes_gsc": 3640,
+        "impressoes_fmt": "3.640",
+        "diff_impressoes": "— Baseline",
+        "top10_termos": 13,
+        "top10_fmt": "13 Termos",
+        "diff_top10": "— Baseline",
+        "lcp": "2.1s (LCP)",
+        "lcp_status": "Aprovado",
+        "answer_first_pct": "80%",
+        "answer_first_status": "Parcial"
+      },
+      "geo": {
+        "score": 74,
+        "score_fmt": "74 / 100",
+        "diff_score": "— Baseline",
+        "citation_share": 60,
+        "citation_share_fmt": "60%",
+        "diff_citation": "— Baseline",
+        "grafo_entidades": 3,
+        "grafo_fmt": "3 Entidades",
+        "llms_txt_status": "Publicado"
+      },
+      "origem_leads": {
+        "google_ads_pct": 65,
+        "seo_organico_pct": 25,
+        "geo_ias_pct": 10
+      }
+    }
+  ]
+}

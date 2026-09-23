@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passo a Passo Google Ads | b.rocket • Casa de Vídeo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-indigo-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Guia Operacional Google Ads — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">Passo a Passo de Gestão STAG, Copywriting & Atribuição GTM</p>
+    </div>
+    <span class="font-mono text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-3.5 py-1.5 rounded-xl font-bold">
+      Agente Tráfego Pago
+    </span>
+  </div>
+
+  <!-- Visual Process Flowchart -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+      <div>
+        <span class="font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
+          🔄 Diagrama de Processo
+        </span>
+        <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+          Workflow de Ativação do Agente Ads
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500">Progresso Atual:</span>
+          <strong id="progressoPct" class="text-indigo-600 text-sm font-bold">100%</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Progress Bar -->
+    <div class="w-full bg-zinc-100 rounded-full h-3 overflow-hidden border border-zinc-200 p-0.5">
+      <div id="progressoBar" class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-500" style="width: 100%;"></div>
+    </div>
+
+    <!-- SVG Interactive Process Flowchart -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-indigo-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-mono text-xs font-bold flex items-center justify-center">1</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Concluído</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">1. Setup GTM</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Tag Global `AW-18470288256` & Vinculador</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-indigo-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-mono text-xs font-bold flex items-center justify-center">2</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Concluído</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">2. Estrutura STAG</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">4 Campanhas em Grupos Temáticos Únicos</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-indigo-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-mono text-xs font-bold flex items-center justify-center">3</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Concluído</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">3. Negativagem Master</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Bloqueio de 34 termos desqualificados</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-indigo-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-mono text-xs font-bold flex items-center justify-center">4</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Ativo</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">4. Smart Bidding</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Maximizar Conversões com tCPL R$ 180</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Step 1 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600 font-mono text-sm">
+          01
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Infraestrutura</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Setup de Conversão & Tagging GTM</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Tag Global & Vinculador:</strong> Instalação da Tag Global (`AW-18470288256`) e Vinculador de Conversões em *All Pages* no container `GTM-K7QVV6C8`.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Formulário de Orçamento:</strong> Disparo de evento de conversão com contagem "Uma conversão" ao enviar pedido de proposta.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Botão de WhatsApp:</strong> Acionador restrito a `Click URL` do WhatsApp (evitando duplo disparo).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Rastreamento GCLID:</strong> Captura de parâmetro em campo oculto para envio ao CRM e qualificação offline.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-bold text-blue-600 font-mono text-sm">
+          02
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-blue-600 uppercase font-bold tracking-wider">Arquitetura STAG</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Estruturação das Campanhas</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Campanha de Marca:</strong> `Search | Lead | Marca | SP` para termos institucionais Casa de Vídeo.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Campanha de Serviço B2B:</strong> `Search | Lead | Produtora-Video-B2B | SP` (Filmes Publicitários e Corporativos).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Campanha de Concorrentes:</strong> `Search | Lead | Concorrentes | SP` para buscas comparativas do setor.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">PMax Showreel:</strong> Exibição dos vídeos do portfólio 4K no YouTube, Display e Gmail.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Weekly Routine Section -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">3. Rotina Semanal de Otimização & Prevenção Antiburra</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+      <div class="tactile-sunken p-4">
+        <div class="font-bold text-indigo-600 mb-1">📅 Segunda-Feira</div>
+        <p class="text-zinc-600 text-xs">Revisão do relatório de termos de pesquisa (*Search Terms*) e aplicação da lista master de negativas.</p>
+      </div>
+      <div class="tactile-sunken p-4">
+        <div class="font-bold text-emerald-600 mb-1">📅 Quarta-Feira</div>
+        <p class="text-zinc-600 text-xs">Análise de lances por dispositivo e verificação do aprendizado da IA (janela de 7 a 14 dias).</p>
+      </div>
+      <div class="tactile-sunken p-4">
+        <div class="font-bold text-violet-600 mb-1">📅 Sexta-Feira</div>
+        <p class="text-zinc-600 text-xs">Apuração do CPL semanal, volume de leads B2B e atualização do Hub Central da Casa de Vídeo.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

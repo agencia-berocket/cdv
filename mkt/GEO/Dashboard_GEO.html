@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard GEO | b.rocket • Casa de Vídeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    body { font-family: var(--font-sans); background: #f4f5f8; color: #0c0d0e; }
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-violet-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Dashboard GEO & Citabilidade — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">b.rocket GEO Engine (9 Sub-Agentes) • Presença em Motores de IA</p>
+    </div>
+    <span class="font-mono text-xs bg-violet-50 text-violet-700 border border-violet-200 px-3.5 py-1.5 rounded-xl font-bold">
+      GEO Score Composto: 84 / 100
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="tactile-raised p-6 border-l-4 border-l-violet-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">GEO Score Composto</span>
+      <h3 class="font-display font-black text-3xl text-violet-600 mt-1">84 / 100</h3>
+      <span class="font-mono text-[10px] text-violet-700 font-bold block mt-1">↑ +6 pts esta semana</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-emerald-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Citation Share em LLMs</span>
+      <h3 class="font-display font-black text-2xl text-emerald-600 mt-2">75%</h3>
+      <span class="font-mono text-[10px] text-zinc-400 block mt-1">20 Prompts x 4 LLMs</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-indigo-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Arquivo llms.txt</span>
+      <h3 class="font-display font-black text-xl text-indigo-600 mt-2">Publicado</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">100% Validado para Bots</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-blue-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Grafo JSON-LD (@graph)</span>
+      <h3 class="font-display font-black text-xl text-zinc-950 mt-2">5 Entidades</h3>
+      <span class="font-mono text-[10px] text-zinc-400 block mt-1">Org, Service, VideoObject</span>
+    </div>
+  </div>
+
+  <!-- Visual Charts Section -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Chart 1: 7 Pilares Princeton -->
+    <div class="lg:col-span-2 tactile-raised p-6 rounded-3xl bg-white border border-zinc-200">
+      <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3 flex items-center justify-between">
+        <span>📊 Pontuação pelos 7 Pilares do GEO Score (0-100 pts)</span>
+        <span class="font-mono text-[10px] text-violet-600 bg-violet-50 px-2 py-0.5 rounded font-bold border border-violet-200">Total: 84 / 100 pts</span>
+      </h3>
+      <div class="h-60 relative">
+        <canvas id="chartGeoPillars"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 2: Citation Share por Engine -->
+    <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+      <div>
+        <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3">
+          🤖 Citation Share por LLM
+        </h3>
+        <div class="h-44 relative flex items-center justify-center">
+          <canvas id="chartGeoEngines"></canvas>
+        </div>
+      </div>
+      <div class="mt-3 font-mono text-[10px] space-y-1 text-zinc-600">
+        <div class="flex justify-between"><span>• Perplexity AI:</span> <strong>90% Citado (#1)</strong></div>
+        <div class="flex justify-between"><span>• ChatGPT (OpenAI):</span> <strong>80% Citado (#2)</strong></div>
+        <div class="flex justify-between"><span>• Claude (Anthropic):</span> <strong>75% Citado (#2)</strong></div>
+        <div class="flex justify-between"><span>• Google Gemini:</span> <strong>70% Indexado</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Monitoramento por Modelo de Inteligência Artificial</h2>
+    <div class="space-y-3 font-mono text-xs">
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">ChatGPT (OpenAI gpt-4o-mini)</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Recomendado para "Produtora de vídeos corporativos B2B em SP"</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #2)</span>
+      </div>
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Perplexity AI (sonar)</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Citação direta com referência do site oficial e Vimeo</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #1)</span>
+      </div>
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Claude (anthropic haiku-4.5)</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Recomendação em pesquisas de filmes publicitários ESG</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #2)</span>
+      </div>
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Google Gemini (gemini-2.5-flash)</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Sincronização do Grafo JSON-LD com os registros de IA do Google</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-indigo-100 text-indigo-800 font-bold border border-indigo-200">Indexado & Recomendado</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const ctx1 = document.getElementById('chartGeoPillars').getContext('2d');
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Answer-First', 'Grafo Schema', 'llms.txt', 'Citation Share', 'E-E-A-T', 'CWV Técnico', 'Silos GEO'],
+          datasets: [{
+            label: 'Score Obtido (pts)',
+            data: [95, 90, 100, 75, 85, 92, 70],
+            backgroundColor: '#8B5CF6',
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } }
+        }
+      });
+
+      const ctx2 = document.getElementById('chartGeoEngines').getContext('2d');
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Perplexity', 'ChatGPT', 'Claude', 'Gemini'],
+          datasets: [{ data: [90, 80, 75, 70], backgroundColor: ['#8B5CF6', '#10B981', '#4353ff', '#F59E0B'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+      });
+    });
+  </script>
+</body>
+</html>

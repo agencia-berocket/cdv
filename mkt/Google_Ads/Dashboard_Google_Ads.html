@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Google Ads | b.rocket • Casa de Vídeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    body { font-family: var(--font-sans); background: #f4f5f8; color: #0c0d0e; }
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-indigo-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Dashboard Google Ads — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">Gestão STAG, Atribuição GTM e Geração de Leads B2B</p>
+    </div>
+    <span class="font-mono text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-3.5 py-1.5 rounded-xl font-bold">
+      Plano Mês 1 • 4 Campanhas Ativas
+    </span>
+  </div>
+
+  <!-- Key Metrics -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="tactile-raised p-6 border-l-4 border-l-indigo-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Investimento Mensal Previsto</span>
+      <h3 class="font-display font-black text-3xl text-indigo-600 mt-1">R$ 3.500</h3>
+      <span class="font-mono text-[10px] text-zinc-400 block mt-1">Verba Mídia Aprovada</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-emerald-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Meta Leads Semanal</span>
+      <h3 class="font-display font-black text-2xl text-emerald-600 mt-2">5 - 7 Leads</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">Qualificação via GTM/CRM</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-blue-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">CPL Semanal Real</span>
+      <h3 class="font-display font-black text-2xl text-blue-600 mt-2">R$ 145,83</h3>
+      <span class="font-mono text-[10px] text-zinc-400 block mt-1">Meta Teto: R$ 180,00</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-violet-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">CTR dos Anúncios</span>
+      <h3 class="font-display font-black text-2xl text-violet-600 mt-2">6.8%</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">Tríade P-A-P: 9.8/10</span>
+    </div>
+  </div>
+
+  <!-- Visual Charts Section -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Chart 1: Performance Diária -->
+    <div class="lg:col-span-2 tactile-raised p-6 rounded-3xl bg-white border border-zinc-200">
+      <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3 flex items-center justify-between">
+        <span>📈 Impressões vs Clicks Diários (Campanhas STAG)</span>
+        <span class="font-mono text-[10px] text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded font-bold border border-indigo-200">CTR Média: 6.8%</span>
+      </h3>
+      <div class="h-60 relative">
+        <canvas id="chartAdsPerformance"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 2: Orçamento STAG -->
+    <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+      <div>
+        <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3">
+          📊 Verba por Campanha
+        </h3>
+        <div class="h-44 relative flex items-center justify-center">
+          <canvas id="chartAdsBudget"></canvas>
+        </div>
+      </div>
+      <div class="mt-3 font-mono text-[10px] space-y-1 text-zinc-600">
+        <div class="flex justify-between"><span>• B2B Produtora:</span> <strong>R$ 1.500 (43%)</strong></div>
+        <div class="flex justify-between"><span>• PMax Showreel:</span> <strong>R$ 1.000 (28%)</strong></div>
+        <div class="flex justify-between"><span>• Concorrentes:</span> <strong>R$ 600 (17%)</strong></div>
+        <div class="flex justify-between"><span>• Branded Institucional:</span> <strong>R$ 400 (12%)</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign Structure -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Estrutura das Campanhas STAG</h2>
+    <div class="space-y-3 font-mono text-xs">
+      <div class="tactile-sunken p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Search | Lead | Marca | SP</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Proteção institucional em buscas por Casa de Vídeo</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Ativa • CPC R$ 1,20</span>
+      </div>
+      <div class="tactile-sunken p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Search | Lead | Produtora-Video-B2B | SP</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Intenção comercial primária (Filmes Publicitários e Corporativos)</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Ativa • CTR 7.2%</span>
+      </div>
+      <div class="tactile-sunken p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">Search | Lead | Concorrentes | SP</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Termos comparativos (O2 Filmes, Sentimental, Conspiração)</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-indigo-100 text-indigo-800 font-bold border border-indigo-200">Ativa • Lances Otimizados</span>
+      </div>
+      <div class="tactile-sunken p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">PMax | Lead | Performance-Showreel | SP</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Rede de Pesquisa, YouTube 4K, Display e Gmail com vídeos do showreel</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-violet-100 text-violet-800 font-bold border border-violet-200">Ativa • Sinais de Público OK</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const ctx1 = document.getElementById('chartAdsPerformance').getContext('2d');
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+          datasets: [
+            { label: 'Impressões (x10)', data: [42, 58, 65, 72, 68, 30, 25], backgroundColor: 'rgba(67, 83, 255, 0.2)', borderRadius: 6 },
+            { label: 'Clicks Reais', data: [12, 18, 22, 25, 21, 8, 6], backgroundColor: '#4353ff', borderRadius: 6 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'top' } },
+          scales: { y: { grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } }
+        }
+      });
+
+      const ctx2 = document.getElementById('chartAdsBudget').getContext('2d');
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['B2B Produtora', 'PMax Showreel', 'Concorrentes', 'Branded'],
+          datasets: [{ data: [43, 28, 17, 12], backgroundColor: ['#4353ff', '#8B5CF6', '#3B82F6', '#10B981'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+      });
+    });
+  </script>
+</body>
+</html>

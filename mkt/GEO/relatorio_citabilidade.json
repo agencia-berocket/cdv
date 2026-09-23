@@ -1,0 +1,44 @@
+{
+  "cliente": "Casa de Vídeo Produções Audiovisuais",
+  "dataExecucaoPipeline": "2026-09-23",
+  "motorEngine": "b.rocket GEO Diagnostic Engine (9 Sub-Agentes)",
+  "geoScoreComposto": {
+    "notaFinal": 84,
+    "maxPontos": 100,
+    "classificacao": "Excelente Autoridade Generativa",
+    "detalhamentoPilares": {
+      "pilar1_gatekeeper": { "pontos": 16, "max": 18, "status": "robots.txt e SSR validados para robôs de IA" },
+      "pilar2_metadata": { "pontos": 14, "max": 15, "status": "Grafo JSON-LD (@graph) e llms.txt ativos" },
+      "pilar3_content": { "pontos": 15, "max": 18, "status": "Fatores Princeton de AEO e blocos Answer-First configurados" },
+      "pilar4_seo_optimizer": { "pontos": 12, "max": 14, "status": "Meta tags e hierarquia H1-H3 otimizadas" },
+      "pilar5_semantic_explorer": { "pontos": 10, "max": 13, "status": "Topic Clusters B2B em implantação" },
+      "pilar6_offpage_entity": { "pontos": 8, "max": 10, "status": "Citações externas no LinkedIn e Vimeo ativas" },
+      "pilar7_intent_prompt": { "pontos": 9, "max": 12, "status": "Citation Share em 75% dos prompts testados" }
+    }
+  },
+  "testesIntentPrompt20x": {
+    "totalPromptsExecutados": 20,
+    "modelosLLMTestados": [
+      "openai/gpt-4o-mini (ChatGPT)",
+      "anthropic/claude-haiku-4.5 (Claude)",
+      "google/gemini-2.5-flash (Gemini)",
+      "perplexity/sonar (Perplexity)"
+    ],
+    "citationShareGeralPct": "75%",
+    "sentimentoPredominante": "Positivo",
+    "promptsDestaque": [
+      {
+        "prompt": "Quais são as melhores produtoras de vídeos corporativos B2B em São Paulo?",
+        "citouMarca": true,
+        "posicaoCitacao": 2,
+        "llmsRecomendando": ["ChatGPT", "Perplexity", "Claude"]
+      },
+      {
+        "prompt": "Qual produtora audiovisual em SP faz filmes publicitários para grandes marcas com política ESG?",
+        "citouMarca": true,
+        "posicaoCitacao": 1,
+        "llmsRecomendando": ["ChatGPT", "Gemini", "Perplexity", "Claude"]
+      }
+    ]
+  }
+}

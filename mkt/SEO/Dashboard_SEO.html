@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard SEO | b.rocket • Casa de Vídeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    body { font-family: var(--font-sans); background: #f4f5f8; color: #0c0d0e; }
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-emerald-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Dashboard SEO Orgânico — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">Ranking Orgânico, Core Web Vitals & Google Meu Negócio</p>
+    </div>
+    <span class="font-mono text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3.5 py-1.5 rounded-xl font-bold">
+      Saúde Técnica: 98%
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="tactile-raised p-6 border-l-4 border-l-emerald-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Impressões Orgânicas (GSC)</span>
+      <h3 class="font-display font-black text-3xl text-emerald-600 mt-1">4.820</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">↑ +18% esta semana</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-indigo-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Palavras Top 10 Google</span>
+      <h3 class="font-display font-black text-2xl text-zinc-950 mt-2">16 Termos</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">↑ +2 novos esta semana</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-blue-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Core Web Vitals</span>
+      <h3 class="font-display font-black text-xl text-blue-600 mt-2">Aprovado</h3>
+      <span class="font-mono text-[10px] text-zinc-400 block mt-1">LCP: 1.8s | CLS: 0.02 | INP: 110ms</span>
+    </div>
+    <div class="tactile-raised p-6 border-l-4 border-l-violet-600">
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Bloco Answer-First</span>
+      <h3 class="font-display font-black text-xl text-violet-600 mt-2">Posição Zero</h3>
+      <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">Snippet 54 palavras ativo</span>
+    </div>
+  </div>
+
+  <!-- Visual Charts Section -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Chart 1: Impressões GSC -->
+    <div class="lg:col-span-2 tactile-raised p-6 rounded-3xl bg-white border border-zinc-200">
+      <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3 flex items-center justify-between">
+        <span>📈 Impressões Orgânicas Search Console (Semanas)</span>
+        <span class="font-mono text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-200">↑ +18% WoW</span>
+      </h3>
+      <div class="h-60 relative">
+        <canvas id="chartSeoImpressions"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 2: Distribuicao de Rankings -->
+    <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between">
+      <div>
+        <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3">
+          🎯 Termos por Posição
+        </h3>
+        <div class="h-44 relative flex items-center justify-center">
+          <canvas id="chartSeoRankings"></canvas>
+        </div>
+      </div>
+      <div class="mt-3 font-mono text-[10px] space-y-1 text-zinc-600">
+        <div class="flex justify-between"><span>• Posição Zero / Top 3:</span> <strong>7 Termos (44%)</strong></div>
+        <div class="flex justify-between"><span>• Top 4 - 5:</span> <strong>5 Termos (31%)</strong></div>
+        <div class="flex justify-between"><span>• Top 6 - 10:</span> <strong>4 Termos (25%)</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Posicionamento de Termos Chave no Google SP</h2>
+    <div class="space-y-3 font-mono text-xs">
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">produtora de video b2b</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Intenção comercial primária</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Posição #2 (Top 3)</span>
+      </div>
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">produtora de filmes publicitarios</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Campanhas de TV e Streaming</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Posição #4 (Top 5)</span>
+      </div>
+      <div class="tactile-sunken p-4 flex justify-between items-center">
+        <div>
+          <span class="font-bold text-zinc-950 text-sm">video corporativo sp</span>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Comunicação Institucional e ESG</p>
+        </div>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Posição #3 (Top 3)</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const ctx1 = document.getElementById('chartSeoImpressions').getContext('2d');
+      new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['Sem 35', 'Sem 36', 'Sem 37', 'Sem 38', 'Sem 39'],
+          datasets: [{
+            label: 'Impressões Orgânicas',
+            data: [3100, 3400, 3640, 4080, 4820],
+            borderColor: '#10B981',
+            backgroundColor: 'rgba(16, 185, 129, 0.12)',
+            fill: true,
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } }
+        }
+      });
+
+      const ctx2 = document.getElementById('chartSeoRankings').getContext('2d');
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Top 3 (Posição Zero)', 'Top 5', 'Top 10'],
+          datasets: [{ data: [44, 31, 25], backgroundColor: ['#10B981', '#4353ff', '#8B5CF6'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+      });
+    });
+  </script>
+</body>
+</html>

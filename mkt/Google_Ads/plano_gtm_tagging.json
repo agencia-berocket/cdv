@@ -1,0 +1,57 @@
+{
+  "cliente": "Casa de Vídeo Produções Audiovisuais",
+  "dataSetup": "2026-09-23",
+  "infraestruturaDados": {
+    "gtmContainerId": "GTM-K7QVV6C8",
+    "googleAdsConversionId": "AW-18470288256",
+    "ga4PropertyId": "G-QF8MC5BX95",
+    "modoEspecialista": true,
+    "vinculadorConversoes": {
+      "status": "Ativo",
+      "acionador": "Todas as Páginas (All Pages)",
+      "primeiraParteCookies": true
+    }
+  },
+  "acoesConversao": [
+    {
+      "nome": "Lead - Envio de Formulário Orçamento",
+      "categoria": "Enviar formulário de lead",
+      "tipoMeta": "Primária",
+      "contagem": "Uma conversão",
+      "idConversao": "AW-18470288256",
+      "rotuloConversao": "cK98CIL_xPMZEL6q",
+      "acionadorGtm": {
+        "tipo": "Envio de Formulário",
+        "condicao": "Page URL contém /#contato ou Form ID eq 'form-orcamento'",
+        "dataLayerEvent": "form_submission_lead"
+      }
+    },
+    {
+      "nome": "Lead - Clique Botão WhatsApp",
+      "categoria": "Contato / WhatsApp",
+      "tipoMeta": "Primária",
+      "contagem": "Uma conversão",
+      "idConversao": "AW-18470288256",
+      "rotuloConversao": "wP98CIL_xPMZEL6q",
+      "acionadorGtm": {
+        "tipo": "Cliques em Links Específicos",
+        "condicao": "Click URL contém 'api.whatsapp.com' OU Click Classes contém 'whatsapp-float'",
+        "observacao": "Restrito a links de WhatsApp para evitar contagens duplas ou disparos acidentais"
+      }
+    },
+    {
+      "nome": "Lead Qualificado - CRM (Conversão Offline)",
+      "categoria": "Qualificação de Vendas B2B",
+      "tipoMeta": "Primária (Offline)",
+      "contagem": "Uma conversão",
+      "metodoImportacao": "Data Manager / CRM via GCLID",
+      "campoOcultoFormulario": "gclid_field",
+      "janelaAtribuicao": "90 dias"
+    }
+  ],
+  "capturaGclid": {
+    "status": "Configurado",
+    "scriptCapture": "Captura parâmetro ?gclid= na URL e armazena em cookie first-party por 30 dias",
+    "integracaoCrm": "Injeta GCLID no envio do formulário de proposta audiovisual"
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Dashboards | b.rocket Digital Engine</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html { background-color: #f4f5f8; color: #0c0d0e; }
+    body { font-family: var(--font-sans); background-color: #f4f5f8; color: #0c0d0e; }
+
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen flex items-center justify-center p-6 antialiased">
+
+  <div class="max-w-md w-full text-center space-y-6">
+    <!-- Brand Logo -->
+    <div class="inline-flex items-center gap-3 group mb-2">
+      <div class="w-12 h-12 rounded-2xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-lg shrink-0 relative overflow-hidden">
+        <div class="w-[30px] h-[30px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+          <div class="w-[20px] h-[14px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+            <div class="absolute top-[0.5px] left-[1px] w-[4px] h-[5px] bg-white/40 rounded-full rotate-12"></div>
+            <div class="absolute bottom-0 right-0 w-[5px] h-[4px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+          </div>
+          <div class="absolute bottom-[2.5px] w-[12px] h-[2px] bg-zinc-300 rounded-full"></div>
+        </div>
+      </div>
+      <span class="font-display font-black text-2xl tracking-[0.08em] text-zinc-950 uppercase">b.rocket <span class="text-indigo-600">*</span></span>
+    </div>
+
+    <!-- Portal Status Card -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 shadow-xl space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 font-mono text-[10px] text-emerald-700 font-bold uppercase">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Conexão Protegida • HTTP Basic Auth</span>
+      </div>
+      
+      <h1 class="font-display font-black text-xl text-zinc-950 uppercase">Portal de Marketing Digital</h1>
+      <p class="font-sans text-xs text-zinc-500">Sua sessão está autenticada e protegida no servidor b.rocket.</p>
+
+      <a href="./Hub_Central_Marketing.html" class="tactile-raised w-full !bg-[#4353ff] text-white font-mono text-xs font-bold py-3.5 rounded-xl shadow-lg border-t border-[#606fff] uppercase tracking-wider hover:bg-[#3240e6] transition-all hover:scale-[1.02] inline-block cursor-pointer mt-2">
+        Acessar Hub Central 360° →
+      </a>
+    </div>
+
+    <footer class="font-mono text-[11px] text-zinc-400">
+      Casa de Vídeo Produções • Desenvolvido por b.rocket Digital Engine *
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passo a Passo GEO | b.rocket • Casa de Vídeo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-violet-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Guia Operacional GEO — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">b.rocket GEO Engine (9 Sub-Agentes) • Citabilidade em ChatGPT, Gemini, Perplexity e Claude</p>
+    </div>
+    <span class="font-mono text-xs bg-violet-50 text-violet-700 border border-violet-200 px-3.5 py-1.5 rounded-xl font-bold">
+      Agente GEO
+    </span>
+  </div>
+
+  <!-- Visual Process Flowchart -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+      <div>
+        <span class="font-mono text-[10px] text-violet-600 font-bold uppercase tracking-wider bg-violet-50 px-3 py-1 rounded-md mb-1 border border-violet-200">
+          🔄 Diagrama de Processo
+        </span>
+        <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+          Workflow de Citabilidade Generativa (Agente GEO)
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500">GEO Score Atual:</span>
+          <strong class="text-violet-600 text-sm font-bold">84 / 100 pts</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Progress Bar -->
+    <div class="w-full bg-zinc-100 rounded-full h-3 overflow-hidden border border-zinc-200 p-0.5">
+      <div class="bg-gradient-to-r from-violet-500 to-indigo-500 h-full rounded-full" style="width: 84%;"></div>
+    </div>
+
+    <!-- Interactive Process Flowchart Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-violet-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-violet-600 text-white font-mono text-xs font-bold flex items-center justify-center">1</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Publicado</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">1. Arquivo llms.txt</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Sumário corporativo para bots de IA</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-violet-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-violet-600 text-white font-mono text-xs font-bold flex items-center justify-center">2</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Grafo OK</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">2. Schema JSON-LD</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">5 Entidades encadeadas em `@graph`</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-violet-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-violet-600 text-white font-mono text-xs font-bold flex items-center justify-center">3</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">75% Share</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">3. Citation Share</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">20 Prompts testados em 4 LLMs</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-violet-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-violet-600 text-white font-mono text-xs font-bold flex items-center justify-center">4</span>
+          <span class="font-mono text-[10px] text-violet-600 font-bold">Em Expansão</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">4. Fatores Princeton</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Otimização AEO & E-E-A-T em citações</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Step 1 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600 font-mono text-sm">
+          01
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider">Setup Técnico de IA</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Grafo JSON-LD & llms.txt</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Acesso a Bots de IA:</strong> Liberação explícita no `robots.txt` para `GPTBot`, `PerplexityBot`, `Claude-SearchBot` e `OAI-SearchBot`.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Arquivo /llms.txt:</strong> Publicação do arquivo corporativo com dados de autoridade da produtora em `https://casadevideo.com.br/llms.txt`.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Grafo JSON-LD (@graph):</strong> Schema relacional unificando `Organization`, `LocalBusiness`, `Service` e `VideoObject` do Showreel.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Fatores Princeton:</strong> Formatação de respostas diretas (AEO de 60 palavras), inclusão de estatísticas e tabelas HTML comparativas.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600 font-mono text-sm">
+          02
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Citation Share</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Monitoramento nas 4 LLMs</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">ChatGPT (gpt-4o-mini):</strong> Teste semanal de 20 prompts de busca B2B ("produtora de vídeo corporativo SP").</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Perplexity AI (sonar):</strong> Verificação de citação direta com backlinks do site e Vimeo.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Claude (haiku-4.5):</strong> Recomendação em pesquisas de filmes publicitários e programas ESG.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Google Gemini:</strong> Validação da integração do Grafo `@graph` no índice de IA do Google.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>

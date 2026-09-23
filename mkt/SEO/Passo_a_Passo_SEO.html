@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passo a Passo SEO | b.rocket • Casa de Vídeo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4), 3px 3px 6px rgba(13, 20, 33, 0.12);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen p-6 md:p-12 max-w-6xl mx-auto space-y-8 antialiased">
+  
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200 pb-4 gap-4">
+    <div>
+      <a href="../Hub_Central_Marketing.html" class="font-mono text-xs text-emerald-600 font-bold hover:underline flex items-center gap-1">
+        <span>← Voltar ao Hub Central Semanal</span>
+      </a>
+      <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+        Guia Operacional SEO — Casa de Vídeo
+      </h1>
+      <p class="font-mono text-xs text-zinc-500">Otimização On-Page, Core Web Vitals & SEO Local (GMB)</p>
+    </div>
+    <span class="font-mono text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3.5 py-1.5 rounded-xl font-bold">
+      Agente SEO
+    </span>
+  </div>
+
+  <!-- Visual Process Flowchart -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+      <div>
+        <span class="font-mono text-[10px] text-emerald-600 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md mb-1 border border-emerald-200">
+          🔄 Diagrama de Processo
+        </span>
+        <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+          Workflow de Otimização Orgânica (Agente SEO)
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 font-mono text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500">Progresso Atual:</span>
+          <strong class="text-emerald-600 text-sm font-bold">98% Aprovado</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Progress Bar -->
+    <div class="w-full bg-zinc-100 rounded-full h-3 overflow-hidden border border-zinc-200 p-0.5">
+      <div class="bg-gradient-to-r from-emerald-500 to-indigo-500 h-full rounded-full" style="width: 98%;"></div>
+    </div>
+
+    <!-- Interactive Process Flowchart Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-emerald-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono text-xs font-bold flex items-center justify-center">1</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">100% OK</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">1. On-Page & Titles</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Titles de 60 chars & Metas de 155 chars</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-emerald-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono text-xs font-bold flex items-center justify-center">2</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">100% OK</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">2. Answer-First Block</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Snippets de 54 palavras na Home</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-emerald-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono text-xs font-bold flex items-center justify-center">3</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Aprovado</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">3. Core Web Vitals</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">LCP 1.8s, CLS 0.02, WebP compress</p>
+      </div>
+
+      <div class="tactile-sunken p-4 relative overflow-hidden group hover:border-emerald-400 transition-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-mono text-xs font-bold flex items-center justify-center">4</span>
+          <span class="font-mono text-[10px] text-emerald-600 font-bold">Ativo</span>
+        </div>
+        <h4 class="font-display font-bold text-sm text-zinc-950">4. SEO Local (GMB)</h4>
+        <p class="font-sans text-[11px] text-zinc-500 mt-1">Sincronização de dados NAP em SP</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Step 1 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-bold text-emerald-600 font-mono text-sm">
+          01
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider">Semântica On-Page</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Otimização On-Page & Answer-First</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Title Tag:</strong> Manter entre 50 e 60 caracteres com a palavra-chave principal na 1ª metade (`Casa de Vídeo Produções — Produtora Audiovisual em São Paulo`).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Meta Description:</strong> Manter entre 150 e 160 caracteres com CTA persuasiva (`Solicite seu orçamento em 24h!`).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Hierarquia H1-H3:</strong> Um único H1 por página contendo a intenção primária B2B.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Blocos Answer-First:</strong> Respostas objetivas de 40 a 60 palavras posicioladas abaixo de H2s para disputar *Featured Snippets* (Posição Zero).</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600 font-mono text-sm">
+          02
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Performance Web</span>
+          <h2 class="font-display font-bold text-lg text-zinc-950 uppercase">Core Web Vitals & Imagens</h2>
+        </div>
+      </div>
+      <ul class="space-y-3 font-sans text-xs text-zinc-700">
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Imagens WebP:</strong> Conversão de thumbnails e mídias do portfólio para WebP (< 200KB) com atributo `alt` semântico.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Dimensões Explícitas:</strong> Inclusão de `width` e `height` em tags de imagem e players para zerar o CLS (< 0.1).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">Otimização de LCP:</strong> Preload do hero banner e poster do showreel 4K (LCP < 2,5s).</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-[10px]">✓</span>
+          <span><strong class="text-zinc-950">SEO Local (GMB):</strong> Manter dados NAP 100% idênticos no perfil do Google e no rodapé do site.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
