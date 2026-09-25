@@ -1,0 +1,131 @@
+{
+  "cliente": "Casa de Vídeo Produções Audiovisuais",
+  "dataPlanejamento": "2026-09-24",
+  "estrategia": "Topic Clusters & Arquitetura de Silos Semânticos B2B",
+  "silos": [
+    {
+      "idSilo": "silo-b2b-corporativo",
+      "nomeSilo": "Vídeos Corporativos & Institucionais B2B",
+      "paginaPilar": {
+        "url": "https://www.casadevideo.com.br/produtora-de-video-b2b-sp",
+        "palavraChavePrincipal": "produtora de video b2b",
+        "volumeBuscaEstimado": "1.400/mês",
+        "intencaoBusca": "Comercial / Transacional",
+        "h1": "Produtora de Vídeo B2B e Conteúdo Corporativo Cinematográfico em SP",
+        "funil": "Fundo de Funil (BOFU)"
+      },
+      "artigosSatellite": [
+        {
+          "titulo": "Como Escolher uma Produtora de Vídeo Corporativo para Sua Empresa",
+          "slug": "como-escolher-produtora-video-corporativo",
+          "palavraChave": "como escolher produtora de video corporativo",
+          "funil": "Topo de Funil (TOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-de-video-b2b-sp",
+              "textoAncora": "produtora de vídeo B2B especializada em São Paulo",
+              "posicaoTexto": "Primeiro parágrafo da introdução"
+            }
+          ]
+        },
+        {
+          "titulo": "Quanto Custa Produzir um Vídeo Institucional em 2026? Guia de Orçamento",
+          "slug": "custo-producao-video-institucional-b2b",
+          "palavraChave": "quanto custa video institucional",
+          "funil": "Meio de Funil (MOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-de-video-b2b-sp",
+              "textoAncora": "orçamento de vídeo corporativo B2B",
+              "posicaoTexto": "Seção de fatores que influenciam o preço"
+            }
+          ]
+        },
+        {
+          "titulo": "Roteiro para Vídeo Corporativo: Estrutura Campeã para Engajar Decisores",
+          "slug": "roteiro-para-video-corporativo-passo-a-passo",
+          "palavraChave": "roteiro para video corporativo",
+          "funil": "Meio de Funil (MOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-de-video-b2b-sp",
+              "textoAncora": "produção audiovisual corporativa profissional",
+              "posicaoTexto": "Conclusão do artigo com CTA para agendamento"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "idSilo": "silo-publicidade-tv",
+      "nomeSilo": "Filmes Publicitários & Comerciais para TV/Streaming",
+      "paginaPilar": {
+        "url": "https://www.casadevideo.com.br/produtora-de-filmes-publicitarios",
+        "palavraChavePrincipal": "produtora de filmes publicitarios",
+        "volumeBuscaEstimado": "1.900/mês",
+        "intencaoBusca": "Comercial / Transacional",
+        "h1": "Produtora de Filmes Publicitários e Comerciais para TV e Digital",
+        "funil": "Fundo de Funil (BOFU)"
+      },
+      "artigosSatellite": [
+        {
+          "titulo": "Produção de Comerciais para TV e Streaming: Do Briefing ao Master de Exibição",
+          "slug": "producao-de-comerciais-de-tv-e-streaming",
+          "palavraChave": "producao de comerciais de tv",
+          "funil": "Meio de Funil (MOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-de-filmes-publicitarios",
+              "textoAncora": "produtora de filmes publicitários de alta performance",
+              "posicaoTexto": "Introdução e bloco de especificações de entrega"
+            }
+          ]
+        },
+        {
+          "titulo": "Branded Content vs. Filme Publicitário: Qual a Melhor Estratégia para Sua Marca?",
+          "slug": "diferenca-entre-branded-content-e-filme-publicitario",
+          "palavraChave": "branded content vs filme publicitario",
+          "funil": "Topo de Funil (TOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-de-filmes-publicitarios",
+              "textoAncora": "produção de filmes publicitários cinematográficos",
+              "posicaoTexto": "Seção de análise comparativa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "idSilo": "silo-seo-local-sp",
+      "nomeSilo": "SEO Local & Infraestrutura Audiovisual em São Paulo",
+      "paginaPilar": {
+        "url": "https://www.casadevideo.com.br/produtora-audiovisual-sao-paulo",
+        "palavraChavePrincipal": "produtora audiovisual sao paulo",
+        "volumeBuscaEstimado": "2.400/mês",
+        "intencaoBusca": "Transacional / Local",
+        "h1": "Produtora Audiovisual em São Paulo — Estrutura 4K e Cinema em SP",
+        "funil": "Fundo de Funil (BOFU)"
+      },
+      "artigosSatellite": [
+        {
+          "titulo": "Guia de Estúdios e Locações de Filmagem na Cidade de São Paulo",
+          "slug": "estudios-e-locacoes-de-filmagem-em-sao-paulo",
+          "palavraChave": "locacoes de filmagem sao paulo",
+          "funil": "Topo de Funil (TOFU)",
+          "linksInternosContextuais": [
+            {
+              "destino": "https://www.casadevideo.com.br/produtora-audiovisual-sao-paulo",
+              "textoAncora": "produtora audiovisual em São Paulo com estúdio próprio",
+              "posicaoTexto": "Destaque da estrutura técnica"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "matrizLinksInternos": {
+    "regraGlobal": "Nenhum artigo órfão. Toda página pilar recebe no mínimo 3 links de volta dos seus satélites com âncoras exatas.",
+    "ancorasProibidas": ["clique aqui", "saiba mais", "acesse este link", "confira"]
+  }
+}

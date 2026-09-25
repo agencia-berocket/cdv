@@ -1,0 +1,228 @@
+{
+  "cliente": "Casa de Vídeo Produções Ltda",
+  "dataAtualizacao": "2026-09-24",
+  "totalPalavrasChave": 20,
+  "descricao": "Cadastro oficial e monitorado das 20 palavras-chave estratégicas para atração de leads B2B e agências de publicidade",
+  "palavrasChave": [
+    {
+      "id": 1,
+      "termo": "produtora de video b2b",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 1400,
+      "dificuldadeSeo": "Média",
+      "intencao": "Comercial / Transacional",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 2,
+      "termo": "produtora de filmes publicitarios",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 1900,
+      "dificuldadeSeo": "Alta",
+      "intencao": "Comercial / TV & Streaming",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 3,
+      "termo": "video corporativo sp",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 2100,
+      "dificuldadeSeo": "Média",
+      "intencao": "Transacional / São Paulo",
+      "paginaAlvo": "https://www.casadevideo.com.br/",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 4,
+      "termo": "produtora audiovisual sao paulo",
+      "categoria": "SEO Local / GBP",
+      "volumeBuscaMensal": 2400,
+      "dificuldadeSeo": "Alta",
+      "intencao": "Transacional / Local",
+      "paginaAlvo": "https://www.casadevideo.com.br/",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 5,
+      "termo": "produtora de video institucional sp",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 1600,
+      "dificuldadeSeo": "Média",
+      "intencao": "Comercial / Institucional",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 6,
+      "termo": "video institucional para empresas",
+      "categoria": "Meio de Funil (MOFU)",
+      "volumeBuscaMensal": 1800,
+      "dificuldadeSeo": "Média",
+      "intencao": "Comercial B2B",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 7,
+      "termo": "quanto custa video institucional",
+      "categoria": "Meio de Funil (MOFU)",
+      "volumeBuscaMensal": 880,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Informativa / Orçamento",
+      "paginaAlvo": "https://www.casadevideo.com.br/custo-producao-video-institucional-b2b",
+      "statusIndexacao": "Em Expansão (Silo 1)",
+      "prioridade": "Média"
+    },
+    {
+      "id": 8,
+      "termo": "como escolher produtora de video corporativo",
+      "categoria": "Topo de Funil (TOFU)",
+      "volumeBuscaMensal": 1100,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Informativa / Avaliação",
+      "paginaAlvo": "https://www.casadevideo.com.br/como-escolher-produtora-video-corporativo",
+      "statusIndexacao": "Em Expansão (Silo 1)",
+      "prioridade": "Média"
+    },
+    {
+      "id": 9,
+      "termo": "producao de comerciais de tv e streaming",
+      "categoria": "Meio de Funil (MOFU)",
+      "volumeBuscaMensal": 720,
+      "dificuldadeSeo": "Média",
+      "intencao": "Comercial / Publicidade",
+      "paginaAlvo": "https://www.casadevideo.com.br/producao-de-comerciais-de-tv-e-streaming",
+      "statusIndexacao": "Em Expansão (Silo 2)",
+      "prioridade": "Média"
+    },
+    {
+      "id": 10,
+      "termo": "estudios e locacoes de filmagem em sao paulo",
+      "categoria": "Topo de Funil (TOFU)",
+      "volumeBuscaMensal": 1300,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Informativa / Infraestrutura",
+      "paginaAlvo": "https://www.casadevideo.com.br/estudios-e-locacoes-de-filmagem-em-sao-paulo",
+      "statusIndexacao": "Em Expansão (Silo 3)",
+      "prioridade": "Média"
+    },
+    {
+      "id": 11,
+      "termo": "produtora de conteudo de marca",
+      "categoria": "Meio de Funil (MOFU)",
+      "volumeBuscaMensal": 650,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Branded Content",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 12,
+      "termo": "filme publicitario para tv",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 1250,
+      "dificuldadeSeo": "Alta",
+      "intencao": "Comercial / TV",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 13,
+      "termo": "video de apresentacao corporativa b2b",
+      "categoria": "Meio de Funil (MOFU)",
+      "volumeBuscaMensal": 950,
+      "dificuldadeSeo": "Média",
+      "intencao": "Apresentação Comercial",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 14,
+      "termo": "produtora de video comercial sao paulo",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 1500,
+      "dificuldadeSeo": "Alta",
+      "intencao": "Transacional SP",
+      "paginaAlvo": "https://www.casadevideo.com.br/",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 15,
+      "termo": "gravacao de comercial para agencia de publicidade",
+      "categoria": "Atendimento Agências",
+      "volumeBuscaMensal": 580,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "B2B Agências",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 16,
+      "termo": "produtora de video com drone 4k sp",
+      "categoria": "Técnico / Equipamentos",
+      "volumeBuscaMensal": 820,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Captação Aérea",
+      "paginaAlvo": "https://www.casadevideo.com.br/",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 17,
+      "termo": "orcamento de filme publicitario",
+      "categoria": "Fundo de Funil (BOFU)",
+      "volumeBuscaMensal": 690,
+      "dificuldadeSeo": "Média",
+      "intencao": "Solicitação Orçamento",
+      "paginaAlvo": "https://www.casadevideo.com.br/#contato",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 18,
+      "termo": "video manifesto corporativo",
+      "categoria": "Branding B2B",
+      "volumeBuscaMensal": 490,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Posicionamento Marca",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 19,
+      "termo": "produtora de animacao e motion graphics b2b",
+      "categoria": "Serviços Pós-Produção",
+      "volumeBuscaMensal": 780,
+      "dificuldadeSeo": "Média",
+      "intencao": "Motion & Animação 2D/3D",
+      "paginaAlvo": "https://www.casadevideo.com.br/#servicos",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Média"
+    },
+    {
+      "id": 20,
+      "termo": "produtora audiovisual homologada ancine",
+      "categoria": "Compliance B2B",
+      "volumeBuscaMensal": 420,
+      "dificuldadeSeo": "Baixa",
+      "intencao": "Regulatório / Ancine",
+      "paginaAlvo": "https://www.casadevideo.com.br/carta-compromisso.html",
+      "statusIndexacao": "Indexado / Otimizado",
+      "prioridade": "Alta"
+    }
+  ]
+}

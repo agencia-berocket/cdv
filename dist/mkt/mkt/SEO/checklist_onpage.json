@@ -1,0 +1,71 @@
+{
+  "cliente": "Casa de Vídeo Produções Audiovisuais",
+  "urlPrincipal": "https://www.casadevideo.com.br",
+  "dataAuditoria": "2026-09-23",
+  "metaTags": {
+    "titleTag": {
+      "conteudoAtual": "Casa de Vídeo Produções — Produtora Audiovisual em São Paulo",
+      "tamanhoCaracteres": 60,
+      "status": "Otimizado (50-60 chars com palavra-chave na 1ª metade)",
+      "recomendacao": "Manter atual para capturar 'Produtora Audiovisual em São Paulo'"
+    },
+    "metaDescription": {
+      "conteudoAtual": "Casa de Vídeo Produções Ltda — Produtora audiovisual especializada em filmes institucionais, comerciais, documentários e captação de imagens em São Paulo.",
+      "tamanhoCaracteres": 154,
+      "status": "Otimizado (150-160 chars com promessa B2B clara)",
+      "recomendacao": "Incluir chamada para ação explícita: 'Solicite seu orçamento em 24h!'"
+    },
+    "canonical": {
+      "status": "Configurado",
+      "url": "https://www.casadevideo.com.br/"
+    },
+    "viewport": {
+      "status": "Configurado",
+      "meta": "width=device-width, initial-scale=1"
+    }
+  },
+  "estruturaHeadings": {
+    "h1": {
+      "quantidade": 1,
+      "conteudo": "PRODUTORA AUDIOVISUAL ESPECIALIZADA EM FILMES PUBLICITÁRIOS E CORPORATIVOS B2B",
+      "status": "Excelente (H1 único contendo intenção comercial primária)"
+    },
+    "h2": [
+      "Produção Audiovisual Cinematográfica para Marcas Exigentes",
+      "Nossos Serviços em Destaque",
+      "Portfólio & Showreel de Projetos",
+      "Carta Compromisso & Conformidade Trabalhista/ESG",
+      "Fale com Nossos Diretores de Produção"
+    ],
+    "answerFirst": {
+      "status": "Implementado",
+      "blocoPadrao": "A Casa de Vídeo é uma produtora audiovisual especializada na criação e execução de filmes publicitários, vídeos corporativos, institucionais e comerciais em São Paulo. Com equipamentos de padrão cinematográfico 4K/Cinema e equipe técnica completa, atendemos marcas, diretores de marketing e agências com entrega ágil e rigor técnico."
+    }
+  },
+  "coreWebVitals": {
+    "lcp": {
+      "valorEstimado": "1.8s",
+      "status": "BOM (< 2.5s)",
+      "otimizacao": "Preload da imagem do hero e poster 4K do showreel"
+    },
+    "inp": {
+      "valorEstimado": "110ms",
+      "status": "BOM (< 200ms)",
+      "otimizacao": "Scripts GSAP e ScrollTrigger carregados de forma assíncrona"
+    },
+    "cls": {
+      "valorEstimado": "0.02",
+      "status": "BOM (< 0.1)",
+      "otimizacao": "Atributos width e height explícitos em todas as tags de mídia"
+    },
+    "imagensFormatos": {
+      "formatosPresentes": ["WebP", "PNG"],
+      "lazyLoading": "Ativo em elementos fora da primeira dobra",
+      "tamanhoMaximo": "180 KB por imagem"
+    }
+  },
+  "seoLocalGmb": {
+    "napConsistência": "100% (Nome: Casa de Vídeo Produções Ltda, Endereço: São Paulo - SP, Telefone alinhado com o rodapé)",
+    "googleBusinessProfileStatus": "Otimizado com catálogo de produções e fotos de set de filmagem"
+  }
+}
