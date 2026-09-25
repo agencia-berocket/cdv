@@ -92,7 +92,7 @@ export default function Hero() {
         >
           <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 rounded-full bg-zinc-950 animate-pulse" />
-            <span className="font-bold text-zinc-950">b.rocket // GEO_CORE_V10</span>
+            <span className="font-bold text-zinc-950">b.rocket // Hub Central 360º</span>
           </div>
           <span className="hidden sm:inline text-right">PIONEIROS EM OTIMIZAÇÃO PARA MOTORES GERATIVOS</span>
         </motion.div>

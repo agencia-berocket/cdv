@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Comercial | Chalé & Day Use — Nathalia & Rudá</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f2ed;
+      color: #1a1209;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f2ed;
+      color: #1a1209;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #1a1209;
+      color: #ffffff;
+    }
+
+    .tactile-raised {
+      background: #fdfcf8;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(26, 18, 9, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-raised-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tactile-raised-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.01),
+        12px 20px 36px -6px rgba(26, 18, 9, 0.08),
+        -12px -12px 32px -4px rgba(255, 255, 255, 0.98),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.95),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.015);
+    }
+
+    .tactile-sunken {
+      background: #ede9e0;
+      box-shadow: 
+        inset 4px 4px 10px rgba(26, 18, 9, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 12px;
+    }
+
+    .text-tactile-3d {
+      color: #fcfbf7;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.9),
+        2px 2px 2px rgba(26, 18, 9, 0.02),
+        4px 6px 12px rgba(26, 18, 9, 0.06),
+        8px 12px 24px rgba(26, 18, 9, 0.04),
+        16px 24px 48px rgba(26, 18, 9, 0.03);
+    }
+
+    .text-tactile-3d-dark {
+      color: #1a1209;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(26, 18, 9, 0.12),
+        6px 8px 14px rgba(26, 18, 9, 0.08),
+        12px 16px 28px rgba(26, 18, 9, 0.04);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(139, 115, 85, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 115, 85, 0.04) 1px, transparent 1px),
+        linear-gradient(to right, rgba(139, 115, 85, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 115, 85, 0.07) 1px, transparent 1px);
+      background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+      position: relative;
+    }
+
+    /* Accent color: warm terracotta/lodge */
+    .accent { color: #b5621e; }
+    .bg-accent { background-color: #b5621e; }
+    .border-accent { border-color: #b5621e; }
+    
+    /* Feature card checkmark */
+    .check-item::before {
+      content: "✓";
+      display: inline-block;
+      margin-right: 8px;
+      font-weight: 700;
+      color: #b5621e;
+    }
+
+    /* Timeline connector */
+    .timeline-line {
+      position: relative;
+    }
+    .timeline-line::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 44px;
+      bottom: -20px;
+      width: 1px;
+      background: linear-gradient(to bottom, #b5621e40, transparent);
+    }
+
+    /* Pricing highlight */
+    .pricing-glow {
+      box-shadow: 0 0 60px rgba(181, 98, 30, 0.15), 0 20px 60px rgba(181, 98, 30, 0.1);
+    }
+
+    /* Calendar preview */
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cal-available { background: #dcf5e7; color: #1a6637; border: 1px solid #a8e4bc; }
+    .cal-taken { background: #ffe0d5; color: #8b2a0f; border: 1px solid #f5c4b0; text-decoration: line-through; }
+    .cal-dayuse { background: #fef9c3; color: #7a5c00; border: 1px solid #f0d96b; }
+    .cal-header { color: #8b7355; font-size: 10px; font-weight: 700; text-align: center; font-family: var(--font-mono); }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen text-stone-950 antialiased">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-4 px-6 md:px-12">
+    <div id="nav-container" class="max-w-7xl mx-auto px-6 md:px-8 py-3.5 flex justify-between items-center transition-all duration-300 bg-transparent border border-transparent shadow-none rounded-2xl">
+      
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-xl bg-stone-950 flex items-center justify-center border border-stone-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
+          <div class="w-[22px] h-[22px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+            <div class="w-[15px] h-[10px] bg-stone-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-stone-900/40">
+              <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+              <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-orange-500/80 blur-[0.5px] rounded-full"></div>
+            </div>
+            <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-stone-300 rounded-full"></div>
+          </div>
+          <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-stone-800 rounded-r"></div>
+          <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-stone-800 rounded-l"></div>
+        </div>
+        <span class="font-display font-extrabold text-lg tracking-[0.08em] text-stone-950 uppercase">b.rocket</span>
+        <span class="text-stone-900 font-bold text-lg">*</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#hero" class="font-mono text-[10px] text-stone-600 hover:text-stone-950 uppercase tracking-widest font-bold transition-colors duration-200 py-1">Início</a>
+        <a href="#escopo" class="font-mono text-[10px] text-stone-600 hover:text-stone-950 uppercase tracking-widest font-bold transition-colors duration-200 py-1">Escopo</a>
+        <a href="#funcionalidades" class="font-mono text-[10px] text-stone-600 hover:text-stone-950 uppercase tracking-widest font-bold transition-colors duration-200 py-1">Features</a>
+        <a href="#investimento" class="font-mono text-[10px] text-stone-600 hover:text-stone-950 uppercase tracking-widest font-bold transition-colors duration-200 py-1">Investimento</a>
+        <a href="#cta" class="tactile-raised !bg-[#b5621e] text-white font-mono text-[10px] font-semibold px-5 py-2.5 hover:bg-[#9a521a] uppercase tracking-widest transition-all duration-300 flex items-center gap-1.5 rounded-xl shadow-lg border-t border-[#d07938] hover:scale-105">
+          Fechar Projeto <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+      
+      <!-- Mobile Button -->
+      <div class="md:hidden flex items-center gap-3">
+        <a href="#cta" class="bg-[#b5621e] text-white font-mono text-[10px] font-bold px-4 py-2 hover:bg-[#9a521a] uppercase tracking-wider transition-all duration-300 rounded-xl">Fechar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero" class="pt-40 sm:pt-32 pb-16 px-6 md:px-12 border-b border-stone-200 relative overflow-hidden">
+    <!-- Ambient Decor -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-orange-100/40 blur-[120px]"></div>
+      <div class="absolute bottom-0 left-20 w-80 h-80 rounded-full bg-amber-100/30 blur-[100px]"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row gap-12 items-end justify-between">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-stone-500 uppercase tracking-widest bg-stone-100 px-3 py-1.5 rounded-md border border-stone-200 font-bold mb-6">
+          <span class="w-1.5 h-1.5 bg-[#b5621e] rounded-full animate-pulse"></span>
+          Proposta Comercial · Exclusiva
+        </div>
+        <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-stone-950 tracking-tight leading-[1.05] uppercase text-tactile-3d-dark mb-6">
+          Plataforma Digital<br/>
+          <span class="text-stone-500/80 inline-block whitespace-nowrap">Nathalia & Rudá</span>
+        </h1>
+        <p class="font-sans text-base md:text-lg text-stone-600 leading-relaxed font-light">
+          Muito mais do que um site de locação: um <strong class="text-stone-950 font-semibold">ecossistema completo de reservas e gestão</strong> — com calendário inteligente, Day Use, painel administrativo, CRM de clientes e integração de pagamentos — tudo desenhado para que vocês durmam tranquilos enquanto o sistema trabalha por vocês.
+        </p>
+      </div>
+      
+      <!-- Right info box -->
+      <div class="flex flex-col gap-4 min-w-[280px]">
+        <div class="tactile-sunken p-6 flex flex-col gap-3">
+          <div class="flex justify-between items-center border-b border-stone-200/60 pb-2">
+            <span class="font-mono text-[10px] text-stone-400 font-bold uppercase tracking-widest">Para</span>
+            <span class="font-mono text-xs text-stone-950 font-bold">Nathalia & Rudá</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-stone-200/60 pb-2">
+            <span class="font-mono text-[10px] text-stone-400 font-bold uppercase tracking-widest">Nicho</span>
+            <span class="font-mono text-xs text-stone-950 font-bold">Chalé · Locação · Day Use</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-stone-200/60 pb-2">
+            <span class="font-mono text-[10px] text-stone-400 font-bold uppercase tracking-widest">Escopo</span>
+            <span class="font-mono text-xs text-stone-950 font-bold">Site + Admin + CRM</span>
+          </div>
+          <div class="flex justify-between items-center pb-1">
+            <span class="font-mono text-[10px] text-stone-400 font-bold uppercase tracking-widest">Por</span>
+            <span class="font-mono text-xs text-stone-950 font-bold">b.rocket</span>
+          </div>
+        </div>
+
+        <!-- Preview Calendar Widget -->
+        <div class="tactile-raised p-4 bg-white border border-stone-200/60 rounded-2xl shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[9px] text-stone-500 font-bold uppercase tracking-widest">Preview · Calendário</span>
+            <span class="font-mono text-[9px] text-[#b5621e] font-bold">Agosto/2026</span>
+          </div>
+          <div class="grid grid-cols-7 gap-1 mb-1">
+            <span class="cal-header">D</span><span class="cal-header">S</span><span class="cal-header">T</span><span class="cal-header">Q</span><span class="cal-header">Q</span><span class="cal-header">S</span><span class="cal-header">S</span>
+          </div>
+          <div class="grid grid-cols-7 gap-1">
+            <div class="cal-day"></div><div class="cal-day"></div><div class="cal-day"></div><div class="cal-day"></div><div class="cal-day"></div>
+            <div class="cal-day cal-taken">1</div><div class="cal-day cal-taken">2</div>
+            <div class="cal-day cal-taken">3</div><div class="cal-day cal-available">4</div><div class="cal-day cal-available">5</div><div class="cal-day cal-dayuse">6</div><div class="cal-day cal-dayuse">7</div><div class="cal-day cal-available">8</div><div class="cal-day cal-available">9</div>
+            <div class="cal-day cal-available">10</div><div class="cal-day cal-available">11</div><div class="cal-day cal-taken">12</div><div class="cal-day cal-taken">13</div><div class="cal-day cal-taken">14</div><div class="cal-day cal-available">15</div><div class="cal-day cal-dayuse">16</div>
+            <div class="cal-day cal-available">17</div><div class="cal-day cal-available">18</div><div class="cal-day cal-available">19</div><div class="cal-day cal-taken">20</div><div class="cal-day cal-taken">21</div><div class="cal-day cal-taken">22</div><div class="cal-day cal-taken">23</div>
+          </div>
+          <div class="flex items-center gap-3 mt-3 pt-2 border-t border-stone-100">
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-green-200 border border-green-400"></span><span class="font-mono text-[8px] text-stone-400">Livre</span></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-red-100 border border-orange-300"></span><span class="font-mono text-[8px] text-stone-400">Reservado</span></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-yellow-100 border border-yellow-400"></span><span class="font-mono text-[8px] text-stone-400">Day Use</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== O PROBLEMA / OPORTUNIDADE ==================== -->
+  <section class="py-24 px-6 md:px-12 border-b border-stone-200 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-[#b5621e] rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">O Contexto</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Diagnóstico</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">O que vocês precisam resolver.</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark mb-8">
+            Hoje vocês<br/>
+            <span class="text-stone-500/80">gerenciam no<br/>improviso.</span>
+          </h2>
+          <p class="text-stone-600 text-base leading-relaxed font-light mb-6">
+            WhatsApp pra reservar, planilha pra controlar datas, pagamento por Pix sem comprovante organizado, check-in no "boca a boca"... e quando a temporada esquenta, tudo vira caos.
+          </p>
+          <p class="text-stone-600 text-base leading-relaxed font-light">
+            Com o novo serviço de <strong class="text-stone-950 font-semibold">Day Use</strong>, a demanda vai aumentar — e a operação precisa estar pronta para escalar sem virar dor de cabeça.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+          <div class="tactile-raised p-6 rounded-2xl border border-stone-200/60 flex items-start gap-4 tactile-raised-hover">
+            <div class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-950 text-sm mb-1">Reservas duplas e conflito de datas</h4>
+              <p class="text-xs text-stone-500 font-light leading-relaxed">Sem um calendário centralizado, dois hóspedes podem reservar o mesmo dia sem saber.</p>
+            </div>
+          </div>
+          <div class="tactile-raised p-6 rounded-2xl border border-stone-200/60 flex items-start gap-4 tactile-raised-hover">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-950 text-sm mb-1">Tempo perdido em atendimento manual</h4>
+              <p class="text-xs text-stone-500 font-light leading-relaxed">Responder mensagem, confirmar valor, enviar Pix, confirmar pagamento... horas da sua vida toda semana.</p>
+            </div>
+          </div>
+          <div class="tactile-raised p-6 rounded-2xl border border-stone-200/60 flex items-start gap-4 tactile-raised-hover">
+            <div class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-950 text-sm mb-1">Sem visibilidade do negócio</h4>
+              <p class="text-xs text-stone-500 font-light leading-relaxed">Quanto entrou esse mês? Qual período é mais rentável? Quem são seus melhores clientes? Hoje, ninguém sabe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ESCOPO — FRONT-END ==================== -->
+  <section id="escopo" class="py-24 px-6 md:px-12 border-b border-stone-200 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-stone-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">01 · SITE PÚBLICO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Front-End</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">O que o cliente vê e vive.</span>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark">
+          Site que<br/>
+          <span class="text-stone-500/80 inline-block">converte visita<br/>em reserva.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        <!-- Card 1 -->
+        <div class="tactile-raised tactile-raised-hover p-8 rounded-3xl border border-stone-200/60 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#b5621e]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Página Principal</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Home Imersiva</h3>
+            <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+              <li class="check-item">Vídeo ou galeria de fotos em hero full-screen</li>
+              <li class="check-item">Apresentação do chalé com storytelling</li>
+              <li class="check-item">Seção de comodidades e diferenciais</li>
+              <li class="check-item">Depoimentos de hóspedes (prova social)</li>
+              <li class="check-item">CTA de reserva fixo na tela</li>
+              <li class="check-item">Integração com WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tactile-raised tactile-raised-hover p-8 rounded-3xl border border-stone-200/60 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Calendário Público</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Reserva Online</h3>
+            <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+              <li class="check-item">Calendário visual com datas livres/ocupadas</li>
+              <li class="check-item">Seleção de tipo: Diária ou Day Use</li>
+              <li class="check-item">Cálculo automático do valor total</li>
+              <li class="check-item">Tarifa dinâmica (fins de semana, feriados)</li>
+              <li class="check-item">Formulário de reserva com dados do hóspede</li>
+              <li class="check-item">Confirmação por e-mail automático</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tactile-raised tactile-raised-hover p-8 rounded-3xl border border-stone-200/60 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-yellow-50 border border-yellow-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Day Use</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Página Day Use</h3>
+            <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+              <li class="check-item">Página dedicada ao serviço Day Use</li>
+              <li class="check-item">Horários e regras disponíveis</li>
+              <li class="check-item">Pacotes e opcionais (churrasco, decoração…)</li>
+              <li class="check-item">Calendário separado com vagas do dia</li>
+              <li class="check-item">Limite de grupos por dia</li>
+              <li class="check-item">Galeria de fotos específica do espaço diurno</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- More pages row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="tactile-raised tactile-raised-hover p-8 rounded-3xl border border-stone-200/60 flex gap-6 items-start">
+          <div class="w-12 h-12 rounded-2xl bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Galeria & Espaço</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-2">Vitrine do Chalé</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Galeria imersiva com fotos e vídeo do espaço, descrição de cada ambiente (piscina, churrasqueira, quartos), mapa de localização e regras da propriedade.</p>
+          </div>
+        </div>
+        <div class="tactile-raised tactile-raised-hover p-8 rounded-3xl border border-stone-200/60 flex gap-6 items-start">
+          <div class="w-12 h-12 rounded-2xl bg-stone-100 border border-stone-200 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          </div>
+          <div>
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Contato & FAQ</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-2">Dúvidas & Contato</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Perguntas frequentes (pets, estacionamento, check-in/out, cancelamento), formulário de contato, botão flutuante do WhatsApp e link direto para redes sociais.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FUNCIONALIDADES — BACK-END ==================== -->
+  <section id="funcionalidades" class="py-24 px-6 md:px-12 border-b border-stone-200 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute top-1/2 -right-20 w-96 h-96 rounded-full bg-amber-100/30 blur-[100px]"></div>
+    </div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-stone-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">02 · PAINEL ADMINISTRATIVO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Back-End</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">A central de controle do negócio.</span>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark">
+          Gestão total<br/>
+          <span class="text-stone-500/80 inline-block">no celular,<br/>em tempo real.</span>
+        </h2>
+      </div>
+
+      <!-- Admin Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Agenda / Calendário Admin -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4 md:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#b5621e]/10 border border-[#b5621e]/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#b5621e]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-[#b5621e] font-bold uppercase tracking-widest">Agenda Master</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Calendário Administrativo</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">Visão mensal/semanal/diária das reservas</li>
+            <li class="check-item">Bloqueio manual de datas (manutenção, uso próprio)</li>
+            <li class="check-item">Drag & drop para mover reservas</li>
+            <li class="check-item">Alertas de check-in e check-out do dia</li>
+            <li class="check-item">Gestão de Day Use com slots de horário</li>
+          </ul>
+        </div>
+
+        <!-- CRM de Clientes -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-blue-500 font-bold uppercase tracking-widest">CRM</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Clientes & Histórico</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">Cadastro completo de hóspedes</li>
+            <li class="check-item">Histórico de todas as estadias</li>
+            <li class="check-item">Valor total gasto por cliente</li>
+            <li class="check-item">Tags (VIP, Recorrente, Day Use)</li>
+            <li class="check-item">Anotações internas por hóspede</li>
+          </ul>
+        </div>
+
+        <!-- Financeiro -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-green-600 font-bold uppercase tracking-widest">Financeiro</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Controle Financeiro</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">Dashboard de faturamento mensal</li>
+            <li class="check-item">Controle de pagamentos (pago/pendente)</li>
+            <li class="check-item">Registro de pagamentos parciais/sinais</li>
+            <li class="check-item">Relatório de receita por período</li>
+            <li class="check-item">Exportação para Excel/PDF</li>
+          </ul>
+        </div>
+
+        <!-- Check-in / Check-out -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-purple-500 font-bold uppercase tracking-widest">Recepção</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Check-in & Check-out</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">Check-in digital pelo hóspede (link)</li>
+            <li class="check-item">Coleta de dados e documento</li>
+            <li class="check-item">Confirmação de pagamento no check-in</li>
+            <li class="check-item">Check-out com registro de status do imóvel</li>
+            <li class="check-item">Histórico de entradas e saídas</li>
+          </ul>
+        </div>
+
+        <!-- Pagamentos -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-emerald-600 font-bold uppercase tracking-widest">Pagamentos</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Métodos de Pagamento</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">Pix com QR Code automático</li>
+            <li class="check-item">Link de pagamento (PagSeguro/Mercado Pago)</li>
+            <li class="check-item">Cartão de crédito online (opcional)</li>
+            <li class="check-item">Registro manual de pagamento (dinheiro)</li>
+            <li class="check-item">Geração de recibo/comprovante</li>
+          </ul>
+        </div>
+
+        <!-- Notificações / Automações -->
+        <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+            </div>
+            <div class="font-mono text-[9px] text-rose-500 font-bold uppercase tracking-widest">Automações</div>
+          </div>
+          <h3 class="font-display font-black text-base text-stone-950 uppercase">Notificações Smart</h3>
+          <ul class="space-y-1.5 text-xs text-stone-500 font-light">
+            <li class="check-item">E-mail de confirmação de reserva automático</li>
+            <li class="check-item">Lembrete 24h antes do check-in (WhatsApp/E-mail)</li>
+            <li class="check-item">Notificação de nova reserva para vocês</li>
+            <li class="check-item">Alerta de pagamento pendente</li>
+            <li class="check-item">Pesquisa de satisfação pós-estadia</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Dashboard Preview Banner -->
+      <div class="mt-10 tactile-raised p-8 rounded-3xl border border-stone-200/60 bg-stone-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-[#b5621e]/20 blur-[80px] rounded-full pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <div class="font-mono text-[9px] text-white/50 font-bold uppercase tracking-widest mb-2">Dashboard · Resumo do Mês</div>
+            <h3 class="font-display font-black text-2xl text-white uppercase mb-2">Tudo numa tela só.</h3>
+            <p class="text-sm text-white/60 font-light max-w-md">O painel principal mostra faturamento do mês, reservas da semana, ocupação do chalé, pendências de pagamento e hóspedes para check-in hoje.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 shrink-0">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+              <div class="font-display font-black text-2xl text-[#b5621e]">87%</div>
+              <div class="font-mono text-[9px] text-white/40 uppercase tracking-widest mt-1">Ocupação</div>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+              <div class="font-display font-black text-2xl text-emerald-400">R$4.8k</div>
+              <div class="font-mono text-[9px] text-white/40 uppercase tracking-widest mt-1">Mês Atual</div>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+              <div class="font-display font-black text-2xl text-white">12</div>
+              <div class="font-mono text-[9px] text-white/40 uppercase tracking-widest mt-1">Reservas</div>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+              <div class="font-display font-black text-2xl text-yellow-400">5</div>
+              <div class="font-mono text-[9px] text-white/40 uppercase tracking-widest mt-1">Day Use</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== METODOLOGIA / PROCESSO ==================== -->
+  <section id="metodologia" class="py-24 px-6 md:px-12 border-b border-stone-200 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-stone-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">03 · PROCESSO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Como trabalhamos</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">Do briefing ao ar.</span>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark">
+          4 semanas.<br/>
+          <span class="text-stone-500/80">Do zero ao<br/>online.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="flex gap-5 timeline-line">
+          <div class="shrink-0">
+            <div class="w-8 h-8 rounded-full bg-[#b5621e] text-white font-mono font-bold text-xs flex items-center justify-center">1</div>
+          </div>
+          <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex-1">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Semana 1</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Briefing & Design</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Reunião de levantamento completo. Definimos identidade visual, paleta de cores, fotos do chalé e toda a estrutura de informações do site e do painel.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0">
+            <div class="w-8 h-8 rounded-full bg-stone-200 text-stone-700 font-mono font-bold text-xs flex items-center justify-center">2</div>
+          </div>
+          <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex-1">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Semana 2</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Desenvolvimento Front</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Construção do site público: home, galeria, calendário, página Day Use, formulário de reserva e integração com e-mail automático.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0">
+            <div class="w-8 h-8 rounded-full bg-stone-200 text-stone-700 font-mono font-bold text-xs flex items-center justify-center">3</div>
+          </div>
+          <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex-1">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Semana 3</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Painel Administrativo</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Desenvolvimento do back-end: calendário admin, CRM, módulo financeiro, check-in/out digital e sistema de notificações automáticas.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0">
+            <div class="w-8 h-8 rounded-full bg-stone-200 text-stone-700 font-mono font-bold text-xs flex items-center justify-center">4</div>
+          </div>
+          <div class="tactile-raised tactile-raised-hover p-7 rounded-3xl border border-stone-200/60 flex-1">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-2">Semana 4</div>
+            <h3 class="font-display font-black text-lg text-stone-950 uppercase mb-3">Testes & Lançamento</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed">Revisão completa, treinamento de vocês no sistema, configuração de domínio e hospedagem e lançamento oficial com acompanhamento.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INVESTIMENTO ==================== -->
+  <section id="investimento" class="py-24 px-6 md:px-12 border-b border-stone-200 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-100/30 blur-[120px] rounded-full"></div>
+    </div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-stone-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">04 · INVESTIMENTO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Preço de amigo</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">Sério e justo.</span>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark">
+          Retorno em<br/>
+          <span class="text-stone-500/80">1 mês de<br/>temporada.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+        <!-- Main pricing card -->
+        <div class="lg:col-span-2 tactile-raised pricing-glow p-10 rounded-3xl border border-stone-200/60 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-60 h-60 bg-[#b5621e]/8 blur-[60px] rounded-full pointer-events-none"></div>
+          
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-[#b5621e] uppercase tracking-widest bg-[#b5621e]/10 border border-[#b5621e]/20 px-3 py-1 rounded-full font-bold mb-6">
+              ✦ Pacote Completo · Amigos
+            </div>
+            
+            <h3 class="font-display font-black text-2xl text-stone-950 uppercase mb-2">Site + Painel Administrativo + CRM</h3>
+            <p class="text-sm text-stone-500 font-light mb-8">Tudo o que foi apresentado: site público completo, calendário inteligente, painel de gestão, CRM, financeiro, check-in digital e automações.</p>
+
+            <div class="flex items-end gap-3 mb-2">
+              <span class="font-display font-black text-5xl text-stone-950">R$ 3.600</span>
+              <span class="font-mono text-sm text-stone-400 mb-2">projeto completo</span>
+            </div>
+            <div class="inline-flex items-center gap-2 bg-[#b5621e]/10 border border-[#b5621e]/20 rounded-xl px-4 py-2 mb-8">
+              <svg class="w-4 h-4 text-[#b5621e]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+              <span class="font-mono text-xs text-[#b5621e] font-bold">Parcelamento: 3x de R$ 1.200,00</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Site público completo (todas as páginas)</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Calendário de reservas público</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Painel administrativo completo</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>CRM de hóspedes e histórico</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Módulo financeiro e relatórios</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Check-in & Check-out digital</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Módulo Day Use separado</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>E-mails automáticos de confirmação</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Integração Pix e link de pagamento</div>
+              <div class="flex items-center gap-2 text-stone-600"><span class="w-4 h-4 rounded-full bg-green-100 border border-green-300 text-green-600 flex items-center justify-center text-[10px] font-bold">✓</span>Treinamento e suporte de entrega</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side details -->
+        <div class="flex flex-col gap-5">
+          <!-- Payment plan -->
+          <div class="tactile-raised p-7 rounded-3xl border border-stone-200/60">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-4">Forma de Pagamento</div>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center py-2 border-b border-stone-100">
+                <span class="font-mono text-xs text-stone-600">Na assinatura</span>
+                <span class="font-display font-black text-base text-stone-950">R$ 1.200</span>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-stone-100">
+                <span class="font-mono text-xs text-stone-600">No meio do projeto</span>
+                <span class="font-display font-black text-base text-stone-950">R$ 1.200</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="font-mono text-xs text-stone-600">Na entrega final</span>
+                <span class="font-display font-black text-base text-stone-950">R$ 1.200</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100">
+              <div class="flex justify-between items-center">
+                <span class="font-mono text-[10px] text-stone-400 font-bold uppercase">TOTAL</span>
+                <span class="font-display font-black text-xl text-[#b5621e]">R$ 3.600</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guarantee -->
+          <div class="tactile-raised p-7 rounded-3xl border border-[#b5621e]/20 bg-[#b5621e]/5">
+            <div class="font-mono text-[9px] text-[#b5621e] font-bold uppercase tracking-widest mb-3">Nossa Garantia</div>
+            <p class="text-xs text-stone-600 font-light leading-relaxed">Não entregamos até vocês aprovarem cada etapa. Revisões incluídas em todo o processo.</p>
+          </div>
+
+          <!-- Includes -->
+          <div class="tactile-raised p-7 rounded-3xl border border-stone-200/60">
+            <div class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-4">Prazo</div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center">
+                <svg class="w-5 h-5 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div>
+                <div class="font-display font-black text-lg text-stone-950">4 semanas</div>
+                <div class="font-mono text-[9px] text-stone-400 uppercase tracking-widest">Após assinatura e entrada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MANUTENÇÃO ==================== -->
+  <section id="manutencao" class="py-24 px-6 md:px-12 bg-transparent border-b border-stone-200 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-stone-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-stone-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-stone-500">RECORRENTE</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-stone-500">
+          <span>Pós-Lançamento</span>
+          <span class="text-stone-400">//</span>
+          <span class="text-stone-950">Sempre funcionando.</span>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl md:text-6xl text-stone-950 leading-[1.05] tracking-tight uppercase text-tactile-3d-dark">
+          Suporte Mensal<br/>
+          <span class="text-stone-500/80 inline-block whitespace-nowrap">e Evolução Contínua</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Manutenção Básica -->
+        <div class="tactile-raised bg-white border border-stone-200/60 rounded-3xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-stone-500 uppercase tracking-widest bg-stone-100 border border-stone-200 px-3 py-1 rounded-full font-bold self-start">
+              Suporte Técnico
+            </div>
+            <h3 class="font-display font-black text-xl text-stone-950 uppercase mt-2">Manutenção Mensal</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed mt-2">
+              Monitoramento do sistema, segurança e backups automáticos, atualizações de conteúdo (preços, fotos, texto), correção de bugs e suporte via WhatsApp em horário comercial.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-stone-100 flex flex-col">
+            <span class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest">Valor Mensal</span>
+            <span class="font-display font-black text-3xl text-stone-950 mt-1">R$ 397<span class="text-xs text-stone-400 font-normal">/mês</span></span>
+          </div>
+        </div>
+
+        <!-- Plano Crescimento -->
+        <div class="tactile-raised bg-stone-950 border border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:shadow-md pricing-glow">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-[#b5621e]/30 blur-[60px] rounded-full pointer-events-none"></div>
+          <div class="flex flex-col gap-4 relative z-10">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-[#b5621e] uppercase tracking-widest bg-[#b5621e]/10 border border-[#b5621e]/20 px-3 py-1 rounded-full font-bold self-start">
+              ✦ Recomendado
+            </div>
+            <h3 class="font-display font-black text-xl text-white uppercase mt-2">Plano Crescimento</h3>
+            <p class="text-xs text-white/50 font-light leading-relaxed mt-2">
+              Tudo da manutenção básica + 2h/mês de melhorias e novas funcionalidades, relatório mensal de desempenho, sugestões de otimização e prioridade no suporte.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/10 flex flex-col relative z-10">
+            <span class="font-mono text-[9px] text-white/30 font-bold uppercase tracking-widest">Valor Mensal</span>
+            <span class="font-display font-black text-3xl text-[#b5621e] mt-1">R$ 597<span class="text-xs text-white/30 font-normal">/mês</span></span>
+          </div>
+        </div>
+
+        <!-- Opcional: Gestão de Tráfego -->
+        <div class="tactile-raised bg-white border border-stone-200/60 rounded-3xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-[#b5621e] uppercase tracking-widest bg-[#b5621e]/10 border border-[#b5621e]/20 px-3 py-1 rounded-full font-bold self-start">
+              Opcional · Aquisição
+            </div>
+            <h3 class="font-display font-black text-xl text-stone-950 uppercase mt-2">Tráfego Pago (Ads)</h3>
+            <p class="text-xs text-stone-500 font-light leading-relaxed mt-2">
+              Gestão de anúncios no Instagram/Facebook e Google para atrair novos hóspedes. Campanha direcionada para sua região, segmentada por interesse em viagens e lazer.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-stone-100 flex flex-col">
+            <span class="font-mono text-[9px] text-stone-400 font-bold uppercase tracking-widest">A partir de</span>
+            <span class="font-display font-black text-3xl text-stone-950 mt-1">R$ 897<span class="text-xs text-stone-400 font-normal">/mês</span></span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section id="cta" class="py-24 px-6 md:px-12 bg-stone-950 text-white relative overflow-hidden rounded-t-[3rem] border-t border-stone-800">
+    <div class="absolute inset-0 grid-blueprint opacity-10"></div>
+    <!-- Ambient Decor -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#b5621e]/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 font-mono text-[10px] text-white/70 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/10 font-bold mb-8 shadow-sm">
+        <span class="w-2 h-2 bg-[#b5621e] rounded-full animate-pulse shadow-[0_0_8px_#b5621e]"></span>
+        Proposta válida por 15 dias
+      </div>
+      
+      <h2 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.05] uppercase mb-8">
+        O Chalé de vocês<br/> <span class="text-[#b5621e] text-tactile-3d inline-block whitespace-nowrap">no próximo nível.</span>
+      </h2>
+      
+      <p class="font-sans text-base md:text-lg text-stone-400 leading-relaxed font-light mb-12 max-w-2xl">
+        Não é só um site bonito. É a <strong class="text-white font-semibold">central de operações do negócio de vocês</strong> — funcionando 24h por dia, recebendo reservas enquanto dormem, controlando tudo com o celular na mão. Uma temporada boa já paga o projeto inteiro.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl mb-12 text-left">
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-[#b5621e] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">Zero Conflito</h4>
+           <p class="text-xs text-stone-400 font-light">Calendário único, reservas organizadas, nunca mais dois hóspedes no mesmo dia.</p>
+         </div>
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-[#b5621e] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">Profissional</h4>
+           <p class="text-xs text-stone-400 font-light">Design premium que valoriza o imóvel e justifica preços mais altos por diária.</p>
+         </div>
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-[#b5621e] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">ROI Rápido</h4>
+           <p class="text-xs text-stone-400 font-light">Uma temporada alta de fim de semana já cobre o investimento do projeto.</p>
+         </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full">
+        <a href="https://wa.me/5511940595792?text=Olá%20Guilherme,%20quero%20fechar%20a%20proposta%20do%20chalé!" target="_blank" class="bg-[#b5621e] hover:bg-[#9a521a] text-white font-mono text-sm font-bold px-10 py-5 uppercase tracking-widest rounded-2xl shadow-[0_0_30px_rgba(181,98,30,0.4)] hover:shadow-[0_0_40px_rgba(181,98,30,0.6)] transition-all duration-300 flex items-center gap-3 hover:-translate-y-1">
+          Fechar Projeto Agora
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href="mailto:berocket@berocket.com.br" class="text-stone-400 hover:text-white font-mono text-xs font-bold px-6 py-4 uppercase tracking-widest transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          Tirar dúvidas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#f4f2ed] text-stone-950 pt-24 border-t border-stone-200 overflow-hidden relative grid-blueprint mt-0">
+    
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <!-- Giant B.ROCKET text banner -->
+      <div class="w-full text-center relative pointer-events-none select-none mb-12">
+        <h1 class="font-display font-black text-[13vw] leading-none tracking-[0.05em] text-stone-950 uppercase text-tactile-3d-dark">
+          b.rocket
+        </h1>
+        <div class="absolute bottom-1 right-2 font-mono text-[9px] text-stone-400 hidden sm:block tracking-widest uppercase font-bold">
+          ENTREGAMOS O TRABALHO MELHOR DO QUE O BRIEFING // B.ROCKET*
+        </div>
+      </div>
+
+      <div class="h-[1px] bg-stone-200 w-full mb-16"></div>
+
+      <!-- Meta details & copyrights -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 items-start text-stone-500 font-mono text-[10px] md:text-xs">
+        
+        <!-- Agency definition -->
+        <div class="md:col-span-4 space-y-2">
+          <span class="text-stone-950 font-display font-extrabold block uppercase tracking-wider">b.rocket Agency</span>
+          <p class="font-light leading-relaxed max-w-xs text-stone-500">
+            Com mais de 12 anos de experiência em web design, inbound marketing e SEO, Guilherme Rossi constrói ecossistemas digitais de alta performance que colocam marcas no topo da nova era da internet.
+          </p>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="md:col-span-4 flex flex-col gap-1 text-stone-500 font-light">
+          <span class="font-bold text-stone-950 uppercase block tracking-wider mb-1">Contato</span>
+          <span class="block font-mono text-[10px] text-stone-600 font-medium">BE ROCKET AGENCIA DIGITAL LTDA</span>
+          <span class="block font-mono text-[10px]">CNPJ: 37.375.164/0001-03</span>
+          <a href="mailto:berocket@berocket.com.br" class="hover:text-stone-950 transition-colors block font-mono">berocket@berocket.com.br</a>
+          <span class="block font-mono">(11) 94059-5792</span>
+          <span class="text-[10px] text-stone-400 block mt-2 font-bold">© 2026 b.rocket. Todos os direitos reservados.</span>
+        </div>
+
+        <!-- Credits and logos -->
+        <div class="md:col-span-4 md:text-right flex flex-col md:items-end justify-between self-stretch gap-4">
+          <div class="flex items-center gap-2 text-stone-950 md:justify-end">
+            <div class="w-8 h-8 rounded-xl bg-stone-950 flex items-center justify-center border border-stone-800 shadow-md shrink-0 relative overflow-hidden">
+              <div class="w-[22px] h-[22px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+                <div class="w-[15px] h-[10px] bg-stone-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-stone-900/40">
+                  <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+                  <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-orange-500/80 blur-[0.5px] rounded-full"></div>
+                </div>
+                <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-stone-300 rounded-full"></div>
+              </div>
+              <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-stone-800 rounded-r"></div>
+              <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-stone-800 rounded-l"></div>
+            </div>
+            <span class="font-display font-black text-xl tracking-widest">B.ROCKET</span>
+          </div>
+          
+          <span class="text-stone-400 block text-[9px] uppercase font-bold">PORTED BY b.rocket</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back-To-Top footer bar -->
+    <div class="bg-stone-100 border-t border-stone-200 py-4 flex items-center justify-center relative select-none">
+      <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="flex items-center gap-2 font-mono text-[9px] tracking-widest uppercase text-stone-500 hover:text-stone-950 transition-colors focus:outline-none focus:ring-0 group cursor-pointer font-bold">
+        <div class="transition-transform duration-300 group-hover:-translate-y-1">
+          <svg class="w-4 h-4 text-stone-950 group-hover:text-stone-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <span>LAUNCH_TO_TOP</span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar Scroll Effect
+    const navContainer = document.getElementById('nav-container');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navContainer.classList.add('bg-white/90', 'backdrop-blur-md', 'tactile-raised');
+        navContainer.classList.add('border-stone-200/40');
+        navContainer.classList.remove('bg-transparent', 'border-transparent', 'shadow-none');
+      } else {
+        navContainer.classList.remove('bg-white/90', 'backdrop-blur-md', 'tactile-raised');
+        navContainer.classList.remove('border-stone-200/40');
+        navContainer.classList.add('bg-transparent', 'border-transparent', 'shadow-none');
+      }
+    });
+
+    // Smooth Scroll for Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

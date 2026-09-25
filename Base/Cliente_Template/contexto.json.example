@@ -1,0 +1,30 @@
+{
+  "cliente": {
+    "nome": "Nome do Cliente",
+    "razaoSocial": "Razão Social do Cliente Ltda",
+    "site": "https://www.site-do-cliente.com.br",
+    "nicho": "Nicho de Atuação / Segmento",
+    "descricao": "Descrição dos produtos e serviços principais do cliente.",
+    "segmentoTarget": "Público-alvo e perfil de comprador ideal (ICP)",
+    "cidadeEstado": "Cidade, UF"
+  },
+  "servicosContratados": {
+    "trafegoPago": {
+      "plataformas": ["Google Ads"],
+      "metaCPL": "R$ 0,00",
+      "focoCampanhas": ["Campanha 1", "Campanha 2"]
+    },
+    "seo": {
+      "foco": ["SEO On-Page", "Core Web Vitals", "Google Meu Negócio"],
+      "palavrasChaveAlvo": ["termo 1", "termo 2"]
+    },
+    "geo": {
+      "foco": ["Citabilidade em LLMs", "Schemas JSON-LD", "llms.txt"],
+      "plataformasAlvo": ["ChatGPT", "Perplexity", "Gemini", "Claude"]
+    }
+  },
+  "concorrentesMapeados": [
+    "Concorrente 1",
+    "Concorrente 2"
+  ]
+}

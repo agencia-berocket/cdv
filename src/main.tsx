@@ -15,6 +15,14 @@ function RootRouter() {
   const [isAdmin, setIsAdmin] = useState(checkIsAdmin);
 
   useEffect(() => {
+    // Auto-remove HTML preloader once React mounts
+    const el = document.getElementById('app-preloader');
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 300);
+    }
+
     const handleLocationChange = () => {
       setIsAdmin(checkIsAdmin());
     };
@@ -31,7 +39,7 @@ function RootRouter() {
       <div className="min-h-screen bg-[#f4f5f8] flex items-center justify-center font-mono text-xs text-zinc-500">
         <div className="flex flex-col items-center gap-3">
           <div className="w-8 h-8 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
-          <span>b.rocket // CARREGANDO...</span>
+          <span>b.rocket // Hub Central 360º</span>
         </div>
       </div>
     }>

@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Comercial | Chalé Nathalia & Rudá — Ecossistema de Locação & Day Use</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* TACTILE CLAYMORPHIC & NEUMORPHIC SYSTEM */
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+    }
+
+    .tactile-raised-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tactile-raised-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.01),
+        12px 20px 36px -6px rgba(13, 20, 33, 0.08),
+        -12px -12px 32px -4px rgba(255, 255, 255, 0.98),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.95),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.015);
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 12px;
+    }
+
+    .text-tactile-3d {
+      color: #fcfdfe;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.9),
+        2px 2px 2px rgba(13, 20, 33, 0.02),
+        4px 6px 12px rgba(13, 20, 33, 0.06),
+        8px 12px 24px rgba(13, 20, 33, 0.04),
+        16px 24px 48px rgba(13, 20, 33, 0.03);
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(13, 20, 33, 0.12),
+        6px 8px 14px rgba(13, 20, 33, 0.08),
+        12px 16px 28px rgba(13, 20, 33, 0.04);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+      position: relative;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-4 px-6 md:px-12">
+    <div id="nav-container" class="max-w-7xl mx-auto px-6 md:px-8 py-3.5 flex justify-between items-center transition-all duration-300 bg-transparent border border-transparent shadow-none rounded-2xl">
+      
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
+          <div class="w-[22px] h-[22px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+            <div class="w-[15px] h-[10px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+              <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+              <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+            </div>
+            <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
+          </div>
+          <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-r"></div>
+          <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-l"></div>
+        </div>
+        <span class="font-display font-extrabold text-lg tracking-[0.08em] text-zinc-950 uppercase">b.rocket</span>
+        <span class="text-emerald-600 font-bold text-lg">*</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#hero" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors duration-200 relative group py-1">Início</a>
+        <a href="#visão-geral" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors duration-200 relative group py-1">Visão Geral</a>
+        <a href="#funcionalidades" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors duration-200 relative group py-1">Ferramentas</a>
+        <a href="#front-back" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors duration-200 relative group py-1">Front & Back-end</a>
+        <a href="#investimento" class="font-mono text-[10px] text-zinc-600 hover:text-zinc-950 uppercase tracking-widest font-bold transition-colors duration-200 relative group py-1">Investimento</a>
+        <a href="#cta" class="tactile-raised !bg-[#4353ff] text-white font-mono text-[10px] md:text-xs font-semibold px-5 py-2.5 hover:bg-[#3240e6] uppercase tracking-widest transition-all duration-300 flex items-center gap-1.5 rounded-xl shadow-lg border-t border-[#606fff] hover:scale-105">
+          Aprovar Projeto <svg class="w-3.5 h-3.5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+      
+      <!-- Mobile Button -->
+      <div class="md:hidden flex items-center gap-3">
+        <a href="#cta" class="bg-[#4353ff] text-white font-mono text-[10px] font-bold px-4 py-2 hover:bg-[#3240e6] uppercase tracking-wider transition-all duration-300 rounded-xl">Aprovar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HEADER / HERO ==================== -->
+  <section id="hero" class="pt-40 sm:pt-36 pb-20 px-6 md:px-12 border-b border-zinc-200 relative overflow-hidden">
+    <!-- Ambient Decor -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-100/40 blur-[100px]"></div>
+      <div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-blue-100/40 blur-[120px]"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row gap-12 items-end justify-between">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-emerald-800 uppercase tracking-widest bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full font-bold mb-6 shadow-sm">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></span>
+          Proposta Especial — Condição Amigos & Parceiros
+        </div>
+        <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-zinc-950 tracking-tight leading-[1.05] uppercase text-tactile-3d-dark mb-6">
+          Plataforma Integrada de<br/>
+          <span class="text-[#4353ff] inline-block">Locação & Day Use</span>
+        </h1>
+        <p class="font-sans text-base md:text-lg text-zinc-600 leading-relaxed font-light">
+          Um ecossistema digital completo e independente para o <strong class="text-zinc-950 font-semibold">Chalé de Nathalia & Rudá</strong>. Criado para eliminar a dependência exclusiva das taxas de plataformas (Airbnb/Booking), automatizar o agendamento de <strong class="text-zinc-950 font-semibold">Pernoites e Day Use</strong>, calcular valores dinâmicos por quantidade de diárias, sincronizar agendas sem risco de overbooking e oferecer um <strong class="text-zinc-950 font-semibold">CRM interno de gestão profissional</strong>.
+        </p>
+      </div>
+      
+      <!-- Right info box -->
+      <div class="flex flex-col gap-4 min-w-[300px] w-full md:w-auto">
+        <div class="tactile-sunken p-6 flex flex-col gap-3.5">
+          <div class="flex justify-between items-center border-b border-zinc-200/60 pb-2.5">
+            <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Clientes</span>
+            <span class="font-mono text-xs text-zinc-950 font-bold">Nathalia & Rudá</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-zinc-200/60 pb-2.5">
+            <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Modelo</span>
+            <span class="font-mono text-xs text-emerald-600 font-bold">Chalé + Day Use</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-zinc-200/60 pb-2.5">
+            <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Escopo</span>
+            <span class="font-mono text-xs text-zinc-950 font-bold">Site UX/UI + CRM Host</span>
+          </div>
+          <div class="flex justify-between items-center pb-1">
+            <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Desenvolvido por</span>
+            <span class="font-mono text-xs text-[#4353ff] font-bold">b.rocket Agency</span>
+          </div>
+        </div>
+
+        <div class="tactile-raised p-4 flex items-center justify-between bg-white border border-zinc-200/60 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-zinc-400 font-bold block uppercase tracking-wider">Status do Projeto</span>
+              <span class="font-mono text-xs text-zinc-950 font-bold">Aguardando Aprovação</span>
+            </div>
+          </div>
+          <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTEXTO & OBJETIVOS ==================== -->
+  <section id="visão-geral" class="py-24 px-6 md:px-12 border-b border-zinc-200 bg-white/50">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500 font-bold">01. O DESAFIO & A OPORTUNIDADE</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-zinc-500">
+          <span>Transformação Digital</span>
+          <span class="text-zinc-400">//</span>
+          <span class="text-zinc-950 font-bold">Direto & Sem Intermediários</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h2 class="font-display font-black text-3xl sm:text-4xl text-zinc-950 uppercase leading-tight tracking-tight mb-6">
+            Por que um Ecossistema Próprio é <span class="text-[#4353ff]">Essencial Agora?</span>
+          </h2>
+          <p class="text-zinc-600 leading-relaxed font-light mb-6">
+            Hoje, depender apenas do Airbnb ou Booking significa pagar de 15% a 20% de comissão em cada reserva, além de não possuir controle sobre os dados dos seus hóspedes. Com o lançamento da modalidade <strong class="text-zinc-950 font-semibold">Day Use</strong> (passar o dia sem pernoite), o chalé expande seu público para ensaios fotográficos, casais em busca de momentos especiais de lazer e eventos intimistas.
+          </p>
+          <p class="text-zinc-600 leading-relaxed font-light">
+            Desenvolveremos uma plataforma intuitiva que eleva o valor percebido das suas diárias, transmite charme e exclusividade de alto nível, calcula tarifas progressivas automaticamente e centraliza toda a gestão operacional num único painel simples e prático.
+          </p>
+        </div>
+
+        <!-- Metric Highlight Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="tactile-raised p-6 rounded-2xl bg-white border border-zinc-200/80">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <span class="font-display font-black text-3xl text-zinc-950 block">0% Comissões</span>
+            <p class="text-xs text-zinc-500 font-light mt-2">100% do valor da reserva fica no bolso de vocês nas reservas diretas.</p>
+          </div>
+
+          <div class="tactile-raised p-6 rounded-2xl bg-white border border-zinc-200/80">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#4353ff] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            </div>
+            <span class="font-display font-black text-3xl text-zinc-950 block">Multi-Modos</span>
+            <p class="text-xs text-zinc-500 font-light mt-2">Alternância fluida entre Pernoites e agenda exclusiva para Day Use.</p>
+          </div>
+
+          <div class="tactile-raised p-6 rounded-2xl bg-white border border-zinc-200/80">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            </div>
+            <span class="font-display font-black text-3xl text-zinc-950 block">Sync iCal</span>
+            <p class="text-xs text-zinc-500 font-light mt-2">Sincronização com Google Calendar, Airbnb e Booking sem overbooking.</p>
+          </div>
+
+          <div class="tactile-raised p-6 rounded-2xl bg-white border border-zinc-200/80">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            </div>
+            <span class="font-display font-black text-3xl text-zinc-950 block">Flex Pagamento</span>
+            <p class="text-xs text-zinc-500 font-light mt-2">Escolha entre Pix direto (sem taxas) ou Gateway automatizado.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FERRAMENTAS DO NICHO ==================== -->
+  <section id="funcionalidades" class="py-24 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500 font-bold">02. TECNOLOGIAS & FERRAMENTAS DO NICHO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-zinc-500">
+          <span>Inovações para Hospedagem</span>
+          <span class="text-zinc-400">//</span>
+          <span class="text-zinc-950 font-bold">Facilitando a Vida dos Anfitriões</span>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mb-16">
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 uppercase leading-tight tracking-tight text-tactile-3d-dark">
+          Ferramentas Inteligentes Criadas <br/>
+          <span class="text-emerald-600">Sob Medida para o Chalé</span>
+        </h2>
+        <p class="font-sans text-zinc-600 font-light mt-4 text-base">
+          Mapeamos todas as necessidades reais de gestão de imóveis de temporada e Day Use para entregar soluções funcionais que economizam tempo e trazem paz de espírito para Nathalia e Rudá.
+        </p>
+      </div>
+
+      <!-- Grid de Soluções -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <!-- Tool Card 1 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-[#4353ff] flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              01
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Calculadora de Tarifas Dinâmicas</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              O valor da diária muda automaticamente de acordo com o número de noites selecionado (ex: 1 noite R$ 600, 2-3 noites R$ 550/noite, 4+ noites R$ 490/noite). Incentiva estadias mais longas sem esforço manual.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Automação de Preço</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+        <!-- Tool Card 2 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              02
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Calendário com iCal Bi-Direcional</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              Conexão em tempo real com a agenda de vocês (Google Calendar) e canais externos (Airbnb/Booking). Bloqueou uma data no site? Bloqueia automaticamente nas outras pontas. Sem risco de reservas duplicadas!
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Anti-Overbooking</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+        <!-- Tool Card 3 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              03
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Módulo de Reservas Day Use</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              Seletor exclusivo para reservas sem pernoite (ex: das 09h às 18h). Controle de número máximo de convidados, valor adicional por pessoa e escolha de combos (ex: uso da jacuzzi + cesta de piquenique).
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Day Use Exclusivo</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+        <!-- Tool Card 4 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              04
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Guia Digital do Hóspede (Manual Web)</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              Um mini-site acessível via QR Code dentro do chalé contendo: senha do Wi-Fi, regras da casa, como ligar a lareira/jacuzzi, recomendações de restaurantes da região e contatos de emergência.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Experiência 5 Estrelas</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+        <!-- Tool Card 5 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              05
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Adicionais & Upsell (Add-ons)</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              No ato da reserva, o hóspede pode incluir adicionais como: Cesta de Café da Manhã artesanal, Kit Lareira com Vinhos, Decoração Romântica de Pétalas e Pet taxa. Aumente o ticket médio por reserva!
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Mais Faturamento</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+        <!-- Tool Card 6 -->
+        <div class="tactile-raised bg-white p-8 rounded-3xl border border-zinc-200/70 flex flex-col justify-between tactile-raised-hover">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-200 text-teal-600 flex items-center justify-center font-bold text-lg mb-6 shadow-sm">
+              06
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mb-3">Botão WhatsApp Automático</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed font-light">
+              Envio do resumo da reserva pré-formatado direto para o WhatsApp de Nathalia & Rudá com 1 clique (datas, valores, adicionais e comprovante Pix). Rapidez extrema e zero burocracia para fechar.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-zinc-100 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <span>Checkout Agilizado</span>
+            <span class="text-emerald-600 font-bold">Incluso</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIMULADOR INTERATIVO DE DEMONSTRAÇÃO DA UX -->
+      <div class="tactile-raised p-8 md:p-12 rounded-3xl border border-zinc-200/80 relative overflow-hidden bg-white text-zinc-950 shadow-md">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-[90px] pointer-events-none"></div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-zinc-200/80 pb-6">
+          <div>
+            <span class="font-mono text-xs text-emerald-600 font-bold uppercase tracking-widest block mb-1">Demonstração Interativa da UX do Hóspede</span>
+            <h3 class="font-display font-black text-2xl sm:text-3xl text-zinc-950 uppercase tracking-tight text-tactile-3d-dark">Simulador de Diárias & Day Use</h3>
+          </div>
+          <div class="bg-zinc-100 border border-zinc-200 px-4 py-2 rounded-xl text-xs font-mono text-zinc-600 font-bold">
+            Simule como seu cliente irá reservar
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          <!-- Control Panel -->
+          <div class="md:col-span-7 space-y-6">
+            
+            <!-- Type Selector -->
+            <div>
+              <label class="block font-mono text-xs text-zinc-700 uppercase font-bold mb-2">1. Selecione o Tipo de Serviço:</label>
+              <div class="grid grid-cols-2 gap-3">
+                <button id="btn-pernoite" onclick="setServiceType('pernoite')" class="py-3 px-4 rounded-xl border border-[#4353ff] bg-[#4353ff] text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                  Pernoite (Hospedagem)
+                </button>
+                <button id="btn-dayuse" onclick="setServiceType('dayuse')" class="py-3 px-4 rounded-xl border border-zinc-300 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                  Day Use (Das 09h às 18h)
+                </button>
+              </div>
+            </div>
+
+            <!-- Quantity Slider -->
+            <div id="pernoite-controls">
+              <div class="flex justify-between items-center mb-2">
+                <label class="font-mono text-xs text-zinc-700 uppercase font-bold">2. Quantidade de Diárias:</label>
+                <span id="diarias-val" class="font-mono text-sm text-emerald-600 font-bold">2 Noites (R$ 550/noite)</span>
+              </div>
+              <input type="range" id="diarias-slider" min="1" max="7" value="2" oninput="updateSimulation()" class="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-[#4353ff]" />
+              <div class="flex justify-between text-[10px] font-mono text-zinc-500 mt-1 font-medium">
+                <span>1 Noite (R$600)</span>
+                <span>3 Noites (Desconto)</span>
+                <span>7 Noites (Max Desconto)</span>
+              </div>
+            </div>
+
+            <!-- Add-ons Checkboxes -->
+            <div>
+              <label class="block font-mono text-xs text-zinc-700 uppercase font-bold mb-2">3. Adicionais de Experiência (Upsell):</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3 bg-zinc-50 border border-zinc-200 rounded-xl cursor-pointer hover:bg-zinc-100 transition-colors">
+                  <input type="checkbox" id="add-cafe" onchange="updateSimulation()" class="rounded accent-[#4353ff]" />
+                  <span class="text-xs text-zinc-800 font-medium">Cesta Café Artesanal (+R$ 120)</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 bg-zinc-50 border border-zinc-200 rounded-xl cursor-pointer hover:bg-zinc-100 transition-colors">
+                  <input type="checkbox" id="add-vinho" onchange="updateSimulation()" class="rounded accent-[#4353ff]" />
+                  <span class="text-xs text-zinc-800 font-medium">Kit Lareira & Vinho (+R$ 180)</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Result Display Box -->
+          <div class="md:col-span-5 bg-zinc-950 p-6 rounded-2xl border border-zinc-800 flex flex-col justify-between space-y-6 shadow-xl">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest block mb-1 font-bold">Resumo Instantâneo</span>
+              <h4 id="sim-title" class="font-display font-bold text-lg text-white">Hospedagem 2 Noites</h4>
+              
+              <div class="space-y-2 mt-4 text-xs font-mono text-zinc-400 border-t border-zinc-800 pt-4">
+                <div class="flex justify-between">
+                  <span>Valor Base:</span>
+                  <span id="sim-base" class="text-white font-bold">R$ 1.100,00</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Adicionais:</span>
+                  <span id="sim-addons" class="text-white font-bold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-emerald-400 font-bold">
+                  <span>Desconto Dinâmico:</span>
+                  <span id="sim-desc">-R$ 100,00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-zinc-800 pt-4">
+              <span class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest block font-bold">Total Estimado da Reserva</span>
+              <span id="sim-total" class="font-display font-black text-3xl text-emerald-400 mt-1 block">R$ 1.000,00</span>
+              
+              <button onclick="alert('Esta é a demonstração de como o hóspede clicará para enviar a reserva direta no seu WhatsApp com 1 clique!')" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold py-3 px-4 rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                Reservar pelo WhatsApp
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ESTRUTURA FRONT & BACK-END ==================== -->
+  <section id="front-back" class="py-24 px-6 md:px-12 border-b border-zinc-200 bg-white/40">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500 font-bold">03. ARQUITETURA DO PROJETO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-zinc-500">
+          <span>Escopo Completo</span>
+          <span class="text-zinc-400">//</span>
+          <span class="text-zinc-950 font-bold">Front-End Hóspede & Back-End Host</span>
+        </div>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex justify-center mb-12">
+        <div class="tactile-sunken p-1.5 rounded-2xl inline-flex gap-2 border border-zinc-200/80">
+          <button id="tab-front-btn" onclick="switchTab('front')" class="px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all bg-[#4353ff] text-white shadow-md">
+            💻 Front-End (Site do Hóspede)
+          </button>
+          <button id="tab-back-btn" onclick="switchTab('back')" class="px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all text-zinc-600 hover:text-zinc-950">
+            ⚙️ Back-End & CRM (Painel do Anfitrião)
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB CONTENT 1: FRONT-END -->
+      <div id="tab-front" class="space-y-8">
+        <div class="max-w-3xl">
+          <h3 class="font-display font-black text-2xl text-zinc-950 uppercase mb-2">Site do Hóspede (UX/UI Imersiva & Sensorial)</h3>
+          <p class="text-zinc-600 font-light text-sm">
+            Uma experiência visual moderna, tátil e emocionante que faz o visitante desejar estar no chalé no primeiro segundo de navegação.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Hero Section com Galeria Emocional
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Fotos em altíssima definição, vídeo de fundo suave da natureza/jacuzzi, títulos impactantes e botão de ação imediata ("Ver Disponibilidade").
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Seletor de Experiência (Pernoite vs Day Use)
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Alternância clara entre quem quer se hospedar e quem deseja apenas o uso diurno, ajustando o formulário automaticamente.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Calendário Interativo de Disponibilidade
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Exibição visual dos dias ocupados e livres. O hóspede clica na data de entrada e saída e o valor é calculado na hora.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Comodidades & Tour 360° / Vídeos
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Ícones táteis de comodidades: Jacuzzi, Lareira, Wi-Fi Starlink, Cozinha Equipada, Ar Condicionado, Vista Panorâmica e Espaço Pet.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Avaliações de Hóspedes (Social Proof)
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Carrossel de depoimentos reais de quem já se hospedou no chalé, com notas 5 estrelas e comentários verificados.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-zinc-950 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#4353ff] rounded-full"></span> Localização & Guia da Região
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Mapa interativo indicando a rota até o chalé, restaurantes recomendados próximos e atrações turísticas locais.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB CONTENT 2: BACK-END & CRM (Hidden initially) -->
+      <div id="tab-back" class="space-y-8 hidden">
+        <div class="max-w-3xl">
+          <h3 class="font-display font-black text-2xl text-zinc-950 uppercase mb-2">Back-End & Gerenciador Interno (CRM Host)</h3>
+          <p class="text-zinc-600 font-light text-sm">
+            Um painel administrativo protegido por senha onde Nathalia e Rudá gerenciam todo o negócio com extrema facilidade e total controle.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Visão Geral do Calendário (Agenda Unificada)
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Visualização de todas as reservas (Diretas do site + Airbnb + Booking) em um único mapa de ocupação mensal.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Controle de Check-in & Check-out
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Lista diária dos hóspedes que chegam e saem, com alertas para a equipe de limpeza e envio automático de instruções de entrada.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Gestão Financeira & Relatórios
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Acompanhe o faturamento mensal, divisão por origem da reserva (Site vs Airbnb), taxa de ocupação e receita de adicionais.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Cadastro & Historico de Hóspedes (CRM)
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Banco de dados dos hóspedes (Nome, Telefone, E-mail, datas que se hospedou). Ideal para disparar ofertas de retorno e cupons de desconto.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Painel de Configuração de Preços
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Altere a qualquer momento o valor da diária padrão, tarifa de finais de semana, feriados prolongados e valores do Day Use em 2 cliques.
+            </p>
+          </div>
+
+          <div class="tactile-raised bg-white p-6 rounded-2xl border border-zinc-200/60">
+            <h4 class="font-display font-bold text-lg text-emerald-700 mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Bloqueio Manual de Datas
+            </h4>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed">
+              Bloqueie dias específicos para manutenção, uso pessoal de Nathalia & Rudá ou eventos fechados sem afetar os sincronismos.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INVESTIMENTO & PROPOSTA IRRECUSÁVEL ==================== -->
+  <section id="investimento" class="py-24 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500 font-bold">04. VALOR DO INVESTIMENTO</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-zinc-500">
+          <span>Condição Amigos</span>
+          <span class="text-zinc-400">//</span>
+          <span class="text-emerald-700 font-bold">Parcelamento em 3x Sem Juros</span>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="tactile-raised bg-white rounded-3xl p-8 md:p-12 border border-zinc-200/80 shadow-lg relative overflow-hidden">
+          
+          <!-- Ribbon badge -->
+          <div class="absolute -right-12 top-8 bg-emerald-500 text-white font-mono text-[10px] font-bold px-12 py-1.5 rotate-45 shadow-md uppercase tracking-wider">
+            Preço Amigo
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-zinc-200/60 pb-8 mb-8 gap-6">
+            <div>
+              <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold rounded-full uppercase tracking-wider mb-2">
+                Ecossistema Completo (Site + CRM + Calendário)
+              </span>
+              <h3 class="font-display font-black text-3xl text-zinc-950 uppercase">Chalé Nathalia & Rudá</h3>
+              <p class="text-xs text-zinc-500 font-light mt-1">Desenvolvimento completo do Front-End + Back-End CRM + Treinamento de Uso</p>
+            </div>
+            
+            <div class="text-left md:text-right">
+              <span class="text-xs font-mono text-zinc-400 line-through block">Valor Normal de Mercado: R$ 8.900,00</span>
+              <span class="font-display font-black text-4xl text-zinc-950 block mt-1">3x R$ 1.230,00</span>
+              <span class="text-xs font-mono text-emerald-600 font-bold block mt-1">ou R$ 3.690,00 à vista</span>
+            </div>
+          </div>
+
+          <!-- Deliverables Bullet Points -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Design Exclusivo UX/UI:</strong> Layout imersivo, responsivo e adaptado para celulares.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Módulo Pernoite & Day Use:</strong> Calendários e regras independentes.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Cálculo de Preço Dinâmico:</strong> Desconto progressivo por número de noites.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Sincronização de Calendários (iCal):</strong> Google Calendar, Airbnb e Booking.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Painel CRM Administrativo:</strong> Gestão de hóspedes, check-in/out e finanças.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs text-zinc-700">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <span><strong>Guia Digital do Hóspede:</strong> Manual web completo para QR Code no chalé.</span>
+            </div>
+          </div>
+
+          <!-- Formas de Pagamento & Manutenção -->
+          <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-200/60 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest block mb-1">Forma de Pagamento</span>
+              <span class="font-display font-bold text-sm text-zinc-950 block">3x de R$ 1.230,00</span>
+              <p class="text-[11px] text-zinc-500 font-light mt-1">1ª parcela na aprovação do projeto, 2ª parcela na entrega do protótipo e 3ª parcela no lançamento oficial do site.</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-widest block mb-1">Manutenção Mensal & Hospedagem</span>
+              <span class="font-display font-bold text-sm text-[#4353ff] block">R$ 249,00 / mês</span>
+              <p class="text-[11px] text-zinc-500 font-light mt-1">Inclui servidor ultra-rápido, suporte técnico contínuo, monitoramento do iCal anti-overbooking, backups diários e pequenas alterações.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== OPCIONAIS ESTRATÉGICOS ==================== -->
+  <section id="optionals" class="py-24 px-6 md:px-12 bg-transparent border-b border-zinc-200 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200/60 pb-8 mb-16 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 bg-zinc-950 rounded-full"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500">SERVIÇOS OPCIONAIS</span>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs text-zinc-500">
+          <span>Módulos Adicionais</span>
+          <span class="text-zinc-400">//</span>
+          <span class="text-zinc-950">Potencialize a Operação.</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Opcional 1 -->
+        <div class="tactile-raised bg-white border border-zinc-200/60 rounded-3xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-[#4353ff] uppercase tracking-widest bg-blue-50 border border-blue-200 px-3 py-1 rounded-full font-bold self-start">
+              Integração de Pagamento Automatizado
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mt-2">Gateway de Pagamento Direct</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed mt-2">
+              Integração com Mercado Pago, PagSeguro ou Stripe no checkout do site. Permite que o hóspede pague a reserva no cartão de crédito em até 12x ou gere QR Code Pix com confirmação automática de reserva imediata no sistema.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-zinc-100 flex flex-col">
+            <span class="font-mono text-[9px] text-zinc-400 font-bold uppercase tracking-widest">Pagamento Único (Opcional)</span>
+            <span class="font-display font-black text-3xl text-zinc-950 mt-1">R$ 390,00</span>
+          </div>
+        </div>
+
+        <!-- Opcional 2 -->
+        <div class="tactile-raised bg-white border border-zinc-200/60 rounded-3xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 font-mono text-[9px] text-emerald-600 uppercase tracking-widest bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full font-bold self-start">
+              Otimização de Buscadores & IA
+            </div>
+            <h3 class="font-display font-black text-xl text-zinc-950 uppercase mt-2">SEO & GEO (Google + ChatGPT/Perplexity)</h3>
+            <p class="text-xs text-zinc-500 font-light leading-relaxed mt-2">
+              Estruturação técnica avançada de dados (JSON-LD) para posicionar o chalé no topo do Google quando procurarem por "chalé para alugar" ou "Day Use na região", e garantir citação quando perguntarem para assistentes de IA.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-zinc-100 flex flex-col">
+            <span class="font-mono text-[9px] text-zinc-400 font-bold uppercase tracking-widest">Pagamento Único (Opcional)</span>
+            <span class="font-display font-black text-3xl text-emerald-600 mt-1">R$ 490,00</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section id="cta" class="py-24 px-6 md:px-12 bg-zinc-950 text-white relative overflow-hidden rounded-t-[3rem] border-t border-zinc-800">
+    <div class="absolute inset-0 grid-blueprint opacity-10"></div>
+    <!-- Ambient Decor -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#4353ff]/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 font-mono text-[10px] text-white/70 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/10 font-bold mb-8 shadow-sm">
+        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></span>
+        Vamos Decolar o Chalé Juntos!
+      </div>
+      
+      <h2 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.05] uppercase mb-8">
+        Prontos para o Novo Nível do <br/> <span class="text-[#4353ff] text-tactile-3d inline-block">Chalé Nathalia & Rudá?</span>
+      </h2>
+      
+      <p class="font-sans text-base md:text-lg text-zinc-400 leading-relaxed font-light mb-12 max-w-2xl">
+        Mais do que um site bonito, estamos construindo a sua independência financeira das plataformas e estruturando o novo canal de vendas de <strong class="text-white font-semibold">Day Use e Hospedagem Direta</strong>.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl mb-12 text-left">
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-emerald-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">Sem Taxas OTA</h4>
+           <p class="text-xs text-zinc-400 font-light">Garanta 100% da receita de cada reserva direta no seu bolso.</p>
+         </div>
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-[#4353ff] mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">Design Inovador</h4>
+           <p class="text-xs text-zinc-400 font-light">UX/UI tátil de altíssimo padrão que encanta o hóspede.</p>
+         </div>
+         <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+           <svg class="w-6 h-6 text-purple-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+           <h4 class="font-bold text-sm text-white mb-1 tracking-wide">CRM Sem Complicação</h4>
+           <p class="text-xs text-zinc-400 font-light">Controle total de calendário, check-ins e pagamentos.</p>
+         </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-5 items-center justify-center w-full">
+        <a href="https://wa.me/5511940595792?text=Ol%C3%A1%20Guilherme,%20aprovamos%20a%20proposta%20do%20site%20e%20CRM%20para%20o%20Chal%C3%A9%20Nathalia%20e%20Rud%C3%A1!" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-sm font-bold px-10 py-5 uppercase tracking-widest rounded-2xl shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_40px_rgba(16,185,129,0.6)] transition-all duration-300 flex items-center gap-3 hover:-translate-y-1">
+          Aprovar Proposta no WhatsApp
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#f4f5f8] text-zinc-950 pt-24 border-t border-zinc-200 overflow-hidden relative grid-blueprint">
+    
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <!-- Giant B.ROCKET text banner -->
+      <div class="w-full text-center relative pointer-events-none select-none mb-12">
+        <h1 class="font-display font-black text-[13vw] leading-none tracking-[0.05em] text-zinc-950 uppercase text-tactile-3d-dark">
+          b.rocket
+        </h1>
+        <div class="absolute bottom-1 right-2 font-mono text-[9px] text-zinc-400 hidden sm:block tracking-widest uppercase font-bold">
+          ENTREGAMOS O TRABALHO MELHOR DO QUE O BRIEFING // B.ROCKET*
+        </div>
+      </div>
+
+      <div class="h-[1px] bg-zinc-200 w-full mb-16"></div>
+
+      <!-- Meta details & copyrights -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 items-start text-zinc-500 font-mono text-[10px] md:text-xs">
+        
+        <!-- Agency definition -->
+        <div class="md:col-span-4 space-y-2">
+          <span class="text-zinc-950 font-display font-extrabold block uppercase tracking-wider">b.rocket Agency</span>
+          <p class="font-light leading-relaxed max-w-xs text-zinc-500">
+            Com mais de 12 anos de experiência em desenvolvimento web de alta performance, a b.rocket cria ecossistemas que conectam marcas a resultados reais.
+          </p>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="md:col-span-4 flex flex-col gap-1 text-zinc-500 font-light">
+          <span class="font-bold text-zinc-950 uppercase block tracking-wider mb-1">Contato</span>
+          <span class="block font-mono text-[10px] text-zinc-600 font-medium">BE ROCKET AGENCIA DIGITAL LTDA</span>
+          <span class="block font-mono text-[10px]">CNPJ: 37.375.164/0001-03</span>
+          <a href="mailto:berocket@berocket.com.br" class="hover:text-zinc-950 transition-colors block font-mono">berocket@berocket.com.br</a>
+          <span class="block font-mono">(11) 94059-5792</span>
+          <span class="text-[10px] text-zinc-400 block mt-2 font-bold">© 2026 b.rocket. Todos os direitos reservados.</span>
+        </div>
+
+        <!-- Credits and logos -->
+        <div class="md:col-span-4 md:text-right flex flex-col md:items-end justify-between self-stretch gap-4">
+          <div class="flex items-center gap-2 text-zinc-950 md:justify-end">
+            <div class="w-8 h-8 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden">
+              <div class="w-[22px] h-[22px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+                <div class="w-[15px] h-[10px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+                  <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+                  <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+                </div>
+                <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
+              </div>
+            </div>
+            <span class="font-display font-black text-xl tracking-widest">B.ROCKET</span>
+          </div>
+          
+          <span class="text-zinc-400 block text-[9px] uppercase font-bold">PROPOSTA CUSTOMIZADA PARA NATHALIA & RUDÁ</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT FOR INTERACTIVITY ==================== -->
+  <script>
+    // Navbar Scroll Effect
+    const navContainer = document.getElementById('nav-container');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navContainer.classList.add('bg-white/90', 'backdrop-blur-md', 'tactile-raised');
+        navContainer.classList.add('border-zinc-200/40');
+        navContainer.classList.remove('bg-transparent', 'border-transparent', 'shadow-none');
+      } else {
+        navContainer.classList.remove('bg-white/90', 'backdrop-blur-md', 'tactile-raised');
+        navContainer.classList.remove('border-zinc-200/40');
+        navContainer.classList.add('bg-transparent', 'border-transparent', 'shadow-none');
+      }
+    });
+
+    // Tab Switcher Front vs Back
+    function switchTab(tab) {
+      const frontContent = document.getElementById('tab-front');
+      const backContent = document.getElementById('tab-back');
+      const frontBtn = document.getElementById('tab-front-btn');
+      const backBtn = document.getElementById('tab-back-btn');
+
+      if (tab === 'front') {
+        frontContent.classList.remove('hidden');
+        backContent.classList.add('hidden');
+        frontBtn.className = "px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all bg-[#4353ff] text-white shadow-md";
+        backBtn.className = "px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all text-zinc-600 hover:text-zinc-950";
+      } else {
+        frontContent.classList.add('hidden');
+        backContent.classList.remove('hidden');
+        backBtn.className = "px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all bg-[#4353ff] text-white shadow-md";
+        frontBtn.className = "px-6 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all text-zinc-600 hover:text-zinc-950";
+      }
+    }
+
+    // Simulator Interactive Logic
+    let currentService = 'pernoite';
+
+    function setServiceType(type) {
+      currentService = type;
+      const btnPernoite = document.getElementById('btn-pernoite');
+      const btnDayuse = document.getElementById('btn-dayuse');
+      const pernoiteControls = document.getElementById('pernoite-controls');
+
+      if (type === 'pernoite') {
+        btnPernoite.className = "py-3 px-4 rounded-xl border border-[#4353ff] bg-[#4353ff] text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all";
+        btnDayuse.className = "py-3 px-4 rounded-xl border border-white/20 bg-white/5 text-zinc-300 hover:bg-white/10 font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all";
+        pernoiteControls.style.display = 'block';
+      } else {
+        btnDayuse.className = "py-3 px-4 rounded-xl border border-emerald-500 bg-emerald-600 text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all";
+        btnPernoite.className = "py-3 px-4 rounded-xl border border-white/20 bg-white/5 text-zinc-300 hover:bg-white/10 font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all";
+        pernoiteControls.style.display = 'none';
+      }
+      updateSimulation();
+    }
+
+    function updateSimulation() {
+      const diarias = parseInt(document.getElementById('diarias-slider').value);
+      const addCafe = document.getElementById('add-cafe').checked;
+      const addVinho = document.getElementById('add-vinho').checked;
+
+      let basePrice = 0;
+      let discount = 0;
+      let addonsPrice = 0;
+      let title = "";
+
+      if (addCafe) addonsPrice += 120;
+      if (addVinho) addonsPrice += 180;
+
+      if (currentService === 'pernoite') {
+        let pricePerNight = 600;
+        if (diarias >= 2 && diarias < 4) {
+          pricePerNight = 550;
+          discount = 50 * diarias;
+        } else if (diarias >= 4) {
+          pricePerNight = 490;
+          discount = 110 * diarias;
+        }
+
+        basePrice = diarias * 600;
+        const totalBase = (diarias * pricePerNight);
+        title = `Hospedagem (${diarias} ${diarias === 1 ? 'Noite' : 'Noites'})`;
+        
+        document.getElementById('diarias-val').innerText = `${diarias} ${diarias === 1 ? 'Noite' : 'Noites'} (R$ ${pricePerNight}/noite)`;
+      } else {
+        basePrice = 450;
+        discount = 0;
+        title = "Reserva Day Use (09h às 18h)";
+      }
+
+      const finalTotal = (basePrice - discount) + addonsPrice;
+
+      document.getElementById('sim-title').innerText = title;
+      document.getElementById('sim-base').innerText = `R$ ${basePrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('sim-addons').innerText = `R$ ${addonsPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('sim-desc').innerText = `-R$ ${discount.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('sim-total').innerText = `R$ ${finalTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+
+    // Initialize simulation on load
+    updateSimulation();
+  </script>
+</body>
+</html>

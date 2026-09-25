@@ -151,7 +151,7 @@ export default function AdminLayout({ children, user, currentPage, onNavigate }:
             </button>
             <div className="flex items-center gap-1.5 min-w-0">
               <div className="w-2 h-2 bg-zinc-950 rounded-full animate-ping shrink-0" />
-              <span className="text-[10px] text-zinc-500 font-mono tracking-wider font-semibold truncate">GEO_CORE_V10 // ACTIVE</span>
+              <span className="text-[10px] text-zinc-500 font-mono tracking-wider font-semibold truncate">b.rocket // Hub Central 360º</span>
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0">
