@@ -2,12 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <title>Redirecionando... | b.rocket</title>
   <script src="./js/session-guard.js"></script>
   <script>
-    // Se a guarda de sessão passar (logado), vai direto para o Hub Central
-    window.location.href = './Hub_Central_Marketing.html';
+    if (sessionStorage.getItem('b_rocket_session') === 'cdv_authenticated') {
+      window.location.href = './Hub_Central_Marketing.html';
+    } else {
+      window.location.href = './login.html';
+    }
   </script>
 </head>
-<body>
+<body style="background:#f4f5f8;">
 </body>
 </html>

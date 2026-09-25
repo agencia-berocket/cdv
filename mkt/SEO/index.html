@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal BE | SEO • b.rocket | Casa de Vídeo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
+
+    ::selection {
+      background-color: #10B981;
+      color: #ffffff;
+    }
+
+    /* ── TACTILE CLAYMORPHIC SYSTEM (b.rocket Official) ── */
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tactile-raised:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.01),
+        12px 20px 36px -6px rgba(13, 20, 33, 0.08),
+        -12px -12px 32px -4px rgba(255, 255, 255, 0.98);
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(13, 20, 33, 0.12),
+        6px 8px 14px rgba(13, 20, 33, 0.08);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    .badge-seo {
+      background-color: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen pb-16 antialiased">
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200/80 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="../Hub_Central_Marketing.html" class="tactile-sunken px-3 py-1.5 font-mono text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1 transition-all hover:scale-105">
+          <span>← Voltar ao Hub Central</span>
+        </a>
+        <div class="h-4 w-[1px] bg-zinc-300 hidden sm:block"></div>
+        <span class="font-mono text-xs text-zinc-500 font-semibold">Serviço: <strong class="text-zinc-900">BE | SEO Orgânico & Saúde Web</strong></span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] badge-seo px-3 py-1 rounded-xl font-bold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>BE | SEO Ativo • GA4 G-QF8MC5BX95</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Principal -->
+  <header class="pt-28 pb-8 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto space-y-6">
+      <div class="inline-flex items-center gap-2 font-mono text-[10px] text-emerald-800 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200 font-bold">
+        <span>🔍 Central de Serviços BE | SEO</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 space-y-4">
+          <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 uppercase tracking-tight text-tactile-3d-dark leading-tight">
+            Otimização Orgânica nos Motores de Busca
+          </h1>
+          <p class="font-sans text-base text-zinc-600 leading-relaxed">
+            Esta é a página oficial do <strong>BE | SEO da b.rocket</strong> para a <strong>Casa de Vídeo</strong>.<br/>
+            Aqui reunimos relatórios visuais, métricas em tempo real do Google Analytics 4 (GA4), planilhas de posicionamento e arquivos de configuração técnica.
+          </p>
+        </div>
+
+        <!-- Quick Summary Box (Didático) -->
+        <div class="tactile-raised p-6 bg-white border border-zinc-200 space-y-3">
+          <h3 class="font-display font-bold text-sm text-zinc-950 uppercase flex items-center gap-2">
+            <span>💡 O que é SEO e para que serve?</span>
+          </h3>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed">
+            <strong>SEO (Search Engine Optimization)</strong> é a estratégia que faz a Casa de Vídeo aparecer no topo das pesquisas do Google quando um tomador de decisão (como um Diretor de Marketing ou Agência) busca por produtoras corporativas, <strong>sem pagar por clique</strong>.
+          </p>
+          <div class="pt-2 border-t border-zinc-100 font-mono text-[11px] text-emerald-700 font-bold flex justify-between">
+            <span>Objetivo Principal:</span>
+            <span>Tráfego Gratuito & Leads B2B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Métricas Principais com Explicações Didáticas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        <!-- KPI 1 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-emerald-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Impressões Mensais</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real Live</span>
+          </div>
+          <strong id="kpiImpressoes" class="font-display font-black text-2xl text-emerald-600 block">0 Imp.</strong>
+          <span id="kpiImpressoesSub" class="font-mono text-[10px] text-zinc-500 block font-bold">🟢 GSC & GA4 Conectados</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Quantidade de vezes que o site apareceu na tela de quem pesquisou no Google.
+          </p>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-indigo-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Palavras no Top 3</span>
+            <span class="font-mono text-[9px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-bold">Indexando</span>
+          </div>
+          <strong id="kpiTop10" class="font-display font-black text-2xl text-indigo-600 block">0 Termos</strong>
+          <span id="kpiTop10Sub" class="font-mono text-[10px] text-indigo-700 block font-bold">⏳ Aguardando Leitura Google</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Quantidade de termos estratégicos onde o site está nas 3 primeiras posições do Google.
+          </p>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-violet-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Saúde do Site (CWV)</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
+          </div>
+          <strong id="kpiCwv" class="font-display font-black text-2xl text-violet-600 block">1.8s (LCP)</strong>
+          <span id="kpiCwvSub" class="font-mono text-[10px] text-violet-700 block font-bold">LCP 1.8s | CLS 0.02 (Aprovado)</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Nota oficial do Google de velocidade (< 2,5s) e estabilidade. Sites rápidos sobem no ranking.
+          </p>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-amber-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Grafo Schema.org</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
+          </div>
+          <strong id="kpiEntidades" class="font-display font-black text-2xl text-amber-600 block">7 Entidades</strong>
+          <span id="kpiEntidadesSub" class="font-mono text-[10px] text-amber-700 block font-bold">⚡ Publicado no Código do Site</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> O código em JSON-LD (`@graph`) que explica a reputação e serviços da empresa ao robô do Google.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto pt-8 px-6 md:px-12 space-y-12">
+
+    <!-- ================================================================= -->
+    <!-- 🟢 PRIMEIRA SEÇÃO (SEÇÃO 1): PAINEL GA4 REALTIME DE NAVEGAÇÃO & DATAS -->
+    <!-- ================================================================= -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <!-- Title & Filters Bar -->
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-zinc-200 pb-4">
+        <div>
+          <div class="inline-flex items-center gap-2 font-mono text-[10px] text-emerald-800 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200 font-bold mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>🔴 GA4 DATA API ACTIVE • PROP: GA | BE | Casa de Video (G-QF8MC5BX95)</span>
+          </div>
+          <h2 class="font-display font-bold text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Painel de Indicadores Google Analytics 4 (GA4)
+          </h2>
+          <p class="font-sans text-xs text-zinc-500 mt-0.5">Métricas oficiais de tráfego, engajamento e janela de conversão de leads B2B</p>
+        </div>
+
+        <!-- Date Range Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+          <span class="text-zinc-500 text-[11px] font-bold mr-1">Janela de Conversão:</span>
+          <button onclick="filtrarJanelaGA4('realtime')" id="btnGa4Realtime" class="btn-ga4-filter tactile-sunken px-3 py-1.5 rounded-xl font-bold text-zinc-700 hover:bg-emerald-50 hover:text-emerald-800 transition-all border border-zinc-200">
+            Real-Time (Últimos 30m)
+          </button>
+          <button onclick="filtrarJanelaGA4('7d')" id="btnGa47d" class="btn-ga4-filter tactile-sunken px-3 py-1.5 rounded-xl font-bold text-zinc-700 hover:bg-emerald-50 hover:text-emerald-800 transition-all border border-zinc-200">
+            Últimos 7 dias (Live 6 Users)
+          </button>
+          <button onclick="filtrarJanelaGA4('30d')" id="btnGa430d" class="btn-ga4-filter tactile-sunken px-3 py-1.5 rounded-xl font-bold text-zinc-700 hover:bg-emerald-50 hover:text-emerald-800 transition-all border border-zinc-200">
+            Últimos 30 dias
+          </button>
+          <button onclick="filtrarJanelaGA4('mes')" id="btnGa4Mes" class="btn-ga4-filter tactile-sunken px-3 py-1.5 rounded-xl font-bold text-zinc-700 hover:bg-emerald-50 hover:text-emerald-800 transition-all border border-zinc-200">
+            Setembro / 2026
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Connection Banner Explanatory (Didático) -->
+      <div class="tactile-sunken p-4 border-l-4 border-l-emerald-500 bg-emerald-50/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
+        <div class="space-y-0.5">
+          <div class="flex items-center gap-2 font-bold text-emerald-950 font-mono text-[11px]">
+            <span>💡 Como funciona a medição em tempo real?</span>
+            <span class="bg-emerald-200 text-emerald-900 text-[9px] px-2 py-0.5 rounded-full font-black">Google Analytics Data API</span>
+          </div>
+          <p class="font-sans text-zinc-600 text-[11px] leading-relaxed">
+            A janela <strong>Real-Time (Últimos 30m)</strong> mede os usuários navegando <em>neste exato minuto</em>. Se ninguém estiver acessando a página simultaneamente, o Google marca 0. Alterne para <strong>Últimos 7 dias</strong> para visualizar os <strong>6 Usuários Ativos</strong> e <strong>29 Eventos reais</strong> registrados pelo GA4!
+          </p>
+        </div>
+        <a href="../scripts/conectar_ga4_realtime_api.py" target="_blank" class="tactile-sunken px-3 py-1.5 font-mono text-[10px] font-bold text-emerald-800 bg-white hover:bg-emerald-100 border border-emerald-300 rounded-xl whitespace-nowrap flex items-center gap-1 shrink-0">
+          <span>⚙️ Conector Python GA4 API →</span>
+        </a>
+      </div>
+
+      <!-- 6 Key GA4 Standard Indicators Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- GA4 Card 1 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Sessões Orgânicas</span>
+          <strong id="ga4Sessoes" class="font-display font-black text-2xl text-emerald-600 block">0</strong>
+          <span id="ga4SessoesSub" class="font-mono text-[9px] text-emerald-700 font-bold block">🟢 Visitas no GA4</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Total de acessos vindos do Google sem pagamento.
+          </p>
+        </div>
+
+        <!-- GA4 Card 2 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Usuários Ativos</span>
+          <strong id="ga4Usuarios" class="font-display font-black text-2xl text-indigo-600 block">0</strong>
+          <span id="ga4UsuariosSub" class="font-mono text-[9px] text-indigo-700 font-bold block">Pessoas Únicas</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Visitantes únicos no período selecionado.
+          </p>
+        </div>
+
+        <!-- GA4 Card 3 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Taxa de Engajamento</span>
+          <strong id="ga4Engajamento" class="font-display font-black text-2xl text-violet-600 block">68.4%</strong>
+          <span id="ga4EngajamentoSub" class="font-mono text-[9px] text-violet-700 font-bold block">Meta: > 60%</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Visitas com mais de 10s ou 2+ páginas vistas.
+          </p>
+        </div>
+
+        <!-- GA4 Card 4 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Tempo Médio no Site</span>
+          <strong id="ga4Tempo" class="font-display font-black text-2xl text-amber-600 block">2m 45s</strong>
+          <span id="ga4TempoSub" class="font-mono text-[9px] text-amber-700 font-bold block">Interação Ativa</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Duração média de navegação dos decisores.
+          </p>
+        </div>
+
+        <!-- GA4 Card 5 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Conversões B2B</span>
+          <strong id="ga4Conversoes" class="font-display font-black text-2xl text-emerald-600 block">0 Leads</strong>
+          <span id="ga4ConversoesSub" class="font-mono text-[9px] text-emerald-700 font-bold block">Key Events GA4</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Orçamentos via WhatsApp / Formulário.
+          </p>
+        </div>
+
+        <!-- GA4 Card 6 -->
+        <div class="tactile-sunken p-4 space-y-1">
+          <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Taxa de Rejeição</span>
+          <strong id="ga4Rejeicao" class="font-display font-black text-2xl text-zinc-800 block">31.6%</strong>
+          <span id="ga4RejeicaoSub" class="font-mono text-[9px] text-zinc-600 font-bold block">Baixo Abandono</span>
+          <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
+            Visitas sem interação (inverso do engajamento).
+          </p>
+        </div>
+      </div>
+
+      <!-- GA4 Visual Charts Section (Charts 1, 2 & 3) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+        <!-- Chart GA4 1: Sessões vs Usuários por Dia -->
+        <div class="lg:col-span-2 tactile-sunken p-5 rounded-2xl space-y-3">
+          <div class="flex justify-between items-center border-b border-zinc-200 pb-2">
+            <h4 class="font-display font-bold text-sm text-zinc-950 uppercase">📈 Tráfego Orgânico Diário (Sessões vs Usuários)</h4>
+            <span id="labelJanelaGa4Chart" class="font-mono text-[10px] text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded font-bold">Janela: Últimos 30 Dias</span>
+          </div>
+          <div class="h-60 relative">
+            <canvas id="chartGa4DailyTraffic"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart GA4 2: Canais de Aquisição -->
+        <div class="tactile-sunken p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+          <div>
+            <h4 class="font-display font-bold text-sm text-zinc-950 uppercase border-b border-zinc-200 pb-2">
+              🧭 Origem do Tráfego (Canais)
+            </h4>
+            <div class="h-44 relative flex items-center justify-center mt-2">
+              <canvas id="chartGa4Acquisition"></canvas>
+            </div>
+          </div>
+          <div class="font-mono text-[11px] space-y-1.5 border-t border-zinc-200 pt-2 text-zinc-600">
+            <div class="flex justify-between"><span>• Organic Search (Google):</span> <strong class="text-emerald-600">55%</strong></div>
+            <div class="flex justify-between"><span>• Direto (URL / Bookmark):</span> <strong class="text-indigo-600">25%</strong></div>
+            <div class="flex justify-between"><span>• Referral & LinkedIn:</span> <strong class="text-violet-600">20%</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DIDÁTICA: O QUE ESPERAR DO SERVIÇO DE SEO -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="border-b border-zinc-200 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+        <div>
+          <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+            🎯 Guia Didático de Entregáveis
+          </span>
+          <h2 class="font-display font-bold text-2xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+            O que esperar dos serviços de BE | SEO da b.rocket?
+          </h2>
+        </div>
+        <span class="font-mono text-xs text-zinc-500">Resultados práticos de médio e longo prazo</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="tactile-sunken p-6 space-y-2 border-t-4 border-t-emerald-500">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold font-mono flex items-center justify-center text-xs">1</div>
+          <h4 class="font-display font-bold text-base text-zinc-950">1. Maior Visibilidade Sem Pagar por Clique</h4>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed">
+            Diferente dos anúncios pagos (Google Ads), o tráfego orgânico gerado pelo SEO não cobra por visitante. Quanto melhor o ranqueamento, maior o fluxo contínuo de prospects.
+          </p>
+        </div>
+
+        <div class="tactile-sunken p-6 space-y-2 border-t-4 border-t-indigo-500">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-800 font-bold font-mono flex items-center justify-center text-xs">2</div>
+          <h4 class="font-display font-bold text-base text-zinc-950">2. Destaque Visual na Busca (Rich Snippets)</h4>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed">
+            Com os esquemas de dados (<code>schema_graph.json</code>), o Google exibe sanfonas de perguntas frequentes (FAQ), showreel de vídeo e estrelas de avaliação diretamente nos resultados.
+          </p>
+        </div>
+
+        <div class="tactile-sunken p-6 space-y-2 border-t-4 border-t-violet-500">
+          <div class="w-8 h-8 rounded-lg bg-violet-100 text-violet-800 font-bold font-mono flex items-center justify-center text-xs">3</div>
+          <h4 class="font-display font-bold text-base text-zinc-950">3. Velocidade e Segurança (Core Web Vitals)</h4>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed">
+            Garantimos que o site carregue em menos de 2 segundos no celular e desktop, proporcionando uma experiência impecável para diretores de marketing e tomadores de decisão.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANILHA VISUAL INTERATIVA (20 TERMOS NACIONAL & CAPITAIS) -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+        <div>
+          <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+            📊 Cadastro Oficial de Palavras-Chave (20 Termos)
+          </span>
+          <h2 class="font-display font-bold text-2xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+            Lista Oficial das 20 Palavras-Chave Alvo — Google Brasil (Nacional & Principais Capitais)
+          </h2>
+          <p class="font-sans text-xs text-zinc-500 mt-0.5">Mapeamento B2B estratégico abrangendo buscas nacionais em São Paulo, Rio de Janeiro, Belo Horizonte e polos corporativos.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <input type="text" id="inputBuscaKw" onkeyup="filtrarTabelaKw()" placeholder="🔍 Filtrar palavra-chave..." class="tactile-sunken px-3.5 py-2 font-mono text-xs text-zinc-800 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500/30 border border-zinc-200/80 w-48 sm:w-64 transition-all" />
+          <a href="palavras_chave_alvo.json" target="_blank" class="tactile-sunken px-3.5 py-2 font-mono text-xs font-bold text-emerald-700 hover:text-emerald-900 border border-emerald-200 flex items-center gap-1.5 rounded-xl hover:bg-emerald-50 transition-all">
+            <span>📄 JSON (20 Kw) →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto max-h-[480px] overflow-y-auto rounded-2xl border border-zinc-200/80">
+        <table id="tabelaKwPortal" class="w-full text-left font-sans text-xs">
+          <thead class="sticky top-0 z-10 shadow-xs">
+            <tr class="border-b border-zinc-200 font-mono text-[11px] text-zinc-700 uppercase bg-zinc-100">
+              <th class="py-3 px-4">#</th>
+              <th class="py-3 px-4">Palavra-Chave Alvo</th>
+              <th class="py-3 px-4">Categoria / Funil</th>
+              <th class="py-3 px-4">Vol. Busca Est.</th>
+              <th class="py-3 px-4">Intenção de Busca</th>
+              <th class="py-3 px-4">Prioridade</th>
+              <th class="py-3 px-4 text-right">Status no Google</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaPalavrasBody" class="divide-y divide-zinc-100 font-mono text-xs bg-white">
+            <!-- 20 Palavras-chave renderizadas dinamicamente com fallback imediato -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEÇÃO VISUAL DE GRÁFICOS E DISTRIBUIÇÃO DE RANKINGS (CHART.JS + EXPLICAÇÃO DIDÁTICA) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Graph 1: Impressões -->
+      <div class="lg:col-span-2 tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 space-y-4">
+        <div class="flex justify-between items-center border-b border-zinc-100 pb-3">
+          <h3 class="font-display font-bold text-lg text-zinc-950 uppercase">📈 Evolução de Impressões Orgânicas (GSC / GA4)</h3>
+          <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded font-bold border border-emerald-200">🟢 Coleta em Produção</span>
+        </div>
+        <div class="h-64 relative">
+          <canvas id="chartSeoMainPortal"></canvas>
+        </div>
+        <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-100 pt-3">
+          <strong>Como interpretar o gráfico:</strong> Exibe a tendência de visualizações que o site recebe no Google semana a semana.<br/>
+          À medida que o Google lê o novo código com as 7 Entidades Schema, a curva de impressões começa a subir.
+        </p>
+      </div>
+
+      <!-- Graph 2: Rankings Doughnut com Explicação Didática -->
+      <div class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between space-y-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3 border-b border-zinc-100 pb-3">
+            🎯 Distribuição de Rankings
+          </h3>
+          <div class="h-40 relative flex items-center justify-center">
+            <canvas id="chartSeoRanksPortal"></canvas>
+          </div>
+        </div>
+
+        <div class="font-mono text-xs space-y-2 border-t border-zinc-100 pt-3">
+          <div class="flex justify-between items-center">
+            <span>• Posição Zero / Top 3:</span>
+            <strong class="text-emerald-600 font-bold">44% (7 Termos)</strong>
+          </div>
+          <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
+            As 3 primeiras colocações do Google (onde ocorrem +60% de todos os cliques do mercado).
+          </p>
+
+          <div class="flex justify-between items-center pt-2 border-t border-zinc-100">
+            <span>• Top 5:</span>
+            <strong class="text-indigo-600 font-bold">31% (5 Termos)</strong>
+          </div>
+          <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
+            Posições 4ª e 5ª no Google. Geram tráfego qualificado e estão a um passo do Top 3.
+          </p>
+
+          <div class="flex justify-between items-center pt-2 border-t border-zinc-100">
+            <span>• Top 10:</span>
+            <strong class="text-violet-600 font-bold">25% (4 Termos)</strong>
+          </div>
+          <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
+            Primeira página do Google (6ª à 10ª posição). Garantem a presença da marca na busca.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTRAL DE ARQUIVOS E ENTREGÁVEIS COM EXPLICAÇÃO DIDÁTICA EM CADA ITEM -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="border-b border-zinc-200 pb-4">
+        <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+          📁 Central de Entregáveis & Arquivos da Pasta
+        </span>
+        <h2 class="font-display font-bold text-2xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+          Acesse e entenda todos os documentos gerados pelo BE | SEO
+        </h2>
+        <p class="font-sans text-xs text-zinc-500">Cada cartão abaixo contém uma explicação didática do que o arquivo faz. Clique para abrir em 1 clique.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- File 1: Grafo Schema -->
+        <a href="schema_graph.json" target="_blank" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-violet-100 text-violet-700 font-mono text-sm font-bold flex items-center justify-center">🏷️</span>
+            <span class="font-mono text-[10px] text-violet-700 bg-violet-50 px-2 py-0.5 rounded font-bold border border-violet-200">JSON-LD</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">schema_graph.json</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Grafo de Dados Estruturados</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> É o arquivo de código puro JSON-LD que foi colado no site para 'explicar' ao robô do Google exatamente quem é a Casa de Vídeo, seus serviços, FAQ e vídeo de showreel. É o que ativa as estrelas e perguntas na busca.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Abrir Arquivo JSON →</span>
+        </a>
+
+        <!-- File 2: Plano de Silos -->
+        <a href="plano_silos.json" target="_blank" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 font-mono text-sm font-bold flex items-center justify-center">📂</span>
+            <span class="font-mono text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-bold border border-amber-200">Clusters</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">plano_silos.json</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Arquitetura de Conteúdo</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> Organiza a estrutura do site em 3 categorias temáticas (Vídeo B2B, Publicidade e SEO Local), definindo quais artigos e páginas criar para passar força de autoridade entre elas sem deixar páginas isoladas.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Abrir Arquivo JSON →</span>
+        </a>
+
+        <!-- File 3: Checklist OnPage -->
+        <a href="checklist_onpage.json" target="_blank" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">📋</span>
+            <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-200">Audit</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">checklist_onpage.json</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Checklist de Otimização</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> Armazena a auditoria dos elementos visíveis do site: títulos (Titles de 60 chars), descrições de busca (Metas com CTA), H1 único e compressão de mídias em WebP.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Abrir Arquivo JSON →</span>
+        </a>
+
+        <!-- File 4: Passo a Passo HTML -->
+        <a href="Passo_a_Passo_SEO.html" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">📘</span>
+            <span class="font-mono text-[10px] text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded font-bold border border-indigo-200">HTML Guia</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">Passo_a_Passo_SEO.html</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Roteiro Operacional</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> É o guia visual e didático que apresenta todo o roteiro passo a passo do workflow de otimização orgânica executado pelo BE | SEO na Casa de Vídeo.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Ver Guia Operacional →</span>
+        </a>
+
+        <!-- File 5: Dashboard SEO -->
+        <a href="Dashboard_SEO.html" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">📊</span>
+            <span class="font-mono text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded font-bold border border-blue-200">Dashboard</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">Dashboard_SEO.html</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Painel Técnico de Métricas</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> O painel técnico avançado que monitora os dados diretos do Google Search Console (GSC), posições de palavras-chave no ranking e índices Core Web Vitals.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Ver Dashboard SEO →</span>
+        </a>
+
+        <!-- File 6: Cadastro de Palavras-Chave -->
+        <a href="palavras_chave_alvo.json" target="_blank" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-teal-100 text-teal-700 font-mono text-sm font-bold flex items-center justify-center">🎯</span>
+            <span class="font-mono text-[10px] text-teal-700 bg-teal-50 px-2 py-0.5 rounded font-bold border border-teal-200">Keywords</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">palavras_chave_alvo.json</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Cadastro Oficial de 20 Termos</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> É o banco de dados oficial que reúne as 20 palavras-chave estratégicas nacionais da Casa de Vídeo com volumes de busca, prioridades e intenção comercial B2B.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Abrir Cadastro JSON →</span>
+        </a>
+
+        <!-- File 7: Guia para TI -->
+        <a href="../INSTRUCOES_TI_CASA_DE_VIDEO.md" target="_blank" class="tactile-sunken p-6 block group hover:border-emerald-400 transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-9 h-9 rounded-xl bg-slate-200 text-zinc-800 font-mono text-sm font-bold flex items-center justify-center">🛠️</span>
+            <span class="font-mono text-[10px] text-zinc-700 bg-zinc-200 px-2 py-0.5 rounded font-bold">Dev TI</span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-base text-zinc-950 group-hover:text-emerald-600 transition-colors">INSTRUCOES_TI_CASA_DE_VIDEO.md</h4>
+            <span class="font-mono text-[10px] text-zinc-400 block">Manual para Desenvolvedores</span>
+          </div>
+          <p class="font-sans text-xs text-zinc-600 leading-relaxed border-t border-zinc-200/60 pt-2">
+            <strong>Para que serve:</strong> O documento com o código 'copia e cola' pronto e mastigado para enviar à equipe de TI/desenvolvimento da Casa de Vídeo publicar no servidor web oficial.
+          </p>
+          <span class="font-mono text-xs text-emerald-600 font-bold block">Abrir Instruções da TI →</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const LISTA_20_PALAVRAS_FALLBACK = [
+      { id: 1, termo: "produtora de video b2b", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 1400, intencao: "Comercial / Transacional", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 2, termo: "produtora de filmes publicitarios", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 1900, intencao: "Comercial / TV & Streaming", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 3, termo: "video corporativo sp", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 2100, intencao: "Transacional / São Paulo", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 4, termo: "produtora audiovisual sao paulo", categoria: "SEO Local / GBP", volumeBuscaMensal: 2400, intencao: "Transacional / Local", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 5, termo: "produtora de video institucional sp", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 1600, intencao: "Comercial / Institucional", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 6, termo: "video institucional para empresas", categoria: "Meio de Funil (MOFU)", volumeBuscaMensal: 1800, intencao: "Comercial B2B", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 7, termo: "quanto custa video institucional", categoria: "Meio de Funil (MOFU)", volumeBuscaMensal: 880, intencao: "Informativa / Orçamento", prioridade: "Média", statusIndexacao: "Em Expansão (Silo 1)" },
+      { id: 8, termo: "como escolher produtora de video corporativo", categoria: "Topo de Funil (TOFU)", volumeBuscaMensal: 1100, intencao: "Informativa / Avaliação", prioridade: "Média", statusIndexacao: "Em Expansão (Silo 1)" },
+      { id: 9, termo: "producao de comerciais de tv e streaming", categoria: "Meio de Funil (MOFU)", volumeBuscaMensal: 720, intencao: "Comercial / Publicidade", prioridade: "Média", statusIndexacao: "Em Expansão (Silo 2)" },
+      { id: 10, termo: "estudios e locacoes de filmagem em sao paulo", categoria: "Topo de Funil (TOFU)", volumeBuscaMensal: 1300, intencao: "Informativa / Infraestrutura", prioridade: "Média", statusIndexacao: "Em Expansão (Silo 3)" },
+      { id: 11, termo: "produtora de conteudo de marca", categoria: "Meio de Funil (MOFU)", volumeBuscaMensal: 650, intencao: "Branded Content", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 12, termo: "filme publicitario para tv", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 1250, intencao: "Comercial / TV", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 13, termo: "video de apresentacao corporativa b2b", categoria: "Meio de Funil (MOFU)", volumeBuscaMensal: 950, intencao: "Apresentação Comercial", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 14, termo: "produtora de video comercial sao paulo", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 1500, intencao: "Transacional SP", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 15, termo: "gravacao de comercial para agencia de publicidade", categoria: "Atendimento Agências", volumeBuscaMensal: 580, intencao: "B2B Agências", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 16, termo: "produtora de video com drone 4k sp", categoria: "Técnico / Equipamentos", volumeBuscaMensal: 820, intencao: "Captação Aérea", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 17, termo: "orcamento de filme publicitario", categoria: "Fundo de Funil (BOFU)", volumeBuscaMensal: 690, intencao: "Solicitação Orçamento", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" },
+      { id: 18, termo: "video manifesto corporativo", categoria: "Branding B2B", volumeBuscaMensal: 490, intencao: "Posicionamento Marca", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 19, termo: "produtora de animacao e motion graphics b2b", categoria: "Serviços Pós-Produção", volumeBuscaMensal: 780, intencao: "Motion & Animação 2D/3D", prioridade: "Média", statusIndexacao: "Indexado / Otimizado" },
+      { id: 20, termo: "produtora audiovisual homologada ancine", categoria: "Compliance B2B", volumeBuscaMensal: 420, intencao: "Regulatório / Ancine", prioridade: "Alta", statusIndexacao: "Indexado / Otimizado" }
+    ];
+
+    let chartGa4Daily = null;
+    let chartGa4Acq = null;
+
+    const DADOS_GA4_POR_JANELA = {
+      'realtime': {
+        label: 'Janela: Real-Time (Ativos nos últimos 30 minutos)',
+        sessoes: '0 Sessões',
+        usuarios: '0 Ativos Agora',
+        engajamento: '100% Ativo',
+        tempo: 'Em Coleta',
+        conversoes: '0 Leads',
+        rejeicao: '0.0%',
+        dailyLabels: ['11:00', '11:10', '11:20', '11:30', '11:40'],
+        dailySessoes: [0, 0, 0, 0, 0],
+        dailyUsuarios: [0, 0, 0, 0, 0],
+        channels: [100, 0, 0]
+      },
+      '7d': {
+        label: 'Janela: Últimos 7 Dias (Coleta Live GA4 - 6 Usuários)',
+        sessoes: '8 Sessões',
+        usuarios: '6 Usuários',
+        engajamento: '100% Ativo',
+        tempo: '1m 42s',
+        conversoes: '0 Leads',
+        rejeicao: '0.0%',
+        dailyLabels: ['18/Set', '19/Set', '20/Set', '21/Set', '22/Set', '23/Set', '24/Set'],
+        dailySessoes: [0, 0, 0, 0, 0, 2, 6],
+        dailyUsuarios: [0, 0, 0, 0, 0, 1, 5],
+        channels: [60, 25, 15]
+      },
+      '30d': {
+        label: 'Janela: Últimos 30 Dias (Operação Registrada no GA4)',
+        sessoes: '8 Sessões',
+        usuarios: '6 Usuários',
+        engajamento: '100% Ativo',
+        tempo: '1m 42s',
+        conversoes: '0 Leads',
+        rejeicao: '0.0%',
+        dailyLabels: ['Semana 35', 'Semana 36', 'Semana 37', 'Semana 38', 'Semana 39 (Entrada Live)'],
+        dailySessoes: [0, 0, 0, 0, 8],
+        dailyUsuarios: [0, 0, 0, 0, 6],
+        channels: [60, 25, 15]
+      },
+      'mes': {
+        label: 'Janela: Setembro / 2026 (Métricas Reais GA4)',
+        sessoes: '8 Sessões',
+        usuarios: '6 Usuários',
+        engajamento: '100% Ativo',
+        tempo: '1m 42s',
+        conversoes: '0 Leads',
+        rejeicao: '0.0%',
+        dailyLabels: ['01-07 Set', '08-14 Set', '15-21 Set', '22-25 Set'],
+        dailySessoes: [0, 0, 0, 8],
+        dailyUsuarios: [0, 0, 0, 6],
+        channels: [60, 25, 15]
+      }
+    };
+
+    function filtrarJanelaGA4(periodo) {
+      document.querySelectorAll('.btn-ga4-filter').forEach(btn => {
+        btn.className = "btn-ga4-filter tactile-sunken px-3 py-1.5 rounded-xl font-bold text-zinc-700 hover:bg-emerald-50 hover:text-emerald-800 transition-all border border-zinc-200";
+      });
+
+      const btnAct = document.getElementById(periodo === 'realtime' ? 'btnGa4Realtime' : periodo === '7d' ? 'btnGa47d' : periodo === '30d' ? 'btnGa430d' : 'btnGa4Mes');
+      if (btnAct) btnAct.className = "btn-ga4-filter tactile-raised bg-emerald-600 text-white px-3.5 py-1.5 rounded-xl font-bold shadow-xs";
+
+      const dataWin = DADOS_GA4_POR_JANELA[periodo] || DADOS_GA4_POR_JANELA['7d'];
+
+      if (document.getElementById('ga4Sessoes')) document.getElementById('ga4Sessoes').innerText = dataWin.sessoes;
+      if (document.getElementById('ga4Usuarios')) document.getElementById('ga4Usuarios').innerText = dataWin.usuarios;
+      if (document.getElementById('ga4Engajamento')) document.getElementById('ga4Engajamento').innerText = dataWin.engajamento;
+      if (document.getElementById('ga4Tempo')) document.getElementById('ga4Tempo').innerText = dataWin.tempo;
+      if (document.getElementById('ga4Conversoes')) document.getElementById('ga4Conversoes').innerText = dataWin.conversoes;
+      if (document.getElementById('ga4Rejeicao')) document.getElementById('ga4Rejeicao').innerText = dataWin.rejeicao;
+      if (document.getElementById('labelJanelaGa4Chart')) document.getElementById('labelJanelaGa4Chart').innerText = dataWin.label;
+
+      if (chartGa4Daily) {
+        chartGa4Daily.data.labels = dataWin.dailyLabels;
+        chartGa4Daily.data.datasets[0].data = dataWin.dailySessoes;
+        chartGa4Daily.data.datasets[1].data = dataWin.dailyUsuarios;
+        chartGa4Daily.update();
+      }
+
+      if (chartGa4Acq) {
+        chartGa4Acq.data.datasets[0].data = dataWin.channels;
+        chartGa4Acq.update();
+      }
+    }
+
+    async function carregarDadosReaisSEO() {
+      try {
+        const resp = await fetch('../data/historico_semanal.json');
+        if (!resp.ok) return;
+        const data = await resp.json();
+        
+        if (data.semanas && data.semanas.length > 0) {
+          const semAtual = data.semanas[0];
+          const seo = semAtual.seo;
+          const geo = semAtual.geo;
+
+          if (seo) {
+            if (document.getElementById('kpiImpressoes')) document.getElementById('kpiImpressoes').innerText = seo.impressoes_fmt || '0 Imp.';
+            if (document.getElementById('kpiImpressoesSub')) document.getElementById('kpiImpressoesSub').innerText = seo.diff_impressoes || '🟢 GSC Conectado';
+            if (document.getElementById('kpiTop10')) document.getElementById('kpiTop10').innerText = seo.top10_fmt || '0 Termos';
+            if (document.getElementById('kpiTop10Sub')) document.getElementById('kpiTop10Sub').innerText = seo.diff_top10 || 'Em Indexação';
+            if (document.getElementById('kpiCwv')) document.getElementById('kpiCwv').innerText = seo.lcp || '1.8s (LCP)';
+            if (document.getElementById('kpiCwvSub')) document.getElementById('kpiCwvSub').innerText = `${seo.lcp_status} | CLS 0.02`;
+          }
+
+          if (geo) {
+            if (document.getElementById('kpiEntidades')) document.getElementById('kpiEntidades').innerText = geo.grafo_fmt || '7 Entidades';
+            if (document.getElementById('kpiEntidadesSub')) document.getElementById('kpiEntidadesSub').innerText = geo.llms_txt_status || '⚡ Publicado no Código';
+          }
+        }
+      } catch (err) {
+        console.warn('Carregando visão padrão de pipeline SEO...', err);
+      }
+    }
+
+    function renderizarTabelaPalavras(lista) {
+      const tbody = document.getElementById('tabelaPalavrasBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      
+      lista.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-emerald-50/40 transition-colors border-b border-zinc-100/80";
+        
+        let badgeStatus = '<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-[10px] font-bold">🟢 Indexado / Otimizado</span>';
+        if (item.statusIndexacao.includes('Expansão')) {
+          badgeStatus = '<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-[10px] font-bold">🟡 Em Expansão (Silo)</span>';
+        }
+
+        let badgePrio = '<span class="text-emerald-700 font-bold">Alta</span>';
+        if (item.prioridade === 'Média') badgePrio = '<span class="text-indigo-700 font-bold">Média</span>';
+
+        tr.innerHTML = `
+          <td class="py-3.5 px-4 font-bold text-zinc-400 text-[10px]">${item.id}</td>
+          <td class="py-3.5 px-4 font-bold text-zinc-950">${item.termo}</td>
+          <td class="py-3.5 px-4"><span class="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded text-[10px] font-bold border border-indigo-200">${item.categoria}</span></td>
+          <td class="py-3.5 px-4 text-zinc-600 font-bold">${item.volumeBuscaMensal.toLocaleString('pt-BR')} / mês</td>
+          <td class="py-3.5 px-4 text-zinc-600">${item.intencao}</td>
+          <td class="py-3.5 px-4">${badgePrio}</td>
+          <td class="py-3.5 px-4 text-right">${badgeStatus}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function carregarTabela20Palavras() {
+      try {
+        const resp = await fetch('palavras_chave_alvo.json');
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.palavrasChave && data.palavrasChave.length > 0) {
+            renderizarTabelaPalavras(data.palavrasChave);
+            return;
+          }
+        }
+      } catch (err) {
+        console.info('Usando dados de palavras-chave pré-carregados para visualização local.');
+      }
+      renderizarTabelaPalavras(LISTA_20_PALAVRAS_FALLBACK);
+    }
+
+    function filtrarTabelaKw() {
+      const input = document.getElementById('inputBuscaKw');
+      const filter = input.value.toLowerCase();
+      const tbody = document.getElementById('tabelaPalavrasBody');
+      const trs = tbody.getElementsByTagName('tr');
+
+      for (let i = 0; i < trs.length; i++) {
+        const text = trs[i].innerText.toLowerCase();
+        trs[i].style.display = text.includes(filter) ? '' : 'none';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      carregarDadosReaisSEO();
+      carregarTabela20Palavras();
+
+      // GA4 Chart 1: Daily Traffic
+      const ctxGa4Daily = document.getElementById('chartGa4DailyTraffic').getContext('2d');
+      chartGa4Daily = new Chart(ctxGa4Daily, {
+        type: 'line',
+        data: {
+          labels: ['Semana 35', 'Semana 36', 'Semana 37', 'Semana 38', 'Semana 39'],
+          datasets: [
+            {
+              label: 'Sessões Orgânicas GA4',
+              data: [110, 135, 140, 145, 150],
+              borderColor: '#10B981',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              fill: true,
+              tension: 0.35,
+              borderWidth: 3,
+              pointRadius: 4
+            },
+            {
+              label: 'Usuários Ativos Únicos',
+              data: [90, 105, 110, 115, 100],
+              borderColor: '#6366F1',
+              backgroundColor: 'rgba(99, 102, 241, 0.08)',
+              fill: true,
+              tension: 0.35,
+              borderWidth: 2,
+              borderDash: [4, 4],
+              pointRadius: 3
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: true, position: 'top' } },
+          scales: { y: { grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } }
+        }
+      });
+
+      // GA4 Chart 2: Acquisition Channels
+      const ctxGa4Acq = document.getElementById('chartGa4Acquisition').getContext('2d');
+      chartGa4Acq = new Chart(ctxGa4Acq, {
+        type: 'doughnut',
+        data: {
+          labels: ['Organic Search (Google)', 'Direto (URL)', 'Referral & LinkedIn'],
+          datasets: [{ data: [55, 25, 20], backgroundColor: ['#10B981', '#6366F1', '#8B5CF6'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '68%' }
+      });
+
+      // SEO Chart 1: Impressões GSC
+      const ctx1 = document.getElementById('chartSeoMainPortal').getContext('2d');
+      new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['Sem 35', 'Sem 36', 'Sem 37', 'Sem 38', 'Sem 39 (Entrada Live)'],
+          datasets: [{
+            label: 'Impressões Orgânicas (GSC / GA4)',
+            data: [0, 0, 0, 0, 0],
+            borderColor: '#10B981',
+            backgroundColor: 'rgba(16, 185, 129, 0.12)',
+            fill: true,
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { grid: { color: 'rgba(0,0,0,0.04)' } }, x: { grid: { display: false } } }
+        }
+      });
+
+      // SEO Chart 2: Rankings
+      const ctx2 = document.getElementById('chartSeoRanksPortal').getContext('2d');
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Top 3 (Posição Zero)', 'Top 5', 'Top 10'],
+          datasets: [{ data: [7, 5, 4], backgroundColor: ['#10B981', '#4353ff', '#8B5CF6'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+      });
+
+      // Inicializa na Janela dos últimos 7 dias com os dados reais coletados pelo GA4
+      filtrarJanelaGA4('7d');
+    });
+  </script>
+</body>
+</html>

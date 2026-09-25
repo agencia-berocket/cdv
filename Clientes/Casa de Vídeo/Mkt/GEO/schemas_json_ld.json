@@ -5,11 +5,20 @@
       "@type": ["Organization", "Corporation"],
       "@id": "https://www.casadevideo.com.br/#organization",
       "name": "Casa de Vídeo Produções Ltda",
+      "legalName": "Casa de Vídeo Produções Audiovisuais Ltda",
       "alternateName": "Casa de Vídeo",
       "url": "https://www.casadevideo.com.br",
-      "logo": "https://www.casadevideo.com.br/images/logo_casadevideo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.casadevideo.com.br/#logo",
+        "url": "https://www.casadevideo.com.br/Documentos/logo.png",
+        "caption": "Casa de Vídeo Produções Audiovisuais"
+      },
+      "image": "https://www.casadevideo.com.br/Documentos/logo.png",
       "description": "Produtora audiovisual especializada em filmes publicitários, vídeos corporativos, institucionais e comerciais de alta performance em São Paulo.",
-      "foundingDate": "2010",
+      "foundingDate": "1990",
+      "telephone": "+55-11-3866-2535",
+      "email": "contato@casadevideo.com.br",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "São Paulo",
@@ -19,21 +28,30 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Atendimento Comercial B2B",
-        "telephone": "+55-11-99999-9999",
+        "telephone": "+55-11-3866-2535",
         "email": "contato@casadevideo.com.br",
         "availableLanguage": ["Portuguese", "English"]
       },
       "sameAs": [
         "https://www.linkedin.com/company/casadevideo",
         "https://vimeo.com/casadevideo",
-        "https://www.instagram.com/casadevideo"
+        "https://www.instagram.com/casadevideo",
+        "https://www.youtube.com/@casadevideoproducoes"
+      ],
+      "knowsAbout": [
+        "Produção Audiovisual",
+        "Filmes Publicitários",
+        "Vídeos Corporativos B2B",
+        "Comerciais de TV e Streaming",
+        "Branded Content",
+        "Pós-produção e Color Grading"
       ]
     },
     {
       "@type": "WebSite",
       "@id": "https://www.casadevideo.com.br/#website",
       "url": "https://www.casadevideo.com.br",
-      "name": "Casa de Vídeo Produções",
+      "name": "Casa de Vídeo Produções Audiovisuais",
       "publisher": {
         "@id": "https://www.casadevideo.com.br/#organization"
       },
@@ -43,7 +61,7 @@
       "@type": "LocalBusiness",
       "@id": "https://www.casadevideo.com.br/#localbusiness",
       "name": "Casa de Vídeo Produções Audiovisuais",
-      "image": "https://www.casadevideo.com.br/images/hero_banner.webp",
+      "telephone": "+55-11-3866-2535",
       "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
@@ -55,12 +73,6 @@
         "@type": "GeoCoordinates",
         "latitude": -23.55052,
         "longitude": -46.633309
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "19:00"
       }
     },
     {
@@ -79,7 +91,7 @@
       "@id": "https://www.casadevideo.com.br/#showreel2026",
       "name": "Showreel Casa de Vídeo — Produções Audiovisuais 4K",
       "description": "Portfólio cinematográfico dos principais filmes publicitários, institucionais e corporativos produzidos pela Casa de Vídeo.",
-      "thumbnailUrl": ["https://www.casadevideo.com.br/images/showreel_thumb.jpg"],
+      "thumbnailUrl": ["https://www.casadevideo.com.br/Documentos/logo.png"],
       "uploadDate": "2026-01-15T08:00:00-03:00",
       "publisher": {
         "@id": "https://www.casadevideo.com.br/#organization"

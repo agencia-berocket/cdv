@@ -1,6 +1,7 @@
 {
   "cliente": "Casa de Vídeo Produções Audiovisuais",
-  "dataSetup": "2026-09-23",
+  "dataSetup": "2026-09-25",
+  "agenteResponsavel": "Agente Tráfego Pago • b.rocket",
   "infraestruturaDados": {
     "gtmContainerId": "GTM-K7QVV6C8",
     "googleAdsConversionId": "AW-18470288256",
@@ -9,7 +10,8 @@
     "vinculadorConversoes": {
       "status": "Ativo",
       "acionador": "Todas as Páginas (All Pages)",
-      "primeiraParteCookies": true
+      "primeiraParteCookies": true,
+      "crossDomainTracking": ["casadevideo.com.br"]
     }
   },
   "acoesConversao": [
@@ -20,9 +22,10 @@
       "contagem": "Uma conversão",
       "idConversao": "AW-18470288256",
       "rotuloConversao": "cK98CIL_xPMZEL6q",
+      "valorPadrao": "R$ 200.00",
       "acionadorGtm": {
         "tipo": "Envio de Formulário",
-        "condicao": "Page URL contém /#contato ou Form ID eq 'form-orcamento'",
+        "condicao": "Page URL contém /#contato OU Form ID eq 'form-orcamento'",
         "dataLayerEvent": "form_submission_lead"
       }
     },
@@ -33,6 +36,7 @@
       "contagem": "Uma conversão",
       "idConversao": "AW-18470288256",
       "rotuloConversao": "wP98CIL_xPMZEL6q",
+      "valorPadrao": "R$ 150.00",
       "acionadorGtm": {
         "tipo": "Cliques em Links Específicos",
         "condicao": "Click URL contém 'api.whatsapp.com' OU Click Classes contém 'whatsapp-float'",
@@ -52,6 +56,6 @@
   "capturaGclid": {
     "status": "Configurado",
     "scriptCapture": "Captura parâmetro ?gclid= na URL e armazena em cookie first-party por 30 dias",
-    "integracaoCrm": "Injeta GCLID no envio do formulário de proposta audiovisual"
+    "integracaoCrm": "Injeta GCLID no envio do formulário de proposta audiovisual para rastreamento de receita no CRM"
   }
 }

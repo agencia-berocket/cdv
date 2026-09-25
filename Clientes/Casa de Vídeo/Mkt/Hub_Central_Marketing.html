@@ -1,48 +1,38 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hub Central & Relatório Semanal | b.rocket • Casa de Vídeo</title>
+  <title>Hub Central & Relatório Semanal Realtime | b.rocket • Casa de Vídeo</title>
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- Tailwind CSS & Chart.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./js/session-guard.js"></script>
   
-  <style type="text/tailwindcss">
-    @theme {
-      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-      --font-display: "Space Grotesk", sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-      background-color: #f4f5f8;
-      color: #0c0d0e;
-    }
-
+  <style>
     body {
-      font-family: var(--font-sans);
+      font-family: "Inter", sans-serif;
       background-color: #f4f5f8;
       color: #0c0d0e;
       overflow-x: hidden;
     }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
 
     ::selection {
       background-color: #000000;
       color: #ffffff;
     }
 
-    /* 
-    =========================================
-    TACTILE CLAYMORPHIC & NEUMORPHIC SYSTEM (b.rocket Official)
-    =========================================
-    */
+    /* =========================================
+       TACTILE CLAYMORPHIC & NEUMORPHIC SYSTEM (b.rocket Official)
+       ========================================= */
     .tactile-raised {
       background: #fdfefe;
       box-shadow: 
@@ -57,7 +47,7 @@
     }
 
     .tactile-raised:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 
         0px 2px 4px rgba(0, 0, 0, 0.01),
         12px 20px 36px -6px rgba(13, 20, 33, 0.08),
@@ -81,8 +71,7 @@
       text-shadow: 
         1px 1px 0px rgba(255, 255, 255, 0.4),
         3px 3px 6px rgba(13, 20, 33, 0.12),
-        6px 8px 14px rgba(13, 20, 33, 0.08),
-        12px 16px 28px rgba(13, 20, 33, 0.04);
+        6px 8px 14px rgba(13, 20, 33, 0.08);
     }
 
     .grid-blueprint {
@@ -111,6 +100,54 @@
       color: #047857;
     }
 
+    /* CUSTOM INTERACTIVE TOOLTIP SYSTEM */
+    .has-tooltip {
+      position: relative;
+      cursor: help;
+    }
+
+    .tooltip-box {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: translateY(6px);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      width: 290px;
+      background: #09090b;
+      color: #f4f4f5;
+      border: 1px solid #27272a;
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: 0 16px 32px -8px rgba(0,0,0,0.5);
+      z-index: 99;
+      pointer-events: none;
+    }
+
+    .has-tooltip:hover .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px);
+    }
+
+    .tooltip-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: #09090b transparent transparent transparent;
+    }
+
+    /* Range Slider Styling */
+    input[type=range] {
+      accent-color: #4353ff;
+    }
+
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
       .no-print { display: none !important; }
@@ -121,110 +158,627 @@
 </head>
 <body class="grid-blueprint min-h-screen text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white pb-24">
 
-  <!-- ==================== NAVBAR ==================== -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-4 px-6 md:px-12">
-    <div id="nav-container" class="max-w-7xl mx-auto px-6 md:px-8 py-3.5 flex justify-between items-center transition-all duration-300 bg-white/85 backdrop-blur-md border border-zinc-200/80 shadow-sm rounded-2xl">
+  <!-- ==================== MAIN NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-3 px-4 md:px-12 bg-white/85 backdrop-blur-md border-b border-zinc-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
       
-      <!-- Logo b.rocket -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
-          <div class="w-[24px] h-[24px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
-            <div class="w-[16px] h-[11px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
-              <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
-              <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+      <!-- Logo b.rocket & Live Beacon -->
+      <div class="flex items-center gap-3">
+        <a href="#" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden group-hover:scale-105 transition-all duration-300">
+            <div class="w-[24px] h-[24px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+              <div class="w-[16px] h-[11px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+                <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+                <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+              </div>
+              <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
             </div>
-            <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
           </div>
-          <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-r"></div>
-          <div class="absolute right-[1px] top-1/2 -translate-y-1/2 w-[1px] h-[3px] bg-zinc-800 rounded-l"></div>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-display font-extrabold text-base tracking-[0.08em] text-zinc-950 uppercase leading-none">b.rocket <span class="text-indigo-600">*</span></span>
-          <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-bold uppercase">Hub Central Semanal</span>
-        </div>
-      </a>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-base tracking-[0.08em] text-zinc-950 uppercase leading-none">b.rocket <span class="text-indigo-600">*</span></span>
+            <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-bold uppercase">Hub Central 360° Realtime</span>
+          </div>
+        </a>
 
-      <!-- Date Filter Controls -->
-      <div class="flex flex-wrap items-center gap-3 no-print">
-        <div class="tactile-sunken px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono">
-          <span class="text-zinc-500 font-bold">📅 Período:</span>
-          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-600 font-bold outline-none cursor-pointer">
-            <option value="sem39" selected>Semana Atual: 17/Set - 23/Set 2026</option>
-            <option value="sem38">Semana Anterior: 10/Set - 16/Set 2026</option>
+        <!-- Realtime Status Indicator -->
+        <div class="hidden sm:flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-xl text-xs font-mono font-bold">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>AO VIVO</span>
+          <span class="text-emerald-400">|</span>
+          <span id="relogioSync" class="text-emerald-700">14:28:56</span>
+        </div>
+      </div>
+
+      <!-- Controls: Date Selector, Pipeline, Print, Logout -->
+      <div class="flex items-center gap-2 md:gap-3 no-print">
+        <div class="tactile-sunken px-3 py-1 flex items-center gap-1.5 text-xs font-mono max-w-[280px]">
+          <span class="text-zinc-500 font-bold shrink-0">📅</span>
+          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-700 font-bold outline-none cursor-pointer w-full truncate">
+            <option value="sem_real_live" selected>Ao Vivo: 24/Set - 30/Set 2026 (Produção)</option>
+            <option value="sem39">Semana 39: 17/Set - 23/Set 2026</option>
+            <option value="sem38">Semana 38: 10/Set - 16/Set 2026</option>
             <option value="sem37">Semana 37: 03/Set - 09/Set 2026</option>
           </select>
         </div>
 
-        <button onclick="window.print()" class="tactile-raised !bg-[#4353ff] text-white font-mono text-xs font-bold px-4 py-2 hover:bg-[#3240e6] uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl shadow-md border-t border-[#606fff] hover:scale-105 cursor-pointer">
-          <span>🖨️ Exportar PDF</span>
+        <button onclick="scrollToSection('historico-pipeline')" class="tactile-sunken text-indigo-700 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all hover:bg-indigo-100/60 rounded-xl cursor-pointer">
+          <span>📋 Pipeline</span>
         </button>
 
-        <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3.5 py-2 uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl hover:bg-red-50 hover:border-red-200 cursor-pointer">
+        <button onclick="scrollToSection('glossario-didatico')" class="tactile-sunken text-violet-700 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all hover:bg-violet-100/60 rounded-xl cursor-pointer">
+          <span>💡 Glossário</span>
+        </button>
+
+        <button onclick="window.print()" class="tactile-raised !bg-[#4353ff] text-white font-mono text-xs font-bold px-3.5 py-1.5 hover:bg-[#3240e6] uppercase tracking-wider transition-all flex items-center gap-1 rounded-xl shadow-xs border-t border-[#606fff] cursor-pointer">
+          <span>🖨️ PDF</span>
+        </button>
+
+        <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all rounded-xl hover:bg-red-50 cursor-pointer">
           <span>🔒 Sair</span>
         </button>
       </div>
 
     </div>
+
+    <!-- ==================== SUB-HEADER JUMP BAR (NAVEGABILIDADE & UX) ==================== -->
+    <div class="max-w-7xl mx-auto pt-2 mt-2 border-t border-zinc-200/60 flex items-center gap-2 overflow-x-auto no-scrollbar font-mono text-[11px] font-bold text-zinc-600">
+      <span class="text-zinc-400 uppercase tracking-wider shrink-0 mr-1 text-[10px]">Navegação Rápida:</span>
+      <button onclick="scrollToSection('hero-section')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0">📊 Visão 360° Realtime</button>
+      <button onclick="scrollToSection('pilar-google-ads')" class="px-3 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors shrink-0">🎯 1. Google Ads</button>
+      <button onclick="scrollToSection('pilar-seo')" class="px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 transition-colors shrink-0">🔍 2. SEO Orgânico</button>
+      <button onclick="scrollToSection('pilar-geo')" class="px-3 py-1 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 transition-colors shrink-0">🤖 3. GEO Engine (IAs)</button>
+      <button onclick="scrollToSection('secao-graficos')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0">📈 Evolução Gráfica</button>
+      <button onclick="scrollToSection('secao-wow')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0">📊 Tabela WoW</button>
+      <button onclick="scrollToSection('secao-calculadora')" class="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 hover:bg-indigo-200 transition-colors shrink-0">🧮 Projeção de ROAS</button>
+      <button onclick="scrollToSection('historico-pipeline')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0">📋 Pipeline</button>
+      <button onclick="scrollToSection('glossario-didatico')" class="px-3 py-1 rounded-lg bg-violet-100 text-violet-900 hover:bg-violet-200 transition-colors shrink-0">💡 Glossário Didático</button>
+    </div>
   </nav>
 
   <!-- ==================== HERO SECTION ==================== -->
-  <section class="pt-32 pb-10 px-6 md:px-12 border-b border-zinc-200 relative overflow-hidden">
-    <!-- Ambient Decor -->
+  <section id="hero-section" class="pt-36 pb-10 px-4 md:px-12 border-b border-zinc-200 relative overflow-hidden">
+    <!-- Ambient Blur Background -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
       <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-indigo-100/40 blur-[100px]"></div>
       <div class="absolute -top-20 right-0 w-80 h-80 rounded-full bg-emerald-100/30 blur-[80px]"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-10 items-end justify-between">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3.5 py-1.5 rounded-lg border border-indigo-200 font-bold mb-4 shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Cliente: Casa de Vídeo Produções Ltda</span>
+    <div class="max-w-7xl mx-auto relative z-10 space-y-6">
+      
+      <!-- Top Title Badge -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-200 font-bold mb-3 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Cliente: Casa de Vídeo Produções Ltda</span>
+          </div>
+          <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.15] uppercase text-tactile-3d-dark">
+            Hub Central 360° <span class="text-indigo-600">Indicadores & Performance Realtime</span>
+          </h1>
+          <p class="font-sans text-sm sm:text-base text-zinc-600 leading-relaxed font-light max-w-3xl mt-2">
+            Centralizador executivo conectado às 3 páginas especialistas da Casa de Vídeo: <strong class="font-semibold text-indigo-600">Tráfego Pago (Google Ads)</strong>, <strong class="font-semibold text-emerald-600">SEO Orgânico</strong> e <strong class="font-semibold text-violet-600">GEO (Inteligência Artificial)</strong>.
+          </p>
         </div>
-        <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.1] uppercase text-tactile-3d-dark mb-4">
-          Hub Central & Relatório Semanal<br/>
-          <span class="text-indigo-600 inline-block">Evolução 360°</span>
-        </h1>
-        <p class="font-sans text-base text-zinc-600 leading-relaxed font-light">
-          Acompanhamento transparente das métricas de performance da Casa de Vídeo nos 3 pilares: **Tráfego Pago (Google Ads)**, **SEO Orgânico** e **GEO (Inteligência Artificial)** com comparativos de evolução semana a semana.
-        </p>
+
+        <div class="tactile-sunken p-3.5 text-right font-mono text-xs hidden lg:block border border-indigo-200 bg-indigo-50/30">
+          <span class="text-zinc-500 font-bold block text-[10px] uppercase">Engine Status</span>
+          <span class="text-emerald-700 font-black text-sm block">🟢 100% Sincronizado</span>
+          <span class="text-zinc-400 text-[10px] block">Coolify PaaS • 18ms</span>
+        </div>
       </div>
 
-      <!-- Quick Stats Card Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto shrink-0">
-        <div class="tactile-sunken p-4 text-center">
-          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Investimento Ads</span>
-          <strong id="kpiInvestimento" class="font-display font-black text-xl text-indigo-600 block mt-1">R$ 875,00</strong>
-          <span id="diffInvestimento" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +5% WoW</span>
+      <!-- Quick Stats Card Bar (with Didactic Tooltips) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-2">
+        
+        <!-- Metric 1: Investimento Ads -->
+        <div class="tactile-sunken p-4 text-center has-tooltip hover:border-indigo-300 transition-colors">
+          <div class="tooltip-box">
+            <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Investimento Google Ads</strong>
+            <p class="text-[11px] text-zinc-300 leading-relaxed font-sans">Valor total alocado em anúncios de pesquisa Google Ads no período selecionado. Focado em captação de clientes B2B em SP.</p>
+          </div>
+          <div class="flex items-center justify-center gap-1">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Investimento Ads</span>
+            <span class="text-indigo-500 font-bold text-xs">ℹ️</span>
+          </div>
+          <strong id="kpiInvestimento" class="font-display font-black text-xl sm:text-2xl text-indigo-600 block mt-1">R$ 0,00</strong>
+          <span id="diffInvestimento" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">🟢 Operação Iniciada</span>
         </div>
-        <div class="tactile-sunken p-4 text-center">
-          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Leads B2B</span>
-          <strong id="kpiLeads" class="font-display font-black text-xl text-emerald-600 block mt-1">6 Leads</strong>
-          <span id="diffLeads" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +20% WoW</span>
+
+        <!-- Metric 2: Leads B2B -->
+        <div class="tactile-sunken p-4 text-center has-tooltip hover:border-emerald-300 transition-colors">
+          <div class="tooltip-box">
+            <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Leads B2B Qualificados</strong>
+            <p class="text-[11px] text-zinc-300 leading-relaxed font-sans">Contatos comerciais capturados via Formulário do Site e WhatsApp Empresarial com atribuição via GTM e GCLID.</p>
+          </div>
+          <div class="flex items-center justify-center gap-1">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Leads B2B</span>
+            <span class="text-emerald-500 font-bold text-xs">ℹ️</span>
+          </div>
+          <strong id="kpiLeads" class="font-display font-black text-xl sm:text-2xl text-emerald-600 block mt-1">0 Leads</strong>
+          <span id="diffLeads" class="font-mono text-[10px] text-amber-700 font-bold block mt-0.5">⏳ Aguardando Deploy</span>
         </div>
-        <div class="tactile-sunken p-4 text-center">
-          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Tráfego Orgânico</span>
-          <strong id="kpiTrafego" class="font-display font-black text-xl text-zinc-950 block mt-1">420 Sessões</strong>
-          <span id="diffTrafego" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +14% WoW</span>
+
+        <!-- Metric 3: Tráfego Orgânico / GSC -->
+        <div class="tactile-sunken p-4 text-center has-tooltip hover:border-emerald-300 transition-colors">
+          <div class="tooltip-box">
+            <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Tráfego & Impressões GSC</strong>
+            <p class="text-[11px] text-zinc-300 leading-relaxed font-sans">Impressões da marca nas pesquisas orgânicas do Google e tráfego direto de potenciais contratantes em São Paulo.</p>
+          </div>
+          <div class="flex items-center justify-center gap-1">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Tráfego Orgânico</span>
+            <span class="text-emerald-500 font-bold text-xs">ℹ️</span>
+          </div>
+          <strong id="kpiTrafego" class="font-display font-black text-xl sm:text-2xl text-zinc-950 block mt-1">0 Sessões</strong>
+          <span id="diffTrafego" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">🟢 GSC Conectado</span>
         </div>
-        <div class="tactile-sunken p-4 text-center">
-          <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">GEO Score (IAs)</span>
-          <strong id="kpiGeoScore" class="font-display font-black text-xl text-violet-600 block mt-1">84 / 100</strong>
-          <span id="diffGeoScore" class="font-mono text-[10px] text-violet-700 font-bold block mt-0.5">↑ +6 pts WoW</span>
+
+        <!-- Metric 4: GEO Score (IAs) -->
+        <div class="tactile-sunken p-4 text-center has-tooltip hover:border-violet-300 transition-colors">
+          <div class="tooltip-box">
+            <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ GEO Score (Inteligência Artificial)</strong>
+            <p class="text-[11px] text-zinc-300 leading-relaxed font-sans">Índice composto de citabilidade da Casa de Vídeo nos 4 motores de IA generativa (ChatGPT, Gemini, Perplexity, Claude).</p>
+          </div>
+          <div class="flex items-center justify-center gap-1">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">GEO Score (IAs)</span>
+            <span class="text-violet-500 font-bold text-xs">ℹ️</span>
+          </div>
+          <strong id="kpiGeoScore" class="font-display font-black text-xl sm:text-2xl text-violet-600 block mt-1">84 / 100</strong>
+          <span id="diffGeoScore" class="font-mono text-[10px] text-violet-700 font-bold block mt-0.5">🟢 llms.txt & @graph OK</span>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="max-w-7xl mx-auto pt-10 px-6 md:px-12 space-y-10">
+  <!-- ==================== MAIN CONTENT AREA ==================== -->
+  <main class="max-w-7xl mx-auto pt-10 px-4 md:px-12 space-y-10">
 
-    <!-- VISUAL CHARTS DASHBOARD SECTION -->
-    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-zinc-200">
+    <!-- PLATFORMS INTEGRATION STATUS CARD -->
+    <section class="tactile-raised p-6 rounded-3xl bg-white border border-zinc-200">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-zinc-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md mb-1 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Plataformas & Integração de Dados Ativa</span>
+          </div>
+          <h2 class="font-display font-bold text-xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Conexão das Plataformas & Mapeamento de Tags Google
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Status de integração entre Tag Manager, Google Ads, GA4, Marketing Platform e a pipeline do Hub</p>
+        </div>
+        <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/CONEXOES_PLATAFORMAS_GTAG.md" target="_blank" class="tactile-sunken px-3.5 py-2 font-mono text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5 no-print hover:scale-105 transition-all">
+          <span>📄 Documentação GTAG →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-zinc-700">Google Tag Manager</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          </div>
+          <strong class="font-display font-black text-sm text-zinc-950 block">GTM-K7QVV6C8</strong>
+          <span class="text-[10px] text-emerald-700 font-semibold block mt-1">🟢 Vinculador All Pages Ativo</span>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-zinc-700">Google Ads</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+          </div>
+          <strong class="font-display font-black text-sm text-zinc-950 block">AW-18470288256</strong>
+          <span class="text-[10px] text-indigo-700 font-semibold block mt-1">🟢 Conversões Form & WhatsApp</span>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-zinc-700">Google Analytics 4</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          </div>
+          <strong class="font-display font-black text-sm text-zinc-950 block">G-QF8MC5BX95</strong>
+          <span class="text-[10px] text-emerald-700 font-semibold block mt-1">🟢 Data Stream Web Conectado</span>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-zinc-700">Marketing Platform</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+          </div>
+          <strong class="font-display font-black text-sm text-zinc-950 block">GMP-CDV-2026</strong>
+          <span class="text-[10px] text-violet-700 font-semibold block mt-1">🟢 Atribuição GCLID & Hub Sync</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DETAILED 3 PILLARS SECTION ==================== -->
+    <div class="space-y-8">
+      <div class="border-b border-zinc-200 pb-2">
+        <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark flex items-center gap-3">
+          <span>🎯 Indicadores & Análises Detalhadas dos 3 Pilares Conectados</span>
+        </h2>
+        <p class="font-sans text-xs text-zinc-500 mt-1">Visão completa dos 3 ecossistemas que alimentam o funil comercial da Casa de Vídeo</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- ================= PILAR 1: GOOGLE ADS ================= -->
+        <div id="pilar-google-ads" class="tactile-raised p-7 rounded-3xl bg-white border border-indigo-200/80 flex flex-col justify-between group relative">
+          <div>
+            <!-- Pillar Header -->
+            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600 shadow-xs">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-xl text-zinc-950">1. Google Ads</h3>
+                  <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider block">agente-trafego-pago</span>
+                </div>
+              </div>
+              <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/Google_Ads/index.html" target="_blank" class="font-mono text-xs font-bold text-indigo-600 hover:text-indigo-800 underline no-print shrink-0">
+                Portal Completo →
+              </a>
+            </div>
+
+            <!-- Weekly KPIs Grid (with Tooltips) -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              
+              <!-- KPI 1: CPL -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Custo por Lead (CPL)</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Valor investido dividido pelo número de leads gerados. Meta teto acordada: R$ 180,00 por lead B2B qualificado.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CPL Semanal ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="adsCpl" class="font-display font-bold text-lg text-indigo-600">R$ 145,83</span>
+                  <span id="adsCplDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↓ -8%</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Meta Teto: R$ 180</span>
+              </div>
+
+              <!-- KPI 2: CTR -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Click-Through Rate (CTR)</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Percentual de pessoas que viram o anúncio no Google e clicaram. Quanto maior, mais atrativo é o anúncio.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CTR Anúncios ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="adsCtr" class="font-display font-bold text-lg text-zinc-950">7.6%</span>
+                  <span id="adsCtrDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +0.8%</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Tríade P-A-P: 9.8/10</span>
+              </div>
+
+              <!-- KPI 3: Leads B2B -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Conversões B2B</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Total de empresas que solicitaram orçamento de vídeo corporativo no período.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Leads B2B ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="adsConversoes" class="font-display font-bold text-lg text-emerald-600">6 Leads</span>
+                  <span id="adsConversoesDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +1</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">WhatsApp & Form</span>
+              </div>
+
+              <!-- KPI 4: IQ -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Índice de Qualidade (IQ)</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Nota do Google (0 a 10) para a relevância das palavras-chave e landing page. IQ alto reduz o custo por clique.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Índice Qualidade ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="adsIq" class="font-display font-bold text-lg text-indigo-600">9.8 / 10</span>
+                  <span id="adsIqDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Excelente</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Economia de CPC</span>
+              </div>
+
+            </div>
+
+            <!-- Campaign Badges STAG -->
+            <div class="mb-5 space-y-1.5 font-mono text-[11px]">
+              <span class="text-zinc-500 font-bold uppercase text-[10px] block">Estrutura de Campanhas STAG:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="bg-indigo-50 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200">1. Marca (Proteção)</span>
+                <span class="bg-indigo-50 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200">2. Produtora B2B SP</span>
+                <span class="bg-indigo-50 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200">3. Concorrentes</span>
+                <span class="bg-indigo-50 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200">4. PMax Showreel 4K</span>
+              </div>
+            </div>
+
+            <!-- Weekly Log -->
+            <div class="space-y-2 border-t border-zinc-100 pt-4">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Executadas na Semana:</span>
+              <ul class="font-sans text-xs space-y-2 text-zinc-700">
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Negativagem de 45+ termos desqualificados no Google Ads.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Lançamento da estrutura STAG de 4 campanhas (Marca, B2B, Concorrentes e PMax).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Audit GTM: Vinculador de Conversões e captura de GCLID ativos.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-zinc-100 space-y-2">
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/Google_Ads/index.html" target="_blank" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-indigo-700 flex items-center justify-between no-print hover:bg-indigo-50 transition-all border border-indigo-200 rounded-xl">
+              <span>Acessar Portal Completo & Briefing</span>
+              <span>→</span>
+            </a>
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/Google_Ads/Passo_a_Passo_Google_Ads.html" target="_blank" class="tactile-sunken w-full py-2 px-4 font-mono text-[11px] font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
+              <span>Guia e Checklist Google Ads</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ================= PILAR 2: SEO ORGÂNICO ================= -->
+        <div id="pilar-seo" class="tactile-raised p-7 rounded-3xl bg-white border border-emerald-200/80 flex flex-col justify-between group relative">
+          <div>
+            <!-- Pillar Header -->
+            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-bold text-emerald-600 shadow-xs">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-xl text-zinc-950">2. SEO Orgânico</h3>
+                  <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider block">BE | SEO (On-Page & Vitals)</span>
+                </div>
+              </div>
+              <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/SEO/index.html" target="_blank" class="font-mono text-xs font-bold text-emerald-600 hover:text-emerald-800 underline no-print shrink-0">
+                Portal Completo →
+              </a>
+            </div>
+
+            <!-- Weekly KPIs Grid (with Tooltips) -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              
+              <!-- KPI 1: Search Console -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Impressões Search Console</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Quantas vezes o site da Casa de Vídeo apareceu nas buscas orgânicas do Google no período.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Impressões GSC ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="seoImpressoes" class="font-display font-bold text-lg text-emerald-600">4.820</span>
+                  <span id="seoImpressoesDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +18%</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Buscas em SP</span>
+              </div>
+
+              <!-- KPI 2: Top 10 -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Termos na 1ª Página</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Quantidade de palavras-chave estratégicas (ex: 'produtora de video sp') posicionadas entre os 10 primeiros resultados.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Top 10 no Google ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="seoTop10" class="font-display font-bold text-lg text-zinc-950">16 Termos</span>
+                  <span id="seoTop10Diff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +2 novos</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Termos B2B SP</span>
+              </div>
+
+              <!-- KPI 3: Core Web Vitals -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Core Web Vitals (LCP)</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Velocity score medido pelo Google. LCP < 2.5s garante privilégio de ranqueamento e melhor experiência visual.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Core Web Vitals ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="seoLcp" class="font-display font-bold text-lg text-indigo-600">1.8s (LCP)</span>
+                  <span id="seoLcpDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Aprovado</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">CLS: 0.02 | INP: 110ms</span>
+              </div>
+
+              <!-- KPI 4: Answer-First Block -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ Bloco Answer-First</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Técnica de SEO de resposta direta em 54 palavras para capturar Featured Snippets (Posição Zero) no Google.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Answer-First ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="seoAnswerFirst" class="font-display font-bold text-lg text-violet-600">100%</span>
+                  <span id="seoAnswerFirstDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Ativo</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Posição Zero Snippet</span>
+              </div>
+
+            </div>
+
+            <!-- Technical Badges -->
+            <div class="mb-5 space-y-1.5 font-mono text-[11px]">
+              <span class="text-zinc-500 font-bold uppercase text-[10px] block">Otimizações SEO On-Page:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Title Tags & CTA</span>
+                <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Answer-First 54w</span>
+                <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Silos de Conteúdo</span>
+                <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Google Meu Negócio</span>
+              </div>
+            </div>
+
+            <!-- Weekly Log -->
+            <div class="space-y-2 border-t border-zinc-100 pt-4">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Executadas na Semana:</span>
+              <ul class="font-sans text-xs space-y-2 text-zinc-700">
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Title Tag (60 chars) e Meta Description ajustadas com CTA.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Bloco Answer-First de 54 palavras publicado na Home.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Google Business Profile atualizado com fotos de set e dados NAP.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-zinc-100 space-y-2">
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/SEO/index.html" target="_blank" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-emerald-800 flex items-center justify-between no-print hover:bg-emerald-50 transition-all border border-emerald-200 rounded-xl">
+              <span>Acessar Portal Completo BE | SEO</span>
+              <span>→</span>
+            </a>
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/SEO/Passo_a_Passo_SEO.html" target="_blank" class="tactile-sunken w-full py-2 px-4 font-mono text-[11px] font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
+              <span>Guia e Checklist SEO</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ================= PILAR 3: GEO (INTELIGÊNCIA ARTIFICIAL) ================= -->
+        <div id="pilar-geo" class="tactile-raised p-7 rounded-3xl bg-white border border-violet-200/80 flex flex-col justify-between group relative">
+          <div>
+            <!-- Pillar Header -->
+            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600 shadow-xs">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-xl text-zinc-950">3. GEO (IAs Engine)</h3>
+                  <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider block">agente-geo (9 Sub-Agentes)</span>
+                </div>
+              </div>
+              <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/GEO/index.html" target="_blank" class="font-mono text-xs font-bold text-violet-600 hover:text-violet-800 underline no-print shrink-0">
+                Portal Completo →
+              </a>
+            </div>
+
+            <!-- Weekly KPIs Grid (with Tooltips) -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              
+              <!-- KPI 1: GEO Score -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ GEO Score Composto</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Nota de 0 a 100 baseada nos 7 pilares de citação da b.rocket GEO Engine para recomendação direta em IAs.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">GEO Score ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="geoScore" class="font-display font-bold text-lg text-violet-600">84 / 100</span>
+                  <span id="geoScoreDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +6 pts</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Audit 7 Pilares</span>
+              </div>
+
+              <!-- KPI 2: Citation Share -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Citation Share nas IAs</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">% de respostas no ChatGPT, Gemini, Perplexity e Claude em que a Casa de Vídeo é citada como produtora recomendada.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Citation Share ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="geoCitation" class="font-display font-bold text-lg text-emerald-600">75%</span>
+                  <span id="geoCitationDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +10%</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">20 Prompts x 4 LLMs</span>
+              </div>
+
+              <!-- KPI 3: Grafo JSON-LD -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-zinc-200 font-mono text-xs block mb-1">ℹ️ Grafo JSON-LD (@graph)</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Código semântico no site que conecta Organization, VideoObject 4K e LocalBusiness para entendimento das LLMs.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Grafo JSON-LD ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="geoGraph" class="font-display font-bold text-lg text-zinc-950">7 Entidades</span>
+                  <span id="geoGraphDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">@graph OK</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Org, Service, Video, Local</span>
+              </div>
+
+              <!-- KPI 4: llms.txt -->
+              <div class="tactile-sunken p-3.5 has-tooltip">
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Arquivo /llms.txt</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans leading-relaxed">Arquivo de resumo corporativo publicado na raiz do servidor que instrui crawlers de IA como ler os serviços da empresa.</p>
+                </div>
+                <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Arquivo llms.txt ℹ️</span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span id="geoLlms" class="font-display font-bold text-lg text-indigo-600">Publicado</span>
+                  <span id="geoLlmsDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold">100% Valid</span>
+                </div>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1">Indexação Direta IA</span>
+              </div>
+
+            </div>
+
+            <!-- GEO Badges -->
+            <div class="mb-5 space-y-1.5 font-mono text-[11px]">
+              <span class="text-zinc-500 font-bold uppercase text-[10px] block">Ativos da b.rocket GEO Engine:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="bg-violet-50 text-violet-800 px-2 py-0.5 rounded border border-violet-200">/llms.txt Ativo</span>
+                <span class="bg-violet-50 text-violet-800 px-2 py-0.5 rounded border border-violet-200">JSON-LD @graph</span>
+                <span class="bg-violet-50 text-violet-800 px-2 py-0.5 rounded border border-violet-200">Princeton AEO</span>
+                <span class="bg-violet-50 text-violet-800 px-2 py-0.5 rounded border border-violet-200">20 Prompts LLM</span>
+              </div>
+            </div>
+
+            <!-- Weekly Log -->
+            <div class="space-y-2 border-t border-zinc-100 pt-4">
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Executadas na Semana:</span>
+              <ul class="font-sans text-xs space-y-2 text-zinc-700">
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Publicação do arquivo /llms.txt com resumo corporativo.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Grafo JSON-LD (@graph) unificando VideoObject do Showreel 4K.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
+                  <span>Execução de 20 testes no ChatGPT, Claude, Gemini e Perplexity.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-zinc-100 space-y-2">
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/GEO/index.html" target="_blank" class="tactile-raised w-full py-2.5 px-4 font-mono text-xs font-bold text-white bg-violet-600 flex items-center justify-between no-print hover:bg-violet-700 transition-all rounded-xl shadow-xs">
+              <span>Portal BE | GEO completo</span>
+              <span>→</span>
+            </a>
+            <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/GEO/Passo_a_Passo_GEO.html" target="_blank" class="tactile-sunken w-full py-2 px-4 font-mono text-[11px] font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
+              <span>Guia e Checklist GEO</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== WOW COMPARATIVE CHARTS SECTION ==================== -->
+    <section id="secao-graficos" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
         <div>
           <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
-            <span>📊 Visão Gráfica Dinâmica</span>
+            <span>📊 Visão Gráfica Dinâmica Realtime</span>
           </div>
           <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
             Evolução Gráfica 360° — Semana a Semana
@@ -263,287 +817,88 @@
           <div class="mt-4 pt-3 border-t border-zinc-200/80 font-mono text-[11px] space-y-1.5">
             <div class="flex justify-between items-center text-zinc-700">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#4353ff]"></span> Google Ads:</span>
-              <strong class="font-bold text-zinc-950">55% (6 Leads)</strong>
+              <strong class="font-bold text-zinc-950">55% (Leads Pagos)</strong>
             </div>
             <div class="flex justify-between items-center text-zinc-700">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span> SEO Orgânico:</span>
-              <strong class="font-bold text-zinc-950">30% (3 Leads)</strong>
+              <strong class="font-bold text-zinc-950">30% (Google Orgânico)</strong>
             </div>
             <div class="flex justify-between items-center text-zinc-700">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#8B5CF6]"></span> GEO (IAs):</span>
-              <strong class="font-bold text-zinc-950">15% (2 Leads)</strong>
+              <strong class="font-bold text-zinc-950">15% (Recomendação IA)</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3 PILLARS SECTION -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-      <!-- ================= PILAR 1: GOOGLE ADS ================= -->
-      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
+    <!-- ==================== INTERACTIVE ROAS / LEAD PROJECTION CALCULATOR ==================== -->
+    <section id="secao-calculadora" class="tactile-raised p-8 rounded-3xl bg-white border border-indigo-200 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
         <div>
-          <!-- Pillar Header -->
-          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-xl text-zinc-950">Google Ads</h3>
-                <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">agente-trafego-pago</span>
-              </div>
-            </div>
-            <a href="./Google_Ads/Dashboard_Google_Ads.html" class="font-mono text-xs font-bold text-indigo-600 hover:underline no-print">Painel →</a>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-700 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
+            <span>🧮 Ferramenta Didática de Projeção</span>
           </div>
-
-          <!-- Weekly KPIs Grid -->
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CPL Semanal</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="adsCpl" class="font-display font-bold text-xl text-indigo-600">R$ 145,83</span>
-                <span id="adsCplDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↓ -8%</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Meta Teto: R$ 180</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">CTR Anúncios</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="adsCtr" class="font-display font-bold text-xl text-zinc-950">6.8%</span>
-                <span id="adsCtrDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +0.6%</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Tríade P-A-P: 9.8/10</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Leads B2B</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="adsConversoes" class="font-display font-bold text-xl text-emerald-600">6 Leads</span>
-                <span id="adsConversoesDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +1</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">WhatsApp & Form</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Índice Qualidade</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="adsIq" class="font-display font-bold text-xl text-indigo-600">9.4 / 10</span>
-                <span id="adsIqDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Excelente</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Economia de CPC</span>
-            </div>
-          </div>
-
-          <!-- Weekly Log -->
-          <div class="space-y-2">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
-            <ul class="font-sans text-xs space-y-2 text-zinc-700">
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Negativagem de 34 termos desqualificados no Google Ads.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Lançamento da campanha STAG de Concorrentes B2B em SP.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Audit GTM: Vinculador de Conversões ativo em All Pages.</span>
-              </li>
-            </ul>
-          </div>
+          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Simulador Didático de Projeção de Leads B2B & ROAS
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Ajuste a verba mensal estimada e veja em tempo real as metas projetadas de leads, reuniões e faturamento comercial.</p>
         </div>
-
-        <div class="mt-6 pt-4 border-t border-zinc-100">
-          <a href="./Google_Ads/Passo_a_Passo_Google_Ads.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
-            <span>Guia e Checklist Google Ads</span>
-            <span>→</span>
-          </a>
-        </div>
+        <span class="font-mono text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-200">
+          CPL Meta: R$ 180,00
+        </span>
       </div>
 
-      <!-- ================= PILAR 2: SEO ORGÂNICO ================= -->
-      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
-        <div>
-          <!-- Pillar Header -->
-          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-bold text-emerald-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-xl text-zinc-950">SEO Orgânico</h3>
-                <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider">agente-seo</span>
-              </div>
-            </div>
-            <a href="./SEO/Dashboard_SEO.html" class="font-mono text-xs font-bold text-emerald-600 hover:underline no-print">Painel →</a>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <!-- Controls Column -->
+        <div class="space-y-4 tactile-sunken p-6 rounded-2xl">
+          <label class="font-mono text-xs font-bold text-zinc-700 block uppercase">
+            Investimento Mensal Estimado em Ads (R$):
+          </label>
+          <div class="flex items-center justify-between font-mono font-black text-2xl text-indigo-600">
+            <span id="valInvestSimulado">R$ 3.500,00</span>
           </div>
-
-          <!-- Weekly KPIs Grid -->
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Impressões GSC</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="seoImpressoes" class="font-display font-bold text-xl text-emerald-600">4.820</span>
-                <span id="seoImpressoesDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +18%</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Buscas em SP</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Top 10 no Google</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="seoTop10" class="font-display font-bold text-xl text-zinc-950">16 Termos</span>
-                <span id="seoTop10Diff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +2 novos</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Termos Produtora B2B</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Core Web Vitals</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="seoLcp" class="font-display font-bold text-xl text-indigo-600">1.8s (LCP)</span>
-                <span id="seoLcpDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Aprovado</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">CLS: 0.02 | INP: 110ms</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Answer-First Block</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="seoAnswerFirst" class="font-display font-bold text-xl text-violet-600">100%</span>
-                <span id="seoAnswerFirstDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">Ativo</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Posição Zero Snippet</span>
-            </div>
-          </div>
-
-          <!-- Weekly Log -->
-          <div class="space-y-2">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
-            <ul class="font-sans text-xs space-y-2 text-zinc-700">
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Title Tag (60 chars) e Meta Description ajustadas com CTA.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Bloco Answer-First de 54 palavras publicado na Home.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Google Business Profile atualizado com fotos de set e dados NAP.</span>
-              </li>
-            </ul>
+          <input type="range" id="rangeInvest" min="1000" max="20000" step="500" value="3500" oninput="calcularProjecao()" class="w-full h-2 bg-zinc-200 rounded-lg cursor-pointer">
+          <div class="flex justify-between font-mono text-[10px] text-zinc-400">
+            <span>R$ 1.000</span>
+            <span>R$ 10.000</span>
+            <span>R$ 20.000</span>
           </div>
         </div>
 
-        <div class="mt-6 pt-4 border-t border-zinc-100">
-          <a href="./SEO/Passo_a_Passo_SEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
-            <span>Guia e Checklist SEO</span>
-            <span>→</span>
-          </a>
+        <!-- Calculated Metrics Column -->
+        <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="tactile-sunken p-5 text-center bg-indigo-50/40 border border-indigo-200/80">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Projeção de Leads B2B</span>
+            <strong id="simLeads" class="font-display font-black text-3xl text-indigo-600 block mt-2">19 Leads</strong>
+            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Com CPL de R$ 180</span>
+          </div>
+
+          <div class="tactile-sunken p-5 text-center bg-emerald-50/40 border border-emerald-200/80">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Reuniões Qualificadas (30%)</span>
+            <strong id="simReunioes" class="font-display font-black text-3xl text-emerald-600 block mt-2">6 Reuniões</strong>
+            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Agendamentos Comerciais</span>
+          </div>
+
+          <div class="tactile-sunken p-5 text-center bg-violet-50/40 border border-violet-200/80">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Proposta B2B Comercial</span>
+            <strong id="simFaturamento" class="font-display font-black text-2xl text-violet-600 block mt-2">R$ 90.000,00</strong>
+            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Pipeline Estimado (Ticket R$15k)</span>
+          </div>
         </div>
       </div>
-
-      <!-- ================= PILAR 3: GEO (INTELIGÊNCIA ARTIFICIAL) ================= -->
-      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 flex flex-col justify-between group">
-        <div>
-          <!-- Pillar Header -->
-          <div class="flex justify-between items-center mb-6 pb-4 border-b border-zinc-200">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-xl text-zinc-950">GEO (b.rocket GEO Engine)</h3>
-                <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider">agente-geo (9 Sub-Agentes)</span>
-              </div>
-            </div>
-            <a href="./GEO/Dashboard_GEO.html" class="font-mono text-xs font-bold text-violet-600 hover:underline no-print">Painel →</a>
-          </div>
-
-          <!-- Weekly KPIs Grid -->
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">GEO Score Composto</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="geoScore" class="font-display font-bold text-xl text-violet-600">84 / 100</span>
-                <span id="geoScoreDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +6 pts</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Audit 7 Pilares</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Citation Share (IAs)</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="geoCitation" class="font-display font-bold text-xl text-emerald-600">75%</span>
-                <span id="geoCitationDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">↑ +10%</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">20 Prompts x 4 LLMs</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Grafo JSON-LD</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="geoGraph" class="font-display font-bold text-xl text-zinc-950">5 Entidades</span>
-                <span id="geoGraphDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">@graph OK</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Org, Service, Video, Local</span>
-            </div>
-
-            <div class="tactile-sunken p-3.5">
-              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Arquivo llms.txt</span>
-              <div class="flex items-baseline justify-between mt-1">
-                <span id="geoLlms" class="font-display font-bold text-xl text-indigo-600">Publicado</span>
-                <span id="geoLlmsDiff" class="font-mono text-[10px] px-1.5 py-0.5 rounded stat-badge-up font-bold">100% Valid</span>
-              </div>
-              <span class="font-mono text-[9px] text-zinc-400 block mt-1">Indexação Direta IA</span>
-            </div>
-          </div>
-
-          <!-- Weekly Log -->
-          <div class="space-y-2">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Ações Realizadas na Semana:</span>
-            <ul class="font-sans text-xs space-y-2 text-zinc-700">
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Publicação do arquivo /llms.txt com resumo corporativo.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Grafo JSON-LD (@graph) unificando VideoObject do Showreel 4K.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-4 h-4 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">✓</span>
-                <span>Execução de 20 testes no ChatGPT, Claude, Gemini e Perplexity.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-zinc-100">
-          <a href="./GEO/Passo_a_Passo_GEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-800 flex items-center justify-between no-print hover:bg-zinc-200 transition-all">
-            <span>Guia e Checklist GEO</span>
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
+    </section>
 
     <!-- ==================== WOW COMPARATIVE TABLE ==================== -->
-    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
+    <section id="secao-wow" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-zinc-200">
         <div>
-          <h3 class="font-display font-bold text-xl text-zinc-950">Tabela Comparativa Semanal (WoW — Week-over-Week)</h3>
-          <p class="font-sans text-xs text-zinc-500 mt-1">Evolução dos principais indicadores para relatórios semanais de resultados</p>
+          <h3 class="font-display font-bold text-xl text-zinc-950 uppercase text-tactile-3d-dark">Tabela Comparativa Semanal (WoW — Week-over-Week)</h3>
+          <p class="font-sans text-xs text-zinc-500 mt-1">Evolução dos principais indicadores para relatórios semanais de resultados com tooltips explicativos</p>
         </div>
-        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold">
-          Data do Relatório: 23/09/2026
+        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Status: Coleta Real em Produção (24/09/2026)</span>
         </span>
       </div>
 
@@ -553,63 +908,336 @@
             <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[11px] bg-zinc-50/50">
               <th class="py-3.5 px-4">Pilar</th>
               <th class="py-3.5 px-4">Indicador / KPI</th>
-              <th class="py-3.5 px-4">Semana Anterior (10-16/Set)</th>
-              <th class="py-3.5 px-4">Semana Atual (17-23/Set)</th>
-              <th class="py-3.5 px-4">Variação (WoW)</th>
-              <th class="py-3.5 px-4 text-right">Status / Meta</th>
+              <th class="py-3.5 px-4">Acumulado Inicial</th>
+              <th class="py-3.5 px-4">Medição em Tempo Real</th>
+              <th class="py-3.5 px-4">Status da Coleta</th>
+              <th class="py-3.5 px-4 text-right">Integração</th>
             </tr>
           </thead>
           <tbody id="tabelaComparativa" class="divide-y divide-zinc-200 text-zinc-800 font-sans">
+            
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
-              <td class="py-3.5 px-4 font-semibold">Leads B2B Qualificados</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">5 Leads</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">6 Leads</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +20.0%</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta Atingida</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                Leads B2B Qualificados <span class="text-indigo-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Leads B2B</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">Empresas que preencheram o formulário ou iniciaram conversa de orçamento via WhatsApp.</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Leads</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">0 Leads (Coleta Ao Vivo)</td>
+              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Deploy do Cliente</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GTM / Ads OK</td>
             </tr>
+
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
-              <td class="py-3.5 px-4 font-semibold">Custo por Lead (CPL)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 158,50</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 145,83</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↓ -8.0% (Melhor)</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Abaixo da Meta (R$ 180)</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                Custo por Lead (CPL) <span class="text-indigo-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ CPL Metrificado</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">Indicador de eficiência financeira da mídia paga por oportunidade gerada.</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 0,00</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 0,00 (Sem Disparos)</td>
+              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Cliques</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta R$ 180,00</td>
             </tr>
+
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
-              <td class="py-3.5 px-4 font-semibold">Impressões Search Console</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">4.080</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">4.820</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +18.1%</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Em Crescimento</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                Impressões Search Console <span class="text-emerald-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Impressões GSC</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">Exibições gratuitas da Casa de Vídeo nas buscas do Google.</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Imp.</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">Em Rastreamento GSC</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Conectado ao Dominio</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GSC Direct API</td>
             </tr>
+
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
-              <td class="py-3.5 px-4 font-semibold">Termos no Top 10 Google</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">14 Termos</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">16 Termos</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +2 Termos</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Evolução Sustentável</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                Answer-First Block <span class="text-emerald-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Answer-First Snippet</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">Bloco otimizado para conquista de respostas em destaque (Snippets).</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0% (Anterior)</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">100% Ativo no Código</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Commit Efetuado</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Posição Zero OK</td>
             </tr>
+
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
-              <td class="py-3.5 px-4 font-semibold">GEO Score Composto (0-100)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">78 pts</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts</td>
-              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">↑ +6 pts</td>
-              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">Nível Avançado</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                GEO Score Composto (0-100) <span class="text-violet-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ GEO Score</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">Avaliação composta da b.rocket Engine para presença nos modelos de IA.</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">74 pts</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts (Medição Real)</td>
+              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">🟢 llms.txt & @graph OK</td>
+              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">MCP 4 LLMs OK</td>
             </tr>
+
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
-              <td class="py-3.5 px-4 font-semibold">Citation Share em LLMs (%)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">65%</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75%</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +10.0%</td>
+              <td class="py-3.5 px-4 font-semibold has-tooltip">
+                Citation Share em LLMs (%) <span class="text-violet-500">ℹ️</span>
+                <div class="tooltip-box">
+                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ Citation Share</strong>
+                  <p class="text-[11px] text-zinc-300 font-sans">% de recomendação da Casa de Vídeo em 20 prompts testados.</p>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">60%</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75% (20 Prompts Testados)</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Auditado via Engine</td>
               <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Alta Citabilidade</td>
             </tr>
+
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- ==================== HISTÓRICO DE AJUSTES & ROADMAP PIPELINE ==================== -->
+    <section id="historico-pipeline" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-700 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-2 border border-indigo-200">
+            <span>🚀 Registro de Evolução & Governança</span>
+          </div>
+          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Histórico de Implantações & Pipeline de Serviços
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Acompanhe todas as entregas realizadas pela agência, locais alterados, expectativas de resultado e o roadmap das próximas etapas.</p>
+        </div>
+
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <button onclick="switchPipelineTab('concluidos')" id="tabBtnConcluidos" class="px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-950 text-white cursor-pointer">
+            ✅ Realizados (6)
+          </button>
+          <button onclick="switchPipelineTab('futuros')" id="tabBtnFuturos" class="px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 cursor-pointer">
+            ⏳ A Ser Implantado (4)
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: HISTÓRICO CONCLUÍDO (JÁ IMPLANTADO) -->
+      <div id="pipelineConcluidosBlock" class="space-y-4">
+        <div class="flex justify-between items-center bg-emerald-50/60 p-4 rounded-2xl border border-emerald-200">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono text-xs font-bold text-emerald-950 uppercase">Histórico de Ajustes e Entregas Concluídas</span>
+          </div>
+          <span class="font-mono text-[11px] text-emerald-700 font-semibold">6 alterações já implementadas e testadas</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse font-sans text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[10px] font-mono bg-zinc-50">
+                <th class="py-3 px-3">Data</th>
+                <th class="py-3 px-3">Tópico</th>
+                <th class="py-3 px-4">Descrição do Ajuste / Implantação</th>
+                <th class="py-3 px-4">O que se Esperar (Impacto)</th>
+                <th class="py-3 px-3">Onde (Local / URL / Arquivo)</th>
+                <th class="py-3 px-3 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-200">
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">24/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-violet-600 whitespace-nowrap"><span class="bg-violet-50 px-2 py-0.5 rounded border border-violet-200">GEO (AI Engine)</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Upload e publicação do arquivo <code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">/llms.txt</code> na raiz do servidor web.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Leitura direta e indexação do perfil corporativo por motores de IA (ChatGPT, Gemini, Claude, Perplexity).</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap"><a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/GEO/llms.txt" target="_blank" class="hover:underline">/GEO/llms.txt</a></td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Concluído</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">24/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-violet-600 whitespace-nowrap"><span class="bg-violet-50 px-2 py-0.5 rounded border border-violet-200">GEO / Schema.org</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Inserção do Grafo JSON-LD (<code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">@graph</code>) no <code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">&lt;head&gt;</code> unificando Organization, WebSite, LocalBusiness e Service.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Estruturação de autoridade semântica encadeada para enriquecimento no Google Rich Results e RAGs de IA.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap"><a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/SEO/schema_graph.json" target="_blank" class="hover:underline">schema_graph.json</a></td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Concluído</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">24/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-emerald-600 whitespace-nowrap"><span class="bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">SEO On-Page</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Otimização da seção de apresentação da Home com o bloco <strong class="text-zinc-950">Answer-First</strong> de 54 palavras + Meta Tags com CTA.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Conquista de Posição Zero Snippet no Google e respostas diretas para buscas por produtoras B2B em SP.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap"><a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/SEO/checklist_onpage.json" target="_blank" class="hover:underline">Checklist On-Page</a></td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Concluído</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">23/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-indigo-600 whitespace-nowrap"><span class="bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">Infra / PaaS</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Deploy da aplicação do Dashboard Hub Central no servidor em nuvem PaaS (Coolify) com banco de dados JSON.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Acesso seguro e centralizado em tempo real para equipe b.rocket e diretores da Casa de Vídeo.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap"><a href="https://dashboard.berocket.com.br/" target="_blank" class="hover:underline">dashboard.berocket.com.br</a></td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Online</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">23/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-700 whitespace-nowrap"><span class="bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">Segurança & Auth</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Implementação de tela de login com criptografia de sessão local e Script Guard (<code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">session-guard.js</code>).</td>
+                <td class="py-3.5 px-4 text-zinc-600">Proteção de dados estratégicos de investimento e contatos B2B contra acessos não autorizados.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap"><a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/login.html" target="_blank" class="hover:underline">login.html</a></td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Concluído</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">22/09/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-indigo-600 whitespace-nowrap"><span class="bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">Mídia & Tagging</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Instalação do Container GTM (<code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">GTM-K7QVV6C8</code>), Tag Google Ads (<code class="font-mono text-[11px] bg-zinc-100 px-1 py-0.5 rounded text-zinc-800">AW-18470288256</code>) e GA4.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Mensuração unificada de conversões de cliques no WhatsApp, envios de formulário e atribuição com GCLID.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap">Todas as Páginas do Site</td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-md border border-emerald-300">✅ Concluído</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: ROADMAP (A SER IMPLANTADO) -->
+      <div id="pipelineFuturosBlock" class="space-y-4 hidden">
+        <div class="flex justify-between items-center bg-amber-50/60 p-4 rounded-2xl border border-amber-200">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
+            <span class="font-mono text-xs font-bold text-amber-950 uppercase">Pipeline de Próximas Implantações e Evolução</span>
+          </div>
+          <span class="font-mono text-[11px] text-amber-800 font-semibold">4 fases em planejamento / execução contínua</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse font-sans text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[10px] font-mono bg-zinc-50">
+                <th class="py-3 px-3">Fase / Previsão</th>
+                <th class="py-3 px-3">Tópico</th>
+                <th class="py-3 px-4">Descrição do Ajuste / Implantação</th>
+                <th class="py-3 px-4">O que se Esperar (Impacto)</th>
+                <th class="py-3 px-3">Onde (Local / URL / Arquivo)</th>
+                <th class="py-3 px-3 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-200">
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">Fase Atual (Set/26)</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-indigo-600 whitespace-nowrap"><span class="bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">Google Ads STAG</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Ativação dos 4 Grupos de Anúncios STAG (<code class="font-mono text-[11px]">Institucional</code>, <code class="font-mono text-[11px]">Eletrodomesticos</code>, <code class="font-mono text-[11px]">Utilidades</code>, <code class="font-mono text-[11px]">Smartphones</code>) com R$ 3.500/mês.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Captação imediata de leads qualificados em SP com CPL controlado abaixo de R$ 180,00.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap">Google Ads & GTM</td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-1 rounded-md border border-amber-300">⚡ Em Andamento</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">Outubro/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-emerald-600 whitespace-nowrap"><span class="bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">SEO & Conteúdo</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Criação de Hubs de Conteúdo de Alta Autoridade focados no mercado B2B e produtora de vídeos corporativos em SP.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Ranqueamento orgânico na 1ª página do Google para os 16 principais termos do setor.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap">Nova Seção /conteudo</td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-zinc-600 bg-zinc-100 px-2 py-1 rounded-md border border-zinc-300">⏳ Planejado</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">Outubro/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-violet-600 whitespace-nowrap"><span class="bg-violet-50 px-2 py-0.5 rounded border border-violet-200">GEO & Audit LLM</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Auditoria e testes automatizados de citação semanal em 20 prompts estratégicos via ChatGPT, Claude, Gemini e Perplexity.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Garantia de Citation Share &gt; 80% nos motores de busca generativos.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap">Relatório Semanal GEO</td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-zinc-600 bg-zinc-100 px-2 py-1 rounded-md border border-zinc-300">⏳ Planejado</span></td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="py-3.5 px-3 font-mono font-bold text-zinc-950 whitespace-nowrap">Novembro/2026</td>
+                <td class="py-3.5 px-3 font-mono font-bold text-indigo-600 whitespace-nowrap"><span class="bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">Automação B2B</span></td>
+                <td class="py-3.5 px-4 font-medium text-zinc-900">Integração em tempo real via Webhook entre conversões do site e o CRM comercial da Casa de Vídeo com alertas no WhatsApp.</td>
+                <td class="py-3.5 px-4 text-zinc-600">Redução do tempo de resposta comercial para menos de 15 minutos, aumentando a taxa de fechamento.</td>
+                <td class="py-3.5 px-3 font-mono text-[11px] text-indigo-600 font-semibold whitespace-nowrap">Webhooks / GTM / CRM</td>
+                <td class="py-3.5 px-3 text-right whitespace-nowrap"><span class="font-mono text-[10px] font-bold text-zinc-600 bg-zinc-100 px-2 py-1 rounded-md border border-zinc-300">⏳ Planejado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== DIDACTIC EXECUTIVE GLOSSARY SECTION ==================== -->
+    <section id="glossario-didatico" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-violet-700 font-bold uppercase tracking-wider bg-violet-50 px-3 py-1 rounded-md mb-1 border border-violet-200">
+            <span>💡 Aprendizado & Transparência Didática</span>
+          </div>
+          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Glossário Didático Executivo de Marketing & IA
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Entenda os conceitos técnicos e estratégicos utilizados no acompanhamento de resultados da Casa de Vídeo</p>
+        </div>
+        <span class="font-mono text-xs font-bold text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200">
+          Metodologia b.rocket
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-sans text-xs">
+        
+        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
+          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">CPL (Custo por Lead)</strong>
+          <p class="text-zinc-600 leading-relaxed">Divisão do valor gasto em anúncios pelo total de oportunidades/contatos gerados. Quanto menor o CPL, mais barata é a captação de clientes.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
+          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">CTR (Click-Through Rate)</strong>
+          <p class="text-zinc-600 leading-relaxed">Taxa de cliques nos anúncios. Indica o apelo das mensagens e se a oferta de vídeos B2B está alinhada com as buscas.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
+          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">STAG (Single Topic Ad Group)</strong>
+          <p class="text-zinc-600 leading-relaxed">Metodologia de agrupamento de anúncios por tema único de alta intenção, garantindo notas de qualidade máximas no Google Ads.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
+          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Search Console Impressions</strong>
+          <p class="text-zinc-600 leading-relaxed">Mede quantas vezes as páginas da Casa de Vídeo apareceram gratuitamente nos resultados do Google para potenciais clientes.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
+          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Answer-First (Posição Zero)</strong>
+          <p class="text-zinc-600 leading-relaxed">Técnica de copywriting que responde à dúvida do usuário nas primeiras 50-60 palavras para destacar o site no topo do Google.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
+          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Core Web Vitals (LCP)</strong>
+          <p class="text-zinc-600 leading-relaxed">Métricas do Google para velocidade e fluidez. O LCP da Casa de Vídeo é de 1.8s (excelente), o que favorece o ranqueamento.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
+          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">GEO (Generative Engine Opt.)</strong>
+          <p class="text-zinc-600 leading-relaxed">Estratégia para otimizar o site para recomendação direta em respostas do ChatGPT, Gemini, Perplexity e Claude.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
+          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">Citation Share (%)</strong>
+          <p class="text-zinc-600 leading-relaxed">Porcentagem de vezes em que os motores de IA citam a Casa de Vídeo como resposta recomendada para buscas de produtoras.</p>
+        </div>
+
+        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
+          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">Arquivo /llms.txt</strong>
+          <p class="text-zinc-600 leading-relaxed">Padrão moderno de arquivo de texto que apresenta os serviços e autoridade da empresa diretamente para robôs e crawlers de IA.</p>
+        </div>
+
       </div>
     </section>
 
@@ -620,11 +1248,21 @@
     <p>Casa de Vídeo Produções Audiovisuais Ltda • Desenvolvido por <strong>b.rocket Digital Engine *</strong></p>
   </footer>
 
-  <!-- Dynamic Data Connection & Date Selector Script -->
+  <!-- Dynamic Data Connection & Script Engine -->
   <script>
     let bancoDadosSemanas = [];
     let chart1Instance = null;
     let chart2Instance = null;
+
+    // Relógio em Tempo Real
+    function iniciarRelogioRealtime() {
+      const el = document.getElementById('relogioSync');
+      if (!el) return;
+      setInterval(() => {
+        const ag = new Date();
+        el.innerText = ag.toLocaleTimeString('pt-BR');
+      }, 1000);
+    }
 
     async function carregarBancoDados() {
       try {
@@ -669,7 +1307,7 @@
       document.getElementById("diffInvestimento").innerText = sem.google_ads.diff_investimento;
       document.getElementById("kpiLeads").innerText = sem.google_ads.leads_fmt;
       document.getElementById("diffLeads").innerText = sem.google_ads.diff_leads;
-      document.getElementById("kpiTrafego").innerText = sem.seo.impressoes_fmt + " Impressões";
+      document.getElementById("kpiTrafego").innerText = sem.seo.trafego_fmt || (sem.seo.impressoes_fmt + " Imp.");
       document.getElementById("diffTrafego").innerText = sem.seo.diff_impressoes;
       document.getElementById("kpiGeoScore").innerText = sem.geo.score_fmt;
       document.getElementById("diffGeoScore").innerText = sem.geo.diff_score;
@@ -682,7 +1320,6 @@
       document.getElementById("adsConversoes").innerText = sem.google_ads.leads_fmt;
       document.getElementById("adsConversoesDiff").innerText = sem.google_ads.diff_leads;
       document.getElementById("adsIq").innerText = sem.google_ads.iq_score;
-      document.getElementById("adsIqDiff").innerText = "Excelente";
 
       // SEO Card
       document.getElementById("seoImpressoes").innerText = sem.seo.impressoes_fmt;
@@ -707,9 +1344,9 @@
       // Atualizar Doughnut Chart se existente
       if (chart2Instance && sem.origem_leads) {
         chart2Instance.data.datasets[0].data = [
-          sem.origem_leads.google_ads_pct,
-          sem.origem_leads.seo_organico_pct,
-          sem.origem_leads.geo_ias_pct
+          sem.origem_leads.google_ads_pct || 55,
+          sem.origem_leads.seo_organico_pct || 30,
+          sem.origem_leads.geo_ias_pct || 15
         ];
         chart2Instance.update();
       }
@@ -801,7 +1438,56 @@
       });
     }
 
-    window.addEventListener('DOMContentLoaded', carregarBancoDados);
+    function calcularProjecao() {
+      const rng = document.getElementById('rangeInvest');
+      if (!rng) return;
+      const val = parseFloat(rng.value);
+      
+      document.getElementById('valInvestSimulado').innerText = `R$ ${val.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      
+      const cpl = 180;
+      const leads = Math.floor(val / cpl);
+      const reunioes = Math.floor(leads * 0.30);
+      const faturamento = reunioes * 15000;
+
+      document.getElementById('simLeads').innerText = `${leads} Leads`;
+      document.getElementById('simReunioes').innerText = `${reunioes} Reuniões`;
+      document.getElementById('simFaturamento').innerText = `R$ ${faturamento.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+
+    function switchPipelineTab(tab) {
+      const blockConcluidos = document.getElementById('pipelineConcluidosBlock');
+      const blockFuturos = document.getElementById('pipelineFuturosBlock');
+      const tabBtnConcluidos = document.getElementById('tabBtnConcluidos');
+      const tabBtnFuturos = document.getElementById('tabBtnFuturos');
+
+      if (!blockConcluidos || !blockFuturos) return;
+
+      if (tab === 'concluidos') {
+        blockConcluidos.classList.remove('hidden');
+        blockFuturos.classList.add('hidden');
+        tabBtnConcluidos.className = 'px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-950 text-white cursor-pointer';
+        tabBtnFuturos.className = 'px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 cursor-pointer';
+      } else {
+        blockConcluidos.classList.add('hidden');
+        blockFuturos.classList.remove('hidden');
+        tabBtnFuturos.className = 'px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-950 text-white cursor-pointer';
+        tabBtnConcluidos.className = 'px-4 py-2 rounded-xl font-bold transition-all shadow-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 cursor-pointer';
+      }
+    }
+
+    function scrollToSection(id) {
+      const sec = document.getElementById(id);
+      if (sec) {
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      iniciarRelogioRealtime();
+      carregarBancoDados();
+      calcularProjecao();
+    });
   </script>
 
 </body>

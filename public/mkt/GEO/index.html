@@ -1,0 +1,2750 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal BE | GEO • Casa de Vídeo Produções</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f4f5f8;
+      color: #0f172a;
+    }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
+
+    ::selection {
+      background-color: #059669;
+      color: #ffffff;
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    /* ── B.ROCKET ADMIN TACTILE DESIGN SYSTEM ── */
+    .admin-card {
+      background: #ffffff;
+      box-shadow: 
+        0px 1px 3px rgba(0, 0, 0, 0.02),
+        0px 8px 24px -4px rgba(15, 23, 42, 0.04);
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+    }
+
+    .admin-sunken {
+      background: #f9fafb;
+      border: 1px solid #f3f4f6;
+      border-radius: 12px;
+    }
+
+    .tab-btn {
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .tab-btn:hover {
+      color: #000000 !important;
+      background-color: rgba(0,0,0,0.02);
+    }
+
+    .tab-btn.tab-active {
+      border-bottom: 3px solid #000000 !important;
+      color: #000000 !important;
+      font-weight: 700 !important;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active-pane {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 antialiased grid-blueprint text-slate-900 w-full overflow-x-hidden">
+
+  <!-- ================================================================= -->
+  <!-- 🧭 CABEÇALHO GLOBAL DE NAVEGAÇÃO DO CLIENTE -->
+  <!-- ================================================================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="../Hub_Central_Marketing.html" class="px-3 py-1 font-mono text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-lg transition-all border border-emerald-200 flex items-center gap-1.5">
+          <span>← Hub Central</span>
+        </a>
+        <div class="h-4 w-[1px] bg-slate-200"></div>
+        <span class="font-mono text-xs text-slate-600 font-semibold">Painel do Cliente: <strong class="text-slate-900">Casa de Vídeo Produções</strong></span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[11px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-0.5 rounded-full font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Atualização Quinzenal b.rocket GEO</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 📍 TOP TABS (4 ABAS EXCLUSIVAS PARA O CLIENTE) -->
+    <!-- ================================================================= -->
+    <div class="bg-white border-t border-slate-100 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto flex items-center gap-4 sm:gap-8 font-mono text-xs overflow-x-auto py-2">
+        <button id="btn-tab-evolucao" onclick="showTab('evolucao')" class="tab-btn tab-active py-2 px-1 text-slate-900 flex items-center gap-1.5">
+          <span>📁 1. Evolução (Antes/Depois)</span>
+        </button>
+        <button id="btn-tab-etapas-geo" onclick="showTab('etapas-geo')" class="tab-btn py-2 px-1 text-slate-500 flex items-center gap-1.5">
+          <span>🎯 2. Etapas GEO & Diagnóstico</span>
+        </button>
+        <button id="btn-tab-auditoria-llm" onclick="showTab('auditoria-llm')" class="tab-btn py-2 px-1 text-slate-500 flex items-center gap-1.5">
+          <span>🛡️ 3. Auditoria LLM (56 Perguntas & Respostas)</span>
+        </button>
+        <button id="btn-tab-entregaveis" onclick="showTab('entregaveis')" class="tab-btn py-2 px-1 text-slate-500 flex items-center gap-1.5">
+          <span>📦 4. Entregáveis & Arquivos</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- MAIN CONTAINER (ABAS CLIENTE) -->
+  <!-- ================================================================= -->
+  <main class="max-w-7xl mx-auto pt-6 px-4 sm:px-6 w-full">
+
+    <!-- ================================================================= -->
+    <!-- 📁 ABA 1: EVOLUÇÃO (ANTES / DEPOIS) — ABA INICIAL PADRÃO -->
+    <!-- ================================================================= -->
+    <div id="pane-evolucao" class="tab-pane active-pane space-y-8">
+      
+      <!-- 4 TOP KPI CARDS EXATOS DO ANEXO DO CLIENTE -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+        <!-- Card 1: GEO SCORE INICIAL -->
+        <div class="admin-card p-6 text-center space-y-2">
+          <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GEO SCORE INICIAL</span>
+          <strong class="font-display font-black text-4xl text-slate-800 block">55%</strong>
+          <span class="font-mono text-[10px] text-slate-400 block font-medium">23/09/2026, 18:30:59</span>
+        </div>
+
+        <!-- Card 2: GEO SCORE ATUAL -->
+        <div class="admin-card p-6 text-center space-y-2 border-emerald-200">
+          <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GEO SCORE ATUAL</span>
+          <strong class="font-display font-black text-4xl text-emerald-600 block">84%</strong>
+          <span class="font-mono text-[10px] text-emerald-600 block font-bold">24/09/2026 (Pós-Implantação)</span>
+        </div>
+
+        <!-- Card 3: VARIAÇÃO DE PONTOS -->
+        <div class="admin-card p-6 text-center space-y-2">
+          <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">VARIAÇÃO DE PONTOS</span>
+          <strong class="font-display font-black text-4xl text-emerald-600 block">+29 pts</strong>
+          <span class="font-mono text-[10px] text-slate-400 block font-medium">diferença total acumulada</span>
+        </div>
+
+        <!-- Card 4: GANHO DE EVOLUÇÃO -->
+        <div class="admin-card p-6 text-center space-y-2">
+          <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GANHO DE EVOLUÇÃO</span>
+          <strong class="font-display font-black text-4xl text-emerald-600 block">+52.7%</strong>
+          <span class="font-mono text-[10px] text-emerald-600 block font-bold">melhoria acumulada</span>
+        </div>
+      </section>
+
+      <!-- 🔄 TABELA COMPARATIVA ANTES VS DEPOIS DA IMPLANTAÇÃO -->
+      <section class="admin-card p-6 sm:p-8 space-y-6 w-full">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🔄</span>
+            <h2 class="font-display font-bold text-lg text-slate-900">
+              Comparativo: Antes vs. Depois da Implantação
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="window.location.reload()" class="px-3.5 py-1.5 font-mono text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 flex items-center gap-1.5 transition-all">
+              <span>🔄 Atualizar Dados</span>
+            </button>
+            <span class="font-mono text-xs text-slate-400">2 auditoria(s) registrada(s)</span>
+          </div>
+        </div>
+
+        <!-- Tabela Minimalista Exata do Anexo -->
+        <div class="w-full overflow-x-auto">
+          <table class="w-full text-left font-sans text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 font-mono text-[11px] text-slate-400 uppercase">
+                <th class="py-3 px-4">INDICADOR GEO</th>
+                <th class="py-3 px-4">ANTES (DIAGNÓSTICO INICIAL)</th>
+                <th class="py-3 px-4">DEPOIS (STATUS ATUAL)</th>
+                <th class="py-3 px-4 text-right">STATUS DA EVOLUÇÃO</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-sans">
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">robots.txt para IAs</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">✓ Liberado</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">✓ Liberado (GPTBot, Perplexity, Claude)</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">Schema Organization</td>
+                <td class="py-3.5 px-4 text-slate-400">✕ Ausente</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">✓ Ativo (@graph 5 Nós • Fundação 1990)</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Corrigido</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">Arquivo /llms.txt</td>
+                <td class="py-3.5 px-4 text-slate-400">✕ Ausente</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">✓ Publicado (Markdown Canônico 1990)</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Corrigido</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">Resposta AEO (&lt;60 palavras)</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">✓ Sim (Parcial)</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">✓ Sim (Blocos H2 Answer-First)</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">Citation Share nas IAs</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">32%</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">75% (15 de 20 Prompts)</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Medido (+43%)</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="py-3.5 px-4 font-semibold text-slate-900">Propriedades sameAs (Redes)</td>
+                <td class="py-3.5 px-4 text-slate-400">✕ Disperso</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">✓ LinkedIn, Vimeo, Insta & YouTube</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 📅 LINHA DO TEMPO DE RELATÓRIOS SALVOS NO FIRESTORE -->
+      <section class="admin-card p-6 sm:p-8 space-y-6 w-full">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <span class="text-xl">📅</span>
+          <h2 class="font-display font-bold text-lg text-slate-900">
+            Linha do Tempo de Relatórios Salvos no Firestore
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Relatório #1 -->
+          <div class="admin-sunken p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50/90 border border-slate-200">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">RELATÓRIO #1</span>
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs text-slate-600 font-semibold">🕒 23/09/2026, 18:30:59</span>
+                <span class="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Score: 55%</span>
+                <span class="font-mono text-xs font-bold text-slate-600">Citation Share: 32%</span>
+              </div>
+            </div>
+
+            <a href="Relatorio_GEO_Auditoria_23092026.html" target="_blank" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs font-bold rounded-lg shadow-xs transition-all flex items-center gap-2">
+              <span>🌐 Baixar Relatório HTML (Auditoria Completa)</span>
+            </a>
+          </div>
+
+          <!-- Relatório #2 -->
+          <div class="admin-sunken p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-emerald-50/50 border border-emerald-200">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">RELATÓRIO #2 (ATUAL)</span>
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs text-slate-700 font-semibold">🕒 24/09/2026, 19:30:00</span>
+                <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Score: 84%</span>
+                <span class="font-mono text-xs font-bold text-emerald-700">Citation Share: 75% (+43%)</span>
+              </div>
+            </div>
+
+            <a href="Dashboard_GEO.html" target="_blank" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-mono text-xs font-bold rounded-lg shadow-xs transition-all flex items-center gap-2">
+              <span>🌐 Baixar Relatório HTML (Pós-Implantação b.rocket)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 🎯 ABA 2: ETAPAS GEO & DIAGNÓSTICO (RICA, VISUAL E DIDÁTICA) -->
+    <!-- ================================================================= -->
+    <div id="pane-etapas-geo" class="tab-pane space-y-8">
+      <div class="admin-card p-6 sm:p-8 space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <span class="text-xl">🎯</span>
+          <div>
+            <h2 class="font-display font-bold text-lg text-slate-900">Painel Visual das Etapas & Pilares GEO</h2>
+            <p class="font-sans text-xs text-slate-500">Métricas gráficas e explicações didáticas dos 7 pilares de autoridade nas IAs.</p>
+          </div>
+        </div>
+
+        <!-- GRÁFICOS VISUAIS INTERATIVOS -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Gráfico 1: Evolução do Score -->
+          <div class="lg:col-span-2 admin-sunken p-5 bg-white space-y-3">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+              <h4 class="font-display font-bold text-xs text-slate-950 uppercase">📈 Evolução Histórica do GEO Score (55% → 84%)</h4>
+              <span class="font-mono text-[10px] text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-bold">+29 pts acumulados</span>
+            </div>
+            <div class="h-64 relative">
+              <canvas id="chartGeoEvolutionMain"></canvas>
+            </div>
+          </div>
+
+          <!-- Gráfico 2: Donut Citabilidade por IA -->
+          <div class="admin-sunken p-5 bg-white space-y-3 flex flex-col justify-between">
+            <div>
+              <h4 class="font-display font-bold text-xs text-slate-950 uppercase border-b border-slate-100 pb-2">
+                🤖 Citabilidade da Marca por IA
+              </h4>
+              <div class="h-44 relative flex items-center justify-center mt-2">
+                <canvas id="chartLlmDonutMain"></canvas>
+              </div>
+            </div>
+            <div class="font-mono text-[10px] space-y-1 border-t border-slate-100 pt-2 text-slate-600">
+              <div class="flex justify-between"><span>• ChatGPT (gpt-4o-mini):</span> <strong class="text-emerald-700">80% Recomendado</strong></div>
+              <div class="flex justify-between"><span>• Perplexity (sonar):</span> <strong class="text-emerald-700">80% Recomendado</strong></div>
+              <div class="flex justify-between"><span>• Gemini (2.5 flash):</span> <strong class="text-emerald-700">70% Recomendado</strong></div>
+              <div class="flex justify-between"><span>• Claude (haiku 4.5):</span> <strong class="text-emerald-700">70% Recomendado</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LISTA VISUAL DIDÁTICA DOS 7 PILARES -->
+        <div class="space-y-4 pt-4 border-t border-slate-100">
+          <h3 class="font-display font-bold text-base text-slate-900 uppercase">🏆 Detalhamento Didático dos 7 Pilares de Pontuação</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-xs">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-emerald-500">
+              <span class="font-mono font-bold text-slate-900 block">1. Technical Gatekeeper (18 pts) • Nota: 16/18</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Libera os robôs de busca por IA no <code>robots.txt</code> e garante carregamento rápido em menos de 500ms.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-indigo-500">
+              <span class="font-mono font-bold text-slate-900 block">2. Metadata Entity & Graph (15 pts) • Nota: 14/15</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Publica o mapa corporativo <code>llms.txt</code> e conecta a fundação de 1990 no Grafo Schema.org.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-violet-500">
+              <span class="font-mono font-bold text-slate-900 block">3. Content Absorption (18 pts) • Nota: 15/18</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Aplica regras Princeton AEO de respostas de 60 palavras nos H2s e citações ESG.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-amber-500">
+              <span class="font-mono font-bold text-slate-900 block">4. SEO Optimizer (14 pts) • Nota: 12/14</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Otimiza títulos, meta descrições e hierarquia H1-H3 para busca geográfica em São Paulo.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-blue-500">
+              <span class="font-mono font-bold text-slate-900 block">5. Semantic Explorer (13 pts) • Nota: 10/13</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Mapeia tópicos ausentes para dominar o nicho de vídeos corporativos B2B.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-rose-500">
+              <span class="font-mono font-bold text-slate-900 block">6. Off-Page Entity Monitor (10 pts) • Nota: 8/10</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Vincula perfis oficiais do LinkedIn, Vimeo, Instagram e YouTube para citabilidade vetorial.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CICLO QUINZENAL DIDÁTICO -->
+        <div class="p-5 bg-emerald-50/60 rounded-xl border border-emerald-200 text-xs font-sans space-y-2">
+          <span class="font-mono font-bold text-emerald-800 text-xs uppercase block">🔄 Ciclo de Atualização Quinzenal b.rocket</span>
+          <p class="text-slate-700 leading-relaxed">
+            A cada 15 dias, nossa equipe roda uma nova auditoria com os 9 sub-agentes b.rocket GEO, mede a citabilidade atualizada nas IAs e insere os novos dados nesta página para acompanhamento direto da Casa de Vídeo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 🛡️ ABA 3: AUDITORIA LLM (100% DAS 56 PERGUNTAS E RESPOSTAS) -->
+    <!-- ================================================================= -->
+    <div id="pane-auditoria-llm" class="tab-pane space-y-6">
+      <div class="admin-card p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🛡️</span>
+            <div>
+              <h2 class="font-display font-bold text-lg text-slate-900">Auditoria LLM — 56 Perguntas & Respostas em Tempo Real</h2>
+              <p class="font-sans text-xs text-slate-500">Resultado completo extraído da varredura executada em 23/09/2026 nas 4 principais IAs.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <input type="text" id="inputBusca56Prompts" onkeyup="filtrar56Prompts()" placeholder="🔍 Filtrar pergunta ou palavra..." class="px-3.5 py-1.5 font-mono text-xs text-slate-800 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500/30 border border-slate-300 w-full sm:w-72" />
+          </div>
+        </div>
+
+        <div class="font-mono text-xs text-slate-500 flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
+          <span>Mostrando <strong id="countPromptsVisiveis" class="text-slate-900">56</strong> de 56 testes executados</span>
+          <span class="text-[11px] text-emerald-700 font-bold">Citation Share Medido: 32% (Baseline 23/09)</span>
+        </div>
+
+        <!-- CARDS DOS 56 TESTES DE PROMPTS E RESPOSTAS -->
+        <div id="container56Prompts" class="space-y-4">
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#01</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde encontrar uma produtora de vídeos em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Aqui estão algumas produtoras de vídeos em São Paulo:
+
+1. O2 Filmes
+2. Conspiração Filmes
+3. Mixer Films
+4. Cinecolor Digital
+5. Tatu Filmes
+6. Tuca Siqueira Produções
+7. T4F Entretenimento
+8. Toca do Bandido
+
+Essas empresas oferecem serviços variados na produção de vídeos, desde comerciais até documentários e conteúdos para redes sociais.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#02</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores empresas de produção audiovisual no Brasil</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Aqui estão algumas das melhores empresas de produção audiovisual no Brasil:
+
+1. O2 Filmes
+2. Conspiração Filmes
+3. Gullane Produções
+4. Mixer Films
+5. Pindorama Filmes
+6. Casa de Cinema de Porto Alegre
+7. Maria Farinha Filmes
+8. Tatu Filmes
+9. TWC Filmes
+10. Tôa Filmes
+
+Essas empresas são reconhecidas pela qualidade de suas produções e pela contribuição ao mercado audiovisual brasileiro.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#03</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quem contratar para filmes institucionais em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Aqui estão algumas empresas renomadas em São Paulo que oferecem serviços de produção de filmes institucionais:
+
+1. O2 Filmes
+2. Conspiração Filmes
+3. FJ Produções
+4. Pindorama Filmes
+5. Tatu Filmes
+6. TWC Filmes
+7. Toca do Bandido
+8. Tatuí Filmes
+
+Essas empresas possuem experiência em produções audiovisuais e podem atender a diferentes necessidades de comunicação institucional.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#04</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais os serviços oferecidos pela Casa de Vídeo Produções?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A Casa de Vídeo Produções oferece uma variedade de serviços, incluindo:
+
+1. Produção de vídeos institucionais
+2. Produção de comerciais publicitários
+3. Cobertura de eventos
+4. Produção de documentários
+5. Edição de vídeo
+6. Criação de conteúdo para redes sociais
+7. Produção de vídeos para treinamento e capacitação
+8. Animações e motion graphics
+
+Esses serviços são voltados para atender diferentes necessidades de comunicação e marketing de empresas e instituições.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#05</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções é boa para documentários?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A Casa de Vídeo Produções é uma empresa reconhecida no Brasil, especializada na produção de vídeos e documentários. Ela possui uma boa reputação no mercado, com experiência em diversos tipos de projetos audiovisuais. Se você está buscando uma produtora para documentários, a Casa de Vídeo Produções pode ser uma opção viável. É recomendável verificar portfólios anteriores e referências para garantir que o estilo e a qualidade atendam às suas expectativas.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#06</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como funciona a produção de vídeos comerciais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A produção de vídeos comerciais envolve várias etapas, que podem ser resumidas da seguinte forma:
+
+1. **Planejamento**: Definição de objetivos, público-alvo e mensagem a ser transmitida. Criação de um roteiro inicial.
+
+2. **Pré-produção**: Desenvolvimento do roteiro final, planejamento de locações, seleção de elenco, definição de equipe técnica e elaboração de cronograma.
+
+3. **Produção**: Gravação das cenas, que pode incluir filmagens em estúdio ou em locações externas. Envolve a operação de câmeras, iluminação e som.
+
+4. **Pós-produção**: Edição do vídeo, incluindo cortes, adição de efeitos visuais, correção de cores e mixagem de áudio. Criação de trilha sonora e inclusão de legendas, se necessário.
+
+5. **Revisão e Aprovação**: Apresentação do vídeo para o cliente, que pode solicitar ajustes antes da versão final.
+
+6. **Distribuição**: Publicação do vídeo em plataformas apropriadas, como redes sociais, sites corporativos ou canais de televisão.
+
+7. **Análise de Resultados**: Avaliação do desempenho do vídeo em termos de engajamento, visualizações e retorno sobre investimento.
+
+Essas etapas podem variar conforme a complexidade do projeto e as necessidades específicas do cliente.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#07</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde fazer cobertura de eventos ao vivo em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Em São Paulo, você pode considerar as seguintes empresas e marcas para cobertura de eventos ao vivo:
+
+1. Grupo Bandeirantes de Comunicação
+2. Rede Globo de Televisão
+3. RecordTV
+4. SBT - Sistema Brasileiro de Televisão
+5. Agência Estado
+6. Folha de S. Paulo
+7. O Estado de S. Paulo
+8. UOL - Universo Online
+9. Terra Networks Brasil
+10. CNN Brasil
+
+Essas empresas oferecem serviços de cobertura de eventos ao vivo, incluindo transmissões, reportagens e produção de conteúdo.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#08</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os tipos de vídeos que a Casa de Vídeo produz?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A Casa de Vídeo produz diversos tipos de vídeos, incluindo:
+
+1. Vídeos institucionais
+2. Vídeos publicitários
+3. Vídeos de eventos
+4. Vídeos de treinamento
+5. Vídeos promocionais
+6. Documentários
+7. Vídeos para redes sociais
+8. Vídeos de depoimentos
+
+Esses formatos atendem a diferentes necessidades de comunicação e marketing de empresas e organizações.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#09</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções oferece serviços de edição e pós-produção?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim, a Casa de Vídeo Produções oferece serviços de edição e pós-produção.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#10</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores produtoras de conteúdo para redes sociais em São Paulo</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Aqui estão algumas das melhores produtoras de conteúdo para redes sociais em São Paulo:
+
+1. Agência de Publicidade e Propaganda Africa
+2. Agência de Publicidade e Propaganda AlmapBBDO
+3. Agência de Publicidade e Propaganda Wieden+Kennedy
+4. Agência de Publicidade e Propaganda F/Nazca Saatchi & Saatchi
+5. Agência de Publicidade e Propaganda DPZ&T
+6. Agência de Publicidade e Propaganda MullenLowe Brasil
+7. Agência de Publicidade e Propaganda Cubocc
+8. Agência de Publicidade e Propaganda J. Walter Thompson Brasil
+9. Agência de Publicidade e Propaganda Leo Burnett Tailor Made
+10. Agência de Publicidade e Propaganda Isobar Brasil
+
+Essas empresas são reconhecidas por suas estratégias e criações inovadoras nas redes sociais.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#11</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como contratar serviços de motion design em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Para contratar serviços de motion design em São Paulo, siga estas etapas:
+
+1. **Pesquisa de Empresas**: Procure por estúdios e agências especializadas em motion design. Algumas opções incluem:
+   - O2 Filmes
+   - Vetor Zero
+   - Casablanca
+   - Lobo
+   - 2D Lab
+
+2. **Portfólio**: Analise o portfólio das empresas para verificar a qualidade do trabalho e o estilo que mais se adequa às suas necessidades.
+
+3. **Solicitação de Orçamento**: Entre em contato com as empresas selecionadas e solicite orçamentos. Forneça detalhes sobre o projeto, como duração, estilo e objetivos.
+
+4. **Reunião**: Agende reuniões para discutir o projeto, entender o processo criativo e alinhar expectativas.
+
+5. **Referências e Depoimentos**: Verifique referências e depoimentos de clientes anteriores para garantir a confiabilidade da empresa.
+
+6. **Contrato**: Após escolher a empresa, formalize a contratação por meio de um contrato que detalhe prazos, entregas e condições de pagamento.
+
+7. **Acompanhamento**: Durante o desenvolvimento do projeto, mantenha comunicação constante para garantir que o resultado final atenda às suas expectativas.
+
+Seguindo essas etapas, você poderá contratar serviços de motion design de forma eficiente em São Paulo.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#12</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os preços para produção de vídeos institucionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Os preços para a produção de vídeos institucionais no Brasil podem variar bastante dependendo de diversos fatores, como a complexidade do projeto, a duração do vídeo, a experiência da produtora e os recursos utilizados. Em geral, os valores podem ser estimados da seguinte forma:
+
+1. **Vídeos simples (até 1 minuto)**: R$ 3.000 a R$ 10.000.
+2. **Vídeos de média complexidade (1 a 3 minutos)**: R$ 10.000 a R$ 30.000.
+3. **Vídeos mais elaborados (3 a 5 minutos)**: R$ 30.000 a R$ 100.000 ou mais.
+
+Esses valores podem incluir roteirização, filmagem, edição, animações e outros elementos de produção. É importante consultar empresas específicas para obter orçamentos mais precisos. Algumas produtoras conhecidas no Brasil incluem:
+
+- O2 Filmes
+- Conspiração Filmes
+- Mixer Films
+- Casa de Criação
+- Mola Filmes
+
+Recomenda-se entrar em contato com essas empresas para solicitar propostas personalizadas.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#13</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções tem experiência em filmagens internacionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim, a Casa de Vídeo Produções possui experiência em filmagens internacionais, atuando em diversos projetos fora do Brasil e colaborando com equipes de diferentes países.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#14</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">openai/gpt-4o-mini</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como a tecnologia de IA é utilizada na produção de vídeos?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A tecnologia de Inteligência Artificial é utilizada na produção de vídeos de diversas maneiras, incluindo:
+
+1. **Edição Automatizada**: Softwares como Adobe Premiere Pro e Magisto utilizam IA para automatizar processos de edição, como cortes e transições.
+
+2. **Geração de Roteiros**: Ferramentas como Jasper e Copy.ai ajudam na criação de roteiros e conteúdos para vídeos.
+
+3. **Análise de Conteúdo**: Plataformas como Vidooly e Tubular Labs analisam dados de desempenho de vídeos para otimizar estratégias de conteúdo.
+
+4. **Reconhecimento Facial e de Voz**: Tecnologias como a da Amazon Web Services e Google Cloud permitem a identificação de rostos e transcrição de diálogos.
+
+5. **Geração de Vídeos a partir de Texto**: Ferramentas como Lumen5 e Pictory transformam textos em vídeos automaticamente.
+
+6. **Personalização de Conteúdo**: Algoritmos de IA personalizam vídeos com base nas preferências do público, como a Netflix faz com suas recomendações.
+
+7. **Animação e Efeitos Visuais**: Softwares como Runway e DeepArt utilizam IA para criar animações e efeitos visuais inovadores.
+
+Essas aplicações ajudam a aumentar a eficiência, reduzir custos e melhorar a qualidade dos vídeos produzidos.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#15</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde encontrar uma produtora de vídeos em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Produtoras de Vídeos em São Paulo
+
+Aqui estão algumas opções onde você pode encontrar produtoras:
+
+## Plataformas de Busca
+- **Google Maps** - busque "produtora de vídeos São Paulo"
+- **Guia Mais** - diretório de empresas brasileiras
+- **Linkedin** - filtrar por empresas do setor audiovisual
+
+## Bairros com Maior Concentração
+- **Vila Madalena** - polo criativo
+- **Pinheiros** - agências e produtoras
+- **Consolação** - região central com muitos estúdios
+- **Bom Retiro** - produtoras menores e mais acessíveis
+
+## Tipos de Produtoras
+- **Grandes agências**: Globo Filmes, O2 Filmes, Conspiração Filmes
+- **Produtoras independentes**: especializadas em conteúdo corporativo, comerciais, documentários
+- **Estúdios de pós-produção**: focados em edição e efeitos
+
+## Dicas para Encontrar
+1. Solicite indicações a agências de marketing ou comunicação
+2. Verifique portfólios no Vimeo e YouTube
+3. Consulte associações como ABPV (Associação Brasileira de Produtoras de Vídeo)
+4. Peça referências de empresas que já contrataram
+
+**Qual tipo de vídeo você precisa?** (comercial, corporativo, evento, etc.) Posso dar recomendações mais específicas.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#16</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores empresas de produção audiovisual no Brasil</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Principais Empresas de Produção Audiovisual no Brasil
+
+## Grandes Produtoras
+
+**Globo Filmes**
+- Braço cinematográfico da Rede Globo, produz filmes de grande orçamento
+
+**Conspiração Filmes**
+- Especializada em longas-metragens e documentários de qualidade
+
+**Lereby Produções**
+- Produtora de conteúdo para cinema e televisão
+
+**Gullane Filmes**
+- Reconhecida por produções de impacto nacional e internacional
+
+**Boutique Filmes**
+- Focada em filmes autorais e de arte
+
+## Produtoras de Conteúdo Digital e Publicidade
+
+**Vetor Zero**
+- Especializada em produção de conteúdo digital e comerciais
+
+**Paranoid**
+- Produtora de filmes publicitários e conteúdo criativo
+
+**Bossa Nova Filmes**
+- Atuação em publicidade, cinema e documentários
+
+**Cavídeo**
+- Produção de vídeos corporativos e comerciais
+
+## Produtoras de Documentários
+
+**Documentário Brasil**
+- Especializada em documentários de longa duração
+
+**Quanta Centro de Produção**
+- Produção de documentários e conteúdo educativo
+
+Essas empresas se destacam por qualidade técnica, criatividade e experiência no mercado audiovisual brasileiro.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#17</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quem contratar para filmes institucionais em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Produtoras de Filmes Institucionais em São Paulo
+
+## Grandes Produtoras Especializadas
+
+- **Conspiração Filmes** - Reconhecida por produções corporativas de alto padrão
+- **Paranoid** - Especializada em conteúdo institucional e comercial
+- **Boutique Filmes** - Foco em produções corporativas sofisticadas
+- **Mixer** - Produção de filmes institucionais e documentários
+- **Vetor Zero** - Conteúdo corporativo e audiovisual empresarial
+
+## Produtoras Full Service
+
+- **Globo Filmes** - Divisão de produção da Rede Globo
+- **Quanta Filmes** - Produção completa de conteúdo corporativo
+- **Cineplus Filmes** - Experiência em filmes institucionais
+- **Olhar Filmes** - Produção audiovisual corporativa
+
+## Dicas para Contratar
+
+1. **Solicite portfólio** - Verifique trabalhos anteriores similares ao seu
+2. **Defina orçamento** - Varia bastante conforme complexidade
+3. **Prazos** - Confirme cronograma de produção
+4. **Equipe** - Diretor, cinematógrafo, editor especializados
+5. **Referências** - Peça contatos de clientes anteriores
+
+Recomendo solicitar propostas de 3-4 produtoras para comparar qualidade, criatividade e valores.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#18</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais os serviços oferecidos pela Casa de Vídeo Produções?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Não tenho informações específicas sobre os serviços oferecidos pela Casa de Vídeo Produções em minha base de dados.
+
+Para obter informações precisas sobre essa empresa, recomendo:
+
+1. **Acessar o site oficial** - Procure pelo site da Casa de Vídeo Produções
+2. **Contatar diretamente** - Ligue ou envie email para a empresa
+3. **Verificar redes sociais** - Consulte perfis no LinkedIn, Instagram ou Facebook
+4. **Buscar em diretórios** - Procure em plataformas como Google Meu Negócio ou Guia Mais
+
+Se você tiver informações específicas sobre essa produtora ou souber em qual cidade ela está localizada, posso tentar ajudar melhor com contexto adicional.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#19</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções é boa para documentários?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500"># Casa de Vídeo Produções - Documentários
+
+Não tenho informações específicas e confiáveis sobre a **Casa de Vídeo Produções** em minha base de dados atualizada para fazer uma avaliação precisa sobre sua especialização em documentários.
+
+## O que recomendo:
+
+1. **Verificar portfólio** - Acesse o site ou redes sociais da empresa para analisar projetos anteriores em documentários
+
+2. **Solicitar referências** - Peça contatos de clientes que produziram documentários com eles
+
+3. **Avaliar expertise** - Verifique se a equipe tem experiência com:
+   - Roteiro documentário
+   - Pesquisa e desenvolvimento
+   - Pós-produção específica para documentários
+
+4. **Comparar com concorrentes** - Pesquise outras produtoras especializadas em documentários no mercado brasileiro
+
+Se você tiver mais detalhes sobre a localização ou segmento específico dessa produtora, posso tentar ajudar melhor.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#20</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como funciona a produção de vídeos comerciais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Produção de Vídeos Comerciais
+
+A produção de vídeos comerciais segue um processo estruturado em fases:
+
+## 1. **Pré-Produção**
+- Briefing com o cliente (objetivos, público-alvo, orçamento)
+- Desenvolvimento do conceito criativo
+- Elaboração do roteiro e storyboard
+- Planejamento de locações, elenco e equipamentos
+- Definição de cronograma e orçamento
+
+## 2. **Produção**
+- Gravação das cenas com câmeras profissionais
+- Direção de atores e figurantes
+- Captura de áudio de qualidade
+- Trabalho de iluminação e cenografia
+- Múltiplas tomadas para garantir qualidade
+
+## 3. **Pós-Produção**
+- Edição e montagem das cenas
+- Correção de cores e ajustes visuais
+- Inserção de efeitos especiais e animações
+- Adição de trilha sonora e efeitos de áudio
+- Inclusão de textos, logos e grafismos
+
+## 4. **Finalização**
+- Revisões e ajustes solicitados
+- Aprovação final do cliente
+- Exportação em diferentes formatos (TV, web, redes sociais)
+- Entrega dos arquivos
+
+## **Principais Empresas do Setor**
+
+- Conspiração Filmes
+- Paranoid
+- Birô de Criação
+- Vetor Zero
+- Tereza Produtora
+
+Esse processo garante um produto profissional alinhado aos objetivos comerciais.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#21</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde fazer cobertura de eventos ao vivo em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Empresas de Cobertura de Eventos ao Vivo em São Paulo
+
+## Produtoras e Agências Especializadas
+
+**Transmissão e Streaming**
+- Globosat (cobertura de grandes eventos)
+- Band (eventos corporativos e ao vivo)
+- SporTV (eventos esportivos)
+- Multishow (eventos de entretenimento)
+
+## Produtoras Independentes
+
+- Birô de Produção
+- Produção Executiva Brasil
+- Estúdio Gávea
+- Produção Audiovisual Criativa
+- Zoom Produções
+
+## Estúdios e Infraestrutura
+
+- Estúdios Globo (São Paulo)
+- Estúdios Bandeirantes
+- Estúdios Independência
+- Estúdios Mega
+
+## Plataformas de Streaming
+
+- YouTube (transmissão direta)
+- Facebook Live
+- Instagram Live
+- Twitch
+- Zoom (para eventos corporativos)
+
+## Consultoria e Planejamento
+
+- Associação Brasileira de Produtores de Eventos
+- Sindicato dos Produtores de Eventos
+
+**Dica:** Recomendo contatar diretamente as produtoras para orçamentos personalizados conforme seu tipo de evento (corporativo, esportivo, cultural, etc.).</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#22</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os tipos de vídeos que a Casa de Vídeo produz?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Casa de Vídeo - Tipos de Vídeos Produzidos
+
+Desculpe, mas não tenho informações específicas e confiáveis sobre os tipos de vídeos que a **Casa de Vídeo** produz em minha base de dados atual.
+
+Para obter essa informação com precisão, recomendo:
+
+1. **Acessar o site oficial** da empresa
+2. **Consultar suas redes sociais** (LinkedIn, Instagram, YouTube)
+3. **Entrar em contato direto** com a empresa
+4. **Verificar seu portfólio** de trabalhos
+
+Caso você tenha mais contexto sobre qual **Casa de Vídeo** específica você está buscando (há várias produtoras com nomes similares no Brasil), posso tentar ajudar melhor com informações adicionais.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#23</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções oferece serviços de edição e pós-produção?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500"># Casa de Vídeo Produções
+
+Não tenho informações específicas e confiáveis sobre os serviços exatos oferecidos pela Casa de Vídeo Produções em minha base de dados.
+
+Para obter informações precisas sobre os serviços de edição e pós-produção dessa empresa, recomendo:
+
+1. **Acessar o site oficial** da empresa
+2. **Entrar em contato direto** via telefone ou email
+3. **Consultar redes sociais** (Instagram, LinkedIn, Facebook)
+4. **Verificar plataformas** como Google Maps ou diretórios comerciais
+
+Isso garantirá que você obtenha informações atualizadas e precisas sobre o portfólio de serviços, capacidades técnicas e valores praticados pela empresa.
+
+Posso ajudá-lo com outras informações sobre o mercado de produção audiovisual brasileiro?</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#24</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores produtoras de conteúdo para redes sociais em São Paulo</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Principais Produtoras de Conteúdo para Redes Sociais em São Paulo
+
+## Grandes Agências Integradas
+- **Publicis Brasil** - oferece serviços completos de produção de conteúdo
+- **Grupo Globo Estúdios** - produção audiovisual e conteúdo digital
+- **Wavemaker Brasil** - especializada em conteúdo para plataformas digitais
+- **Havas Brasil** - produção criativa e conteúdo para redes sociais
+
+## Produtoras Especializadas em Conteúdo Digital
+- **Somo Filmes** - produção de vídeos para redes sociais
+- **Conspiração Filmes** - conteúdo criativo e audiovisual
+- **Paranoid Brasil** - produção de conteúdo digital e influencer marketing
+- **Estúdio Madalena** - especializada em conteúdo para marcas
+
+## Agências de Influencer Marketing e Conteúdo
+- **Influee** - gerenciamento de conteúdo e influenciadores
+- **Agência Melt** - produção de conteúdo e estratégia digital
+- **Vibe Agência** - conteúdo para redes sociais e criação criativa
+- **Meu Estúdio** - produção de conteúdo audiovisual
+
+## Produtoras Boutique
+- **Estúdio Madalena** - conteúdo estratégico para marcas
+- **Bravura Filmes** - produção criativa e conteúdo digital
+- **Caixa Preta Filmes** - especializada em conteúdo para plataformas
+
+**Dica:** Avalie portfólios, especialize-se no seu segmento e solicite cases de sucesso antes de contratar.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#25</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como contratar serviços de motion design em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Como Contratar Motion Design em São Paulo
+
+## Principais Opções
+
+### **Agências Especializadas**
+- **Estúdio Guelph** - Referência em motion graphics
+- **Paranoid Android** - Produção audiovisual e motion
+- **Vetor Zero** - Design e animação
+- **Mirum Brasil** - Agência com departamento de motion
+- **Wemake** - Criação digital e animação
+
+### **Plataformas de Freelancers**
+- **Workana** - Profissionais independentes
+- **99Designs** - Designers e animadores
+- **Upwork** - Contratação internacional
+- **Behance** - Portfólio de profissionais
+
+### **Estúdios de Produção**
+- **Globo Filmes** - Produção audiovisual
+- **Conspiração Filmes** - Conteúdo criativo
+- **Bossa Nova Filmes** - Produção e pós-produção
+
+## Dicas para Contratar
+
+1. **Analise portfólios** - Verifique trabalhos anteriores
+2. **Defina escopo** - Seja claro sobre necessidades (vídeos, animações, duração)
+3. **Orçamento** - Peça propostas de 3-5 fornecedores
+4. **Prazos** - Confirme cronograma de entrega
+5. **Referências** - Solicite contatos de clientes anteriores
+
+## Investimento Esperado
+- Vídeos simples: R$ 2.000 a R$ 5.000
+- Projetos médios: R$ 5.000 a R$ 15.000
+- Produções complexas: acima de R$ 15.000
+
+Recomendo solicitar orçamentos personalizados conforme seu projeto específico.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#26</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os preços para produção de vídeos institucionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Preços para Produção de Vídeos Institucionais no Brasil
+
+Os preços variam bastante conforme a complexidade e a empresa contratada. Aqui estão as faixas típicas:
+
+## Por Tipo de Produção
+
+**Vídeos Simples (até 2 minutos)**
+- R$ 3.000 a R$ 8.000
+- Gravação em estúdio ou locação única
+- Edição básica
+
+**Vídeos Médios (2-5 minutos)**
+- R$ 8.000 a R$ 25.000
+- Múltiplas locações
+- Animações simples
+- Entrevistas
+
+**Vídeos Complexos (acima de 5 minutos)**
+- R$ 25.000 a R$ 100.000+
+- Produção de alta qualidade
+- Animações 3D
+- Efeitos especiais
+- Múltiplas locações nacionais
+
+## Principais Produtoras no Mercado
+
+- **Globo Filmes**
+- **Conspiração Filmes**
+- **Gullane Filmes**
+- **Boutique Filmes**
+- **Mixer Filmes**
+- **Estúdios Globo**
+
+## Fatores que Influenciam o Preço
+
+- Qualidade de câmeras e equipamentos
+- Número de dias de gravação
+- Pós-produção e efeitos
+- Cachês de atores/apresentadores
+- Locações
+- Equipe técnica envolvida
+
+**Recomendação:** Solicite orçamentos personalizados de 3-4 produtoras para comparar propostas.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#27</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções tem experiência em filmagens internacionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Não tenho informações específicas sobre a Casa de Vídeo Produções em minha base de dados para confirmar sua experiência em filmagens internacionais.
+
+Para obter essa informação com precisão, recomendo:
+
+1. **Acessar o site oficial** da empresa
+2. **Consultar seu portfólio** de projetos
+3. **Entrar em contato direto** com a empresa para detalhes sobre experiência internacional
+4. **Verificar referências** e cases de clientes anteriores
+5. **Buscar avaliações** em plataformas B2B ou redes profissionais
+
+Se você está buscando uma produtora de vídeo com experiência internacional, posso ajudar com informações sobre outras empresas do setor ou orientações gerais sobre como avaliar esse tipo de serviço.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#28</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">anthropic/claude-haiku-4.5</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como a tecnologia de IA é utilizada na produção de vídeos?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap "># Uso de IA na Produção de Vídeos
+
+A inteligência artificial transformou significativamente a produção audiovisual. Aqui estão as principais aplicações:
+
+## **Edição e Pós-Produção**
+- **Corte automático**: IA identifica momentos-chave e cria edições preliminares
+- **Correção de cores**: Ajustes automáticos de iluminação e tonalidade
+- **Remoção de ruído**: Limpeza de áudio e vídeo com qualidade profissional
+- **Upscaling**: Melhoria de resolução de vídeos antigos ou de baixa qualidade
+
+## **Geração de Conteúdo**
+- **Vídeos sintéticos**: Criação de personagens e cenários digitais
+- **Dublagem automática**: Geração de vozes em múltiplos idiomas
+- **Legendas inteligentes**: Transcrição e sincronização automáticas
+- **Efeitos visuais**: Geração de elementos gráficos e animações
+
+## **Análise e Otimização**
+- **Reconhecimento facial**: Detecção de emoções e expressões
+- **Rastreamento de objetos**: Seguimento automático de elementos em movimento
+- **Análise de engajamento**: Previsão de performance do conteúdo
+- **Recomendações**: Otimização para diferentes plataformas
+
+## **Empresas Brasileiras Atuantes**
+- **Globoplay** (Grupo Globo)
+- **Natura Cosméticos** (produção de conteúdo)
+- **Agências como Publicis Brasil** e **DPZ&T**
+
+Essas tecnologias reduzem custos, aceleram prazos e democratizam a produção profissional.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#29</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde encontrar uma produtora de vídeos em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Para encontrar uma produtora de vídeos em São Paulo, você pode considerar as seguintes opções, que são bem conceituadas no mercado:
+
+*   **O2 Filmes**
+*   **Conspiração Filmes**
+*   **Paranoid BR**
+*   **Academia de Filmes**
+*   **Bossa Nova Filmes**
+*   **Trator Filmes**
+*   **Landia**
+*   **Cine Cinematográfica**
+*   **Stink Films**
+*   **Alice Filmes**
+
+Além dessas produtoras de grande porte, existem muitas outras produtoras menores e independentes que oferecem serviços de alta qualidade. Para encontrá-las, você pode:
+
+*   **Pesquisar em diretórios online:** Sites como Yellow Pages (Páginas Amarelas), Google Maps e portais especializados em audiovisual podem listar diversas produtoras.
+*   **Consultar associações do setor:** A Associação Brasileira de Produtoras de Audiovisual (APRO) pode ter um diretório de associados.
+*   **Pedir indicações:** Converse com profissionais da área de marketing, publicidade ou comunicação para obter recomendações.
+*   **Pesquisar em redes sociais e portfólios online:** Muitas produtoras divulgam seus trabalhos em plataformas como Vimeo, YouTube, Instagram e em seus próprios websites.
+
+Ao escolher uma produtora, é importante considerar o tipo de vídeo que você precisa (institucional, publicitário, documentário, animação, etc.), o seu orçamento e o estilo de trabalho da produtora.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#30</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores empresas de produção audiovisual no Brasil</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">As melhores empresas de produção audiovisual no Brasil se destacam pela qualidade de seus trabalhos, inovação e reconhecimento no mercado. Abaixo, listo algumas das mais renomadas, com seus nomes completos:
+
+*   **Conspiração Filmes:** Uma das maiores e mais tradicionais produtoras do Brasil, com um portfólio vasto que inclui filmes, séries, documentários e publicidade.
+*   **O2 Filmes:** Fundada por Fernando Meirelles, Paulo Morelli e Andrea Barata Ribeiro, é conhecida por produções de alto nível, tanto para cinema quanto para televisão e publicidade.
+*   **Gullane Entretenimento:** Produtora de filmes e séries com grande reconhecimento nacional e internacional, responsável por obras premiadas.
+*   **Academia de Filmes:** Com foco em publicidade e conteúdo de marca, é uma das produtoras mais respeitadas no segmento, com trabalhos inovadores e de alta qualidade.
+*   **Paranoid BR:** Produtora de filmes e publicidade com um estilo marcante e inovador, que se destaca pela criatividade e excelência técnica.
+*   **Prodigo Films:** Reconhecida por sua expertise em publicidade e conteúdo de marca, com uma equipe talentosa e produções de alto impacto.
+*   **Bossa Nova Filmes:** Produtora com forte atuação em publicidade, filmes e séries, conhecida pela qualidade de suas narrativas e estética visual.
+*   **Landia Brasil:** Filial brasileira da renomada produtora argentina, com foco em publicidade e conteúdo de marca, trazendo uma perspectiva global para o mercado local.
+*   **Stink Films Brasil:** Parte da rede global Stink, é uma produtora de publicidade e conteúdo que se destaca pela inovação e pela capacidade de criar campanhas impactantes.
+*   **Cine Cinematográfica:** Com uma longa história no mercado, é uma produtora de publicidade e filmes que se mantém relevante pela qualidade de suas produções e pela adaptação às novas tendências.
+
+É importante notar que o mercado audiovisual é dinâmico e novas produtoras surgem constantemente, enquanto outras se consolidam. A "melhor" empresa pode variar dependendo do tipo de projeto, do orçamento e dos objetivos específicos do cliente.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#31</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quem contratar para filmes institucionais em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Para filmes institucionais em São Paulo, você pode considerar as seguintes produtoras, que são reconhecidas por sua experiência e qualidade:
+
+*   **O2 Filmes:** Uma das maiores e mais renomadas produtoras do Brasil, com vasta experiência em publicidade, cinema e conteúdo corporativo.
+*   **Conspiração Filmes:** Outra produtora de grande porte, com um portfólio diversificado que inclui filmes, séries e projetos institucionais de alto nível.
+*   **Academia de Filmes:** Especializada em publicidade e conteúdo de marca, com um histórico de trabalhos premiados e clientes de grande porte.
+*   **Paranoid BR:** Conhecida por sua abordagem criativa e inovadora, produzindo filmes institucionais que se destacam pela originalidade.
+*   **Landia Brasil:** Produtora com forte presença no mercado publicitário, com expertise em storytelling e produção de conteúdo visual impactante.
+*   **Fauna Produções:** Focada em projetos que buscam uma narrativa mais autêntica e humana, ideal para filmes institucionais que desejam transmitir valores e cultura.
+*   **Produtora Associados:** Com experiência em diversos formatos, incluindo filmes institucionais, oferecendo soluções completas desde a concepção até a finalização.
+*   **Santa Transmedia:** Produtora que integra diferentes mídias e formatos, ideal para projetos institucionais que buscam uma abordagem mais abrangente e multiplataforma.
+
+Ao escolher uma produtora, é fundamental:
+
+1.  **Analisar o portfólio:** Verifique se os trabalhos anteriores da produtora se alinham com o estilo e a mensagem que você deseja para o seu filme.
+2.  **Entender a metodologia:** Converse sobre o processo de criação, desde o roteiro até a pós-produção, para garantir que a produtora compreende suas necessidades.
+3.  **Solicitar orçamentos detalhados:** Compare os custos e o que está incluído em cada proposta.
+4.  **Verificar a equipe:** Conheça os profissionais envolvidos no projeto, como diretores, roteiristas e editores.
+5.  **Buscar referências:** Se possível, converse com clientes anteriores da produtora para ter um feedback sobre a experiência.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#32</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais os serviços oferecidos pela Casa de Vídeo Produções?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A Casa de Vídeo Produções oferece uma gama completa de serviços de produção audiovisual, incluindo:
+
+*   **Produção de Vídeos Institucionais:** Criação de vídeos que apresentam a história, valores, produtos e serviços de uma empresa, com o objetivo de fortalecer a imagem corporativa.
+*   **Produção de Vídeos Publicitários:** Desenvolvimento de comerciais e vídeos promocionais para divulgar produtos, serviços ou campanhas específicas, visando atrair e engajar o público-alvo.
+*   **Produção de Vídeos para Redes Sociais:** Criação de conteúdo audiovisual otimizado para plataformas como Instagram, Facebook, YouTube e TikTok, com foco em formatos curtos, dinâmicos e interativos.
+*   **Produção de Vídeos de Treinamento:** Desenvolvimento de materiais audiovisuais para capacitação de colaboradores, abordando temas como procedimentos internos, uso de softwares ou desenvolvimento de habilidades.
+*   **Cobertura de Eventos:** Registro audiovisual completo de eventos corporativos, como feiras, congressos, palestras, lançamentos de produtos e festas de confraternização.
+*   **Animações 2D e 3D:** Criação de vídeos animados para explicar conceitos complexos, apresentar produtos de forma inovadora ou adicionar um toque criativo às produções.
+*   **Transmissões ao Vivo (Lives):** Realização de transmissões em tempo real para eventos, webinars, lançamentos ou comunicação interna, com qualidade profissional e interação com a audiência.
+*   **Edição e Finalização de Vídeos:** Serviços de pós-produção, incluindo corte, montagem, correção de cor, sonorização, inclusão de trilha sonora e efeitos visuais.
+*   **Roteirização e Criação de Conteúdo:** Desenvolvimento de roteiros criativos e estratégicos para os vídeos, garantindo que a mensagem seja clara, envolvente e alinhada aos objetivos do cliente.
+*   **Captação de Imagens Aéreas com Drone:** Utilização de drones para obter imagens aéreas de alta qualidade, proporcionando perspectivas únicas e impactantes para as produções.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#33</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções é boa para documentários?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A empresa Casa de Vídeo Produções, com sede no Rio de Janeiro, possui experiência na produção de documentários e outros formatos audiovisuais.
+
+Para determinar se a Casa de Vídeo Produções é "boa" para documentários, é importante considerar os seguintes pontos:
+
+*   **Portfólio:** Analise o portfólio da Casa de Vídeo Produções para verificar os documentários que já produziram. Observe a qualidade técnica, a narrativa, os temas abordados e se o estilo se alinha com o que você busca.
+*   **Equipe:** Pesquise sobre a equipe da Casa de Vídeo Produções, incluindo diretores, roteiristas, produtores e editores. A experiência e o reconhecimento desses profissionais podem ser um indicativo da qualidade do trabalho.
+*   **Reconhecimento:** Verifique se os documentários da Casa de Vídeo Produções receberam prêmios, foram selecionados para festivais ou tiveram boa recepção da crítica e do público.
+*   **Orçamento e Escopo:** A adequação da Casa de Vídeo Produções para o seu projeto também dependerá do seu orçamento e do escopo do documentário que você pretende realizar.
+
+**Recomendação:**
+
+Para ter uma avaliação mais precisa, sugiro que você entre em contato diretamente com a Casa de Vídeo Produções, apresente sua ideia de documentário e solicite um portfólio detalhado e informações sobre a equipe. Além disso, procure por depoimentos ou avaliações de clientes anteriores.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#34</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como funciona a produção de vídeos comerciais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A produção de vídeos comerciais é um processo multifacetado que envolve diversas etapas, desde a concepção da ideia até a entrega final do produto. O objetivo principal é criar um conteúdo audiovisual que promova um produto, serviço ou marca, impactando o público-alvo e gerando resultados para o cliente.
+
+**Etapas da Produção de Vídeos Comerciais:**
+
+1.  **Briefing e Concepção:**
+    *   **Reunião com o Cliente:** A agência de produção de vídeo se reúne com o cliente para entender seus objetivos, público-alvo, mensagem principal, orçamento e prazos.
+    *   **Análise de Mercado:** Pesquisa sobre o setor, concorrentes e tendências para identificar oportunidades e desafios.
+    *   **Criação do Conceito:** Desenvolvimento de uma ideia central para o vídeo, que seja criativa, relevante e alinhada aos objetivos do cliente. Isso pode incluir a definição do tom, estilo e narrativa.
+
+2.  **Pré-Produção:**
+    *   **Roteiro:** Escrita detalhada do roteiro, incluindo diálogos, descrições de cenas, ações dos personagens e elementos visuais.
+    *   **Storyboard:** Criação de um guia visual cena a cena, com desenhos ou imagens que representam os planos, ângulos de câmera e movimentos.
+    *   **Definição de Elenco e Locações:** Seleção de atores, modelos ou apresentadores, e escolha dos locais de filmagem que melhor se adequam ao conceito do vídeo.
+    *   **Orçamento e Cronograma:** Detalhamento dos custos envolvidos (equipamentos, equipe, locações, etc.) e estabelecimento de um cronograma de produção.
+    *   **Logística:** Organização de permissões, transporte, alimentação e outros detalhes práticos.
+
+3.  **Produção (Filmagens):**
+    *   **Equipe Técnica:** Reunião da equipe de filmagem, que geralmente inclui diretor, diretor de fotografia, operadores de câmera, assistentes, técnicos de som, maquiadores, figurinistas, entre outros.
+    *   **Equipamentos:** Utilização de câmeras de alta definição, lentes, iluminação profissional, microfones, tripés, drones e outros equipamentos necessários para a captação das imagens e áudio.
+    *   **Direção:** O diretor guia o elenco e a equipe para garantir que a visão do roteiro e do storyboard seja executada com precisão.
+    *   **Captação de Imagens e Áudio:** Gravação das cenas de acordo com o roteiro, com atenção à qualidade visual e sonora.
+
+4.  **Pós-Produção:**
+    *   **Edição:** Montagem das cenas gravadas, selecionando os melhores takes e organizando-os em</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#35</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde fazer cobertura de eventos ao vivo em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Para cobertura de eventos ao vivo em São Paulo, você pode considerar as seguintes empresas e agências, que oferecem serviços especializados em transmissão, produção e comunicação:
+
+**Produtoras de Vídeo e Transmissão ao Vivo:**
+
+*   **TV1 Conteúdo e Comunicação:** Uma agência de comunicação completa que oferece serviços de produção de vídeo, transmissão ao vivo e gestão de conteúdo para eventos.
+*   **Grupo Bandeirantes de Comunicação (Band ao Vivo):** Embora seja um grupo de mídia, a Band oferece serviços de transmissão e produção para eventos externos, utilizando sua infraestrutura e expertise.
+*   **Globosat (Globo ao Vivo):** Similar à Band, a Globosat, parte do Grupo Globo, pode oferecer soluções de transmissão e produção para eventos de grande porte, especialmente se houver interesse em alcance televisivo ou digital amplo.
+*   **Live Content:** Empresa especializada em soluções de transmissão ao vivo, streaming e produção de conteúdo para eventos corporativos e de entretenimento.
+*   **Mídia ao Vivo:** Oferece serviços de transmissão ao vivo, produção de vídeo, captação de imagens e soluções técnicas para eventos de diversos portes.
+*   **Studio 7 Produções:** Produtora de vídeo que também atua com transmissão ao vivo, oferecendo equipamentos e equipe técnica para cobertura de eventos.
+*   **Zoom Live:** Empresa focada em soluções de streaming e transmissão ao vivo, com experiência em eventos corporativos, shows e conferências.
+
+**Agências de Comunicação e Eventos com Serviço de Cobertura:**
+
+*   **Approach Comunicação:** Agência de comunicação que pode integrar a cobertura de eventos ao vivo em suas estratégias de relações públicas e comunicação digital.
+*   **RPMA Comunicação:** Oferece serviços de comunicação integrada, incluindo a gestão de eventos e a produção de conteúdo para cobertura ao vivo.
+*   **FSB Comunicação:** Uma das maiores agências de comunicação do Brasil, com capacidade para planejar e executar a cobertura de eventos ao vivo, incluindo assessoria de imprensa e produção de conteúdo.
+*   **Agência Giga:** Agência de marketing digital e eventos que pode incluir a transmissão ao vivo como parte de suas estratégias para eventos.
+
+**Considerações ao escolher:**
+
+*   **Tipo de Evento:** O porte e a natureza do seu evento (corporativo, cultural, esportivo, etc.) influenciarão a escolha da empresa.
+*   **Escopo da Cobertura:** Você precisa apenas da transmissão ou também de produção de conteúdo, entrevistas, edição e distribuição?
+*   **Plataformas de Transmissão:** Onde você deseja transmitir (YouTube, Facebook, site próprio, plataformas pagas)?
+*   **Orçamento:** Os custos podem variar significativamente entre as empresas e os serviços oferecidos.
+*   **Infraestrutura e Tecnologia</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#36</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os tipos de vídeos que a Casa de Vídeo produz?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A Casa & Vídeo, como uma empresa varejista, não produz vídeos em si. Ela comercializa produtos eletrônicos e de informática, incluindo câmeras de vídeo, filmadoras e outros equipamentos para produção de vídeo.
+
+No entanto, se você se refere a **tipos de vídeos que a Casa & Vídeo utiliza em suas estratégias de marketing e comunicação**, eles podem incluir:
+
+*   **Vídeos promocionais e comerciais:** Para divulgar ofertas, novos produtos e campanhas de vendas.
+*   **Vídeos institucionais:** Para apresentar a empresa, seus valores, história e diferenciais.
+*   **Vídeos de demonstração de produtos:** Para mostrar o funcionamento e os benefícios dos produtos que vendem.
+*   **Tutoriais e vídeos "como fazer":** Para auxiliar os clientes no uso de produtos ou em tarefas relacionadas.
+*   **Vídeos para redes sociais:** Conteúdo curto e dinâmico para engajar o público em plataformas como Instagram, Facebook e TikTok.
+*   **Depoimentos de clientes:** Para construir confiança e credibilidade.
+
+É importante notar que a produção desses vídeos geralmente é feita por agências de publicidade ou produtoras de vídeo contratadas pela Casa & Vídeo, e não pela própria empresa internamente como uma atividade principal.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#37</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções oferece serviços de edição e pós-produção?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim, a Casa de Vídeo Produções oferece serviços de edição e pós-produção.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#38</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores produtoras de conteúdo para redes sociais em São Paulo</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">As melhores produtoras de conteúdo para redes sociais em São Paulo, com base em reconhecimento de mercado, portfólio de clientes e expertise, incluem:
+
+*   **Agência Mirum Brasil**
+*   **Agência Mutato**
+*   **Agência F.biz**
+*   **Agência WMcCann Brasil**
+*   **Agência VMLY&R Brasil**
+*   **Agência DPZ&T**
+*   **Agência AlmapBBDO**
+*   **Agência Africa DDB**
+*   **Agência David São Paulo**
+*   **Agência Ogilvy Brasil**</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#39</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como contratar serviços de motion design em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Para contratar serviços de motion design em São Paulo, você pode seguir os seguintes passos e considerar as empresas e plataformas listadas:
+
+**1. Defina suas Necessidades e Orçamento:**
+
+*   **Tipo de Projeto:** Animação 2D, 3D, vinhetas, vídeos explicativos, animações para redes sociais, etc.
+*   **Estilo Visual:** Moderno, minimalista, divertido, corporativo, etc.
+*   **Público-Alvo:** Quem você quer alcançar com a animação.
+*   **Prazo de Entrega:** Quando você precisa do projeto finalizado.
+*   **Orçamento:** Quanto você está disposto a investir.
+
+**2. Pesquise Agências e Estúdios Especializados:**
+
+São Paulo possui diversas agências e estúdios renomados em motion design. Alguns exemplos incluem:
+
+*   **Estúdios de Animação e Motion Design:**
+    *   **Zombie Studio:** Conhecido por trabalhos de alta qualidade em animação 3D e motion graphics.
+    *   **Split Studio:** Especializado em animação para publicidade e conteúdo.
+    *   **Black Maria:** Oferece soluções completas em motion graphics e pós-produção.
+    *   **Vetor Zero:** Um dos maiores estúdios de animação e produção de filmes publicitários do Brasil.
+    *   **Lightfarm Studios:** Focado em CGI, pós-produção e motion graphics.
+    *   **Estúdio Makako:** Com experiência em animações para diversas plataformas.
+    *   **Estúdio Ícone:** Atua na criação de vídeos animados e motion graphics para o mercado corporativo.
+    *   **Estúdio Mopa:** Especializado em animação 2D e 3D para publicidade e conteúdo.
+
+*   **Agências de Publicidade com Departamento de Motion Design:**
+    *   **Africa DDB:** Grande agência de publicidade que frequentemente utiliza motion design em suas campanhas.
+    *   **AlmapBBDO:** Outra agência de publicidade de destaque com capacidade para projetos de motion.
+    *   **WMcCann:** Agência global com forte presença no Brasil e expertise em produção de conteúdo visual.
+
+**3. Utilize Plataformas de Freelancers e Marketplaces:**
+
+Se o seu projeto for menor ou você busca mais flexibilidade, plataformas online podem conectar você a talentos em São Paulo:
+
+*   **Workana:** Plataforma popular para encontrar freelancers de diversas áreas, incluindo motion design.
+*   **99Freelas:** Outra plataforma brasileira com grande número de profissionais autônomos.
+*   **LinkedIn:** Você pode pesquisar por "motion designer São Paulo" e encontrar profissionais e estúdios.
+*   **Behance:** Uma vitrine de</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#40</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os preços para produção de vídeos institucionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Os preços para produção de vídeos institucionais no Brasil podem variar significativamente, dependendo de diversos fatores. Não há um preço fixo, pois cada projeto é único. No entanto, posso listar os principais elementos que influenciam o custo e dar uma estimativa geral:
+
+**Fatores que Influenciam o Preço:**
+
+1.  **Duração do Vídeo:** Vídeos mais longos geralmente custam mais devido ao maior tempo de gravação, edição e pós-produção.
+2.  **Complexidade do Roteiro:**
+    *   **Roteiro Simples:** Entrevistas, depoimentos, imagens de arquivo.
+    *   **Roteiro Complexo:** Narrativa elaborada, cenas dramatizadas, uso de atores, locações variadas.
+3.  **Qualidade da Produção:**
+    *   **Equipamentos:** Câmeras de alta resolução (4K, 6K), lentes especiais, drones, iluminação profissional.
+    *   **Equipe:** Número de profissionais envolvidos (diretor, cinegrafista, produtor, editor, roteirista, sonoplasta, colorista, etc.).
+4.  **Locações:**
+    *   **Locações Próprias/Gratuitas:** Menor custo.
+    *   **Locações Alugadas:** Estúdios, espaços comerciais, que podem ter custos diários elevados.
+    *   **Locações Múltiplas:** Aumentam a logística e o tempo de produção.
+5.  **Pós-Produção:**
+    *   **Edição:** Tempo gasto na montagem do vídeo.
+    *   **Motion Graphics/Animações:** Elementos gráficos em movimento, animações 2D ou 3D.
+    *   **Trilha Sonora:** Músicas licenciadas (comerciais) ou trilhas originais.
+    *   **Locução Profissional:** Vozes de locutores experientes.
+    *   **Color Grading:** Ajuste de cores para padronização e estética.
+    *   **Efeitos Visuais (VFX):** Se houver necessidade de efeitos especiais.
+6.  **Uso de Atores/Modelos:** Contratação de talentos profissionais, com cachês que variam.
+7.  **Licenciamento de Imagens/Vídeos de Banco:** Compra de direitos de uso de imagens ou vídeos de bancos de mídia.
+8.  **Prazo de Entrega:** Projetos com prazos muito apertados podem ter custos adicionais devido à necessidade de horas extras da equipe.
+9.  **Reputações da Produtora:** Produtoras com maior experiência e portfólio consolidado geralmente cobram mais.
+
+**Estimativa de Preços (Val</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#41</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções tem experiência em filmagens internacionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim, a Casa de Vídeo Produções possui experiência em filmagens internacionais.
+
+A empresa já realizou projetos em diversos países, incluindo:
+
+*   Estados Unidos da América
+*   Reino Unido
+*   França
+*   Alemanha
+*   Portugal
+*   Espanha
+*   Argentina
+*   Chile
+*   México
+
+Essa experiência internacional abrange diferentes tipos de produções, como comerciais, documentários, vídeos institucionais e cobertura de eventos.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#42</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">google/gemini-2.5-flash</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como a tecnologia de IA é utilizada na produção de vídeos?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A tecnologia de Inteligência Artificial (IA) é utilizada na produção de vídeos de diversas maneiras, otimizando processos e abrindo novas possibilidades criativas. Abaixo, listo algumas das principais aplicações:
+
+*   **Geração de Roteiros e Conteúdo:**
+    *   **Ferramentas:** OpenAI GPT-3, Jasper.ai, Copy.ai.
+    *   **Como funciona:** Modelos de linguagem avançados podem gerar ideias para roteiros, criar sinopses, desenvolver diálogos e até mesmo escrever roteiros completos com base em prompts e temas fornecidos. Isso acelera a fase de pré-produção e ajuda a superar bloqueios criativos.
+
+*   **Síntese de Voz (Text-to-Speech):**
+    *   **Ferramentas:** Google Cloud Text-to-Speech, Amazon Polly, ElevenLabs.
+    *   **Como funciona:** A IA converte texto em fala com vozes que soam cada vez mais naturais e expressivas. Isso é útil para narrações, dublagens, vídeos explicativos e tutoriais, economizando tempo e custos com locutores profissionais.
+
+*   **Geração de Avatares e Personagens Virtuais:**
+    *   **Ferramentas:** Synthesia, HeyGen, DeepMotion.
+    *   **Como funciona:** A IA pode criar avatares realistas ou estilizados que podem ser animados para falar e gesticular, substituindo atores em certas produções ou criando personagens para vídeos explicativos e de marketing.
+
+*   **Edição Automatizada de Vídeos:**
+    *   **Ferramentas:** Adobe Premiere Pro (com recursos de IA), DaVinci Resolve (com recursos de IA), Magisto.
+    *   **Como funciona:** Algoritmos de IA podem analisar o conteúdo de vídeo para identificar os melhores momentos, cortar cenas irrelevantes, sincronizar áudio e vídeo, aplicar transições e até mesmo gerar legendas automaticamente. Isso agiliza significativamente o processo de pós-produção.
+
+*   **Otimização de Cores e Qualidade de Imagem:**
+    *   **Ferramentas:** Topaz Video AI, Adobe Sensei (presente em produtos Adobe).
+    *   **Como funciona:** A IA pode aprimorar a qualidade de vídeos de baixa resolução, remover ruídos, estabilizar imagens tremidas, ajustar balanço de branco e cores, e até mesmo converter vídeos para diferentes formatos e resoluções com maior precisão.
+
+*   **Reconhecimento de Objetos e Cenas:**
+    *   **Ferramentas:** Google Cloud Video Intelligence API, Amazon Rekognition Video.
+    *   **Como funciona:** A IA pode identificar objetos, pessoas, locais e ações dentro de um vídeo. Isso é útil para indexação de conteúdo, busca inteligente,</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#43</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde encontrar uma produtora de vídeos em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Você pode encontrar uma **produtora de vídeos em São Paulo** em regiões centrais e bairros empresariais como **Vila Mariana, Morumbi, Vila Romana, Avenida Paulista, Vila Leopoldina, Cidade Monções e Augusta**.[4][5][6][11][12][20]
+
+Algumas opções que aparecem nos resultados são:
+
+- **Nathan Filmes** — possui escritório e estúdio profissional no **Morumbi**, com atendimento em São Paulo capital e outras cidades do estado.[4]
+- **Onze Trinta** — atua como produtora audiovisual em **Vila Mariana**, São Paulo.[5]
+- **Terceiro Ato** — tem sede na **Avenida Paulista** e atende empresas em São Paulo.[6][9]
+- **Wonder Produções** — tem matriz na **Vila Romana** e filiais na **Cidade Monções** e na **Vila Leopoldina**.[12][14]
+- **Casa de Vídeo Produções** — produtora audiovisual com endereço em **São Paulo**.[11]
+- **FilmeLab** — produtora audiovisual em **Augusta, São Paulo**, com estúdios para diferentes formatos.[20]
+- **Foggy Filmes** — produtora de filmes e vídeos em São Paulo.[1]
+- **Rolê Filmes** — produtora de vídeos em São Paulo, com registro na **Agência Nacional do Cinema**.[2]
+- **C35 Filmes** — produtora de vídeo em São Paulo e Sorocaba.[3]
+- **Miragem Content** — atende a capital e a região metropolitana de São Paulo.[7]
+
+Se você quiser, eu posso também **filtrar por bairro, tipo de vídeo** — institucional, comercial, eventos ou transmissão ao vivo — e te indicar as melhores opções para cada caso.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#44</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores empresas de produção audiovisual no Brasil</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Com base nos resultados disponíveis, **as melhores empresas de produção audiovisual no Brasil variam conforme o critério**: em **publicidade**, o levantamento de *Meio & Mensagem* destaca **Saigon**, **Stink**, **O2 Filmes** e **Landia** entre as melhores produtoras do país[2]. Para **produção de vídeo institucional e corporativo**, aparecem com boa visibilidade no mercado brasileiro empresas como **Destaquei Filmes**, **Black Horse Produções**, **Dumela**, **Terceiro Ato** e **Conspiração Filmes**[3][10][13][20].
+
+Se o foco for um recorte mais prático de mercado, eu separaria assim:
+
+- **Publicidade e filmes de marca**: **Saigon**, **Stink**, **O2 Filmes**, **Landia**[2]
+- **Cinema e longas-metragens**: **Conspiração Filmes** e **Enquadramento Produções**[4][6]
+- **Vídeo institucional e corporativo**: **Destaquei Filmes**, **Black Horse Produções**, **Dumela**, **Terceiro Ato**[3][10][13][20]
+- **Produção audiovisual com foco em prêmios e prestígio criativo**: **The Youth**, **Zombie**, **Boiler** e **Conspiração** aparecem em ranking de premiação citado por *Meio & Mensagem*[15]
+
+Há também listas mais amplas de mercado que citam dezenas de empresas e produtoras atuantes no Brasil, como a lista da Ohub para 2026 e rankings especializados de produtoras de vídeo[1][7][17]. Como esses rankings usam critérios diferentes — reputação, volume, atendimento corporativo, prêmios ou avaliações — a “melhor” empresa depende do tipo de projeto que você quer contratar[1][2][3][15].
+
+Se quiser, posso montar uma lista **mais útil por segmento**:
+- **melhores para publicidade**
+- **melhores para vídeos institucionais**
+- **melhores para cinema e séries**
+- **melhores por região do Brasil**</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#45</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quem contratar para filmes institucionais em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Se você quer contratar **produtora de vídeo institucional em São Paulo**, estas são algumas opções com atuação clara nesse tipo de projeto:
+
+- **C35 Filmes** — produtora audiovisual especializada em vídeos institucionais, com escritórios em **Sorocaba** e **São Paulo**.[1][3]
+- **Prosa Press** — produtora em São Paulo que combina apuração jornalística e estética de cinema para filmes corporativos.[2]
+- **REC Motion** — produtora de vídeos em São Paulo com foco em filmes institucionais, comerciais e conteúdo para empresas.[4]
+- **History** — produtora premiada em São Paulo, também voltada para a área corporativa.[5]
+- **Abajour Filmes** — produtora de vídeo institucional em São Paulo, com 14 anos de atuação.[6]
+- **Chaminé Produções** — produtora de vídeos institucionais com mais de 10 anos de mercado e atendimento nacional.[7]
+- **Studio F** — produtora com unidades em São Paulo e Sul de Minas Gerais, fazendo vídeos institucionais e corporativos.[8]
+- **Nathan Filmes** — produtora com mais de 20 anos no mercado, estúdios próprios em São Paulo e Florianópolis.[12]
+- **Blast Filmes** — produtora baseada em São Paulo, com foco em filmes publicitários e institucionais.[11]
+- **Eleva Filmes** — atende São Paulo e interior, com produção de vídeo institucional para marcas e indústrias.[15]
+- **Miraggio Filmes** — produtora audiovisual em São Paulo com portfólio de institucionais e cases corporativos.[17]
+- **Impulso Filmes** — produtora que atende todo o Brasil e trabalha com filmes institucionais e soluções audiovisuais corporativas.[20]
+
+Se você quiser, eu também posso **filtrar por orçamento, segmento da empresa, nível premium ou prazo de entrega** e te passar uma lista mais curta com as melhores para o seu caso.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#46</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais os serviços oferecidos pela Casa de Vídeo Produções?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A **Casa de Vídeo Produções** oferece serviços de produção audiovisual, incluindo **filmes institucionais**, **comerciais e publicidade**, **documentários**, **motion design**, **cobertura de eventos**, **edição e pós-produção**, **vídeos com inteligência artificial** e **conteúdo para redes sociais**.[1]
+
+No site da empresa, ela também se apresenta como uma produtora completa que atua da **criação** à **produção** e **finalização** de projetos audiovisuais, e menciona ainda trabalhos como **programa de televisão**, **vídeo institucional**, **vídeo de treinamento** e **material de evento**.[1][2]
+
+Se quiser, posso organizar esses serviços em uma lista por tipo de projeto, como **corporativo**, **publicidade** e **conteúdo digital**.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#47</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções é boa para documentários?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">A **Casa de Vídeo Produções** aparece no próprio site como uma produtora audiovisual em São Paulo que atende **documentários** e outros formatos, mas os resultados disponíveis aqui não trazem prova suficiente de qualidade específica em documentários, como portfólio detalhado, prêmios ou cases verificados.[1][2]
+
+O que dá para afirmar com segurança é:
+
+- A empresa se apresenta como produtora audiovisual e menciona explicitamente **documentário** entre os tipos de projeto que faz.[1]
+- Os resultados não mostram, de forma clara, uma lista de documentários realizados, depoimentos independentes ou reconhecimentos do mercado que permitam concluir que ela é “boa” com base em evidência externa.[1][2]
+- Portanto, a resposta mais correta é: **potencialmente sim, mas não dá para confirmar só com essas fontes**.[1][2]
+
+Para avaliar melhor antes de contratar, vale pedir:
+
+- **Portfólio de documentários** recentes
+- **Casos parecidos** com o seu tema e orçamento
+- **Equipe responsável** pela direção, roteiro, captação e montagem
+- **Prazos, entregáveis e referência de clientes**
+- **Trechos ou filmes completos** para avaliar linguagem, narrativa e acabamento
+
+Se você quiser, posso montar um **checklist objetivo para comparar a Casa de Vídeo Produções com outras produtoras de documentário em São Paulo**.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#48</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como funciona a produção de vídeos comerciais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A produção de vídeos comerciais funciona como um **processo estruturado** que vai da definição da ideia até a entrega final do material, geralmente passando por **pré-produção, produção e pós-produção**.[1][2][3]
+
+- **Briefing e estratégia**: define objetivo, público-alvo, mensagem, canal de veiculação e formato do vídeo.[2][6][8][9]
+- **Roteiro e conceito criativo**: transforma a ideia em uma narrativa clara, com cenas, falas, duração e chamadas de ação.[1][2][8]
+- **Pré-produção**: organiza cronograma, orçamento, locações, elenco, equipe, equipamentos e storyboard; é a fase de planejamento e preparação.[1][4][6][13]
+- **Produção ou captação**: ocorre a gravação das cenas com direção, câmera, iluminação, som e orientação dos participantes.[1][4][5][8][9]
+- **Pós-produção**: inclui seleção das melhores imagens, edição, correção de cor e áudio, trilha sonora, locução, legendas, animações e efeitos gráficos.[1][2][4][7][8]
+- **Revisão e entrega**: o vídeo é ajustado conforme feedback e exportado nos formatos e resoluções adequados para os canais de divulgação.[2][8][13]
+
+Na prática, uma produção comercial costuma começar com uma reunião de alinhamento, seguir para roteiro e planejamento, depois filmagem, edição e finalização.[6][8][9] Em projetos mais complexos, também entram etapas como **licenciamento de música e talentos**, **localização de conteúdo** e adaptação para diferentes plataformas.[2]
+
+Se você quiser, posso também explicar **quanto custa**, **quanto tempo leva** ou montar um **fluxo de produção de vídeo comercial para empresa brasileira**.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#49</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Onde fazer cobertura de eventos ao vivo em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Em **São Paulo**, há produtoras e veículos que fazem **cobertura de eventos ao vivo** para shows, eventos corporativos, esportivos e transmissões híbridas. Entre as opções encontradas, destacam-se **Ablink**, **Cavaliere Video**, **Nathan Filmes** e **Xyko Filmes**.[1][2][4][6]
+
+- **Ablink** — atende shows, eventos de entretenimento e eventos esportivos em São Paulo, Grande São Paulo e todo o Brasil; fica na **Rua Dona Ana Pimentel, 255, Água Branca, São Paulo — SP**.[1][3]
+- **Cavaliere Video** — base em São Paulo e atendimento na capital, Grande São Paulo e interior; atua em **cobertura de eventos corporativos**.[2]
+- **Nathan Filmes** — faz **videografia, fotografia e transmissão ao vivo** em São Paulo e outras cidades do Brasil.[4]
+- **Xyko Filmes** — oferece **cobertura completa de convenções, palestras e shows**; fica na **Rua Tito, 88, São Paulo — SP**.[6]
+
+Se você estiver procurando **cobertura para um tipo específico de evento** — por exemplo, corporativo, show, feira, congresso ou esporte — eu posso filtrar as melhores opções em São Paulo por esse perfil.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#50</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os tipos de vídeos que a Casa de Vídeo produz?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A **Casa de Vídeo** não aparece nas fontes como produtora de “tipos de vídeos” específicos; com base nos resultados disponíveis, o que dá para afirmar é que ela é associada a categorias de produtos, não a um portfólio de formatos audiovisuais.[2]
+
+Se a sua intenção era perguntar **quais tipos de vídeos uma empresa como a Casa de Vídeo poderia produzir** para marketing ou conteúdo, os formatos mais comuns são:
+
+- **Vídeos explicativos**[1][4]
+- **Tutoriais / vídeos de como fazer**[1][4][6]
+- **Resenhas / reviews**[1][7]
+- **Vlogs**[1][7]
+- **Demonstrações de produtos**[4][6]
+- **Entrevistas**[4]
+- **Vídeos educativos**[5][8]
+- **Lives / transmissões ao vivo**[1][6]
+- **Cobertura de eventos**[1]
+- **Unboxing de produtos**[1][7]
+
+Se você quiser, eu posso refinar a resposta para um destes sentidos:
+- **tipos de vídeos que a Casa de Vídeo produz como empresa**
+- **tipos de vídeos recomendados para a Casa de Vídeo divulgar seus produtos**
+- **tipos de vídeos publicados pela Casa de Vídeo em redes sociais**</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#51</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções oferece serviços de edição e pós-produção?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim. A **Casa de Vídeo Produções** informa no próprio site que oferece **“edição & pós-produção”** entre seus serviços.[1]</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#52</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Melhores produtoras de conteúdo para redes sociais em São Paulo</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Se você está buscando **produtoras de conteúdo para redes sociais em São Paulo**, as opções mais claramente identificadas nos resultados são **Studio 750**, **Yoou Group**, **Agência Fort**, **SHARK Publicidade**, **Terceiro Ato**, **Take Cut**, **507 Digital** e **Frontero**.[3][4][5][6][8][9][10][11][16]
+
+Para ajudar na triagem, eu separaria assim:
+
+| Empresa | Destaque observado nos resultados | Indício de presença em São Paulo |
+|---|---|---|
+| **Studio 750** | estratégia, conteúdo, redes sociais, vídeos, podcasts e design | São Paulo, São Paulo; sede/atuação local indicada no perfil do LinkedIn[6] |
+| **Yoou Group** | empresa com sede em São Paulo | São Paulo, São Paulo; HQ indicada no LinkedIn[5] |
+| **Agência Fort** | gestão de redes sociais, filmagem inclusa, cases reais | sede em São Paulo, na Avenida Paulista[8] |
+| **SHARK Publicidade** | vídeos institucionais, publicitários, promocionais e para redes sociais | empresa de publicidade e produtora com foco em social media[11] |
+| **Terceiro Ato** | produção de conteúdo digital para marcas e redes sociais | sede em São Paulo, na Avenida Paulista[16] |
+| **Take Cut** | produtora de vídeo em São Paulo | contato e operação em São Paulo indicados no site[4] |
+| **507 Digital** | produção, direção e edição de vídeo, jornalismo e marketing de conteúdo | agência de vídeo e marketing digital[9] |
+| **Frontero** | produtora audiovisual em São Paulo | endereço em São Bernardo do Campo, na Grande São Paulo[3] |
+
+Se o seu critério for **conteúdo para redes sociais com viés mais estratégico e recorrência**, os nomes mais aderentes nos resultados são **Studio 750**, **Agência Fort** e **Terceiro Ato**.[6][8][16] Se a prioridade for **produção audiovisual e vídeo para redes sociais**, **Take Cut**, **507 Digital** e **SHARK Publicidade** aparecem mais alinhadas.[4][9][11]
+
+Se quiser, eu posso transformar isso em uma lista curta com **top 5 por custo-benefício**, **top 5 por portfólio premium** ou **top 5 para pequenas e médias empresas em São Paulo**.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#53</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como contratar serviços de motion design em São Paulo?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Para contratar **serviços de motion design em São Paulo**, o caminho mais eficiente é definir o escopo, comparar estúdios e profissionais pelo portfólio e então pedir orçamento com briefing claro. Você pode contratar por **estúdio especializado**, **marketplace de freelancers** ou **plataformas de orçamento** com profissionais na cidade.[1][3][9][16][20]
+
+Os passos práticos são estes:
+
+- Defina se você precisa de **vídeo animado**, **animação 2D**, **animação 3D**, **vídeo institucional**, **vinheta** ou **apresentação corporativa animada**.[2][9][14]
+- Separe referências, prazo, duração estimada, objetivo da peça e canais de uso, porque alguns estúdios pedem exatamente essas informações no briefing.[9][14]
+- Peça portfólio e confirme se o fornecedor entrega o estilo que você quer, já que há estúdios focados em **motion design premium**, outros em **motion corporativo** e outros em **produção audiovisual mais ampla**.[1][2][15]
+- Verifique se o atendimento é remoto ou presencial; vários fornecedores atendem empresas de São Paulo remotamente e conduzem briefing e aprovação à distância.[9][14][15]
+- Compare avaliações, histórico e credenciais quando usar plataformas de profissionais, porque isso ajuda a reduzir risco na contratação.[3]
+- Solicite orçamento a mais de um fornecedor antes de fechar, pois os valores variam bastante conforme escopo e complexidade.[18]
+
+Algumas opções encontradas em São Paulo:
+
+- **MonkeyBusiness** — estúdio de motion design em São Paulo, com contato comercial direto por e-mail.[1]
+- **Lairon STD** — oferece motion design premium, com animação 2D, simulações de produto, vinhetas e narrativas visuais complexas.[2]
+- **Cavaliere Filmes** — produz vídeos em motion design e motion graphics para empresas, com processo remoto de briefing e aprovação.[9]
+- **XYKO Filmes** — trabalha com animação 2D e 3D, do roteiro ao produto final, com endereço em São Paulo.[14]
+- **Casa de Vídeo Produções** — produtora audiovisual em São Paulo com serviço de motion design.[15]
+- **Aires Designer** — divulga canal de contato direto para motion design em</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#54</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Quais são os preços para produção de vídeos institucionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">Os preços de **produção de vídeos institucionais** no Brasil variam bastante, mas uma faixa prática de mercado fica entre **R$ 3 mil e R$ 25 mil** para projetos comuns, podendo chegar a **R$ 50 mil, R$ 80 mil ou mais** em produções premium ou de grande porte.[2][6][11][14]
+
+Faixas mais recorrentes nas fontes:
+- **R$ 1.470 a R$ 2.500**: produções básicas/profissionais de entrada.[3]
+- **R$ 3.000 a R$ 7.000**: vídeos institucionais simples ou para empresas pequenas.[6][13][15]
+- **R$ 8.000 a R$ 20.000**: institucionais essenciais para empresas de pequeno e médio porte.[1][4][11]
+- **R$ 25.000 a R$ 60.000**: produções corporativas mais completas, com mais diária, equipe e pós-produção.[4]
+- **R$ 80.000 a R$ 250.000+**: projetos high-end, com estrutura maior e direção mais elaborada.[4]
+
+Pontos de referência úteis:
+- Um institucional com **1 diária de captação**, equipe reduzida, roteiro objetivo, depoimentos e edição digital pode ficar entre **R$ 8 mil e R$ 25 mil**.[1]
+- Para empresas de médio e grande porte, uma faixa comum de investimento aparece entre **R$ 8 mil e R$ 40 mil**.[11]
+- Em propostas mais simples, há valores a partir de **R$ 1.500**.[9]
+
+Se você quiser, posso também montar uma **tabela de preços por tipo de vídeo institucional**, por exemplo: *simples, intermediário, premium e com drone/locução/animação*.</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#55</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                ✓ MARCA CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Casa de Vídeo Produções tem experiência em filmagens internacionais?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap border-l-4 border-l-emerald-500">Sim. A Casa de Vídeo Produções afirma no próprio site que **“já filmamos em todos os estados do Brasil e ao redor do mundo”**, o que indica experiência em **filmagens internacionais**.[1]
+
+O site também reforça atuação com **grandes marcas do mercado corporativo** e em diferentes contextos de produção, como estúdio, evento, plantação, obra e cozinha.[1]</div>
+            </div>
+          </div>
+          
+          <div class="card-prompt-item admin-sunken p-5 space-y-3 bg-white border border-slate-200 rounded-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs font-bold text-slate-400">#56</span>
+                <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">perplexity/sonar</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                ✕ NÃO CITADA
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📤 PERGUNTA ENVIADA À IA:</span>
+              <p class="prompt-text font-sans text-xs font-semibold text-slate-900 bg-slate-50 p-3 rounded-lg border border-slate-200 leading-relaxed">Como a tecnologia de IA é utilizada na produção de vídeos?</p>
+            </div>
+
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">📥 RESPOSTA RECEBIDA DA IA:</span>
+              <div class="response-text font-sans text-xs text-slate-700 bg-slate-50 p-3.5 rounded-lg border border-slate-200 leading-relaxed whitespace-pre-wrap ">A tecnologia de **IA** é usada na produção de vídeos para **criar, editar, personalizar e distribuir** conteúdo audiovisual com menos trabalho manual. Em geral, ela atua desde o roteiro até a exportação final, automatizando tarefas que antes exigiam equipe, tempo e software especializado.[1][3][10][16]
+
+Na prática, a IA é aplicada assim:
+
+- **Pré-produção:** gera variações de roteiro, storyboards e conceitos visuais antes das gravações.[1][8]
+- **Geração de vídeo:** transforma prompts de texto, imagens ou roteiros em cenas e quadros em movimento, criando novos pixels e frames do zero.[2][3][6][10]
+- **Produção e captura:** pode automatizar foco, exposição e marcação de cenas durante a gravação.[1]
+- **Pós-produção:** acelera cortes, limpeza de áudio, correção de cor, legendas e ajustes de ritmo.[1][15][16]
+- **Narração e avatares:** cria vozes sintetizadas, avatares digitais e, em alguns casos, áudio nativo sincronizado com a imagem.[3][14][17][18]
+- **Distribuição:** adapta automaticamente o vídeo para formatos de diferentes plataformas e melhora metadados para busca.[1]
+
+Em ferramentas de texto para vídeo, o fluxo costuma ser: você insere um **prompt** ou roteiro, a IA interpreta a intenção, gera a cena quadro a quadro, adiciona movimento, narração ou efeitos quando suportado e depois permite refinamentos antes da exportação.[3][6][12][20]
+
+No mercado brasileiro, isso tem sido usado especialmente para **marketing, vídeos institucionais, tutoriais, conteúdo para redes sociais e anúncios**, porque reduz custo e acelera a produção.[4][5][19][30]
+
+Se quiser, posso também explicar **como funciona tecnicamente** a geração de vídeo por IA ou listar **ferramentas usadas no Brasil**.</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 📦 ABA 4: ENTREGÁVEIS & ARQUIVOS (LINKS DIRETO EM 1 CLIQUE) -->
+    <!-- ================================================================= -->
+    <div id="pane-entregaveis" class="tab-pane space-y-6">
+      <div class="admin-card p-6 sm:p-8 space-y-6">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <span class="text-xl">📦</span>
+          <div>
+            <h2 class="font-display font-bold text-lg text-slate-900">Entregáveis & Arquivos do Projeto</h2>
+            <p class="font-sans text-xs text-slate-500">Códigos e relatórios compilados com acesso direto em 1 clique.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Item 1: llms.txt -->
+          <a href="llms.txt" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">llms.txt</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">llms.txt (Markdown Canônico)</h3>
+            <p class="font-sans text-xs text-slate-500">Resumo institucional e ano de fundação 1990 para indexação direta pelas IAs.</p>
+          </a>
+
+          <!-- Item 2: schemas_json_ld.json -->
+          <a href="schemas_json_ld.json" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">Grafo @graph</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">schemas_json_ld.json</h3>
+            <p class="font-sans text-xs text-slate-500">Grafo relacional integrando Organization, LocalBusiness, Service e VideoObject.</p>
+          </a>
+
+          <!-- Item 3: relatorio_citabilidade.json -->
+          <a href="relatorio_citabilidade.json" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">Audit Log</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">relatorio_citabilidade.json</h3>
+            <p class="font-sans text-xs text-slate-500">Log detalhado com métricas dos 7 pilares e histórico dos testes de prompts.</p>
+          </a>
+
+          <!-- Item 4: Passo_a_Passo_GEO.html -->
+          <a href="Passo_a_Passo_GEO.html" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">Passo a Passo</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">Passo_a_Passo_GEO.html</h3>
+            <p class="font-sans text-xs text-slate-500">Roteiro tático de implementação e checklist de QA para a equipe do cliente.</p>
+          </a>
+
+          <!-- Item 5: Dashboard_GEO.html -->
+          <a href="Dashboard_GEO.html" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">Painel Técnico</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">Dashboard_GEO.html</h3>
+            <p class="font-sans text-xs text-slate-500">Painel interativo da b.rocket GEO Engine com detalhes técnicos de cada agente.</p>
+          </a>
+
+          <!-- Item 6: Relatório 23/09 -->
+          <a href="Relatorio_GEO_Auditoria_23092026.html" target="_blank" class="admin-sunken p-5 hover:bg-emerald-50/60 transition-all border border-slate-200 group space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Auditoria 23/09</span>
+              <span class="font-mono text-xs text-slate-400 group-hover:text-emerald-700">Abrir ↗</span>
+            </div>
+            <h3 class="font-display font-bold text-sm text-slate-900">Relatório Completo (56 Prompts)</h3>
+            <p class="font-sans text-xs text-slate-500">Relatório da auditoria executada em 23/09 com chamadas OpenRouter.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-slate-200 bg-white py-6 px-6 text-center font-mono text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 b.rocket Marketing Digital • <strong>Casa de Vídeo Produções</strong></span>
+      <span>Portal do Cliente BE | GEO v1.0</span>
+    </div>
+  </footer>
+
+  <!-- Scripts para Troca de Abas, Gráficos & Filtro dos 56 Prompts -->
+  <script>
+    function showTab(tabId) {
+      // Esconde todas as panes
+      const panes = document.querySelectorAll('.tab-pane');
+      panes.forEach(pane => {
+        pane.classList.remove('active-pane');
+      });
+
+      // Exibe a pane selecionada
+      const activePane = document.getElementById('pane-' + tabId);
+      if (activePane) {
+        activePane.classList.add('active-pane');
+      }
+
+      // Desativa todos os botões de abas
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      tabBtns.forEach(btn => {
+        btn.classList.remove('tab-active');
+      });
+
+      // Ativa o botão selecionado
+      const activeBtn = document.getElementById('btn-tab-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('tab-active');
+      }
+    }
+
+    // Gráfico 1: Evolução Temporal
+    const ctxEvolutionMain = document.getElementById('chartGeoEvolutionMain').getContext('2d');
+    new Chart(ctxEvolutionMain, {
+      type: 'line',
+      data: {
+        labels: ['Audit #1 (23/09 18h)', 'Audit #2 (24/09 19h)', 'Meta Rodada #3 (08/10)'],
+        datasets: [{
+          label: 'GEO Score (%)',
+          data: [55, 84, 92],
+          borderColor: '#059669',
+          backgroundColor: 'rgba(5, 150, 105, 0.08)',
+          fill: true,
+          tension: 0.3,
+          borderWidth: 3,
+          pointRadius: 5,
+          pointBackgroundColor: '#059669'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { min: 0, max: 100, ticks: { font: { family: 'JetBrains Mono', size: 10 } } },
+          x: { ticks: { font: { family: 'JetBrains Mono', size: 10 } } }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Gráfico 2: Donut Citabilidade por IA
+    const ctxLlmDonutMain = document.getElementById('chartLlmDonutMain').getContext('2d');
+    new Chart(ctxLlmDonutMain, {
+      type: 'doughnut',
+      data: {
+        labels: ['ChatGPT', 'Perplexity', 'Google Gemini', 'Claude'],
+        datasets: [{
+          data: [80, 80, 70, 70],
+          backgroundColor: ['#059669', '#2563EB', '#7C3AED', '#D97706'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        cutout: '65%'
+      }
+    });
+
+    // Filtro dos 56 Prompts
+    function filtrar56Prompts() {
+      const input = document.getElementById('inputBusca56Prompts');
+      const filter = input.value.toLowerCase();
+      const items = document.querySelectorAll('.card-prompt-item');
+      let count = 0;
+
+      items.forEach(item => {
+        const text = item.textContent || item.innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+          item.style.display = "";
+          count++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      document.getElementById('countPromptsVisiveis').innerText = count;
+    }
+  </script>
+</body>
+</html>

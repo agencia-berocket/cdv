@@ -1,7 +1,7 @@
 # Lista Master de Negativagem — Casa de Vídeo Produções B2B
-# Atualizado pelo Agente Tráfego Pago · b.rocket (Setembro/2026)
+# Atualizado pelo Agente Tráfego Pago · b.rocket (25/Setembro/2026)
 
-# 🚫 Termos de Gratuidade, Ensino e Emprego
+# 🚫 Termos de Gratuidade, Ensino, Cursos e Emprego
 gratis
 gratuito
 free
@@ -25,8 +25,12 @@ download
 template gratis
 programa gratis
 software gratis
+editor gratis
+baixar editor
+trabalho escolar
+projeto de faculdade
 
-# 🚫 Termos de Suporte, Reclamações e Institucional Indesejado
+# 🚫 Termos de Suporte, Reclamações, SAC e Institucional Indesejado
 reclame aqui
 suporte
 telefone sac
@@ -36,8 +40,12 @@ atestado
 ouvidoria
 endereco sac
 trabalhista
+financeiro
+boleto
+segunda via
+processo seletivo
 
-# 🚫 Termos de Baixa Qualidade / Domésticos / Amadores
+# 🚫 Termos de Baixa Qualidade / Domésticos / Amadores / Baixo Orçamento
 caseiro
 barato
 simples
@@ -50,8 +58,11 @@ bico
 freelancer barato
 bico de filmagem
 equipamento usado
+camara barata
+filme caseiro
+amador
 
-# 🚫 Termos de Entretenimento Desalinhados
+# 🚫 Termos de Entretenimento Desalinhados (Cinemas, Filmes Piratas)
 filme completo
 baixar filme
 assistir filme online
@@ -61,3 +72,24 @@ desenho animado
 trailer de filme gratis
 pirata
 torrent
+netflix
+hbo max
+prime video
+globoplay
+filme de terror
+filme de acao
+filme dublado
+legenda
+assistir gratis
+pipoca
+bilheteria
+
+# 🚫 Softwares & Equipamentos (Busca por compra física)
+comprar camera
+aluguel de camera para pessoa fisica
+tripé barato
+lente de celular
+microfone usado
+software de edicao gratis
+capcut gratis
+kinemaster sem marca d agua

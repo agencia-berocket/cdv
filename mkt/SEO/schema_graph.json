@@ -1,0 +1,173 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.casadevideo.com.br/#organization",
+      "name": "Casa de Vídeo Produções",
+      "legalName": "Casa de Vídeo Produções Audiovisuais Ltda",
+      "url": "https://www.casadevideo.com.br",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.casadevideo.com.br/#logo",
+        "url": "https://www.casadevideo.com.br/assets/logo-casadevideo.png",
+        "caption": "Casa de Vídeo Produções Audiovisuais"
+      },
+      "image": "https://www.casadevideo.com.br/assets/logo-casadevideo.png",
+      "description": "Produtora audiovisual especializada na criação e execução de filmes publicitários, vídeos corporativos, institucionais e comerciais de alta performance para marcas e agências B2B.",
+      "telephone": "+55-11-99999-8888",
+      "email": "contato@casadevideo.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        "https://www.instagram.com/casadevideoproducoes",
+        "https://www.linkedin.com/company/casadevideo",
+        "https://vimeo.com/casadevideo",
+        "https://www.youtube.com/@casadevideoproducoes"
+      ],
+      "knowsAbout": [
+        "Produção Audiovisual",
+        "Filmes Publicitários",
+        "Vídeos Corporativos B2B",
+        "Comerciais de TV e Streaming",
+        "Branded Content",
+        "Pós-produção e Color Grading"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.casadevideo.com.br/#website",
+      "url": "https://www.casadevideo.com.br",
+      "name": "Casa de Vídeo Produções Audiovisuais",
+      "description": "Produtora de vídeos corporativos, filmes publicitários e conteúdo audiovisual B2B em São Paulo.",
+      "publisher": {
+        "@id": "https://www.casadevideo.com.br/#organization"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.casadevideo.com.br/#localbusiness",
+      "name": "Casa de Vídeo — Produtora Audiovisual São Paulo",
+      "url": "https://www.casadevideo.com.br",
+      "telephone": "+55-11-99999-8888",
+      "priceRange": "$$$",
+      "image": "https://www.casadevideo.com.br/assets/estudio-casa-de-video.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.55052,
+        "longitude": -46.633308
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "parentOrganization": {
+        "@id": "https://www.casadevideo.com.br/#organization"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.casadevideo.com.br/#showreel",
+      "name": "Showreel Comercial & Corporativo 2026 — Casa de Vídeo",
+      "description": "Showreel oficial demonstrando a qualidade cinematográfica em filmes publicitários, comerciais B2B e vídeos institucionais produzidos pela Casa de Vídeo em São Paulo.",
+      "thumbnailUrl": [
+        "https://www.casadevideo.com.br/assets/showreel-poster-16x9.jpg",
+        "https://www.casadevideo.com.br/assets/showreel-poster-4x3.jpg"
+      ],
+      "uploadDate": "2026-01-15T08:00:00-03:00",
+      "duration": "PT1M45S",
+      "contentUrl": "https://www.casadevideo.com.br/assets/showreel-2026.mp4",
+      "embedUrl": "https://player.vimeo.com/video/casadevideo-showreel",
+      "publisher": {
+        "@id": "https://www.casadevideo.com.br/#organization"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.casadevideo.com.br/#servico-video-b2b",
+      "name": "Produção de Vídeos Corporativos e Filmes Publicitários B2B",
+      "serviceType": "Produção Audiovisual Publicitária e Institucional",
+      "provider": {
+        "@id": "https://www.casadevideo.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "São Paulo e Região Metropolitana"
+      },
+      "description": "Desenvolvimento completo de peças audiovisuais de alta performance, desde a concepção de roteiro, diária de gravação com equipamentos de padrão cinema (4K/RAW), pós-produção, motion graphics e color grading."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.casadevideo.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual é o prazo médio de entrega de um vídeo corporativo B2B?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O prazo médio de produção varia entre 15 e 30 dias úteis, englobando alinhamento de roteiro, pré-produção, gravação e pós-produção com rodadas de aprovação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Casa de Vídeo atende agências de publicidade e diretores de marketing em São Paulo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Somos especializados no atendimento B2B a agências, gerentes de comunicação e diretores de marketing, entregando conformidade trabalhista, pontualidade e padrão cinematográfico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A produtora oferece estrutura completa de equipamento e equipe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dispomos de câmeras de cinema 4K/6K, iluminação profissional de LED/HMI, captação de áudio direto, drones homologados pela ANAC e equipe técnica qualificada."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.casadevideo.com.br/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.casadevideo.com.br"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Serviços Audiovisuais",
+          "item": "https://www.casadevideo.com.br/servicos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Produtora de Vídeo B2B SP",
+          "item": "https://www.casadevideo.com.br/produtora-de-video-b2b-sp"
+        }
+      ]
+    }
+  ]
+}

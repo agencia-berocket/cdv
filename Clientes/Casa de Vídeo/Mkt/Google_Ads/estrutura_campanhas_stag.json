@@ -1,11 +1,26 @@
 {
   "cliente": "Casa de Vídeo Produções Audiovisuais",
-  "metodologia": "STAG (Single Theme Ad Groups)",
-  "estrategiaLancesAtual": "Maximizar Conversões (Transição para tCPA R$ 180 pós-30 conversões)",
-  "campanhas": [
+  "nicho": "Produtora Audiovisual B2B",
+  "metodologia": "Nova Gestão de Tráfego (Sobral Framework) & STAG (Single Theme Ad Groups)",
+  "trianguloDeOuro": {
+    "oferta": "Comunicação B2B Audiovisual com Showreel 4K no Site Oficial casadevideo.com.br",
+    "trafego": "Google Ads Search (Intenção Direta) + PMax Showreel Multicanal",
+    "conversao": "Formulário de Orçamento Corporativo no Site Oficial casadevideo.com.br"
+  },
+  "logicaIntencao": "Lógica do 'Bolo de Cenoura Fofinho' — Captura da busca exata de quem procura por produtora audiovisual no Brasil",
+  "geotargetingOficial": "Brasil (Foco nas Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
+  "dataExecucaoAgente": "2026-09-25",
+  "verbaMensalMidia": "R$ 3.500,00",
+  "orcamentoDiarioTotal": "R$ 116,00",
+  "campanhasDeOuro": [
     {
-      "nomeCampanha": "Search | Lead | Marca | SP",
-      "orcamentoDiario": "R$ 30,00",
+      "id": "CAMP-01",
+      "nomeCampanha": "Search | Lead | Marca-CasaDeVideo | BR",
+      "tipoOuro": "Campanha 3 — Dominação Top 1 no Google (Branded)",
+      "orcamentoDiario": "R$ 20,00",
+      "objetivo": "Proteção da 1ª Posição em buscas institucionais Casa de Vídeo no Brasil",
+      "estrategiaLances": "Maximizar Conversões (Fase 1)",
+      "geotargeting": "Brasil (Principais Capitais Comerciais)",
       "gruposAnuncios": [
         {
           "nomeGrupo": "STAG - Casa de Vídeo Marca",
@@ -13,48 +28,71 @@
             "[casa de video]",
             "\"casa de video\"",
             "[casa de video producoes]",
-            "\"produtora casa de video\""
+            "\"produtora casa de video\"",
+            "\"casa de video brasil\""
           ],
           "rsaAnuncio": {
             "titulo1": "Casa de Vídeo Produções",
-            "titulo2": "Produtora Audiovisual SP",
-            "titulo3": "Filmes Publicitários e B2B",
+            "titulo2": "Produtora Audiovisual B2B",
+            "titulo3": "Filmes Publicitários & Nacionais",
             "titulosAdicionais": [
               "Vídeos Corporativos 4K",
-              "Produtora de Vídeo em SP",
+              "Produtora de Vídeo no Brasil",
               "Showreel & Portfólio 2026",
               "Orçamento em 24 Horas",
               "Equipamentos de Cinema",
               "Atendimento Corporativo B2B",
               "Vídeos para Grandes Marcas",
-              "Fale com Nossos Diretores"
+              "Fale com Nossos Diretores",
+              "Produtora Premiada Brasil",
+              "Roteiro e Produção 4K"
             ],
             "descricoes": [
               "Produtora especializada em filmes publicitários, institucionais e vídeos corporativos de alta performance.",
-              "Eleve a comunicação da sua marca com produções cinematográficas B2B em São Paulo. Peça uma proposta!",
+              "Eleve a comunicação da sua marca com produções cinematográficas B2B atendendo todo o Brasil. Peça uma proposta!",
               "Estrutura completa de produção audiovisual para empresas, marcas e agências. Confira nosso showreel.",
               "Mais de 15 anos produzindo vídeos de impacto para o mercado publicitário e corporativo. Solicite orçamento!"
             ],
             "triadePAPScore": "10/10"
+          },
+          "extensoes": {
+            "sitelinks": [
+              { "texto": "Showreel 2026", "descricao": "Assista aos nossos melhores filmes 4K", "url": "https://www.casadevideo.com.br/#showreel" },
+              { "texto": "Vídeos Corporativos", "descricao": "Soluções B2B para grandes empresas", "url": "https://www.casadevideo.com.br/#servicos" },
+              { "texto": "Filmes Publicitários", "descricao": "Comerciais para TV e Digital", "url": "https://www.casadevideo.com.br/#publicidade" },
+              { "texto": "Solicitar Orçamento", "descricao": "Atendimento comercial rápido em 24h", "url": "https://www.casadevideo.com.br/#contato" }
+            ],
+            "frasesDestaque": [
+              "Qualidade 4K Cinema",
+              "Equipe Técnica Própria",
+              "Atendimento B2B Nacional",
+              "Orçamento em 24h"
+            ]
           }
         }
       ]
     },
     {
-      "nomeCampanha": "Search | Lead | Produtora-Video-B2B | SP",
-      "orcamentoDiario": "R$ 120,00",
+      "id": "CAMP-02",
+      "nomeCampanha": "Search | Lead | Produtora-Video-B2B | BR",
+      "tipoOuro": "Campanha 2 & 4 — Vendas 1:1 e Intenção Comercial Fundo de Funil",
+      "orcamentoDiario": "R$ 50,00",
+      "objetivo": "Captura de leads corporativos buscando produtoras B2B nas principais capitais do Brasil",
+      "estrategiaLances": "Maximizar Conversões (Transição para tCPL R$ 180,00 pós-30 conversões)",
+      "geotargeting": "Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
       "gruposAnuncios": [
         {
           "nomeGrupo": "STAG - Produtora de Vídeo B2B",
           "palavrasChave": [
-            "[produtora de video b2b]",
+            "produtora de video b2b",
             "\"produtora de video corporativo\"",
             "\"produtora de filmes publicitarios\"",
-            "[produtora audiovisual sao paulo]",
-            "\"produtora de video sp\""
+            "produtora audiovisual empresas",
+            "\"produtora de video para marketing\"",
+            "produtora de comercial tv web"
           ],
           "rsaAnuncio": {
-            "titulo1": "Produtora de Vídeo B2B em SP",
+            "titulo1": "Produtora de Vídeo B2B Brasil",
             "titulo2": "Filmes Corporativos & Comerciais",
             "titulo3": "Peça uma Proposta Audiovisual",
             "titulosAdicionais": [
@@ -63,43 +101,68 @@
               "Vídeos para Marcas & Agências",
               "Qualidade Cinematográfica B2B",
               "Roteiro e Produção Completa",
-              "Atendimento em São Paulo",
+              "Atendimento Nacional B2B",
               "Equipe Técnica Especializada",
-              "Vídeos de Alta Performance"
+              "Vídeos de Alta Performance",
+              "Produtora Audiovisual Premium",
+              "Proposta Comercial em 24h",
+              "Estúdio e Câmeras 4K"
             ],
             "descricoes": [
               "Sua empresa precisa de vídeos que geram resultados reais? Produção audiovisual B2B com roteiro estratégico.",
               "Transforme sua comunicação corporativa com filmes publicitários e institucionais de alto impacto.",
-              "Atendemos Diretores de Marketing e Agências de Publicidade em SP. Receba seu orçamento em 24h!",
+              "Atendemos Diretores de Marketing e Agências de Publicidade no Brasil. Receba seu orçamento em 24h!",
               "Produções em 4K e Cinema com equipe completa de direção, captação e pós-produção. Fale conosco!"
             ],
             "triadePAPScore": "9.8/10"
+          },
+          "extensoes": {
+            "sitelinks": [
+              { "texto": "Portfólio B2B", "descricao": "Casos de sucesso de grandes marcas", "url": "https://www.casadevideo.com.br/#portfolio" },
+              { "texto": "Vídeos Institucionais", "descricao": "Comunicação corporativa de impacto", "url": "https://www.casadevideo.com.br/#institucional" },
+              { "texto": "Comerciais de TV", "descricao": "Produções publicitárias 4K", "url": "https://www.casadevideo.com.br/#comerciais" },
+              { "texto": "Falar com Diretor", "descricao": "Consultoria audiovisual sem compromisso", "url": "https://www.casadevideo.com.br/#contato" }
+            ],
+            "frasesDestaque": [
+              "Roteiro Estratégico B2B",
+              "Pós-Produção Completa",
+              "Color Grading Cinema",
+              "Entregas no Prazo"
+            ]
           }
         }
       ]
     },
     {
-      "nomeCampanha": "Search | Lead | Concorrentes | SP",
-      "orcamentoDiario": "R$ 50,00",
+      "id": "CAMP-03",
+      "nomeCampanha": "Search | Lead | Concorrentes-Audiovisuais | BR",
+      "tipoOuro": "Campanha 4 — Conquista de Tráfego Comparativo",
+      "orcamentoDiario": "R$ 20,00",
+      "objetivo": "Captura de tomadores de decisão pesquisando marcas concorrentes de grande porte no Brasil",
+      "estrategiaLances": "Maximizar Conversões",
+      "geotargeting": "Brasil (Principais Capitais Comerciais)",
       "gruposAnuncios": [
         {
-          "nomeGrupo": "STAG - Concorrentes Audiovisuais SP",
+          "nomeGrupo": "STAG - Concorrentes Audiovisuais Brasil",
           "palavrasChave": [
             "\"o2 filmes produtora\"",
             "\"sentimental filme\"",
-            "\"conspiracao filmes sp\""
+            "\"conspiracao filmes\"",
+            "\"ketchum audiovisual\""
           ],
           "rsaAnuncio": {
             "titulo1": "Casa de Vídeo — Produtora B2B",
             "titulo2": "Alta Qualidade & Entrega Ágil",
             "titulo3": "Compare Orçamento Audiovisual",
             "titulosAdicionais": [
-              "Filmes Publicitários em SP",
+              "Filmes Publicitários no Brasil",
               "Atendimento Personalizado B2B",
-              "Showreel Cinematográfico 4K"
+              "Showreel Cinematográfico 4K",
+              "Proposta Comercial Rápida",
+              "Produção de Alto Rendimento"
             ],
             "descricoes": [
-              "Buscando produtora audiovisual em São Paulo? Conheça a Casa de Vídeo e receba uma proposta competitiva.",
+              "Buscando produtora audiovisual no Brasil? Conheça a Casa de Vídeo e receba uma proposta competitiva.",
               "Filmes publicitários e corporativos de alto nível para marcas exigentes. Solicite seu orçamento hoje mesmo!"
             ],
             "triadePAPScore": "9.5/10"
@@ -108,16 +171,35 @@
       ]
     },
     {
-      "nomeCampanha": "PMax | Lead | Performance-Showreel | SP",
-      "orcamentoDiario": "R$ 100,00",
-      "canais": ["Search", "YouTube", "Display", "Gmail", "Maps"],
+      "id": "CAMP-04",
+      "nomeCampanha": "PMax | Lead | Performance-Showreel-4K | BR",
+      "tipoOuro": "Campanha 4 — Multicanal PMax & Descoberta Visual",
+      "orcamentoDiario": "R$ 26,00",
+      "objetivo": "Escala visual em nível nacional no YouTube, Display, Gmail, Search e Maps com showreel 4K",
+      "estrategiaLances": "Maximizar Conversões",
+      "geotargeting": "Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
+      "canais": ["YouTube 4K", "Display Banner", "Gmail", "Search", "Maps"],
       "sinaisPublico": {
-        "interesses": ["Produção Audiovisual", "Marketing B2B", "Publicidade e Propaganda", "Direção de Criação"],
-        "dadosProprios": "Visitantes do site casadevideo.com.br e lista de clientes CRM"
+        "interesses": [
+          "Produção Audiovisual",
+          "Marketing B2B",
+          "Publicidade e Propaganda",
+          "Direção de Criação",
+          "Comunicação Corporativa"
+        ],
+        "dadosProprios": "Visitantes do site casadevideo.com.br e Lista de Clientes CRM",
+        "segmentosIntencao": [
+          "Serviços de Produção de Vídeo",
+          "Agências de Publicidade",
+          "Marketing Digital B2B"
+        ]
       },
       "recursosMidia": {
         "videos": ["https://youtube.com/watch?v=showreel_casadevideo_4k"],
-        "imagens": ["hero_banner_casadevideo.webp", "set_filmagens_4k.webp"],
+        "imagens": [
+          "set_filmagens_4k.webp",
+          "estudio_pos_producao.webp"
+        ],
         "logos": ["logo_casadevideo_dark.png"]
       }
     }
