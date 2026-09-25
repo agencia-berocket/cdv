@@ -179,17 +179,9 @@
             <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-bold uppercase">Hub Central 360° Realtime</span>
           </div>
         </a>
-
-        <!-- Realtime Status Indicator -->
-        <div class="hidden sm:flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-xl text-xs font-mono font-bold">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>AO VIVO</span>
-          <span class="text-emerald-400">|</span>
-          <span id="relogioSync" class="text-emerald-700">14:28:56</span>
-        </div>
       </div>
 
-      <!-- Controls: Date Selector, Pipeline, Print, Logout -->
+      <!-- Controls: Date Selector, Pipeline, Glossário, Logout -->
       <div class="flex items-center gap-2 md:gap-3 no-print">
         <div class="tactile-sunken px-3 py-1 flex items-center gap-1.5 text-xs font-mono max-w-[280px]">
           <span class="text-zinc-500 font-bold shrink-0">📅</span>
@@ -207,10 +199,6 @@
 
         <button onclick="scrollToSection('glossario-didatico')" class="tactile-sunken text-violet-700 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all hover:bg-violet-100/60 rounded-xl cursor-pointer">
           <span>💡 Glossário</span>
-        </button>
-
-        <button onclick="window.print()" class="tactile-raised !bg-[#4353ff] text-white font-mono text-xs font-bold px-3.5 py-1.5 hover:bg-[#3240e6] uppercase tracking-wider transition-all flex items-center gap-1 rounded-xl shadow-xs border-t border-[#606fff] cursor-pointer">
-          <span>🖨️ PDF</span>
         </button>
 
         <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all rounded-xl hover:bg-red-50 cursor-pointer">
@@ -831,54 +819,127 @@
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
         <div>
           <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-700 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
-            <span>🧮 Ferramenta Didática de Projeção</span>
+            <span>🧮 Simulação Matemática Comercial & ROAS</span>
           </div>
           <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
-            Simulador Didático de Projeção de Leads B2B & ROAS
+            Simulador Didático de Projeção B2B (Investimento x CPL Ajustável)
           </h2>
-          <p class="font-sans text-xs text-zinc-500">Ajuste a verba mensal estimada e veja em tempo real as metas projetadas de leads, reuniões e faturamento comercial.</p>
+          <p class="font-sans text-xs text-zinc-500">Ajuste a verba mensal e o CPL em tempo real para calcular a matemática completa de leads, reuniões, pipeline e retorno financeiro (ROAS).</p>
         </div>
-        <span class="font-mono text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-200">
-          CPL Meta: R$ 180,00
-        </span>
+        <div class="flex items-center gap-2 font-mono text-xs font-bold text-indigo-700 bg-indigo-50 px-3.5 py-2 rounded-xl border border-indigo-200 whitespace-nowrap">
+          <span>Fórmula: Leads = Verba ÷ CPL</span>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-        <!-- Controls Column -->
-        <div class="space-y-4 tactile-sunken p-6 rounded-2xl">
-          <label class="font-mono text-xs font-bold text-zinc-700 block uppercase">
-            Investimento Mensal Estimado em Ads (R$):
-          </label>
-          <div class="flex items-center justify-between font-mono font-black text-2xl text-indigo-600">
-            <span id="valInvestSimulado">R$ 3.500,00</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column (5 Cols) -->
+        <div class="lg:col-span-5 space-y-5 tactile-sunken p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200">
+          <h3 class="font-mono text-xs font-black text-zinc-950 uppercase tracking-wider border-b border-zinc-200 pb-2 flex items-center justify-between">
+            <span>🎛️ Variáveis da Campanha:</span>
+            <span class="text-indigo-600 text-[10px]">Interativo</span>
+          </h3>
+
+          <!-- Control 1: Investimento Mensal -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center font-mono text-xs font-bold">
+              <label for="rangeInvest" class="text-zinc-700 uppercase">1. Investimento Mensal (Ads):</label>
+              <span id="valInvestSimulado" class="text-indigo-600 font-black text-base whitespace-nowrap">R$ 3.500,00</span>
+            </div>
+            <input type="range" id="rangeInvest" min="1000" max="50000" step="500" value="3500" oninput="calcularProjecao()" class="w-full h-2.5 bg-zinc-200 rounded-lg cursor-pointer accent-indigo-600">
+            <div class="flex justify-between font-mono text-[10px] text-zinc-400">
+              <span>R$ 1.000</span>
+              <span>R$ 25.000</span>
+              <span>R$ 50.000</span>
+            </div>
           </div>
-          <input type="range" id="rangeInvest" min="1000" max="20000" step="500" value="3500" oninput="calcularProjecao()" class="w-full h-2 bg-zinc-200 rounded-lg cursor-pointer">
-          <div class="flex justify-between font-mono text-[10px] text-zinc-400">
-            <span>R$ 1.000</span>
-            <span>R$ 10.000</span>
-            <span>R$ 20.000</span>
+
+          <!-- Control 2: CPL Meta / Desejado -->
+          <div class="space-y-2 pt-2 border-t border-zinc-200/60">
+            <div class="flex justify-between items-center font-mono text-xs font-bold">
+              <label for="rangeCpl" class="text-zinc-700 uppercase">2. Custo Por Lead (CPL):</label>
+              <span id="valCplSimulado" class="text-indigo-600 font-black text-base whitespace-nowrap">R$ 180,00</span>
+            </div>
+            <input type="range" id="rangeCpl" min="30" max="500" step="5" value="180" oninput="calcularProjecao()" class="w-full h-2.5 bg-zinc-200 rounded-lg cursor-pointer accent-indigo-600">
+            <div class="flex justify-between font-mono text-[10px] text-zinc-400">
+              <span>R$ 30,00 (Meta Agressiva)</span>
+              <span>R$ 180,00 (Teto)</span>
+              <span>R$ 500,00</span>
+            </div>
           </div>
+
+          <!-- Control 3 & 4: Conversion & Ticket B2B -->
+          <div class="grid grid-cols-2 gap-3 pt-2 border-t border-zinc-200/60 font-mono text-xs">
+            <div>
+              <label for="selectTaxaReuniao" class="text-[10px] font-bold text-zinc-600 uppercase block mb-1">Conv. Reuniões:</label>
+              <select id="selectTaxaReuniao" onchange="calcularProjecao()" class="w-full bg-white border border-zinc-300 rounded-lg p-1.5 font-bold text-indigo-700 outline-none cursor-pointer">
+                <option value="0.20">20% dos Leads</option>
+                <option value="0.30" selected>30% dos Leads (Padrão)</option>
+                <option value="0.40">40% dos Leads</option>
+                <option value="0.50">50% dos Leads</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="selectTicketMedio" class="text-[10px] font-bold text-zinc-600 uppercase block mb-1">Ticket Médio B2B:</label>
+              <select id="selectTicketMedio" onchange="calcularProjecao()" class="w-full bg-white border border-zinc-300 rounded-lg p-1.5 font-bold text-indigo-700 outline-none cursor-pointer">
+                <option value="10000">R$ 10.000</option>
+                <option value="15000" selected>R$ 15.000 (Padrão)</option>
+                <option value="25000">R$ 25.000</option>
+                <option value="50000">R$ 50.000</option>
+              </select>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Calculated Metrics Column -->
-        <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="tactile-sunken p-5 text-center bg-indigo-50/40 border border-indigo-200/80">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Projeção de Leads B2B</span>
-            <strong id="simLeads" class="font-display font-black text-3xl text-indigo-600 block mt-2">19 Leads</strong>
-            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Com CPL de R$ 180</span>
+        <!-- Calculated Metrics Column (7 Cols) -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- Card 1: Leads B2B -->
+          <div class="tactile-sunken p-5 text-center bg-indigo-50/50 border border-indigo-200 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">1. Projeção de Leads B2B</span>
+              <strong id="simLeads" class="font-display font-black text-3xl text-indigo-600 block mt-2 whitespace-nowrap">19 Leads</strong>
+            </div>
+            <span id="simCalcFormulaLeads" class="font-mono text-[10px] text-indigo-700 font-bold block mt-3 bg-indigo-100/70 py-1.5 px-2 rounded-lg truncate">
+              R$ 3.500 ÷ R$ 180 = 19 Leads
+            </span>
           </div>
 
-          <div class="tactile-sunken p-5 text-center bg-emerald-50/40 border border-emerald-200/80">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Reuniões Qualificadas (30%)</span>
-            <strong id="simReunioes" class="font-display font-black text-3xl text-emerald-600 block mt-2">6 Reuniões</strong>
-            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Agendamentos Comerciais</span>
+          <!-- Card 2: Reuniões Qualificadas -->
+          <div class="tactile-sunken p-5 text-center bg-emerald-50/50 border border-emerald-200 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">2. Reuniões Qualificadas</span>
+              <strong id="simReunioes" class="font-display font-black text-3xl text-emerald-600 block mt-2 whitespace-nowrap">6 Reuniões</strong>
+            </div>
+            <span id="simCalcFormulaReunioes" class="font-mono text-[10px] text-emerald-700 font-bold block mt-3 bg-emerald-100/70 py-1.5 px-2 rounded-lg truncate">
+              30% de 19 Leads = 6 Agendamentos
+            </span>
           </div>
 
-          <div class="tactile-sunken p-5 text-center bg-violet-50/40 border border-violet-200/80">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">Proposta B2B Comercial</span>
-            <strong id="simFaturamento" class="font-display font-black text-2xl text-violet-600 block mt-2">R$ 90.000,00</strong>
-            <span class="font-mono text-[10px] text-zinc-400 block mt-1">Pipeline Estimado (Ticket R$15k)</span>
+          <!-- Card 3: Pipeline B2B Comercial -->
+          <div class="tactile-sunken p-5 text-center bg-violet-50/50 border border-violet-200 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">3. Pipeline de Oportunidades</span>
+              <strong id="simPipeline" class="font-display font-black text-2xl text-violet-600 block mt-2 whitespace-nowrap">R$ 90.000,00</strong>
+            </div>
+            <span id="simCalcFormulaPipeline" class="font-mono text-[10px] text-violet-700 font-bold block mt-3 bg-violet-100/70 py-1.5 px-2 rounded-lg truncate">
+              6 Reuniões x Ticket R$ 15k
+            </span>
           </div>
+
+          <!-- Card 4: ROAS Estimado & Faturamento -->
+          <div class="tactile-sunken p-5 text-center bg-amber-50/50 border border-amber-200 rounded-2xl flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block">4. Retorno ROAS Estimado</span>
+              <strong id="simRoas" class="font-display font-black text-2xl text-amber-600 block mt-2 whitespace-nowrap">ROAS 4.29x</strong>
+            </div>
+            <span id="simCalcFormulaRoas" class="font-mono text-[10px] text-amber-800 font-bold block mt-3 bg-amber-100/70 py-1.5 px-2 rounded-lg truncate">
+              R$ 15.000 Faturamento (1 Venda)
+            </span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1433,20 +1494,48 @@
     }
 
     function calcularProjecao() {
-      const rng = document.getElementById('rangeInvest');
-      if (!rng) return;
-      const val = parseFloat(rng.value);
-      
-      document.getElementById('valInvestSimulado').innerText = `R$ ${val.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-      
-      const cpl = 180;
-      const leads = Math.floor(val / cpl);
-      const reunioes = Math.floor(leads * 0.30);
-      const faturamento = reunioes * 15000;
+      const rngInvest = document.getElementById('rangeInvest');
+      const rngCpl = document.getElementById('rangeCpl');
+      const selTaxa = document.getElementById('selectTaxaReuniao');
+      const selTicket = document.getElementById('selectTicketMedio');
 
+      if (!rngInvest || !rngCpl) return;
+
+      const invest = parseFloat(rngInvest.value) || 3500;
+      const cpl = parseFloat(rngCpl.value) || 180;
+      const taxaReuniao = parseFloat(selTaxa ? selTaxa.value : 0.30) || 0.30;
+      const ticketMedio = parseFloat(selTicket ? selTicket.value : 15000) || 15000;
+
+      // Rótulos dos Sliders
+      document.getElementById('valInvestSimulado').innerText = `R$ ${invest.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('valCplSimulado').innerText = `R$ ${cpl.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+
+      // 1. Projeção de Leads: Verba ÷ CPL
+      const leads = Math.floor(invest / cpl);
+      
+      // 2. Reuniões Agendadas: Leads x Taxa de Reunião
+      const reunioes = Math.round(leads * taxaReuniao);
+      
+      // 3. Pipeline de Oportunidades: Reuniões x Ticket Médio
+      const pipeline = reunioes * ticketMedio;
+
+      // 4. Faturamento & ROAS Estimado (considerando taxa de fechamento de ~20% das reuniões)
+      const taxaFechamento = 0.20;
+      const contratosFechados = reunioes > 0 ? Math.max(1, Math.round(reunioes * taxaFechamento)) : 0;
+      const faturamentoEstimado = contratosFechados * ticketMedio;
+      const roas = invest > 0 ? (faturamentoEstimado / invest).toFixed(2) : '0.00';
+
+      // Atualiza os valores visíveis nos cards
       document.getElementById('simLeads').innerText = `${leads} Leads`;
       document.getElementById('simReunioes').innerText = `${reunioes} Reuniões`;
-      document.getElementById('simFaturamento').innerText = `R$ ${faturamento.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('simPipeline').innerText = `R$ ${pipeline.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      document.getElementById('simRoas').innerText = `ROAS ${roas}x`;
+
+      // Fórmulas matemáticas explicativas em tempo real
+      document.getElementById('simCalcFormulaLeads').innerText = `R$ ${invest.toLocaleString('pt-BR')} ÷ R$ ${cpl} = ${leads} Leads`;
+      document.getElementById('simCalcFormulaReunioes').innerText = `${Math.round(taxaReuniao * 100)}% de ${leads} Leads = ${reunioes} Agendamentos`;
+      document.getElementById('simCalcFormulaPipeline').innerText = `${reunioes} Reuniões x Ticket R$ ${(ticketMedio / 1000).toFixed(0)}k`;
+      document.getElementById('simCalcFormulaRoas').innerText = `R$ ${faturamentoEstimado.toLocaleString('pt-BR')} Faturamento (${contratosFechados} Venda${contratosFechados !== 1 ? 's' : ''})`;
     }
 
     function switchPipelineTab(tab) {
