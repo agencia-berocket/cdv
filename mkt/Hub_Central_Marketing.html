@@ -159,8 +159,8 @@
 <body class="grid-blueprint min-h-screen text-zinc-950 antialiased selection:bg-zinc-950 selection:text-white pb-24">
 
   <!-- ==================== MAIN NAVBAR ==================== -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-3 px-4 md:px-12 bg-white/85 backdrop-blur-md border-b border-zinc-200/80 shadow-xs">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 py-3.5 px-4 md:px-12 bg-white/85 backdrop-blur-md border-b border-zinc-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
       
       <!-- Logo b.rocket & Live Beacon -->
       <div class="flex items-center gap-3">
@@ -181,45 +181,30 @@
         </a>
       </div>
 
-      <!-- Controls: Date Selector, Pipeline, Glossário, Logout -->
-      <div class="flex items-center gap-2 md:gap-3 no-print">
-        <div class="tactile-sunken px-3 py-1 flex items-center gap-1.5 text-xs font-mono max-w-[280px]">
-          <span class="text-zinc-500 font-bold shrink-0">📅</span>
-          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-700 font-bold outline-none cursor-pointer w-full truncate">
-            <option value="sem_real_live" selected>Ao Vivo: 24/Set - 30/Set 2026 (Produção)</option>
-            <option value="sem39">Semana 39: 17/Set - 23/Set 2026</option>
-            <option value="sem38">Semana 38: 10/Set - 16/Set 2026</option>
-            <option value="sem37">Semana 37: 03/Set - 09/Set 2026</option>
-          </select>
+      <!-- Controls: 3 Botões (ADS, SEO, GEO) + Logout (Agrupados à direita) -->
+      <div class="flex items-center gap-4 no-print flex-wrap justify-center sm:justify-end">
+        
+        <!-- Navigation Pill Menu: 3 Botões mais espaçosos -->
+        <div class="flex items-center bg-zinc-100 p-1.5 rounded-2xl border border-zinc-200 font-mono text-xs overflow-x-auto gap-2.5">
+          <a href="Google_Ads/index.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer hover:scale-[1.03]">
+            <span>🎯 ADS</span>
+          </a>
+          <a href="SEO/index.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer hover:scale-[1.03]">
+            <span>🔍 SEO</span>
+          </a>
+          <a href="GEO/index.html" class="bg-violet-600 hover:bg-violet-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer hover:scale-[1.03]">
+            <span>🤖 GEO</span>
+          </a>
         </div>
 
-        <button onclick="scrollToSection('historico-pipeline')" class="tactile-sunken text-indigo-700 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all hover:bg-indigo-100/60 rounded-xl cursor-pointer">
-          <span>📋 Pipeline</span>
-        </button>
+        <div class="h-6 w-[1px] bg-zinc-300 hidden sm:block"></div>
 
-        <button onclick="scrollToSection('glossario-didatico')" class="tactile-sunken text-violet-700 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all hover:bg-violet-100/60 rounded-xl cursor-pointer">
-          <span>💡 Glossário</span>
-        </button>
-
-        <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3 py-1.5 uppercase tracking-wider transition-all rounded-xl hover:bg-red-50 cursor-pointer">
+        <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-4 py-2.5 uppercase tracking-wider transition-all rounded-xl hover:bg-red-50 cursor-pointer">
           <span>🔒 Sair</span>
         </button>
+
       </div>
 
-    </div>
-
-    <!-- ==================== SUB-HEADER JUMP BAR (NAVEGABILIDADE & UX) ==================== -->
-    <div class="max-w-7xl mx-auto pt-2 mt-2 border-t border-zinc-200/60 flex items-center gap-2 overflow-x-auto no-scrollbar font-mono text-[11px] font-bold text-zinc-600">
-      <span class="text-zinc-400 uppercase tracking-wider shrink-0 mr-1 text-[10px]">Navegação Rápida:</span>
-      <button onclick="scrollToSection('hero-section')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0 cursor-pointer">📊 Visão 360° Realtime</button>
-      <a href="./Google_Ads/Dashboard_Google_Ads.html" class="px-3 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors shrink-0 flex items-center gap-1">🎯 1. Google Ads</a>
-      <a href="./SEO/Dashboard_SEO.html" class="px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 transition-colors shrink-0 flex items-center gap-1">🔍 2. SEO Orgânico</a>
-      <a href="./GEO/Dashboard_GEO.html" class="px-3 py-1 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 transition-colors shrink-0 flex items-center gap-1">🤖 3. GEO Engine (IAs)</a>
-      <button onclick="scrollToSection('secao-graficos')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0 cursor-pointer">📈 Evolução Gráfica</button>
-      <button onclick="scrollToSection('secao-wow')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0 cursor-pointer">📊 Tabela WoW</button>
-      <button onclick="scrollToSection('secao-calculadora')" class="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 hover:bg-indigo-200 transition-colors shrink-0 cursor-pointer">🧮 Projeção de ROAS</button>
-      <button onclick="scrollToSection('historico-pipeline')" class="px-3 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-900 transition-colors shrink-0 cursor-pointer">📋 Pipeline</button>
-      <button onclick="scrollToSection('glossario-didatico')" class="px-3 py-1 rounded-lg bg-violet-100 text-violet-900 hover:bg-violet-200 transition-colors shrink-0 cursor-pointer">💡 Glossário Didático</button>
     </div>
   </nav>
 
@@ -238,13 +223,15 @@
         <div>
           <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-200 font-bold mb-3 shadow-xs">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Cliente: Casa de Vídeo Produções Ltda</span>
+            <span>Casa de Vídeo Produções Ltda</span>
           </div>
           <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.15] uppercase text-tactile-3d-dark">
-            Hub Central 360° <span class="text-indigo-600">Indicadores & Performance Realtime</span>
+            Hub Central 360°<br>
+            <span class="text-indigo-600">Indicadores & Performance Realtime</span>
           </h1>
           <p class="font-sans text-sm sm:text-base text-zinc-600 leading-relaxed font-light max-w-3xl mt-2">
-            Centralizador executivo conectado às 3 páginas especialistas da Casa de Vídeo: <strong class="font-semibold text-indigo-600">Tráfego Pago (Google Ads)</strong>, <strong class="font-semibold text-emerald-600">SEO Orgânico</strong> e <strong class="font-semibold text-violet-600">GEO (Inteligência Artificial)</strong>.
+            Centralizador executivo conectado às 3 páginas especialistas da Casa de Vídeo:<br>
+            <strong class="font-semibold text-indigo-600">Tráfego Pago (Google Ads)</strong>, <strong class="font-semibold text-emerald-600">SEO Orgânico</strong> e <strong class="font-semibold text-violet-600">GEO (Inteligência Artificial)</strong>.
           </p>
         </div>
       </div>
@@ -328,9 +315,6 @@
           </h2>
           <p class="font-sans text-xs text-zinc-500">Status de integração entre Tag Manager, Google Ads, GA4, Marketing Platform e a pipeline do Hub</p>
         </div>
-        <a href="file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20Vi%CC%81deo/Mkt/CONEXOES_PLATAFORMAS_GTAG.md" target="_blank" class="tactile-sunken px-3.5 py-2 font-mono text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5 no-print hover:scale-105 transition-all">
-          <span>📄 Documentação GTAG →</span>
-        </a>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
@@ -372,6 +356,65 @@
       </div>
     </section>
 
+    <!-- ==================== WOW COMPARATIVE CHARTS SECTION ==================== -->
+    <section id="secao-graficos" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
+        <div>
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
+            <span>📊 Visão Gráfica Dinâmica Realtime</span>
+          </div>
+          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+            Evolução Gráfica 360° — Semana a Semana
+          </h2>
+          <p class="font-sans text-xs text-zinc-500">Comparativo visual de volume de leads, investimento, tráfego orgânico e GEO Score em tempo real</p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <span class="w-3 h-3 rounded-full bg-[#4353ff] inline-block"></span> <span class="text-zinc-600 font-medium">Google Ads</span>
+          <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">SEO Orgânico</span>
+          <span class="w-3 h-3 rounded-full bg-[#8B5CF6] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">GEO (IAs)</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Chart 1: Evolução Semanal -->
+        <div class="lg:col-span-2 tactile-sunken p-5 rounded-2xl bg-[#f8f9fc]">
+          <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3 flex items-center justify-between">
+            <span>📈 Tendência de Crescimento (Leads & Tráfego)</span>
+            <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-200">↑ High Performance</span>
+          </h3>
+          <div class="h-64 relative">
+            <canvas id="chartEvolucaoSemanal"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Origem dos Leads -->
+        <div class="tactile-sunken p-5 rounded-2xl bg-[#f8f9fc] flex flex-col justify-between">
+          <div>
+            <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3">
+              🎯 Distribuição de Leads por Canal
+            </h3>
+            <div class="h-48 relative flex items-center justify-center">
+              <canvas id="chartOrigemLeads"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-zinc-200/80 font-mono text-[11px] space-y-1.5">
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#4353ff]"></span> Google Ads:</span>
+              <strong class="font-bold text-zinc-950">55% (Leads Pagos)</strong>
+            </div>
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span> SEO Orgânico:</span>
+              <strong class="font-bold text-zinc-950">30% (Google Orgânico)</strong>
+            </div>
+            <div class="flex justify-between items-center text-zinc-700">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#8B5CF6]"></span> GEO (IAs):</span>
+              <strong class="font-bold text-zinc-950">15% (Recomendação IA)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== DETAILED 3 PILLARS SECTION ==================== -->
     <div class="space-y-8">
       <div class="border-b border-zinc-200 pb-2">
@@ -387,7 +430,7 @@
         <div id="pilar-google-ads" class="tactile-raised p-7 rounded-3xl bg-white border border-indigo-200/80 flex flex-col justify-between group relative">
           <div>
             <!-- Pillar Header -->
-            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+            <div class="flex justify-between items-center mb-5 pb-4 border-b border-zinc-200">
               <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center font-bold text-indigo-600 shadow-xs">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -397,8 +440,9 @@
                   <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider block">agente-trafego-pago</span>
                 </div>
               </div>
-              <a href="./Google_Ads/Dashboard_Google_Ads.html" class="font-mono text-xs font-bold text-indigo-600 hover:text-indigo-800 underline no-print shrink-0 whitespace-nowrap">
-                Portal Completo →
+              <a href="./Google_Ads/Dashboard_Google_Ads.html" class="tactile-raised px-4 py-2 font-mono text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 flex items-center gap-1.5 no-print rounded-xl shadow-xs shrink-0 transition-all hover:scale-105">
+                <span>Acessar Pasta</span>
+                <span>→</span>
               </a>
             </div>
 
@@ -494,23 +538,14 @@
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row gap-3">
-            <a href="./Google_Ads/Dashboard_Google_Ads.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-indigo-700 flex items-center justify-between no-print hover:bg-indigo-50 transition-all border border-indigo-200 rounded-xl">
-              <span>Acessar Portal Completo & Briefing</span>
-              <span>→</span>
-            </a>
-            <a href="./Google_Ads/Passo_a_Passo_Google_Ads.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
-              <span>Guia e Checklist Google Ads</span>
-              <span>→</span>
-            </a>
-          </div>
+
         </div>
 
         <!-- ================= PILAR 2: SEO ORGÂNICO ================= -->
         <div id="pilar-seo" class="tactile-raised p-7 rounded-3xl bg-white border border-emerald-200/80 flex flex-col justify-between group relative">
           <div>
             <!-- Pillar Header -->
-            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+            <div class="flex justify-between items-center mb-5 pb-4 border-b border-zinc-200">
               <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-bold text-emerald-600 shadow-xs">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -520,8 +555,9 @@
                   <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider block">BE | SEO (On-Page & Vitals)</span>
                 </div>
               </div>
-              <a href="./SEO/Dashboard_SEO.html" class="font-mono text-xs font-bold text-emerald-600 hover:text-emerald-800 underline no-print shrink-0 whitespace-nowrap">
-                Portal Completo →
+              <a href="./SEO/Dashboard_SEO.html" class="tactile-raised px-4 py-2 font-mono text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-1.5 no-print rounded-xl shadow-xs shrink-0 transition-all hover:scale-105">
+                <span>Acessar Pasta</span>
+                <span>→</span>
               </a>
             </div>
 
@@ -617,23 +653,14 @@
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row gap-3">
-            <a href="./SEO/Dashboard_SEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-emerald-800 flex items-center justify-between no-print hover:bg-emerald-50 transition-all border border-emerald-200 rounded-xl">
-              <span>Acessar Portal Completo BE | SEO</span>
-              <span>→</span>
-            </a>
-            <a href="./SEO/Passo_a_Passo_SEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
-              <span>Guia e Checklist SEO</span>
-              <span>→</span>
-            </a>
-          </div>
+
         </div>
 
         <!-- ================= PILAR 3: GEO (INTELIGÊNCIA ARTIFICIAL) ================= -->
         <div id="pilar-geo" class="tactile-raised p-7 rounded-3xl bg-white border border-violet-200/80 flex flex-col justify-between group relative">
           <div>
             <!-- Pillar Header -->
-            <div class="flex justify-between items-start mb-5 pb-4 border-b border-zinc-200">
+            <div class="flex justify-between items-center mb-5 pb-4 border-b border-zinc-200">
               <div class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-2xl bg-violet-50 border border-violet-200 flex items-center justify-center font-bold text-violet-600 shadow-xs">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
@@ -643,8 +670,9 @@
                   <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider block">agente-geo (9 Sub-Agentes)</span>
                 </div>
               </div>
-              <a href="./GEO/Dashboard_GEO.html" class="font-mono text-xs font-bold text-violet-600 hover:text-violet-800 underline no-print shrink-0 whitespace-nowrap">
-                Portal Completo →
+              <a href="./GEO/Dashboard_GEO.html" class="tactile-raised px-4 py-2 font-mono text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 flex items-center gap-1.5 no-print rounded-xl shadow-xs shrink-0 transition-all hover:scale-105">
+                <span>Acessar Pasta</span>
+                <span>→</span>
               </a>
             </div>
 
@@ -740,79 +768,13 @@
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-col sm:flex-row gap-3">
-            <a href="./GEO/Dashboard_GEO.html" class="tactile-raised w-full py-2.5 px-4 font-mono text-xs font-bold text-white bg-violet-600 flex items-center justify-between no-print hover:bg-violet-700 transition-all rounded-xl shadow-xs">
-              <span>Portal BE | GEO completo</span>
-              <span>→</span>
-            </a>
-            <a href="./GEO/Passo_a_Passo_GEO.html" class="tactile-sunken w-full py-2.5 px-4 font-mono text-xs font-bold text-zinc-600 flex items-center justify-between no-print hover:bg-zinc-200 transition-all rounded-xl">
-              <span>Guia e Checklist GEO</span>
-              <span>→</span>
-            </a>
-          </div>
+
         </div>
 
       </div>
     </div>
 
-    <!-- ==================== WOW COMPARATIVE CHARTS SECTION ==================== -->
-    <section id="secao-graficos" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
-        <div>
-          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
-            <span>📊 Visão Gráfica Dinâmica Realtime</span>
-          </div>
-          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
-            Evolução Gráfica 360° — Semana a Semana
-          </h2>
-          <p class="font-sans text-xs text-zinc-500">Comparativo visual de volume de leads, investimento, tráfego orgânico e GEO Score em tempo real</p>
-        </div>
-        <div class="flex items-center gap-2 font-mono text-xs">
-          <span class="w-3 h-3 rounded-full bg-[#4353ff] inline-block"></span> <span class="text-zinc-600 font-medium">Google Ads</span>
-          <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">SEO Orgânico</span>
-          <span class="w-3 h-3 rounded-full bg-[#8B5CF6] inline-block ml-2"></span> <span class="text-zinc-600 font-medium">GEO (IAs)</span>
-        </div>
-      </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Chart 1: Evolução Semanal -->
-        <div class="lg:col-span-2 tactile-sunken p-5 rounded-2xl bg-[#f8f9fc]">
-          <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3 flex items-center justify-between">
-            <span>📈 Tendência de Crescimento (Leads & Tráfego)</span>
-            <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-200">↑ High Performance</span>
-          </h3>
-          <div class="h-64 relative">
-            <canvas id="chartEvolucaoSemanal"></canvas>
-          </div>
-        </div>
-
-        <!-- Chart 2: Origem dos Leads -->
-        <div class="tactile-sunken p-5 rounded-2xl bg-[#f8f9fc] flex flex-col justify-between">
-          <div>
-            <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3">
-              🎯 Distribuição de Leads por Canal
-            </h3>
-            <div class="h-48 relative flex items-center justify-center">
-              <canvas id="chartOrigemLeads"></canvas>
-            </div>
-          </div>
-          <div class="mt-4 pt-3 border-t border-zinc-200/80 font-mono text-[11px] space-y-1.5">
-            <div class="flex justify-between items-center text-zinc-700">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#4353ff]"></span> Google Ads:</span>
-              <strong class="font-bold text-zinc-950">55% (Leads Pagos)</strong>
-            </div>
-            <div class="flex justify-between items-center text-zinc-700">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span> SEO Orgânico:</span>
-              <strong class="font-bold text-zinc-950">30% (Google Orgânico)</strong>
-            </div>
-            <div class="flex justify-between items-center text-zinc-700">
-              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#8B5CF6]"></span> GEO (IAs):</span>
-              <strong class="font-bold text-zinc-950">15% (Recomendação IA)</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ==================== INTERACTIVE ROAS / LEAD PROJECTION CALCULATOR ==================== -->
     <section id="secao-calculadora" class="tactile-raised p-8 rounded-3xl bg-white border border-indigo-200 space-y-6">
@@ -844,13 +806,13 @@
           <div class="space-y-2">
             <div class="flex justify-between items-center font-mono text-xs font-bold">
               <label for="rangeInvest" class="text-zinc-700 uppercase">1. Investimento Mensal (Ads):</label>
-              <span id="valInvestSimulado" class="text-indigo-600 font-black text-base whitespace-nowrap">R$ 3.500,00</span>
+              <span id="valInvestSimulado" class="text-indigo-600 font-black text-base whitespace-nowrap">R$ 3.000,00</span>
             </div>
-            <input type="range" id="rangeInvest" min="1000" max="50000" step="500" value="3500" oninput="calcularProjecao()" class="w-full h-2.5 bg-zinc-200 rounded-lg cursor-pointer accent-indigo-600">
+            <input type="range" id="rangeInvest" min="500" max="10000" step="250" value="3000" oninput="calcularProjecao()" class="w-full h-2.5 bg-zinc-200 rounded-lg cursor-pointer accent-indigo-600">
             <div class="flex justify-between font-mono text-[10px] text-zinc-400">
-              <span>R$ 1.000</span>
-              <span>R$ 25.000</span>
-              <span>R$ 50.000</span>
+              <span>R$ 500,00</span>
+              <span>R$ 3.000,00</span>
+              <span>R$ 10.000,00</span>
             </div>
           </div>
 
@@ -868,27 +830,35 @@
             </div>
           </div>
 
-          <!-- Control 3 & 4: Conversion & Ticket B2B -->
-          <div class="grid grid-cols-2 gap-3 pt-2 border-t border-zinc-200/60 font-mono text-xs">
-            <div>
-              <label for="selectTaxaReuniao" class="text-[10px] font-bold text-zinc-600 uppercase block mb-1">Conv. Reuniões:</label>
-              <select id="selectTaxaReuniao" onchange="calcularProjecao()" class="w-full bg-white border border-zinc-300 rounded-lg p-1.5 font-bold text-indigo-700 outline-none cursor-pointer">
-                <option value="0.20">20% dos Leads</option>
-                <option value="0.30" selected>30% dos Leads (Padrão)</option>
-                <option value="0.40">40% dos Leads</option>
-                <option value="0.50">50% dos Leads</option>
-              </select>
+          <!-- Control 3: Faturamento Aberto (Digitável Livre + Slider) -->
+          <div class="space-y-2 pt-2 border-t border-zinc-200/60">
+            <div class="flex justify-between items-center font-mono text-xs font-bold">
+              <label for="inputFaturamento" class="text-amber-800 uppercase flex items-center gap-1">
+                <span>3. Faturamento Aberto (R$):</span>
+                <span class="text-[9px] text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">Livre</span>
+              </label>
+              <div class="flex items-center gap-1 bg-white border border-amber-300 rounded-xl px-2.5 py-1 shadow-xs focus-within:ring-2 focus-within:ring-amber-500">
+                <span class="text-amber-600 font-mono font-bold text-xs">R$</span>
+                <input type="number" id="inputFaturamento" value="15000" min="0" step="1000" oninput="sincronizarFaturamentoInput()" class="w-24 text-right font-mono font-black text-amber-700 outline-none text-sm bg-transparent">
+              </div>
             </div>
+            <input type="range" id="rangeFaturamento" min="1000" max="300000" step="1000" value="15000" oninput="sincronizarFaturamentoSlider()" class="w-full h-2.5 bg-zinc-200 rounded-lg cursor-pointer accent-amber-600">
+            <div class="flex justify-between font-mono text-[10px] text-zinc-400">
+              <span>R$ 1.000</span>
+              <span>R$ 150.000</span>
+              <span>R$ 300.000+</span>
+            </div>
+          </div>
 
-            <div>
-              <label for="selectTicketMedio" class="text-[10px] font-bold text-zinc-600 uppercase block mb-1">Ticket Médio B2B:</label>
-              <select id="selectTicketMedio" onchange="calcularProjecao()" class="w-full bg-white border border-zinc-300 rounded-lg p-1.5 font-bold text-indigo-700 outline-none cursor-pointer">
-                <option value="10000">R$ 10.000</option>
-                <option value="15000" selected>R$ 15.000 (Padrão)</option>
-                <option value="25000">R$ 25.000</option>
-                <option value="50000">R$ 50.000</option>
-              </select>
-            </div>
+          <!-- Control 4: Taxa de Reuniões -->
+          <div class="pt-2 border-t border-zinc-200/60 font-mono text-xs">
+            <label for="selectTaxaReuniao" class="text-[10px] font-bold text-zinc-600 uppercase block mb-1">4. Conv. Reuniões (Leads):</label>
+            <select id="selectTaxaReuniao" onchange="calcularProjecao()" class="w-full bg-white border border-zinc-300 rounded-lg p-1.5 font-bold text-indigo-700 outline-none cursor-pointer">
+              <option value="0.20">20% dos Leads</option>
+              <option value="0.30" selected>30% dos Leads (Padrão)</option>
+              <option value="0.40">40% dos Leads</option>
+              <option value="0.50">50% dos Leads</option>
+            </select>
           </div>
 
         </div>
@@ -944,127 +914,7 @@
       </div>
     </section>
 
-    <!-- ==================== WOW COMPARATIVE TABLE ==================== -->
-    <section id="secao-wow" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-zinc-200">
-        <div>
-          <h3 class="font-display font-bold text-xl text-zinc-950 uppercase text-tactile-3d-dark">Tabela Comparativa Semanal (WoW — Week-over-Week)</h3>
-          <p class="font-sans text-xs text-zinc-500 mt-1">Evolução dos principais indicadores para relatórios semanais de resultados com tooltips explicativos</p>
-        </div>
-        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Status: Coleta Real em Produção (24/09/2026)</span>
-        </span>
-      </div>
 
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse font-mono text-xs">
-          <thead>
-            <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[11px] bg-zinc-50/50">
-              <th class="py-3.5 px-4">Pilar</th>
-              <th class="py-3.5 px-4">Indicador / KPI</th>
-              <th class="py-3.5 px-4">Acumulado Inicial</th>
-              <th class="py-3.5 px-4">Medição em Tempo Real</th>
-              <th class="py-3.5 px-4">Status da Coleta</th>
-              <th class="py-3.5 px-4 text-right">Integração</th>
-            </tr>
-          </thead>
-          <tbody id="tabelaComparativa" class="divide-y divide-zinc-200 text-zinc-800 font-sans">
-            
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                Leads B2B Qualificados <span class="text-indigo-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ Leads B2B</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">Empresas que preencheram o formulário ou iniciaram conversa de orçamento via WhatsApp.</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Leads</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">0 Leads (Coleta Ao Vivo)</td>
-              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Deploy do Cliente</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GTM / Ads OK</td>
-            </tr>
-
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                Custo por Lead (CPL) <span class="text-indigo-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-indigo-400 font-mono text-xs block mb-1">ℹ️ CPL Metrificado</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">Indicador de eficiência financeira da mídia paga por oportunidade gerada.</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 0,00</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 0,00 (Sem Disparos)</td>
-              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Cliques</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta R$ 180,00</td>
-            </tr>
-
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                Impressões Search Console <span class="text-emerald-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Impressões GSC</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">Exibições gratuitas da Casa de Vídeo nas buscas do Google.</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Imp.</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">Em Rastreamento GSC</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Conectado ao Dominio</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GSC Direct API</td>
-            </tr>
-
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                Answer-First Block <span class="text-emerald-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-emerald-400 font-mono text-xs block mb-1">ℹ️ Answer-First Snippet</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">Bloco otimizado para conquista de respostas em destaque (Snippets).</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">0% (Anterior)</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">100% Ativo no Código</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Commit Efetuado</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Posição Zero OK</td>
-            </tr>
-
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                GEO Score Composto (0-100) <span class="text-violet-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ GEO Score</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">Avaliação composta da b.rocket Engine para presença nos modelos de IA.</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">74 pts</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts (Medição Real)</td>
-              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">🟢 llms.txt & @graph OK</td>
-              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">MCP 4 LLMs OK</td>
-            </tr>
-
-            <tr class="hover:bg-zinc-50 transition-colors">
-              <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
-              <td class="py-3.5 px-4 font-semibold has-tooltip">
-                Citation Share em LLMs (%) <span class="text-violet-500">ℹ️</span>
-                <div class="tooltip-box">
-                  <strong class="text-violet-400 font-mono text-xs block mb-1">ℹ️ Citation Share</strong>
-                  <p class="text-[11px] text-zinc-300 font-sans">% de recomendação da Casa de Vídeo em 20 prompts testados.</p>
-                </div>
-              </td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">60%</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75% (20 Prompts Testados)</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Auditado via Engine</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Alta Citabilidade</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </section>
 
     <!-- ==================== HISTÓRICO DE AJUSTES & ROADMAP PIPELINE ==================== -->
     <section id="historico-pipeline" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-8">
@@ -1229,72 +1079,7 @@
 
     </section>
 
-    <!-- ==================== DIDACTIC EXECUTIVE GLOSSARY SECTION ==================== -->
-    <section id="glossario-didatico" class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-zinc-200">
-        <div>
-          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] text-violet-700 font-bold uppercase tracking-wider bg-violet-50 px-3 py-1 rounded-md mb-1 border border-violet-200">
-            <span>💡 Aprendizado & Transparência Didática</span>
-          </div>
-          <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
-            Glossário Didático Executivo de Marketing & IA
-          </h2>
-          <p class="font-sans text-xs text-zinc-500">Entenda os conceitos técnicos e estratégicos utilizados no acompanhamento de resultados da Casa de Vídeo</p>
-        </div>
-        <span class="font-mono text-xs font-bold text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200">
-          Metodologia b.rocket
-        </span>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-sans text-xs">
-        
-        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
-          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">CPL (Custo por Lead)</strong>
-          <p class="text-zinc-600 leading-relaxed">Divisão do valor gasto em anúncios pelo total de oportunidades/contatos gerados. Quanto menor o CPL, mais barata é a captação de clientes.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
-          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">CTR (Click-Through Rate)</strong>
-          <p class="text-zinc-600 leading-relaxed">Taxa de cliques nos anúncios. Indica o apelo das mensagens e se a oferta de vídeos B2B está alinhada com as buscas.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-indigo-200/80 bg-indigo-50/20">
-          <strong class="font-mono text-sm text-indigo-700 font-bold block mb-1">STAG (Single Topic Ad Group)</strong>
-          <p class="text-zinc-600 leading-relaxed">Metodologia de agrupamento de anúncios por tema único de alta intenção, garantindo notas de qualidade máximas no Google Ads.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
-          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Search Console Impressions</strong>
-          <p class="text-zinc-600 leading-relaxed">Mede quantas vezes as páginas da Casa de Vídeo apareceram gratuitamente nos resultados do Google para potenciais clientes.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
-          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Answer-First (Posição Zero)</strong>
-          <p class="text-zinc-600 leading-relaxed">Técnica de copywriting que responde à dúvida do usuário nas primeiras 50-60 palavras para destacar o site no topo do Google.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-emerald-200/80 bg-emerald-50/20">
-          <strong class="font-mono text-sm text-emerald-700 font-bold block mb-1">Core Web Vitals (LCP)</strong>
-          <p class="text-zinc-600 leading-relaxed">Métricas do Google para velocidade e fluidez. O LCP da Casa de Vídeo é de 1.8s (excelente), o que favorece o ranqueamento.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
-          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">GEO (Generative Engine Opt.)</strong>
-          <p class="text-zinc-600 leading-relaxed">Estratégia para otimizar o site para recomendação direta em respostas do ChatGPT, Gemini, Perplexity e Claude.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
-          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">Citation Share (%)</strong>
-          <p class="text-zinc-600 leading-relaxed">Porcentagem de vezes em que os motores de IA citam a Casa de Vídeo como resposta recomendada para buscas de produtoras.</p>
-        </div>
-
-        <div class="tactile-sunken p-4 border border-violet-200/80 bg-violet-50/20">
-          <strong class="font-mono text-sm text-violet-700 font-bold block mb-1">Arquivo /llms.txt</strong>
-          <p class="text-zinc-600 leading-relaxed">Padrão moderno de arquivo de texto que apresenta os serviços e autoridade da empresa diretamente para robôs e crawlers de IA.</p>
-        </div>
-
-      </div>
-    </section>
 
   </main>
 
@@ -1493,18 +1278,36 @@
       });
     }
 
+    function sincronizarFaturamentoInput() {
+      const input = document.getElementById('inputFaturamento');
+      const range = document.getElementById('rangeFaturamento');
+      if (input && range) {
+        range.value = input.value;
+      }
+      calcularProjecao();
+    }
+
+    function sincronizarFaturamentoSlider() {
+      const input = document.getElementById('inputFaturamento');
+      const range = document.getElementById('rangeFaturamento');
+      if (input && range) {
+        input.value = range.value;
+      }
+      calcularProjecao();
+    }
+
     function calcularProjecao() {
       const rngInvest = document.getElementById('rangeInvest');
       const rngCpl = document.getElementById('rangeCpl');
       const selTaxa = document.getElementById('selectTaxaReuniao');
-      const selTicket = document.getElementById('selectTicketMedio');
+      const inputFat = document.getElementById('inputFaturamento');
 
       if (!rngInvest || !rngCpl) return;
 
       const invest = parseFloat(rngInvest.value) || 3500;
       const cpl = parseFloat(rngCpl.value) || 180;
       const taxaReuniao = parseFloat(selTaxa ? selTaxa.value : 0.30) || 0.30;
-      const ticketMedio = parseFloat(selTicket ? selTicket.value : 15000) || 15000;
+      const fatAberto = parseFloat(inputFat ? inputFat.value : 15000) || 0;
 
       // Rótulos dos Sliders
       document.getElementById('valInvestSimulado').innerText = `R$ ${invest.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
@@ -1516,14 +1319,11 @@
       // 2. Reuniões Agendadas: Leads x Taxa de Reunião
       const reunioes = Math.round(leads * taxaReuniao);
       
-      // 3. Pipeline de Oportunidades: Reuniões x Ticket Médio
-      const pipeline = reunioes * ticketMedio;
+      // 3. Pipeline de Oportunidades: Reuniões x Faturamento por Negócio
+      const pipeline = reunioes * fatAberto;
 
-      // 4. Faturamento & ROAS Estimado (considerando taxa de fechamento de ~20% das reuniões)
-      const taxaFechamento = 0.20;
-      const contratosFechados = reunioes > 0 ? Math.max(1, Math.round(reunioes * taxaFechamento)) : 0;
-      const faturamentoEstimado = contratosFechados * ticketMedio;
-      const roas = invest > 0 ? (faturamentoEstimado / invest).toFixed(2) : '0.00';
+      // 4. ROAS Estimado: Faturamento Aberto ÷ Investimento
+      const roas = invest > 0 ? (fatAberto / invest).toFixed(2) : '0.00';
 
       // Atualiza os valores visíveis nos cards
       document.getElementById('simLeads').innerText = `${leads} Leads`;
@@ -1534,8 +1334,8 @@
       // Fórmulas matemáticas explicativas em tempo real
       document.getElementById('simCalcFormulaLeads').innerText = `R$ ${invest.toLocaleString('pt-BR')} ÷ R$ ${cpl} = ${leads} Leads`;
       document.getElementById('simCalcFormulaReunioes').innerText = `${Math.round(taxaReuniao * 100)}% de ${leads} Leads = ${reunioes} Agendamentos`;
-      document.getElementById('simCalcFormulaPipeline').innerText = `${reunioes} Reuniões x Ticket R$ ${(ticketMedio / 1000).toFixed(0)}k`;
-      document.getElementById('simCalcFormulaRoas').innerText = `R$ ${faturamentoEstimado.toLocaleString('pt-BR')} Faturamento (${contratosFechados} Venda${contratosFechados !== 1 ? 's' : ''})`;
+      document.getElementById('simCalcFormulaPipeline').innerText = `${reunioes} Reuniões x Ticket R$ ${(fatAberto / 1000).toFixed(1)}k`;
+      document.getElementById('simCalcFormulaRoas').innerText = `R$ ${fatAberto.toLocaleString('pt-BR')} Faturamento (ROAS ${(fatAberto / invest).toFixed(2)}x)`;
     }
 
     function switchPipelineTab(tab) {
