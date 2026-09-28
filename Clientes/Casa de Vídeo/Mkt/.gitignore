@@ -1,0 +1,5 @@
+# Ignore sensitive Google API Service Account Key
+google_service_account_key.json
+data/google_service_account_key.json
+*.json.key
+.env

@@ -1,7 +1,7 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-25T14:38:41.416237Z",
-  "modo_operacao": "PRODUCAO_REAL",
+  "ultima_atualizacao": "2026-09-28T19:06:14.166480Z",
+  "modo_operacao": "LIVE_GOOGLE_APIS",
   "semanas": [
     {
       "id": "sem_real_live",
@@ -32,7 +32,7 @@
         "trafego_fmt": "8 Sessões (6 Usuários GA4)",
         "usuarios_ga4": 6,
         "eventos_ga4": 29,
-        "diff_impressoes": "🟢 GA4 & GSC Ativos (6 Usuários)",
+        "diff_impressoes": "🟢 Live GSC & GA4 API (28/09/2026 às 19:05:55 UTC)",
         "top10_termos": 0,
         "top10_fmt": "0 Termos (Em Indexação)",
         "diff_top10": "Aguardando Leitura Google",
@@ -56,7 +56,8 @@
         "google_ads_pct": 0,
         "seo_organico_pct": 0,
         "geo_ias_pct": 0
-      }
+      },
+      "status_api": "🔴 LIVE GOOGLE API ACTIVE"
     }
   ]
 }
