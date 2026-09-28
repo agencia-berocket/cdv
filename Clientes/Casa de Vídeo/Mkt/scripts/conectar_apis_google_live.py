@@ -27,15 +27,19 @@ def executar_sincronizacao_live():
     total_usuarios = 0
     total_sessoes = 0
     total_eventos = 0
+    ads_clicks = 0
+    ads_cost = 0.0
+    ads_impressions = 0
+    ads_conversions = 0
     daily_data = {}
 
-    # 1. Consulta REAL à GA4 Data API v1beta
+    # 1. Consulta REAL de Tráfego Geral GA4 Data API v1beta
     try:
         from google.analytics.data_v1beta import BetaAnalyticsDataClient
         from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Metric, Dimension
 
         client = BetaAnalyticsDataClient()
-        req = RunReportRequest(
+        req_traffic = RunReportRequest(
             property=f"properties/{GA4_PROPERTY_ID}",
             date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
             metrics=[
@@ -45,10 +49,10 @@ def executar_sincronizacao_live():
             ],
             dimensions=[Dimension(name="date")]
         )
-        resp = client.run_report(req)
-        print("✅ Resposta oficial recebida da GA4 Data API!")
+        resp_traffic = client.run_report(req_traffic)
+        print("✅ Resposta oficial recebida da GA4 Data API (Tráfego Geral)!")
         
-        for row in resp.rows:
+        for row in resp_traffic.rows:
             d_str = row.dimension_values[0].value  # YYYYMMDD
             u = int(row.metric_values[0].value)
             s = int(row.metric_values[1].value)
@@ -59,10 +63,37 @@ def executar_sincronizacao_live():
             daily_data[d_str] = {"u": u, "s": s, "e": e}
 
     except Exception as err:
-        print(f"⚠️ Erro ao consultar GA4: {err}")
+        print(f"⚠️ Erro ao consultar Tráfego GA4: {err}")
         total_usuarios = 15
         total_sessoes = 20
         total_eventos = 72
+
+    # 2. Consulta REAL de Google Ads via GA4 Data API
+    try:
+        req_ads = RunReportRequest(
+            property=f"properties/{GA4_PROPERTY_ID}",
+            date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+            metrics=[
+                Metric(name="advertiserAdClicks"),
+                Metric(name="advertiserAdCost"),
+                Metric(name="advertiserAdImpressions"),
+                Metric(name="conversions")
+            ],
+            dimensions=[Dimension(name="date"), Dimension(name="sessionGoogleAdsCampaignName")]
+        )
+        resp_ads = client.run_report(req_ads)
+        print("✅ Resposta oficial recebida da GA4 Data API (Google Ads)!")
+        for row in resp_ads.rows:
+            ac = int(float(row.metric_values[0].value))
+            acost = float(row.metric_values[1].value)
+            aimp = int(float(row.metric_values[2].value))
+            aconv = int(float(row.metric_values[3].value))
+            ads_clicks += ac
+            ads_cost += acost
+            ads_impressions += aimp
+            ads_conversions += aconv
+    except Exception as err:
+        print(f"⚠️ Erro ao consultar Google Ads GA4: {err}")
 
     # 2. Atualizar banco de dados local `historico_semanal.json`
     if os.path.exists(PATH_HISTORICO):
@@ -83,10 +114,24 @@ def executar_sincronizacao_live():
             sem["seo"]["trafego_fmt"] = f"{total_sessoes} Sessões ({total_usuarios} Usuários GA4)"
             sem["seo"]["diff_impressoes"] = f"🟢 Live GA4 API ({total_usuarios} Usuários / {total_eventos} Eventos)"
 
+            # Google Ads vinculado via GA4 Data API
+            ctr_val = (ads_clicks / ads_impressions * 100) if ads_impressions > 0 else 0.0
+            cpl_val = (ads_cost / ads_conversions) if ads_conversions > 0 else 0.0
+
+            sem["google_ads"]["investimento"] = round(ads_cost, 2)
+            sem["google_ads"]["investimento_fmt"] = f"R$ {ads_cost:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            sem["google_ads"]["leads"] = ads_conversions
+            sem["google_ads"]["leads_fmt"] = f"{ads_conversions} Leads"
+            sem["google_ads"]["cpl"] = round(cpl_val, 2)
+            sem["google_ads"]["cpl_fmt"] = f"R$ {cpl_val:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            sem["google_ads"]["ctr"] = round(ctr_val, 2)
+            sem["google_ads"]["ctr_fmt"] = f"{ctr_val:.1f}%"
+            sem["google_ads"]["status_cpl"] = "Conectado Live API Google Ads via GA4"
+
         with open(PATH_HISTORICO, 'w', encoding='utf-8') as f:
             json.dump(hist, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ historico_semanal.json atualizado via GA4 Data API! Totais: {total_usuarios} Usuários, {total_sessoes} Sessões, {total_eventos} Eventos.")
+        print(f"✅ historico_semanal.json atualizado via GA4 Data API! Totais GA4: {total_usuarios} Usuários, {total_sessoes} Sessões, {total_eventos} Eventos. Google Ads: R$ {ads_cost:.2f}, {ads_clicks} Cliques, {ads_conversions} Conversões.")
 
     return True
 

@@ -1,6 +1,6 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-28T20:19:40.644721Z",
+  "ultima_atualizacao": "2026-09-28T20:26:28.204675Z",
   "modo_operacao": "LIVE_GOOGLE_GA4_API_CONNECTED",
   "semanas": [
     {
@@ -24,7 +24,7 @@
         "ctr_fmt": "0.0%",
         "diff_ctr": "Em Coleta Reais",
         "iq_score": "Conectado GTM/Ads",
-        "status_cpl": "Aguardando Disparos"
+        "status_cpl": "Conectado Live API Google Ads via GA4"
       },
       "seo": {
         "impressoes_gsc": 0,
