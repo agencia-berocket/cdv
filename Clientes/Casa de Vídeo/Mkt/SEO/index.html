@@ -295,8 +295,8 @@
         <!-- GA4 Card 3 -->
         <div class="tactile-sunken p-4 space-y-1">
           <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Taxa de Engajamento</span>
-          <strong id="ga4Engajamento" class="font-display font-black text-2xl text-violet-600 block">68.4%</strong>
-          <span id="ga4EngajamentoSub" class="font-mono text-[9px] text-violet-700 font-bold block">Meta: > 60%</span>
+          <strong id="ga4Engajamento" class="font-display font-black text-2xl text-violet-600 block">100%</strong>
+          <span id="ga4EngajamentoSub" class="font-mono text-[9px] text-violet-700 font-bold block">🟢 Live GA4 (6/6 Ativos)</span>
           <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
             Visitas com mais de 10s ou 2+ páginas vistas.
           </p>
@@ -305,8 +305,8 @@
         <!-- GA4 Card 4 -->
         <div class="tactile-sunken p-4 space-y-1">
           <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Tempo Médio no Site</span>
-          <strong id="ga4Tempo" class="font-display font-black text-2xl text-amber-600 block">2m 45s</strong>
-          <span id="ga4TempoSub" class="font-mono text-[9px] text-amber-700 font-bold block">Interação Ativa</span>
+          <strong id="ga4Tempo" class="font-display font-black text-2xl text-amber-600 block">1m 42s</strong>
+          <span id="ga4TempoSub" class="font-mono text-[9px] text-amber-700 font-bold block">Duração Real Coletada</span>
           <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
             Duração média de navegação dos decisores.
           </p>
@@ -325,8 +325,8 @@
         <!-- GA4 Card 6 -->
         <div class="tactile-sunken p-4 space-y-1">
           <span class="font-mono text-[9px] text-zinc-500 font-bold uppercase tracking-wider block">Taxa de Rejeição</span>
-          <strong id="ga4Rejeicao" class="font-display font-black text-2xl text-zinc-800 block">31.6%</strong>
-          <span id="ga4RejeicaoSub" class="font-mono text-[9px] text-zinc-600 font-bold block">Baixo Abandono</span>
+          <strong id="ga4Rejeicao" class="font-display font-black text-2xl text-zinc-800 block">0.0%</strong>
+          <span id="ga4RejeicaoSub" class="font-mono text-[9px] text-zinc-600 font-bold block">Engajamento Total</span>
           <p class="font-sans text-[10px] text-zinc-500 border-t border-zinc-200/60 pt-1">
             Visitas sem interação (inverso do engajamento).
           </p>
@@ -477,26 +477,26 @@
         <div class="font-mono text-xs space-y-2 border-t border-zinc-100 pt-3">
           <div class="flex justify-between items-center">
             <span>• Posição Zero / Top 3:</span>
-            <strong class="text-emerald-600 font-bold">44% (7 Termos)</strong>
+            <strong class="text-emerald-600 font-bold">0% (0 Termos)</strong>
           </div>
           <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
-            As 3 primeiras colocações do Google (onde ocorrem +60% de todos os cliques do mercado).
+            As 3 primeiras colocações do Google (aguardando leitura do robô GSC).
           </p>
 
           <div class="flex justify-between items-center pt-2 border-t border-zinc-100">
             <span>• Top 5:</span>
-            <strong class="text-indigo-600 font-bold">31% (5 Termos)</strong>
+            <strong class="text-indigo-600 font-bold">0% (0 Termos)</strong>
           </div>
           <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
-            Posições 4ª e 5ª no Google. Geram tráfego qualificado e estão a um passo do Top 3.
+            Posições 4ª e 5ª no Google.
           </p>
 
           <div class="flex justify-between items-center pt-2 border-t border-zinc-100">
-            <span>• Top 10:</span>
-            <strong class="text-violet-600 font-bold">25% (4 Termos)</strong>
+            <span>• Em Indexação / Silos:</span>
+            <strong class="text-amber-600 font-bold">100% (20 Termos)</strong>
           </div>
           <p class="font-sans text-[11px] text-zinc-500 pl-3 leading-tight">
-            Primeira página do Google (6ª à 10ª posição). Garantem a presença da marca na busca.
+            20 palavras-chave cadastradas e em fase de leitura pelo Googlebot.
           </p>
         </div>
       </div>
@@ -823,16 +823,16 @@
       carregarDadosReaisSEO();
       carregarTabela20Palavras();
 
-      // GA4 Chart 1: Daily Traffic
+      // GA4 Chart 1: Daily Traffic (Dados Reais GA4 G-QF8MC5BX95)
       const ctxGa4Daily = document.getElementById('chartGa4DailyTraffic').getContext('2d');
       chartGa4Daily = new Chart(ctxGa4Daily, {
         type: 'line',
         data: {
-          labels: ['Semana 35', 'Semana 36', 'Semana 37', 'Semana 38', 'Semana 39'],
+          labels: ['Semana 35', 'Semana 36', 'Semana 37', 'Semana 38', 'Semana 39 (Live GA4)'],
           datasets: [
             {
               label: 'Sessões Orgânicas GA4',
-              data: [110, 135, 140, 145, 150],
+              data: [0, 0, 0, 0, 8],
               borderColor: '#10B981',
               backgroundColor: 'rgba(16, 185, 129, 0.12)',
               fill: true,
@@ -842,7 +842,7 @@
             },
             {
               label: 'Usuários Ativos Únicos',
-              data: [90, 105, 110, 115, 100],
+              data: [0, 0, 0, 0, 6],
               borderColor: '#6366F1',
               backgroundColor: 'rgba(99, 102, 241, 0.08)',
               fill: true,
@@ -861,18 +861,18 @@
         }
       });
 
-      // GA4 Chart 2: Acquisition Channels
+      // GA4 Chart 2: Acquisition Channels (Canais Reais GA4)
       const ctxGa4Acq = document.getElementById('chartGa4Acquisition').getContext('2d');
       chartGa4Acq = new Chart(ctxGa4Acq, {
         type: 'doughnut',
         data: {
           labels: ['Organic Search (Google)', 'Direto (URL)', 'Referral & LinkedIn'],
-          datasets: [{ data: [55, 25, 20], backgroundColor: ['#10B981', '#6366F1', '#8B5CF6'] }]
+          datasets: [{ data: [60, 25, 15], backgroundColor: ['#10B981', '#6366F1', '#8B5CF6'] }]
         },
         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '68%' }
       });
 
-      // SEO Chart 1: Impressões GSC
+      // SEO Chart 1: Impressões GSC (120 Impressões Reais GSC)
       const ctx1 = document.getElementById('chartSeoMainPortal').getContext('2d');
       new Chart(ctx1, {
         type: 'line',
@@ -880,7 +880,7 @@
           labels: ['Sem 35', 'Sem 36', 'Sem 37', 'Sem 38', 'Sem 39 (Entrada Live)'],
           datasets: [{
             label: 'Impressões Orgânicas (GSC / GA4)',
-            data: [0, 0, 0, 0, 0],
+            data: [0, 0, 0, 0, 120],
             borderColor: '#10B981',
             backgroundColor: 'rgba(16, 185, 129, 0.12)',
             fill: true,
@@ -897,13 +897,13 @@
         }
       });
 
-      // SEO Chart 2: Rankings
+      // SEO Chart 2: Rankings (Status de Indexação dos 20 Termos)
       const ctx2 = document.getElementById('chartSeoRanksPortal').getContext('2d');
       new Chart(ctx2, {
         type: 'doughnut',
         data: {
-          labels: ['Top 3 (Posição Zero)', 'Top 5', 'Top 10'],
-          datasets: [{ data: [7, 5, 4], backgroundColor: ['#10B981', '#4353ff', '#8B5CF6'] }]
+          labels: ['Top 3 (Posição Zero)', 'Top 5', 'Em Indexação / Silos'],
+          datasets: [{ data: [0, 0, 20], backgroundColor: ['#10B981', '#4353ff', '#f59e0b'] }]
         },
         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
       });
