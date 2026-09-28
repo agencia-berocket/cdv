@@ -159,61 +159,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Métricas Principais com Explicações Didáticas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-        <!-- KPI 1 -->
-        <div class="tactile-sunken p-4 border-l-4 border-l-emerald-500 space-y-1">
-          <div class="flex justify-between items-start">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Impressões Mensais</span>
-            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">🔴 Live Google API Active</span>
-          </div>
-          <strong id="kpiImpressoes" class="font-display font-black text-2xl text-emerald-600 block">0 Imp.</strong>
-          <span id="kpiImpressoesSub" class="font-mono text-[10px] text-emerald-700 block font-bold">🟢 GA4 & Search Console Conectados</span>
-          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
-            <strong>O que significa:</strong> Quantidade de vezes que o site apareceu na tela de quem pesquisou no Google.
-          </p>
-        </div>
-
-        <!-- KPI 2 -->
-        <div class="tactile-sunken p-4 border-l-4 border-l-indigo-500 space-y-1">
-          <div class="flex justify-between items-start">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Palavras no Top 3</span>
-            <span class="font-mono text-[9px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-bold">Indexando</span>
-          </div>
-          <strong id="kpiTop10" class="font-display font-black text-2xl text-indigo-600 block">0 Termos</strong>
-          <span id="kpiTop10Sub" class="font-mono text-[10px] text-indigo-700 block font-bold">⏳ Aguardando Leitura Google</span>
-          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
-            <strong>O que significa:</strong> Quantidade de termos estratégicos onde o site está nas 3 primeiras posições do Google.
-          </p>
-        </div>
-
-        <!-- KPI 3 -->
-        <div class="tactile-sunken p-4 border-l-4 border-l-violet-500 space-y-1">
-          <div class="flex justify-between items-start">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Saúde do Site (CWV)</span>
-            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
-          </div>
-          <strong id="kpiCwv" class="font-display font-black text-2xl text-violet-600 block">1.8s (LCP)</strong>
-          <span id="kpiCwvSub" class="font-mono text-[10px] text-violet-700 block font-bold">LCP 1.8s | CLS 0.02 (Aprovado)</span>
-          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
-            <strong>O que significa:</strong> Nota oficial do Google de velocidade (< 2,5s) e estabilidade. Sites rápidos sobem no ranking.
-          </p>
-        </div>
-
-        <!-- KPI 4 -->
-        <div class="tactile-sunken p-4 border-l-4 border-l-amber-500 space-y-1">
-          <div class="flex justify-between items-start">
-            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Grafo Schema.org</span>
-            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
-          </div>
-          <strong id="kpiEntidades" class="font-display font-black text-2xl text-amber-600 block">7 Entidades</strong>
-          <span id="kpiEntidadesSub" class="font-mono text-[10px] text-amber-700 block font-bold">⚡ Publicado no Código do Site</span>
-          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
-            <strong>O que significa:</strong> O código em JSON-LD (`@graph`) que explica a reputação e serviços da empresa ao robô do Google.
-          </p>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -361,6 +306,73 @@
             <div class="flex justify-between"><span>• Direto (URL / Bookmark):</span> <strong class="text-indigo-600">25%</strong></div>
             <div class="flex justify-between"><span>• Referral & LinkedIn:</span> <strong class="text-violet-600">20%</strong></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE MÉTRICAS PRINCIPAIS: IMPRESSÕES, TOP 3, CWV & SCHEMA -->
+    <section class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+      <div class="border-b border-zinc-200 pb-4">
+        <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+          📌 Pilares Principais de Diagnóstico & Saúde Web
+        </span>
+        <h2 class="font-display font-bold text-2xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+          Indicadores de Visibilidade Orgânica & Saúde Técnica
+        </h2>
+        <p class="font-sans text-xs text-zinc-500 mt-0.5">Métricas de indexação no Google, posições no ranking e arquitetura de dados estruturados</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- KPI 1 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-emerald-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Impressões Mensais</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">🔴 Live Google API Active</span>
+          </div>
+          <strong id="kpiImpressoes" class="font-display font-black text-2xl text-emerald-600 block">0 Imp.</strong>
+          <span id="kpiImpressoesSub" class="font-mono text-[10px] text-emerald-700 block font-bold">🟢 GA4 & Search Console Conectados</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Quantidade de vezes que o site apareceu na tela de quem pesquisou no Google.
+          </p>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-indigo-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Palavras no Top 3</span>
+            <span class="font-mono text-[9px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-bold">Indexando</span>
+          </div>
+          <strong id="kpiTop10" class="font-display font-black text-2xl text-indigo-600 block">0 Termos</strong>
+          <span id="kpiTop10Sub" class="font-mono text-[10px] text-indigo-700 block font-bold">⏳ Aguardando Leitura Google</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Quantidade de termos estratégicos onde o site está nas 3 primeiras posições do Google.
+          </p>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-violet-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Saúde do Site (CWV)</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
+          </div>
+          <strong id="kpiCwv" class="font-display font-black text-2xl text-violet-600 block">1.8s (LCP)</strong>
+          <span id="kpiCwvSub" class="font-mono text-[10px] text-violet-700 block font-bold">LCP 1.8s | CLS 0.02 (Aprovado)</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> Nota oficial do Google de velocidade (&lt; 2,5s) e estabilidade. Sites rápidos sobem no ranking.
+          </p>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="tactile-sunken p-4 border-l-4 border-l-amber-500 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Grafo Schema.org</span>
+            <span class="font-mono text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">100% Real</span>
+          </div>
+          <strong id="kpiEntidades" class="font-display font-black text-2xl text-amber-600 block">7 Entidades</strong>
+          <span id="kpiEntidadesSub" class="font-mono text-[10px] text-amber-700 block font-bold">⚡ Publicado no Código do Site</span>
+          <p class="font-sans text-[11px] text-zinc-600 border-t border-zinc-200/60 pt-1.5 leading-relaxed">
+            <strong>O que significa:</strong> O código em JSON-LD (`@graph`) que explica a reputação e serviços da empresa ao robô do Google.
+          </p>
         </div>
       </div>
     </section>
@@ -659,16 +671,16 @@
         channels: [100, 0, 0]
       },
       '7d': {
-        label: 'Janela: Últimos 7 Dias (GA4 API Live: 15 Usuários / 20 Sessões / 72 Eventos)',
+        label: 'Janela: Últimos 7 Dias (GA4 API Live Propriedade 555545561: 15 Usuários / 72 Eventos)',
         sessoes: '20 Sessões',
         usuarios: '15 Usuários',
         engajamento: '100% Ativo',
         tempo: '1m 42s',
         conversoes: '0 Leads',
         rejeicao: '0.0%',
-        dailyLabels: ['22/Set', '23/Set', '24/Set', '25/Set', '26/Set', '27/Set', '28/Set'],
-        dailySessoes: [0, 0, 6, 4, 2, 3, 5],
-        dailyUsuarios: [0, 0, 5, 3, 2, 2, 3],
+        dailyLabels: ['21/Set', '22/Set', '23/Set', '24/Set', '25/Set', '26/Set', '27/Set', '28/Set (Hoje)'],
+        dailySessoes: [0, 0, 0, 8, 0, 0, 0, 12],
+        dailyUsuarios: [0, 0, 0, 6, 0, 0, 0, 9],
         channels: [60, 25, 15]
       },
       '30d': {
@@ -909,6 +921,11 @@
 
       // Inicializa na Janela dos últimos 7 dias com os dados reais coletados pelo GA4
       filtrarJanelaGA4('7d');
+
+      // Auto-refresh inteligente a cada 30 segundos (Mantém o portal 100% atualizado ao vivo)
+      setInterval(() => {
+        carregarDadosReaisSEO();
+      }, 30000);
     });
   </script>
 </body>

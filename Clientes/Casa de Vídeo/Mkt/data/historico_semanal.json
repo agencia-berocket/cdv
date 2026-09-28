@@ -1,7 +1,7 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-28T20:07:06.858601Z",
-  "modo_operacao": "LIVE_GOOGLE_APIS",
+  "ultima_atualizacao": "2026-09-28T20:19:40.644721Z",
+  "modo_operacao": "LIVE_GOOGLE_GA4_API_CONNECTED",
   "semanas": [
     {
       "id": "sem_real_live",
@@ -28,11 +28,11 @@
       },
       "seo": {
         "impressoes_gsc": 0,
-        "impressoes_fmt": "0 Imp.",
+        "impressoes_fmt": "0 Imp. (GSC Inicial)",
         "trafego_fmt": "20 Sessões (15 Usuários GA4)",
         "usuarios_ga4": 15,
         "eventos_ga4": 72,
-        "diff_impressoes": "🟢 Live GA4 API (15 Usuários Ativos)",
+        "diff_impressoes": "🟢 Live GA4 API (15 Usuários / 72 Eventos)",
         "top10_termos": 0,
         "top10_fmt": "0 Termos (Em Indexação)",
         "diff_top10": "Aguardando Leitura Google",
@@ -58,7 +58,7 @@
         "seo_organico_pct": 0,
         "geo_ias_pct": 0
       },
-      "status_api": "🔴 LIVE GA4 API ACTIVE (Property 555545561)"
+      "status_api": "🔴 LIVE GA4 API (Propriedade 555545561)"
     }
   ]
 }

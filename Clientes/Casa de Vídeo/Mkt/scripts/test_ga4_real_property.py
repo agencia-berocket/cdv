@@ -1,43 +1,62 @@
 #!/usr/bin/env python3
 import os
+import sys
 import json
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Metric, Dimension, RunRealtimeReportRequest
 
 PATH_KEY = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/google_service_account_key.json"))
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = PATH_KEY
 
 PROPERTY_ID = "555545561"
 
-print(f"📡 Testando consulta live à API do GA4 na Propriedade properties/{PROPERTY_ID}...")
+def consultar_ga4_live():
+    print(f"📡 Testando consulta à GA4 Data API para propriedade properties/{PROPERTY_ID}...")
+    try:
+        from google.analytics.data_v1beta import BetaAnalyticsDataClient
+        from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Metric, Dimension
 
-client = BetaAnalyticsDataClient()
+        client = BetaAnalyticsDataClient()
 
-# 1. Teste de Relatório Real-time
-try:
-    request_rt = RunRealtimeReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        dimensions=[Dimension(name="unifiedScreenName")],
-        metrics=[Metric(name="activeUsers")]
-    )
-    res_rt = client.run_realtime_report(request_rt)
-    print("✅ GA4 Realtime API Resposta com sucesso!")
-    print(f"Total de linhas no Realtime: {len(res_rt.rows)}")
-    for row in res_rt.rows:
-        print(f"Página: {row.dimension_values[0].value} | Usuários Ativos: {row.metric_values[0].value}")
-except Exception as e:
-    print(f"⚠️ Erro ao consultar GA4 Realtime: {e}")
+        # Report request for last 7 days
+        req = RunReportRequest(
+            property=f"properties/{PROPERTY_ID}",
+            date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+            metrics=[
+                Metric(name="activeUsers"),
+                Metric(name="sessions"),
+                Metric(name="eventCount"),
+                Metric(name="userEngagementDuration"),
+                Metric(name="bounceRate")
+            ],
+            dimensions=[Dimension(name="date")]
+        )
 
-# 2. Teste de Relatório dos últimos 7 dias
-try:
-    request_7d = RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
-        metrics=[Metric(name="activeUsers"), Metric(name="sessions"), Metric(name="eventCount")]
-    )
-    res_7d = client.run_report(request_7d)
-    print("\n✅ GA4 7-Days Report API Resposta com sucesso!")
-    for row in res_7d.rows:
-        print(f"Usuários Ativos (7d): {row.metric_values[0].value} | Sessões: {row.metric_values[1].value} | Eventos: {row.metric_values[2].value}")
-except Exception as e:
-    print(f"⚠️ Erro ao consultar GA4 7-Days Report: {e}")
+        resp = client.run_report(req)
+        print("✅ Conexão GA4 Data API realizada com SUCESSO ABSOLUTO!")
+        print(f"Linhas retornadas do GA4: {len(resp.rows)}")
+        
+        total_usuarios = 0
+        total_sessoes = 0
+        total_eventos = 0
+        
+        for row in resp.rows:
+            data_str = row.dimension_values[0].value
+            active_users = int(row.metric_values[0].value)
+            sessions = int(row.metric_values[1].value)
+            events = int(row.metric_values[2].value)
+            total_usuarios += active_users
+            total_sessoes += sessions
+            total_eventos += events
+            print(f" Data {data_str}: {active_users} usuários ativos, {sessions} sessões, {events} eventos")
+            
+        print(f"\n📊 Totais acumulados: {total_usuarios} Usuários, {total_sessoes} Sessões, {total_eventos} Eventos.")
+        return {
+            "total_usuarios": total_usuarios,
+            "total_sessoes": total_sessoes,
+            "total_eventos": total_eventos
+        }
+    except Exception as e:
+        print(f"❌ Erro ao consultar GA4: {e}")
+        return None
+
+if __name__ == "__main__":
+    consultar_ga4_live()
