@@ -1,6 +1,6 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-28T19:06:14.166480Z",
+  "ultima_atualizacao": "2026-09-28T20:07:06.858601Z",
   "modo_operacao": "LIVE_GOOGLE_APIS",
   "semanas": [
     {
@@ -27,19 +27,20 @@
         "status_cpl": "Aguardando Disparos"
       },
       "seo": {
-        "impressoes_gsc": 120,
-        "impressoes_fmt": "120 Imp.",
-        "trafego_fmt": "8 Sessões (6 Usuários GA4)",
-        "usuarios_ga4": 6,
-        "eventos_ga4": 29,
-        "diff_impressoes": "🟢 Live GSC & GA4 API (28/09/2026 às 19:05:55 UTC)",
+        "impressoes_gsc": 0,
+        "impressoes_fmt": "0 Imp.",
+        "trafego_fmt": "20 Sessões (15 Usuários GA4)",
+        "usuarios_ga4": 15,
+        "eventos_ga4": 72,
+        "diff_impressoes": "🟢 Live GA4 API (15 Usuários Ativos)",
         "top10_termos": 0,
         "top10_fmt": "0 Termos (Em Indexação)",
         "diff_top10": "Aguardando Leitura Google",
         "lcp": "1.8s (LCP)",
         "lcp_status": "Aprovado (BOM)",
         "answer_first_pct": "100%",
-        "answer_first_status": "Ativo no Código"
+        "answer_first_status": "Ativo no Código",
+        "realtime_ga4": 2
       },
       "geo": {
         "score": 84,
@@ -57,7 +58,7 @@
         "seo_organico_pct": 0,
         "geo_ias_pct": 0
       },
-      "status_api": "🔴 LIVE GOOGLE API ACTIVE"
+      "status_api": "🔴 LIVE GA4 API ACTIVE (Property 555545561)"
     }
   ]
 }
