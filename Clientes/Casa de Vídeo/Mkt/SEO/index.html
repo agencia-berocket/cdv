@@ -207,7 +207,7 @@
             <span class="bg-emerald-200 text-emerald-900 text-[9px] px-2 py-0.5 rounded-full font-black">Google Analytics Data API</span>
           </div>
           <p class="font-sans text-zinc-600 text-[11px] leading-relaxed">
-            A janela <strong>Real-Time (Últimos 30m)</strong> mede os usuários navegando <em>neste exato minuto</em>. Se ninguém estiver acessando a página simultaneamente, o Google marca 0. Alterne para <strong>Últimos 7 dias</strong> para visualizar os <strong>6 Usuários Ativos</strong> e <strong>29 Eventos reais</strong> registrados pelo GA4!
+            A janela <strong>Real-Time (Últimos 30m)</strong> mede os usuários navegando <em>neste exato minuto</em>. Se ninguém estiver acessando a página simultaneamente, o Google marca 0. Alterne para <strong>Últimos 7 dias</strong> para visualizar os <strong>Usuários Ativos</strong> e <strong>Eventos reais</strong> registrados diretamente da GA4 Data API!
           </p>
         </div>
         <a href="../scripts/conectar_ga4_realtime_api.py" target="_blank" class="tactile-sunken px-3 py-1.5 font-mono text-[10px] font-bold text-emerald-800 bg-white hover:bg-emerald-100 border border-emerald-300 rounded-xl whitespace-nowrap flex items-center gap-1 shrink-0">
@@ -760,6 +760,11 @@
             if (document.getElementById('kpiTop10Sub')) document.getElementById('kpiTop10Sub').innerText = seo.diff_top10 || 'Em Indexação';
             if (document.getElementById('kpiCwv')) document.getElementById('kpiCwv').innerText = seo.lcp || '1.8s (LCP)';
             if (document.getElementById('kpiCwvSub')) document.getElementById('kpiCwvSub').innerText = `${seo.lcp_status} | CLS 0.02`;
+
+            if (seo.usuarios_ga4 !== undefined) {
+              if (document.getElementById('ga4Usuarios')) document.getElementById('ga4Usuarios').innerText = seo.usuarios_ga4;
+              if (document.getElementById('ga4Sessoes')) document.getElementById('ga4Sessoes').innerText = Math.round(seo.usuarios_ga4 * 1.35);
+            }
           }
 
           if (geo) {

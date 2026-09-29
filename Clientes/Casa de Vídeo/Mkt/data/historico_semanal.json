@@ -1,6 +1,6 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-28T22:18:08.435308Z",
+  "ultima_atualizacao": "2026-09-29T00:25:58.082588Z",
   "modo_operacao": "LIVE_GOOGLE_GA4_API_CONNECTED",
   "semanas": [
     {
@@ -29,10 +29,10 @@
       "seo": {
         "impressoes_gsc": 0,
         "impressoes_fmt": "0 Imp. (GSC Inicial)",
-        "trafego_fmt": "22 Sessões (15 Usuários GA4)",
+        "trafego_fmt": "23 Sessões (15 Usuários GA4)",
         "usuarios_ga4": 15,
-        "eventos_ga4": 75,
-        "diff_impressoes": "🟢 Live GA4 API (15 Usuários / 75 Eventos)",
+        "eventos_ga4": 77,
+        "diff_impressoes": "🟢 Live GA4 API (15 Usuários / 77 Eventos)",
         "top10_termos": 0,
         "top10_fmt": "0 Termos (Em Indexação)",
         "diff_top10": "Aguardando Leitura Google",
