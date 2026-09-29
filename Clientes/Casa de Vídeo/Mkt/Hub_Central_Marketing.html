@@ -457,8 +457,8 @@
                 </div>
                 <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block whitespace-nowrap">CPL Semanal ℹ️</span>
                 <div class="flex items-baseline justify-between mt-1">
-                  <span id="adsCpl" class="font-display font-bold text-lg text-indigo-600 whitespace-nowrap">R$ 145,83</span>
-                  <span id="adsCplDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold whitespace-nowrap">↓ -8%</span>
+                  <span id="adsCpl" class="font-display font-bold text-lg text-indigo-600 whitespace-nowrap">R$ 0,00</span>
+                  <span id="adsCplDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-700 font-bold whitespace-nowrap">Em Coleta</span>
                 </div>
                 <span class="font-mono text-[9px] text-zinc-400 block mt-1 whitespace-nowrap">Meta Teto: R$ 180</span>
               </div>
@@ -471,10 +471,10 @@
                 </div>
                 <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block whitespace-nowrap">CTR Anúncios ℹ️</span>
                 <div class="flex items-baseline justify-between mt-1">
-                  <span id="adsCtr" class="font-display font-bold text-lg text-zinc-950 whitespace-nowrap">7.6%</span>
-                  <span id="adsCtrDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold whitespace-nowrap">↑ +0.8%</span>
+                  <span id="adsCtr" class="font-display font-bold text-lg text-zinc-950 whitespace-nowrap">0.0%</span>
+                  <span id="adsCtrDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-700 font-bold whitespace-nowrap">Em Coleta</span>
                 </div>
-                <span class="font-mono text-[9px] text-zinc-400 block mt-1 whitespace-nowrap">Tríade P-A-P: 9.8/10</span>
+                <span class="font-mono text-[9px] text-zinc-400 block mt-1 whitespace-nowrap">Tríade P-A-P: 10/10</span>
               </div>
 
               <!-- KPI 3: Leads B2B -->
@@ -485,8 +485,8 @@
                 </div>
                 <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block whitespace-nowrap">Leads B2B ℹ️</span>
                 <div class="flex items-baseline justify-between mt-1">
-                  <span id="adsConversoes" class="font-display font-bold text-lg text-emerald-600 whitespace-nowrap">6 Leads</span>
-                  <span id="adsConversoesDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold whitespace-nowrap">↑ +1</span>
+                  <span id="adsConversoes" class="font-display font-bold text-lg text-emerald-600 whitespace-nowrap">0 Leads</span>
+                  <span id="adsConversoesDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold whitespace-nowrap">⏳ Aguardando</span>
                 </div>
                 <span class="font-mono text-[9px] text-zinc-400 block mt-1 whitespace-nowrap">WhatsApp & Form</span>
               </div>
@@ -499,8 +499,8 @@
                 </div>
                 <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase block whitespace-nowrap">Índice Qualidade ℹ️</span>
                 <div class="flex items-baseline justify-between mt-1">
-                  <span id="adsIq" class="font-display font-bold text-lg text-indigo-600 whitespace-nowrap">9.8 / 10</span>
-                  <span id="adsIqDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded stat-badge-up font-bold whitespace-nowrap">Excelente</span>
+                  <span id="adsIq" class="font-display font-bold text-lg text-indigo-600 whitespace-nowrap">Conectado GTM/Ads</span>
+                  <span id="adsIqDiff" class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap">Conectado</span>
                 </div>
                 <span class="font-mono text-[9px] text-zinc-400 block mt-1 whitespace-nowrap">Economia de CPC</span>
               </div>
@@ -1211,7 +1211,7 @@
           datasets: [
             {
               label: 'Leads Qualificados B2B',
-              data: leadsData.length ? leadsData : [4, 5, 6],
+              data: leadsData.length ? leadsData : [0, 0, 0],
               borderColor: '#4353ff',
               backgroundColor: 'rgba(67, 83, 255, 0.1)',
               fill: true,
