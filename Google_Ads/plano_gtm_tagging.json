@@ -1,0 +1,32 @@
+{
+  "cliente": "Casa de Vídeo",
+  "statusDocumento": "PLANEJAMENTO — validar no site e nas plataformas antes de ativar",
+  "identificadoresRegistrados": {
+    "gtmContainerId": "GTM-K7QVV6C8",
+    "ga4MeasurementId": "G-QF8MC5BX95",
+    "ga4PropertyId": "555545561",
+    "googleAdsConversionId": "AW-18470288256"
+  },
+  "acoesConversao": [
+    {
+      "nome": "Envio confirmado do formulário de orçamento",
+      "eventoProposto": "form_submission_lead",
+      "condicao": "Disparar somente após resposta de sucesso do backend do formulário. Não disparar por visita à seção contato ou clique no botão.",
+      "googleAdsConversionLabel": null,
+      "valorConversao": null,
+      "status": "A validar na plataforma"
+    }
+  ],
+  "whatsapp": {
+    "habilitado": false,
+    "motivo": "Escopo atual prioriza formulário no site."
+  },
+  "qualificacaoComercial": {
+    "status": "Não integrada",
+    "observacao": "Lead qualificado e receita exigem evidência no CRM; não são inferidos de toda conversão."
+  },
+  "capturaGclid": {
+    "status": "A validar",
+    "observacao": "Definir captura e consentimento conforme implementação do site; não presumir campo ou cookie instalado."
+  }
+}
