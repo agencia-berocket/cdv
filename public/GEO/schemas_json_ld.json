@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://casadevideo.com.br/#organization",
+      "name": "Casa de Vídeo",
+      "url": "https://casadevideo.com.br",
+      "description": "Produtora audiovisual de filmes publicitários, vídeos corporativos e institucionais."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://casadevideo.com.br/#website",
+      "url": "https://casadevideo.com.br",
+      "name": "Casa de Vídeo",
+      "publisher": {
+        "@id": "https://casadevideo.com.br/#organization"
+      },
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
