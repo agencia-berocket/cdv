@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>b.rocket // Hub Central 360º • Casa de Vídeo</title>
+  <script src="./js/session-guard.js"></script>
   <script>
-    window.location.replace('/mkt/');
+    if (sessionStorage.getItem('b_rocket_session') === 'cdv_authenticated' || localStorage.getItem('b_rocket_session') === 'cdv_authenticated') {
+      window.location.href = './Hub_Central_Marketing.html';
+    } else {
+      window.location.href = './login.html';
+    }
   </script>
 </head>
 <body style="background:#f4f5f8; font-family: sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">

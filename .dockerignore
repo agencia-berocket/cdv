@@ -7,6 +7,4 @@ node_modules
 **/*service-account*.json
 geo-brocket-ae1f778b51b8.json
 scratch
-dist
-mkt
-public/mkt
+

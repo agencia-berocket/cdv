@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-02T18:56:58.797Z",
+  "generatedAt": "2026-10-02T19:12:12.276Z",
   "range": {
     "startDate": "2026-09-26",
     "endDate": "2026-10-02"
@@ -15,8 +15,8 @@
         "endDate": "2026-10-02"
       },
       "status": "ok",
-      "attemptedAt": "2026-10-02T18:55:08.890Z",
-      "updatedAt": "2026-10-02T18:55:10.540Z",
+      "attemptedAt": "2026-10-02T19:10:08.926Z",
+      "updatedAt": "2026-10-02T19:10:09.709Z",
       "data": {
         "users": 23,
         "sessions": 39,
@@ -80,8 +80,8 @@
       "source": "realtime",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-10-02T18:56:08.892Z",
-      "updatedAt": "2026-10-02T18:56:09.973Z",
+      "attemptedAt": "2026-10-02T19:12:09.553Z",
+      "updatedAt": "2026-10-02T19:12:10.556Z",
       "data": {
         "activeUsers": 1,
         "windowMinutes": 30
@@ -286,8 +286,8 @@
         "endDate": "2026-10-02"
       },
       "status": "ok",
-      "attemptedAt": "2026-10-02T18:54:08.887Z",
-      "updatedAt": "2026-10-02T18:54:12.171Z",
+      "attemptedAt": "2026-10-02T19:09:08.923Z",
+      "updatedAt": "2026-10-02T19:09:10.228Z",
       "data": {
         "cost": 0,
         "clicks": 0,
@@ -311,8 +311,8 @@
       "source": "geo",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-10-02T18:56:08.892Z",
-      "updatedAt": "2026-10-02T18:56:08.896Z",
+      "attemptedAt": "2026-10-02T19:12:08.932Z",
+      "updatedAt": "2026-10-02T19:12:08.934Z",
       "data": {
         "latest": {
           "id": "rodada-2026-09-24",
