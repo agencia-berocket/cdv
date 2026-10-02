@@ -1,0 +1,8 @@
+{
+  "cliente": "Casa de Vídeo",
+  "status": "aguardando_rodada_com_evidencias",
+  "geoScoreComposto": null,
+  "citationShare": null,
+  "motivo": "Os valores anteriores não possuem respostas comprobatórias no conjunto revisado. Não são usados nos indicadores atuais.",
+  "evidencias": "Rodadas validadas são disponibilizadas pela API /api/cdv/metrics."
+}

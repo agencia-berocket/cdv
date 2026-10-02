@@ -1,0 +1,41 @@
+{
+  "cliente": "Casa de Vídeo",
+  "status": "pendente_de_verificacao",
+  "itens": [
+    {
+      "item": "Title e meta description da página publicada",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Canonical e redirecionamentos www/sem www",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Headings e conteúdo institucional",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Schema correspondente ao conteúdo visível",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Core Web Vitals de campo",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Imagens e carregamento de vídeo",
+      "status": "a_validar",
+      "evidencia": null
+    },
+    {
+      "item": "Google Business Profile e dados de contato",
+      "status": "a_validar",
+      "evidencia": null
+    }
+  ]
+}

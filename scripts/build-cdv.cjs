@@ -11,10 +11,10 @@ const files = [
   'GEO/index.html', 'GEO/Dashboard_GEO.html', 'GEO/Passo_a_Passo_GEO.html', 'GEO/llms.txt', 'GEO/schemas_json_ld.json', 'GEO/relatorio_citabilidade.json',
   'Google_Ads/index.html', 'Google_Ads/Dashboard_Google_Ads.html', 'Google_Ads/Passo_a_Passo_Google_Ads.html', 'Google_Ads/termos_negativos.txt', 'Google_Ads/estrutura_campanhas_stag.json', 'Google_Ads/plano_gtm_tagging.json',
 ];
-for (const folder of ['public/mkt', 'mkt', ...(fs.existsSync(path.join(ROOT, 'dist')) ? ['dist/mkt'] : [])]) {
+const folders = ['public/mkt', 'mkt', 'dist/mkt', 'dist'];
+for (const folder of folders) {
   const dest = path.join(ROOT, folder);
-  // Diretórios de saída gerados, recuperáveis a partir da fonte/Git.
-  fs.rmSync(dest, { recursive: true, force: true });
+  if (folder !== 'dist') fs.rmSync(dest, { recursive: true, force: true });
   for (const file of files) {
     const output = path.join(dest, file);
     fs.mkdirSync(path.dirname(output), { recursive: true });

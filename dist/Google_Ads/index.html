@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>b.rocket // Hub Central 360º • Central BE | Ads</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/session-guard.js"></script>
+  
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f4f5f8;
+      color: #0c0d0e;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
+
+    ::selection {
+      background-color: #4353ff;
+      color: #ffffff;
+    }
+
+    .tactile-raised {
+      background: #fdfefe;
+      box-shadow: 
+        0px 1px 2px rgba(0, 0, 0, 0.02),
+        8px 12px 28px -4px rgba(13, 20, 33, 0.06),
+        -8px -8px 24px -2px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tactile-sunken {
+      background: #f1f2f5;
+      box-shadow: 
+        inset 4px 4px 10px rgba(13, 20, 33, 0.05),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9),
+        0px 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.015);
+      border-radius: 16px;
+    }
+
+    .text-tactile-3d-dark {
+      color: #18181b;
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 6px rgba(13, 20, 33, 0.12),
+        6px 8px 14px rgba(13, 20, 33, 0.08);
+    }
+
+    .grid-blueprint {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px;
+    }
+
+    .modal-backdrop {
+      background: rgba(12, 13, 14, 0.65);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Custom Tooltip Styling */
+    .has-tooltip {
+      position: relative;
+    }
+
+    .tooltip-card {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+      transform: translateY(6px);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      width: 280px;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .has-tooltip:hover .tooltip-card {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-12px);
+    }
+
+    .tab-btn-active {
+      background-color: #4353ff !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(67, 83, 255, 0.3) !important;
+    }
+
+    .tab-btn-inactive {
+      background-color: #f1f2f5 !important;
+      color: #3f3f46 !important;
+    }
+    .tab-btn-inactive:hover {
+      background-color: #e4e4e7 !important;
+      color: #18181b !important;
+    }
+  </style>
+</head>
+<body class="grid-blueprint min-h-screen pb-16 antialiased">
+
+  <!-- Top Navigation Bar -->
+  <nav class="fixed top-0 inset-x-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-200 px-6 py-3.5 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Brand & b.rocket Logo -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+        <a href="../Hub_Central_Marketing.html" class="flex items-center gap-2.5 group hover:scale-[1.02] transition-transform">
+          <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center border border-zinc-800 shadow-md shrink-0 relative overflow-hidden">
+            <div class="w-[24px] h-[24px] rounded-full border border-white/95 bg-white shadow-[inset_1px_1px_2px_rgba(0,0,0,0.15)] relative flex items-center justify-center overflow-hidden">
+              <div class="w-[16px] h-[11px] bg-zinc-950 rounded-[4px] relative overflow-hidden shadow-inner mt-[-1.5px] border border-zinc-900/40">
+                <div class="absolute top-[0.5px] left-[1px] w-[3px] h-[4px] bg-white/40 rounded-full rotate-12"></div>
+                <div class="absolute bottom-0 right-0 w-[4px] h-[3px] bg-emerald-500/80 blur-[0.5px] rounded-full"></div>
+              </div>
+              <div class="absolute bottom-[2px] w-[10px] h-[1.5px] bg-zinc-300 rounded-full"></div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-base tracking-[0.08em] text-zinc-950 uppercase leading-none">b.rocket <span class="text-indigo-600">*</span></span>
+            <span class="font-mono text-[9px] text-zinc-500 tracking-wider font-bold uppercase">Hub Central 360° Realtime</span>
+          </div>
+        </a>
+
+        <div class="h-6 w-[1px] bg-zinc-300 hidden sm:block"></div>
+
+        <div class="hidden sm:flex items-center gap-1.5 font-mono text-xs font-bold text-zinc-800 uppercase tracking-wider bg-zinc-100 px-3 py-1.5 rounded-xl border border-zinc-200">
+          <span class="text-zinc-400 font-normal">|</span>
+          <span class="text-indigo-600 font-bold">Central BE</span>
+          <span class="text-zinc-400 font-normal">|</span>
+          <span class="text-zinc-950 font-black">ADS</span>
+        </div>
+      </div>
+
+      <!-- UNIFIED NAVIGATION PILL CONTAINER FOR GOOGLE ADS (3 TABS) -->
+      <div class="flex items-center bg-zinc-100 p-1.5 rounded-2xl border border-zinc-200 font-mono text-xs overflow-x-auto w-full md:w-auto justify-center">
+        <!-- 1. Visão Geral & Performance -->
+        <button id="btn-tab-dashboard" onclick="alternarAba('dashboard')" class="tab-btn-active px-4 py-2 rounded-xl font-bold transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+          <span>📊 Visão Geral & Performance</span>
+        </button>
+
+        <!-- 2. Guia Passo a Passo -->
+        <button id="btn-tab-passoapasso" onclick="alternarAba('passoapasso')" class="tab-btn-inactive px-4 py-2 rounded-xl font-bold transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+          <span>📘 Guia Passo a Passo</span>
+        </button>
+
+        <!-- 3. Anamnese Tab -->
+        <button id="btn-tab-anamnese" onclick="alternarAba('anamnese')" class="tab-btn-inactive px-4 py-2 rounded-xl font-bold transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+          <span>📋 Anamnese</span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="pt-28 pb-6 px-6 md:px-12 border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-800 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-200 font-bold">
+        <span>🎯 Central de Tráfego Pago Google Ads • Método Nova Gestão de Tráfego (Sobral Framework)</span>
+      </div>
+
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+        <div>
+          <h1 class="font-display font-black text-3xl sm:text-4xl text-zinc-950 uppercase tracking-tight text-tactile-3d-dark">
+            Casa de Vídeo Produções Ltda
+          </h1>
+          <p class="font-sans text-xs text-zinc-600 mt-1 max-w-3xl">
+            Captura de intenção direta no Google Search para o site oficial <a href="https://casadevideo.com.br" target="_blank" class="text-indigo-600 underline font-bold">https://casadevideo.com.br</a>. Selecione o período desejado, acompanhe a planilha de campanhas em tempo real ou consulte o guia operacional.
+          </p>
+        </div>
+
+        <span class="font-mono text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-4 py-2 rounded-2xl font-bold flex items-center gap-2 shadow-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>GOOGLE ADS: AW-18470288256</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Body (TABBED MODULES) -->
+  <main class="max-w-7xl mx-auto px-6 md:px-12 py-8">
+
+    <!-- ========================================== -->
+    <!-- ABA 1: 📊 VISÃO GERAL COM DASH & PERFORMANCE -->
+    <!-- ========================================== -->
+    <div id="tab-conteudo-dashboard" class="tab-module space-y-8">
+      
+      <!-- SELETOR DE PERÍODO & BARRA DE FILTROS -->
+      <div class="tactile-raised p-5 bg-white border border-zinc-200 space-y-3">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+          
+          <!-- Selector Title & Dropdown -->
+          <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-600 text-base">📅</span>
+              <span class="font-mono text-xs font-bold text-zinc-950 uppercase tracking-wider">Período de Análise:</span>
+            </div>
+            
+            <select id="seletorPeriodo" onchange="alterarPeriodo(this.value)" class="font-mono text-xs font-bold bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-300 rounded-xl px-4 py-2 text-indigo-900 focus:ring-2 focus:ring-indigo-500 outline-none cursor-pointer transition-all">
+              <option value="7d">Últimos 7 dias</option>
+              <option value="14d">Últimos 14 dias</option>
+              <option value="30d" selected>Últimos 30 dias (Padrão)</option>
+              <option value="este_mes">Este Mês</option>
+              <option value="mes_passado">Mês Passado</option>
+              <option value="custom">Personalizado...</option>
+            </select>
+          </div>
+
+          <!-- Custom Date Range Inputs (hidden by default) -->
+          <div id="datasPersonalizadas" class="hidden flex flex-wrap items-center gap-2 font-mono text-xs bg-zinc-50 p-2 rounded-xl border border-zinc-200">
+            <span class="text-zinc-500 text-[11px]">De:</span>
+            <input type="date" id="dataInicio" value="2026-09-01" class="bg-white border border-zinc-300 rounded-lg px-2.5 py-1 text-zinc-950 font-bold focus:ring-1 focus:ring-indigo-500 outline-none" />
+            <span class="text-zinc-500 text-[11px]">Até:</span>
+            <input type="date" id="dataFim" value="2026-09-25" class="bg-white border border-zinc-300 rounded-lg px-2.5 py-1 text-zinc-950 font-bold focus:ring-1 focus:ring-indigo-500 outline-none" />
+            <button onclick="aplicarDataPersonalizada()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1 rounded-lg transition-all cursor-pointer">
+              Filtrar
+            </button>
+          </div>
+
+          <!-- Active Period Date Badge -->
+          <div class="flex items-center gap-2 font-mono text-xs bg-indigo-50 text-indigo-800 border border-indigo-200 px-3.5 py-1.5 rounded-xl font-bold shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+            <span id="labelPeriodoAtivo">Últimos 30 dias</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BANNER DE STATUS DA API LIVE DO GOOGLE ADS -->
+      <div id="statusBannerApiAds"></div>
+
+      <!-- KEY KPI CARDS WITH MOUSEOVER TOOLTIPS (ÍCONE ℹ️) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- KPI 1: Investimento Mídia -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-indigo-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Investimento Mensal</span>
+            <span class="text-sm text-indigo-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiInvestimento" class="font-display font-black text-3xl text-indigo-600 mt-1">—</h3>
+          <span id="kpiInvestimentoSub" class="font-mono text-[10px] text-zinc-500 block mt-1">—</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-indigo-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o Investimento Mensal?</div>
+            <p><strong>• O que é:</strong> O orçamento financeiro total destinado aos anúncios no Google Ads no período selecionado.</p>
+            <p><strong>• Para que serve:</strong> Garante o orçamento diário para exibir seus anúncios no topo das pesquisas quando clientes buscam produtoras.</p>
+            <p><strong>• Estado Atual:</strong> R$ 0,00 investidos (Aguardando ativação das campanhas de mídia paga no Google Ads).</p>
+          </div>
+        </div>
+
+        <!-- KPI 2: CPL Médio Projetado -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-emerald-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">CPL Alvo Projetado</span>
+            <span class="text-sm text-emerald-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiCpl" class="font-display font-black text-2xl text-emerald-600 mt-2">—</h3>
+          <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">✓ Meta Target: R$ 150 a R$ 250 / lead</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-emerald-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o CPL (Custo Por Lead)?</div>
+            <p><strong>• O que é:</strong> Quanto sua empresa investe em anúncios para gerar 1 formulário de orçamento preenchido no site.</p>
+            <p><strong>• Para que serve:</strong> Avalia o custo de aquisição e garante que o orçamento traga retornos financeiros saudáveis.</p>
+            <p><strong>• Estado Atual:</strong> Sem campanhas rodando. CPL Target de R$ 150 a R$ 250 calibrado para o segmento B2B.</p>
+          </div>
+        </div>
+
+        <!-- KPI 3: CTR Médio dos RSAs -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-blue-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">CTR Médio (Taxa Clique)</span>
+            <span class="text-sm text-blue-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiCtr" class="font-display font-black text-2xl text-blue-600 mt-2">—</h3>
+          <span class="font-mono text-[10px] text-blue-700 font-bold block mt-1">Aguardando coleta válida</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-blue-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o CTR (Click-Through Rate)?</div>
+            <p><strong>• O que é:</strong> A porcentagem de pessoas que viram seu anúncio no Google e efetivamente clicaram nele.</p>
+            <p><strong>• Para que serve:</strong> Mede o nível de interesse do público e a qualidade das copys e títulos cadastrados.</p>
+            <p><strong>• Estado Atual:</strong> 0.0% (Aguardando primeiras impressões de anúncios no Google Search).</p>
+          </div>
+        </div>
+
+        <!-- KPI 4: Índice de Qualidade (IQ) -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-violet-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Índice de Qualidade (IQ)</span>
+            <span class="text-sm text-violet-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiIq" class="font-display font-black text-2xl text-violet-600 mt-2">10 / 10</h3>
+          <span class="font-mono text-[10px] text-emerald-700 font-bold block mt-1">Protocolo STAG Calibrado</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-violet-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o Índice de Qualidade (IQ)?</div>
+            <p><strong>• O que é:</strong> Uma nota de 1 a 10 atribuída pelo Google com base na relevância da palavra-chave, anúncio e site.</p>
+            <p><strong>• Para que serve:</strong> Quanto maior a nota, MENOR é o valor pago por clique (CPC) e MELHOR a posição do anúncio.</p>
+            <p><strong>• Estado Atual:</strong> Estrutura de palavras-chave STAG 100% calibrada no código.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Second KPI Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- KPI 5: CPC Médio -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-amber-500 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">CPC Médio (Custo por Clique)</span>
+            <span class="text-sm text-amber-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiCpc" class="font-display font-black text-2xl text-amber-600 mt-2">—</h3>
+          <span class="font-mono text-[10px] text-zinc-500 block mt-1">✓ Meta Target: R$ 3,00 a R$ 5,50</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-amber-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o CPC Médio?</div>
+            <p><strong>• O que é:</strong> O valor médio pago cada vez que um cliente em potencial clica no anúncio e entra no site casadevideo.com.br.</p>
+            <p><strong>• Para que serve:</strong> Controla o custo unitário de visitas de diretores e gerentes de marketing no seu site.</p>
+            <p><strong>• Estado Atual:</strong> R$ 0,00 (Sem cliques pagos no período).</p>
+          </div>
+        </div>
+
+        <!-- KPI 6: Conversão do Site -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-teal-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Taxa Conversão Site</span>
+            <span class="text-sm text-teal-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiTaxaConv" class="font-display font-black text-2xl text-teal-600 mt-2">—</h3>
+          <span class="font-mono text-[10px] text-teal-700 font-bold block mt-1">Visitante ➔ Lead no Formulário</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-teal-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é a Taxa de Conversão do Site?</div>
+            <p><strong>• O que é:</strong> A porcentagem de pessoas que entraram em casadevideo.com.br e enviaram uma mensagem/formulário.</p>
+            <p><strong>• Para que serve:</strong> Mede se o site oficial está sendo convincente e claro para transformar visitantes em oportunidades.</p>
+            <p><strong>• Estado Atual:</strong> Coletado ao vivo via GA4 Data API.</p>
+          </div>
+        </div>
+
+        <!-- KPI 7: Volume Estimado Leads -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-rose-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Leads B2B no Período</span>
+            <span class="text-sm text-rose-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiLeads" class="font-display font-black text-2xl text-rose-600 mt-2">0 Leads</h3>
+          <span class="font-mono text-[10px] text-zinc-500 block mt-1">Fonte: Google Ads API</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-rose-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que são os Leads B2B?</div>
+            <p><strong>• O que é:</strong> A quantidade total de pedidos de orçamento de produtoras recebidos pelo site oficial no período.</p>
+            <p><strong>• Para que serve:</strong> Dimensiona o volume de trabalho e oportunidades que chegarão para o time de vendas.</p>
+            <p><strong>• Estado Atual:</strong> 0 Leads registrados de tráfego de anúncios no período.</p>
+          </div>
+        </div>
+
+        <!-- KPI 8: ROAS Estimado -->
+        <div class="tactile-sunken p-5 border-l-4 border-l-cyan-600 has-tooltip cursor-help transition-all hover:scale-[1.02]">
+          <div class="flex justify-between items-center">
+            <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider">ROAS Estimado (Retorno)</span>
+            <span class="text-sm text-cyan-600 font-bold">ℹ️</span>
+          </div>
+          <h3 id="kpiRoas" class="font-display font-black text-2xl text-cyan-600 mt-2">0.0x</h3>
+          <span class="font-mono text-[10px] text-cyan-700 font-bold block mt-1">Aguardando Disparos</span>
+
+          <div class="tooltip-card bg-zinc-900 text-white p-4 rounded-2xl shadow-2xl border border-zinc-700 text-xs font-sans space-y-2">
+            <div class="font-mono font-bold text-cyan-400 text-[11px] uppercase border-b border-zinc-800 pb-1">ℹ️ O que é o ROAS (Return on Ad Spend)?</div>
+            <p><strong>• O que é:</strong> A relação entre a receita bruta gerada por novos contratos e o valor investido em mídia no Google.</p>
+            <p><strong>• Para que serve:</strong> Prova a rentabilidade da estratégia de tráfego pago para o negócio.</p>
+            <p><strong>• Estado Atual:</strong> 0.0x (Calculado após início das campanhas pagas).</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+        <div class="lg:col-span-2 tactile-sunken p-6 bg-white border border-zinc-200">
+          <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3 flex items-center justify-between">
+            <span>📈 Cliques e Impressões Diárias no Google Search</span>
+            <span class="font-mono text-[10px] text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded font-bold border border-indigo-200">Campanhas STAG</span>
+          </h3>
+          <div class="h-64 relative">
+            <canvas id="chartMainPerformance"></canvas>
+          </div>
+        </div>
+
+        <div class="tactile-sunken p-6 bg-white border border-zinc-200 flex flex-col justify-between">
+          <div>
+            <h3 class="font-display font-bold text-sm text-zinc-950 uppercase mb-3">
+              📊 Distribuição de Orçamento por Campanha
+            </h3>
+            <div class="h-44 relative flex items-center justify-center">
+              <canvas id="chartMainBudget"></canvas>
+            </div>
+          </div>
+          <div class="mt-3 font-mono text-[10px] space-y-1 text-zinc-600">
+            <div class="flex justify-between"><span>• Search Produtora B2B:</span> <strong>—</strong></div>
+            <div class="flex justify-between"><span>• PMax Showreel 4K:</span> <strong>—</strong></div>
+            <div class="flex justify-between"><span>• Search Concorrentes:</span> <strong>—</strong></div>
+            <div class="flex justify-between"><span>• Search Marca Institucional:</span> <strong>—</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📊 PLANILHA DE RESULTADOS POR CAMPANHA (ESTILO OFICIAL GOOGLE ADS) -->
+      <div class="tactile-raised p-6 bg-white border border-zinc-200 space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-zinc-200 pb-3">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-2.5 py-0.5 rounded border border-indigo-200">
+              📊 Relatório de Desempenho por Campanha
+            </span>
+            <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mt-1">
+              Planilha de Resultados por Campanha (Visão Google Ads)
+            </h3>
+          </div>
+          <span class="font-mono text-xs text-zinc-500">Exibindo métricas do período selecionado</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs border-collapse">
+            <thead>
+              <tr class="bg-zinc-900 text-white uppercase text-[10px] tracking-wider">
+                <th class="p-3 rounded-tl-xl">Campanha</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Orç. Diário</th>
+                <th class="p-3 text-right">Impressões</th>
+                <th class="p-3 text-right">Cliques</th>
+                <th class="p-3 text-right">CTR</th>
+                <th class="p-3 text-right">CPC Médio</th>
+                <th class="p-3 text-right">Custo Total</th>
+                <th class="p-3 text-right">Conversões</th>
+                <th class="p-3 text-right">Taxa Conv.</th>
+                <th class="p-3 text-right">Custo / Conv.</th>
+                <th class="p-3 text-right rounded-tr-xl">ROAS Registrado</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaResultadosCampanhasBody" class="divide-y divide-zinc-200 text-zinc-800 bg-white">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+            <tfoot id="tabelaResultadosCampanhasFooter" class="bg-zinc-100 font-bold text-zinc-950 border-t-2 border-zinc-300">
+              <!-- Populated dynamically via JS -->
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Live Keywords Performance Table -->
+      <div class="tactile-sunken p-6 bg-white border border-zinc-200 space-y-4">
+        <h3 class="font-display font-bold text-base text-zinc-950 uppercase">
+          🔑 Palavras-Chave Planejadas · Métricas a Validar
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-zinc-200 text-zinc-500 uppercase text-[10px]">
+                <th class="pb-2">Palavra-Chave</th>
+                <th class="pb-2">Correspondência</th>
+                <th class="pb-2">Campanha</th>
+                <th class="pb-2">CTR</th>
+                <th class="pb-2">CPC Médio</th>
+                <th class="pb-2">IQ</th>
+                <th class="pb-2">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100 text-zinc-700">
+              <tr>
+                <td class="py-2.5 font-bold text-zinc-950">produtora de video b2b</td>
+                <td><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-bold">Ampla Inteligente</span></td>
+                <td>Search B2B</td>
+                <td class="font-bold text-zinc-500">—</td>
+                <td>—</td>
+                <td><span class="font-bold text-emerald-600">—</span></td>
+                <td><span class="text-indigo-700 font-bold">Planejada · não confirmada</span></td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-bold text-zinc-950">"produtora de video corporativo"</td>
+                <td><span class="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-bold">Frase</span></td>
+                <td>Search B2B</td>
+                <td class="font-bold text-zinc-500">—</td>
+                <td>—</td>
+                <td><span class="font-bold text-emerald-600">—</span></td>
+                <td><span class="text-indigo-700 font-bold">Planejada · não confirmada</span></td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-bold text-zinc-950">"casa de video"</td>
+                <td><span class="bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-bold">Frase</span></td>
+                <td>Search Marca</td>
+                <td class="font-bold text-zinc-500">—</td>
+                <td>—</td>
+                <td><span class="font-bold text-emerald-600">—</span></td>
+                <td><span class="text-indigo-700 font-bold">Planejada · não confirmada</span></td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-bold text-zinc-950">"o2 filmes produtora"</td>
+                <td><span class="bg-violet-50 text-violet-700 px-2 py-0.5 rounded font-bold">Frase</span></td>
+                <td>Search Concorrentes</td>
+                <td class="font-bold text-zinc-500">—</td>
+                <td>—</td>
+                <td><span class="font-bold text-indigo-600">—</span></td>
+                <td><span class="text-indigo-700 font-bold">Planejada · não confirmada</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Estrutura das 4 Campanhas de Ouro & Ação de Visualização -->
+      <div class="tactile-raised p-8 bg-white border border-zinc-200 space-y-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-700 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md mb-1 border border-indigo-200">
+              ⚙️ Estrutura Técnica das 4 Campanhas de Ouro
+            </span>
+            <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+              Configurações de Campanhas & Detalhamento
+            </h2>
+            <p class="font-sans text-xs text-zinc-500 mt-1">
+              Revise a estrutura das 4 Campanhas de Ouro com palavras-chave amplas/frase e clique no <strong>Simulador Google Ads</strong> para ver todos os detalhes sincronizados com a Anamnese!
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="abrirModalGoogleAds()" class="font-mono text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer">
+              <span>🖥️ Abrir Simulador Google Ads</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cards Overview of the 4 Golden Campaigns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+          
+          <!-- Camp 1 -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-3 border-l-4 border-l-indigo-600">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-indigo-600 font-bold uppercase block">Campanha 1 — Branded Top 1</span>
+                <h3 class="font-display font-bold text-base text-zinc-950">Search | Lead | Marca-CasaDeVideo</h3>
+                <span class="inline-block bg-indigo-100 text-indigo-900 text-[10px] px-2 py-0.5 rounded font-bold mt-1">📌 Fundo de Funil (Decisão Direta & Retenção)</span>
+              </div>
+              <span class="bg-indigo-100 text-indigo-800 text-[10px] px-2.5 py-0.5 rounded font-bold">R$ 20,00/dia</span>
+            </div>
+            <p class="font-sans text-zinc-600 text-xs">Proteção da palavra-chave de marca no Brasil. Impede que concorrentes comprem a marca Casa de Vídeo nos leilões do Google.</p>
+            <div class="bg-white p-3 rounded-xl border border-zinc-200 text-[11px] text-zinc-700 space-y-1">
+              <div><strong>Palavras-Chave (Frase & Ampla):</strong> `"casa de video"`, `casa de video producoes`, `"produtora casa de video"`</div>
+            </div>
+          </div>
+
+          <!-- Camp 2 -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-3 border-l-4 border-l-emerald-600">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-emerald-600 font-bold uppercase block">Campanha 2 — Vendas B2B Direct</span>
+                <h3 class="font-display font-bold text-base text-zinc-950">Search | Lead | Produtora-Video-B2B</h3>
+                <span class="inline-block bg-emerald-100 text-emerald-900 text-[10px] px-2 py-0.5 rounded font-bold mt-1">🎯 Fundo / Meio de Funil (Intenção Direta de Compra)</span>
+              </div>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2.5 py-0.5 rounded font-bold">R$ 50,00/dia</span>
+            </div>
+            <p class="font-sans text-zinc-600 text-xs">Principal motor de vendas. Captura decisores de marketing buscando produtoras corporativas e filmes publicitários no Brasil.</p>
+            <div class="bg-white p-3 rounded-xl border border-zinc-200 text-[11px] text-zinc-700 space-y-1">
+              <div><strong>Palavras-Chave Amplas & Frase:</strong> `produtora de video b2b`, `"produtora de video corporativo"`, `"produtora de filmes publicitarios"`, `produtora audiovisual empresas`</div>
+            </div>
+          </div>
+
+          <!-- Camp 3 -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-3 border-l-4 border-l-violet-600">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-violet-600 font-bold uppercase block">Campanha 3 — Concorrentes Direct</span>
+                <h3 class="font-display font-bold text-base text-zinc-950">Search | Lead | Concorrentes-Audiovisuais</h3>
+                <span class="inline-block bg-violet-100 text-violet-900 text-[10px] px-2 py-0.5 rounded font-bold mt-1">⚔️ Meio / Fundo de Funil (Comparação de Mercado)</span>
+              </div>
+              <span class="bg-violet-100 text-violet-800 text-[10px] px-2.5 py-0.5 rounded font-bold">R$ 20,00/dia</span>
+            </div>
+            <p class="font-sans text-zinc-600 text-xs">Conquista de tráfego de grandes produtoras concorrentes no mercado. Apresenta o posicionamento ágil e cinematográfico da Casa de Vídeo.</p>
+            <div class="bg-white p-3 rounded-xl border border-zinc-200 text-[11px] text-zinc-700 space-y-1">
+              <div><strong>Palavras-Chave (Frase & Ampla):</strong> `"o2 filmes produtora"`, `"sentimental filme"`, `"conspiracao filmes"`, `produtoras audiovisuais grandes`</div>
+            </div>
+          </div>
+
+          <!-- Camp 4 -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-3 border-l-4 border-l-amber-500">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] text-amber-600 font-bold uppercase block">Campanha 4 — PMax Showreel 4K</span>
+                <h3 class="font-display font-bold text-base text-zinc-950">PMax | Lead | Performance-Showreel-4K</h3>
+                <span class="inline-block bg-amber-100 text-amber-900 text-[10px] px-2 py-0.5 rounded font-bold mt-1">🎨 Topo / Meio de Funil & Remarketing Multicanal</span>
+              </div>
+              <span class="bg-amber-100 text-amber-800 text-[10px] px-2.5 py-0.5 rounded font-bold">R$ 26,00/dia</span>
+            </div>
+            <p class="font-sans text-zinc-600 text-xs">Campanha multicanal visual veiculando vídeos em 4K e banners no YouTube, Gmail, Display e Google Search.</p>
+            <div class="bg-white p-3 rounded-xl border border-zinc-200 text-[11px] text-zinc-700 space-y-1">
+              <div><strong>Ativos Sincronizados:</strong> Links da Pasta do Google Drive (Vídeos Showreel 4K e Banners 16:9/1:1)</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ABA 2: 📘 GUIA PASSO A PASSO (DOCUMENTAÇÃO OPERACIONAL) -->
+    <!-- ========================================== -->
+    <div id="tab-conteudo-passoapasso" class="tab-module space-y-8 hidden">
+      
+      <!-- 📖 SEÇÃO METODOLÓGICA: O TRIÂNGULO DE OURO & BOLO DE CENOURA FOFINHO -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-600 font-bold uppercase tracking-wider bg-indigo-50 px-3 py-1 rounded-md border border-indigo-200">
+              🧠 Fundamentos da Nova Gestão de Tráfego
+            </span>
+            <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
+              O Triângulo de Ouro & A Lógica da Busca Direta
+            </h2>
+          </div>
+          <span class="font-mono text-xs bg-amber-50 text-amber-800 font-bold px-3 py-1 rounded-lg border border-amber-200">
+            Sobral Framework
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans text-xs">
+          <!-- Triangle of Gold -->
+          <div class="tactile-sunken p-5 space-y-3 border-l-4 border-l-amber-500">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase">🔺 1. O Triângulo de Ouro das Vendas</h3>
+            <p class="text-zinc-600 leading-relaxed">
+              Toda venda na internet depende da sustentação simultânea de 3 pilares vitais:
+            </p>
+            <ul class="space-y-2 font-mono text-[11px] text-zinc-700">
+              <li>• <strong>OFERTA (Landing Page B2B):</strong> Proposta única de valor clara, showreel 4K visível e carregamento em < 3 segundos.</li>
+              <li>• <strong>TRÁFEGO (Google Ads):</strong> Captura de busca de alta intenção comercial no momento da tomada de decisão.</li>
+              <li>• <strong>CONVERSÃO (Atendimento 1:1 WhatsApp/CRM):</strong> Resposta imediata em < 5 min com protocolo comercial consultivo.</li>
+            </ul>
+          </div>
+
+          <!-- Carrot Cake Logic -->
+          <div class="tactile-sunken p-5 space-y-3 border-l-4 border-l-indigo-600">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase">🍰 2. A Lógica do "Bolo de Cenoura Fofinho"</h3>
+            <p class="text-zinc-600 leading-relaxed">
+              Diferente das redes sociais (onde tentamos adivinhar quem é o comprador), no Google Ads o cliente nos diz exatamente o que quer pesquisando termos de alta intenção.
+            </p>
+            <div class="bg-white p-3 rounded-xl border border-zinc-200 font-mono text-[11px] space-y-1">
+              <p class="text-indigo-600 font-bold">Busca do Cliente: "produtora de video b2b sp"</p>
+              <p class="text-zinc-600">➔ Nosso Anúncio: "Produtora de Vídeo B2B em SP — Filmes Corporativos 4K"</p>
+              <p class="text-emerald-700 font-bold">➔ Resultado: Alinhamento perfeito da Tríade P-A-P (Nota 10/10)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📋 OS 10 PASSOS PARA CRIAR CAMPANHAS DE PESQUISA NO GOOGLE ADS -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Protocolo de Execução</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Os 10 Passos Infalíveis de Configuração</h2>
+          </div>
+          <span class="font-mono text-xs bg-indigo-50 text-indigo-700 font-bold px-3 py-1 rounded-lg border border-indigo-200">Google Ads Setup</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-xs">
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">1. Objetivo & Tipo de Campanha</strong>
+            <p class="text-zinc-600">Objetivo: <em>Vendas / Geração de Leads</em>. Tipo: <em>Rede de Pesquisa</em>.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">2. Nomenclatura Padronizada</strong>
+            <p class="text-zinc-600"><code class="text-indigo-600 font-bold">[Search] | [Lead] | [Produtora-Video-B2B] | [BR]</code></p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">3. Estratégia de Lances</strong>
+            <p class="text-zinc-600">Fase 1: Maximizar Conversões ➔ Fase 2: tCPL R$ 180,00.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">4. Redes & Proteção de Verba</strong>
+            <p class="text-zinc-600">Rede de Pesquisa Ativa. <strong>Rede de Display Desativada</strong>.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">5. Localização & Idiomas</strong>
+            <p class="text-zinc-600">Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador). Idiomas: Português e Inglês.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">6. Foco no Essencial</strong>
+            <p class="text-zinc-600">Focalização em Keywords de alta intenção, RSAs e Landing Page rápida.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">7. Programação de Horários</strong>
+            <p class="text-zinc-600">Exibição contínua com prioridade nos horários comerciais (Seg-Sex 8h-20h).</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">8. Palavras-Chave STAG</strong>
+            <p class="text-zinc-600">Grupos de 5 a 20 termos com correspondência <code class="text-indigo-600">[exata]</code> e <code class="text-indigo-600">"frase"</code>.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">9. RSAs & Tríade P-A-P</strong>
+            <p class="text-zinc-600">11 a 15 Títulos + 4 Descrições alinhadas à palavra-chave buscada.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-1">
+            <strong class="text-zinc-950 font-bold block text-sm">10. Extensões de Anúncio</strong>
+            <p class="text-zinc-600">Sitelinks, Frases de Destaque, Snippets e Botões de Atendimento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🎬 SEÇÃO 1: VÍDEOS & SHOWREEL 4K (CANAIS PMAX E YOUTUBE) -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Ativos de Vídeo</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">1. Vídeo do Showreel 4K (PMax & YouTube)</h2>
+          </div>
+          <span class="font-mono text-xs bg-indigo-50 text-indigo-700 font-bold px-3 py-1 rounded-lg border border-indigo-200">Resolução: 4K Cinema</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start font-sans text-xs">
+          <div class="lg:col-span-2 tactile-sunken p-4 bg-black rounded-2xl overflow-hidden shadow-inner">
+            <div class="aspect-video bg-zinc-900 rounded-xl relative flex items-center justify-center group cursor-pointer overflow-hidden border border-zinc-800">
+              <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80');"></div>
+              <div class="relative z-10 flex flex-col items-center gap-3">
+                <div class="w-16 h-16 rounded-full bg-indigo-600/90 text-white flex items-center justify-center pl-1 shadow-2xl group-hover:scale-110 transition-all">
+                  ▶
+                </div>
+                <span class="font-mono text-xs text-white font-bold tracking-wide drop-shadow">Assistir Showreel Casa de Vídeo 2026 (4K)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tactile-sunken p-5 space-y-3">
+            <h4 class="font-display font-bold text-sm text-zinc-950">Especificações do Vídeo PMax:</h4>
+            <ul class="space-y-2 text-zinc-600 font-mono text-[11px]">
+              <li>• <strong>URL do Canal:</strong> youtube.com/watch?v=showreel_casadevideo_4k</li>
+              <li>• <strong>Duração:</strong> 45 segundos</li>
+              <li>• <strong>Formato:</strong> 16:9 (Horizontal) + 9:16 (Vertical Shorts)</li>
+              <li>• <strong>Qualidade:</strong> 4K Ultra HD (Color Grading Cinema)</li>
+              <li>• <strong>Call to Action (CTA):</strong> "Solicite um Orçamento Audiovisual em 24h"</li>
+            </ul>
+            <div class="pt-2 border-t border-zinc-200">
+              <span class="font-mono text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-1 rounded">✓ Vídeo Aprovado para PMax</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🖼️ SEÇÃO 2: ATIVOS VISUAIS & IMAGENS DE SET -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-blue-600 uppercase font-bold tracking-wider">Ativos de Imagem</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">2. Galeria de Imagens & Banners PMax / Display</h2>
+          </div>
+          <span class="font-mono text-xs bg-blue-50 text-blue-700 font-bold px-3 py-1 rounded-lg border border-blue-200">3 Formatos Ativos</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
+          <!-- Image 1 -->
+          <div class="tactile-sunken p-4 space-y-3 group hover:border-indigo-400 transition-all">
+            <div class="aspect-video bg-zinc-200 rounded-xl overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1579632652768-6cb9dcf85912?auto=format&fit=crop&w=600&q=80" alt="Set Filmagens" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
+            </div>
+            <div>
+              <strong class="text-zinc-950 block">set_filmagens_4k.webp</strong>
+              <span class="text-zinc-500 text-[10px]">Paisagem (1200 x 628 px)</span>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="tactile-sunken p-4 space-y-3 group hover:border-indigo-400 transition-all">
+            <div class="aspect-square bg-zinc-200 rounded-xl overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80" alt="Estúdio Pós-Produção" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
+            </div>
+            <div>
+              <strong class="text-zinc-950 block">estudio_pos_producao.webp</strong>
+              <span class="text-zinc-500 text-[10px]">Quadrado (1200 x 1200 px)</span>
+            </div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="tactile-sunken p-4 space-y-3 group hover:border-indigo-400 transition-all">
+            <div class="aspect-square bg-zinc-900 rounded-xl flex items-center justify-center p-6 relative">
+              <div class="text-center font-display font-black text-xl text-white tracking-widest border-2 border-white p-3">
+                CASA DE VÍDEO
+              </div>
+            </div>
+            <div>
+              <strong class="text-zinc-950 block">logo_casadevideo_dark.png</strong>
+              <span class="text-zinc-500 text-[10px]">Logo Oficial (512 x 512 px)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✍️ SEÇÃO 3: ACERVO COMPLETO DE COPYWRITING DOS ANÚNCIOS (RSAs) -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider">Matriz de Redação</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">3. Títulos, Descrições & Extensões dos Anúncios RSAs</h2>
+          </div>
+          <span class="font-mono text-xs bg-violet-50 text-violet-700 font-bold px-3 py-1 rounded-lg border border-violet-200">15 Títulos / 4 Descrições</span>
+        </div>
+
+        <div class="space-y-6 font-mono text-xs">
+          
+          <!-- Campaign B2B Copywriting -->
+          <div class="tactile-sunken p-6 space-y-4 border-l-4 border-l-indigo-600">
+            <div class="flex justify-between items-center">
+              <h3 class="font-display font-bold text-base text-zinc-950 uppercase">
+                Campanha 2: Search | Lead | Produtora-Video-B2B | BR
+              </h3>
+              <span class="text-indigo-600 font-bold bg-indigo-50 px-2 py-1 rounded">Tríade P-A-P: 9.8/10</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+              <!-- Titles Column -->
+              <div class="space-y-2">
+                <span class="font-mono text-[11px] font-bold text-zinc-950 uppercase block">Títulos dos Anúncios (Headlines - 30 Caracteres):</span>
+                <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-1.5 font-mono text-xs text-zinc-800">
+                  <p>• Título 1: <strong class="text-indigo-600">Produtora de Vídeo B2B Brasil</strong></p>
+                  <p>• Título 2: <strong class="text-indigo-600">Filmes Corporativos & Comerciais</strong></p>
+                  <p>• Título 3: <strong class="text-indigo-600">Peça uma Proposta Audiovisual</strong></p>
+                  <p>• Título 4: Vídeos Institucionais 4K</p>
+                  <p>• Título 5: Produtora de Filmes Publicitários</p>
+                  <p>• Título 6: Vídeos para Marcas & Agências</p>
+                  <p>• Título 7: Qualidade Cinematográfica B2B</p>
+                  <p>• Título 8: Roteiro e Produção Completa</p>
+                  <p>• Título 9: Atendimento Nacional B2B</p>
+                  <p>• Título 10: Equipe Técnica Especializada</p>
+                  <p>• Título 11: Vídeos de Alta Performance</p>
+                </div>
+              </div>
+
+              <!-- Descriptions Column -->
+              <div class="space-y-2">
+                <span class="font-mono text-[11px] font-bold text-zinc-950 uppercase block">Descrições dos Anúncios (90 Caracteres):</span>
+                <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-3 font-sans text-xs text-zinc-700">
+                  <div class="p-2 bg-zinc-50 rounded-lg border border-zinc-200">
+                    <strong>Descrição 1:</strong> "Sua empresa precisa de vídeos que geram resultados reais? Produção audiovisual B2B com roteiro estratégico."
+                  </div>
+                  <div class="p-2 bg-zinc-50 rounded-lg border border-zinc-200">
+                    <strong>Descrição 2:</strong> "Transforme sua comunicação corporativa com filmes publicitários e institucionais de alto impacto."
+                  </div>
+                  <div class="p-2 bg-zinc-50 rounded-lg border border-zinc-200">
+                    <strong>Descrição 3:</strong> "Atendemos Diretores de Marketing e Agências de Publicidade no Brasil. Receba seu orçamento em 24h!"
+                  </div>
+                  <div class="p-2 bg-zinc-50 rounded-lg border border-zinc-200">
+                    <strong>Descrição 4:</strong> "Produções em 4K e Cinema com equipe completa de direção, captação e pós-produção. Fale conosco!"
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sitelinks & Callouts -->
+            <div class="bg-white p-4 rounded-xl border border-zinc-200 font-mono text-xs space-y-2">
+              <span class="font-bold text-zinc-950 uppercase block">Extensões de Sitelinks e Destaque:</span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-zinc-700">
+                <div>• <strong>Portfólio B2B</strong> (Casos de grande porte)</div>
+                <div>• <strong>Vídeos Institucionais</strong> (Comunicação 4K)</div>
+                <div>• <strong>Comerciais de TV</strong> (Produção Cinema)</div>
+                <div>• <strong>Falar com Diretor</strong> (Atendimento em 24h)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 💬 SEÇÃO 4: PROTOCOLO DE CAPTURA & QUALIFICAÇÃO NO SITE OFICIAL (CASADEVIDEO.COM.BR) -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-indigo-600 uppercase font-bold tracking-wider">Conversão no Site</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">4. Captura & Qualificação no Site Oficial (casadevideo.com.br)</h2>
+          </div>
+          <span class="font-mono text-xs bg-indigo-50 text-indigo-700 font-bold px-3 py-1 rounded-lg border border-indigo-200">Formulário de Orçamento</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+          <div class="tactile-sunken p-4 space-y-2">
+            <span class="text-indigo-600 font-bold">1. Formulário em casadevideo.com.br</span>
+            <p class="font-sans text-zinc-600 text-xs">Tráfego direcionado aos formulários de orçamento do site oficial para capturar nome, e-mail e empresa.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-2">
+            <span class="text-blue-600 font-bold">2. Envio de Mídias via Google Drive</span>
+            <p class="font-sans text-zinc-600 text-xs">Ativos de imagem (16:9, 1:1) e vídeos 4K recebidos via link de pasta no Google Drive para alimentação da PMax.</p>
+          </div>
+          <div class="tactile-sunken p-4 space-y-2">
+            <span class="text-emerald-600 font-bold">3. Atendimento & Proposta em 24h</span>
+            <p class="font-sans text-zinc-600 text-xs">Leads qualificados com a tag GCLID entram no CRM corporativo para elaboração de proposta técnica em 24h.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⚙️ SEÇÃO 5: MAPEAMENTO DE TAGS & SCRIPTS (GTM & GCLID) -->
+      <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center">
+          <div>
+            <span class="font-mono text-[10px] text-emerald-600 uppercase font-bold tracking-wider">Infraestrutura Técnica</span>
+            <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">5. Configuração de Tags GTM & Script de Captura GCLID</h2>
+          </div>
+          <span class="font-mono text-xs bg-emerald-50 text-emerald-700 font-bold px-3 py-1 rounded-lg border border-emerald-200">Container GTM-K7QVV6C8</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 font-mono text-xs">
+          <!-- Tag GTM Summary -->
+          <div class="tactile-sunken p-5 space-y-3">
+            <h4 class="font-display font-bold text-sm text-zinc-950">Tags e Conversões no GTM:</h4>
+            <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-2 text-[11px]">
+              <p>• <strong>Tag Global:</strong> Google Ads ID <code class="text-indigo-600 font-bold">AW-18470288256</code> (All Pages)</p>
+              <p>• <strong>Vinculador de Conversões:</strong> Ativo em todas as páginas para cookies first-party.</p>
+              <p>• <strong>Conversão Orçamento:</strong> Rótulo <code class="text-indigo-600 font-bold">cK98CIL_xPMZEL6q</code> (Evento: <code class="text-emerald-700">form_submission_lead</code>)</p>
+              <p>• <strong>Conversão WhatsApp:</strong> Rótulo <code class="text-indigo-600 font-bold">wP98CIL_xPMZEL6q</code> (Clique restrito a api.whatsapp.com)</p>
+            </div>
+          </div>
+
+          <!-- Script GCLID Snippet -->
+          <div class="tactile-sunken p-5 space-y-3">
+            <h4 class="font-display font-bold text-sm text-zinc-950">Script de Captura GCLID (Armazenado em Cookie 30 Dias):</h4>
+            <div class="bg-zinc-900 text-emerald-400 p-4 rounded-xl font-mono text-[10px] overflow-x-auto">
+              <code>
+                // Script de Captura First-Party GCLID<br/>
+                const urlParams = new URLSearchParams(window.location.search);<br/>
+                const gclid = urlParams.get('gclid');<br/>
+                if (gclid) {<br/>
+                  document.cookie = `gclid=${gclid}; max-age=${30*24*60*60}; path=/`;<br/>
+                }<br/>
+                // Injeção automática no campo oculto do formulário<br/>
+                document.querySelectorAll('input[name="gclid_field"]').forEach(el => el.value = gclid);
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ABA 3: 📋 FORMULÁRIO DE ANAMNESE E BRIEFING -->
+    <!-- ========================================== -->
+    <div id="tab-conteudo-anamnese" class="tab-module space-y-8 hidden">
+      
+      <div class="tactile-raised p-8 bg-white border border-zinc-200 space-y-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-200 pb-4">
+          <div>
+            <span class="font-mono text-[10px] text-amber-700 font-bold uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-md mb-1 border border-amber-200">
+              📋 Anamnese Comercial & Alinhamento Estratégico
+            </span>
+            <h2 class="font-display font-black text-2xl text-zinc-950 uppercase text-tactile-3d-dark">
+              Formulário de Anamnese & Matriz de Anúncios
+            </h2>
+            <p class="font-sans text-xs text-zinc-500 mt-1">
+              Esta aba é dedicada exclusivamente ao seu briefing! Altere qualquer informação abaixo e clique em <strong>Salvar & Baixar Anamnese (.md)</strong> para exportar seu arquivo local.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="baixarAnamneseMD()" class="font-mono text-xs bg-amber-600 hover:bg-amber-700 text-white font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer">
+              <span>💾 Salvar & Baixar Anamnese (.md)</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="formAnamnese" onsubmit="event.preventDefault(); baixarAnamneseMD();" class="space-y-8 font-sans text-xs text-zinc-800">
+          
+          <!-- BLOCO 1: FICHA DA EMPRESA & POSICIONAMENTO -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-amber-500">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+              <span>🏢 1. Ficha da Empresa & Diferenciais Competitivos</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Razão Social / Nome da Marca:</label>
+                <input type="text" id="an_nomeEmpresa" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-amber-500 outline-none" value="Casa de Vídeo Produções Ltda" />
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Site Oficial (Destino do Tráfego):</label>
+                <input type="text" id="an_siteUrl" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-amber-500 outline-none" value="https://casadevideo.com.br" />
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Nicho & Segmento Principal:</label>
+                <input type="text" id="an_nicho" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-amber-500 outline-none" value="Produtora Audiovisual B2B (Filmes Corporativos & Publicitários)" />
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Região de Atuação Comercial:</label>
+                <input type="text" id="an_regiao" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-amber-500 outline-none" value="Brasil (Foco nas Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)" />
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Diferenciais Competitivos Únicos (O que destaca a empresa dos concorrentes?):</label>
+                <textarea id="an_diferenciais" rows="2" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-amber-500 outline-none">Acabamento cinematográfico em 4K, equipe técnica própria, estúdio de pós-produção, roteiro com visão estratégica de negócios e prazos rigorosamente garantidos em contrato.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 2: O TRIÂNGULO DE OURO (OFERTA, TRÁFEGO, CONVERSÃO NO SITE) -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-indigo-600">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+              <span>🔺 2. O Triângulo de Ouro das Vendas (Metodologia Sobral)</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="font-mono text-[11px] font-bold text-indigo-700 block mb-1">Pilar 1: Oferta & Serviços a Divulgar:</label>
+                <textarea id="an_ofertaServicos" rows="3" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-indigo-500 outline-none">Vídeos Corporativos B2B, Filmes Publicitários para TV/Digital, Vídeos Institucionais 4K e Vídeos de Treinamento Executivo.</textarea>
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-indigo-700 block mb-1">Pilar 2: Verba Mensal & Metas de CPL:</label>
+                <textarea id="an_verbaMetas" rows="3" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-indigo-500 outline-none">Verba Mensal: R$ 3.500,00/mês. Meta de CPL Alvo: R$ 180,00 (Faixa aceitável R$ 150 a R$ 250 por lead B2B qualificado).</textarea>
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-indigo-700 block mb-1">Pilar 3: Conversão no Site Oficial (casadevideo.com.br):</label>
+                <textarea id="an_conversaoSite" rows="3" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-indigo-500 outline-none">Direcionamento total de tráfego para o formulário de orçamento no site casadevideo.com.br. Captura de nome, e-mail corporativo, empresa e necessidade do projeto.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 3: ICP & OBJEÇÕES -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-blue-600">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+              <span>🎯 3. Perfil de Comprador Ideal (ICP) & Objeções</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Cargos & Tomadores de Decisão Alvo:</label>
+                <textarea id="an_icpCargos" rows="3" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-blue-500 outline-none">Diretores de Marketing, Gerentes de Comunicação Corporativa, CEOs de médias/grandes empresas e Diretores de Criação em Agências de Publicidade.</textarea>
+              </div>
+
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Principais Dores & Objeções do Cliente:</label>
+                <textarea id="an_objecoes" rows="3" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-blue-500 outline-none">Receio de estouro de orçamento ou atrasos na entrega; medo de contratar produtoras que só focam na estética e não entendem de negócios.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 4: AS 4 CAMPANHAS DE OURO DO GOOGLE ADS -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-violet-600">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+              <span>🏆 4. Direcionamento das 4 Campanhas de Ouro (Google Ads)</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">1. Dominação de Marca (Branded Top 1):</label>
+                <input type="text" id="an_camp1Marca" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="[casa de video], &quot;casa de video&quot;, [casa de video producoes]" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">2. Vendas B2B Intenção Direta (Search):</label>
+                <input type="text" id="an_camp2B2B" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="produtora de video b2b, &quot;produtora de video corporativo&quot;, &quot;produtora de filmes publicitarios&quot;" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">3. Concorrentes Direct (Search Comparativo):</label>
+                <input type="text" id="an_camp3Concorrentes" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="&quot;o2 filmes produtora&quot;, &quot;sentimental filme&quot;, &quot;conspiracao filmes&quot;" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">4. Performance Max Showreel 4K (Multicanal):</label>
+                <input type="text" id="an_camp4PMax" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="YouTube 4K, Display Banner, Gmail, Search e Maps com vídeo showreel e imagens de set" />
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 5: MATRIZ DE ANÚNCIOS (TÍTULOS, DESCRIÇÕES E LINK DO GOOGLE DRIVE COM EXEMPLOS) -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-emerald-600">
+            <div class="flex justify-between items-center border-b border-zinc-200 pb-2">
+              <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+                <span>✍️ 5. Matriz de Anúncios Responsivos & Mídias no Google Drive</span>
+              </h3>
+              <span class="font-mono text-[10px] bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded font-bold">Totalmente Editável</span>
+            </div>
+
+            <p class="font-sans text-xs text-zinc-600">
+              O Google Ads combina automaticamente os títulos e descrições para encontrar a combinação de maior CTR. Você pode personalizar todas as 15 variações de títulos e 4 descrições abaixo:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Coluna de Títulos (Headlines) -->
+              <div class="space-y-3">
+                <span class="font-mono text-[11px] font-bold text-zinc-950 uppercase block">Títulos dos Anúncios (Headlines - 15 Variações):</span>
+                <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-2 font-mono text-xs">
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 1 (Palavra-Chave Principal):</span>
+                    <input type="text" id="an_titulo1" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Produtora de Vídeo B2B Brasil" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 2 (Oferta de Serviço):</span>
+                    <input type="text" id="an_titulo2" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Filmes Corporativos & Comerciais" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 3 (Chamada para Ação):</span>
+                    <input type="text" id="an_titulo3" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Peça uma Proposta Audiovisual" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 4 (Qualidade Técnica):</span>
+                    <input type="text" id="an_titulo4" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Vídeos Institucionais 4K" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 5 (Publicidade):</span>
+                    <input type="text" id="an_titulo5" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Produtora de Filmes Publicitários" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Título 6 (Público Alvo):</span>
+                    <input type="text" id="an_titulo6" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Vídeos para Marcas & Agências" />
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px]">Títulos Adicionais 7-15 (Separados por vírgula):</span>
+                    <textarea id="an_titulosAdicionais" rows="3" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs">Qualidade Cinematográfica B2B, Roteiro e Produção Completa, Atendimento Nacional B2B, Equipe Técnica Especializada, Vídeos de Alta Performance, Proposta Comercial em 24h, Estúdio e Câmeras 4K, Casa de Vídeo Produções, Showreel & Portfólio 2026</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Coluna de Descrições & Link do Google Drive com Instruções Didáticas -->
+              <div class="space-y-4">
+                <!-- Descrições -->
+                <div class="space-y-2">
+                  <span class="font-mono text-[11px] font-bold text-zinc-950 uppercase block">Descrições dos Anúncios (4 Variações de 90 Caracteres):</span>
+                  <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-2 font-sans text-xs">
+                    <div>
+                      <span class="font-mono text-zinc-500 text-[10px]">Descrição 1:</span>
+                      <input type="text" id="an_desc1" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Sua empresa precisa de vídeos que geram resultados reais? Produção audiovisual B2B com roteiro estratégico." />
+                    </div>
+                    <div>
+                      <span class="font-mono text-zinc-500 text-[10px]">Descrição 2:</span>
+                      <input type="text" id="an_desc2" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Transforme sua comunicação corporativa com filmes publicitários e institucionais de alto impacto." />
+                    </div>
+                    <div>
+                      <span class="font-mono text-zinc-500 text-[10px]">Descrição 3:</span>
+                      <input type="text" id="an_desc3" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Atendemos Diretores de Marketing e Agências de Publicidade no Brasil. Receba seu orçamento em 24h!" />
+                    </div>
+                    <div>
+                      <span class="font-mono text-zinc-500 text-[10px]">Descrição 4:</span>
+                      <input type="text" id="an_desc4" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Produções em 4K e Cinema com equipe completa de direção, captação e pós-produção. Fale conosco!" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Google Drive URL & Instructions for Banners/Videos -->
+                <div class="space-y-2">
+                  <span class="font-mono text-[11px] font-bold text-zinc-950 uppercase block">📁 Imagens, Banners & Vídeos (Google Drive / Nuvem):</span>
+                  
+                  <div class="bg-indigo-50/70 p-4 rounded-xl border border-indigo-200 space-y-2 text-xs font-sans">
+                    <strong class="text-indigo-900 font-mono text-[11px] uppercase block">📌 Orientações de Arquivos & Exemplos de Formatação:</strong>
+                    <ul class="space-y-1 text-zinc-700 text-[11px]">
+                      <li>• <strong>🖼️ Banners de Display (Imagem):</strong> Envie imagens em Paisagem (1200x628px), Quadrado (1080x1080px) e Logo em fundo transparente PNG. Ex: Fotos de câmeras 4K, bastidores de gravação, estúdio e equipe.</li>
+                      <li>• <strong>🎥 Vídeos de Showreel (Performance Max & YouTube):</strong> Envie vídeos institucionais ou corporativos da Casa de Vídeo em resolução 4K/Full HD (MP4 ou links do YouTube).</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white p-4 rounded-xl border border-zinc-200 space-y-2 font-mono text-xs">
+                    <div>
+                      <span class="text-zinc-500 text-[10px] font-bold">Link da Pasta do Google Drive (Cole o link público com os arquivos):</span>
+                      <input type="text" id="an_driveUrl" class="w-full p-2.5 rounded border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-indigo-700" value="https://drive.google.com/drive/folders/casadevideo_midias_2026_exemplo" />
+                    </div>
+                    <div>
+                      <span class="text-zinc-500 text-[10px]">Extensões de Sitelinks de Navegação:</span>
+                      <input type="text" id="an_sitelinks" class="w-full p-2 rounded border border-zinc-300 font-sans text-xs" value="Portfólio B2B, Vídeos Institucionais, Comerciais de TV, Falar com Diretor em 24h" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 6: TERMOS A NEGATIVAR & EXCLUSÕES -->
+          <div class="tactile-sunken p-6 rounded-2xl space-y-4 border-l-4 border-l-red-500">
+            <h3 class="font-display font-bold text-base text-zinc-950 uppercase flex items-center gap-2">
+              <span>⛔ 6. Lista de Termos Negativos & Exclusões</span>
+            </h3>
+            <div>
+              <label class="font-mono text-[11px] font-bold text-zinc-700 block mb-1">Palavras e Buscas a Bloquear (Separadas por vírgula):</label>
+              <textarea id="an_termosNegativos" rows="2" class="w-full p-2.5 rounded-xl border border-zinc-300 font-sans text-xs focus:ring-2 focus:ring-red-500 outline-none">gratis, gratuito, vagas, emprego, estagio, curriculo, curso, faculdade, reclame aqui, suporte, sac, como fazer, diy, pirata, cinema ingresso, torrent, netflix, comprar camera usada</textarea>
+            </div>
+          </div>
+
+          <!-- SUBMIT / DOWNLOAD BUTTONS -->
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-zinc-200">
+            <div class="font-mono text-xs text-zinc-500">
+              💡 Ao clicar em Salvar, o arquivo <strong>anamnese_trafego_pago_casa_de_video.md</strong> será gerado localmente.
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="copiarResumoAnamnese()" class="font-mono text-xs bg-zinc-200 hover:bg-zinc-300 text-zinc-800 font-bold px-4 py-3 rounded-xl transition-all cursor-pointer">
+                📋 Copiar Resumo Texto
+              </button>
+              <button type="submit" class="font-mono text-xs bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+                <span>💾 Salvar & Baixar Anamnese (.md)</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- 🖥️ MODAL / SUB-PAINEL DE CONFIGURAÇÕES DE CAMPANHAS (ESTILO GOOGLE ADS OFICIAL) -->
+  <div id="modalGoogleAds" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4 md:p-8">
+    <div class="bg-white rounded-3xl shadow-2xl border border-zinc-200 w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
+      
+      <!-- Modal Header Style Google Ads -->
+      <div class="bg-zinc-900 text-white px-6 py-4 flex justify-between items-center border-b border-zinc-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs">
+            G
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-base uppercase tracking-wider text-white">
+              Painel de Configurações das Campanhas — Visão Google Ads
+            </h3>
+            <p class="font-mono text-[11px] text-zinc-400">Conta: Casa de Vídeo Produções (ID: AW-18470288256)</p>
+          </div>
+        </div>
+        <button onclick="fecharModalGoogleAds()" class="text-zinc-400 hover:text-white text-xl font-bold px-3 py-1 cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body: Sidebar + Main Settings View -->
+      <div class="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-4 bg-zinc-50">
+        
+        <!-- Sidebar Navigation (Campanhas) -->
+        <div class="bg-white border-r border-zinc-200 p-4 space-y-2 overflow-y-auto">
+          <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-wider block px-2 mb-2">
+            Campanhas Configuradas
+          </span>
+
+          <button onclick="selecionarCampanhaModal('camp-1')" id="btn-camp-1" class="w-full text-left p-3 rounded-xl font-mono text-xs transition-all bg-indigo-50 border border-indigo-200 text-indigo-900 font-bold cursor-pointer">
+            1. Search | Marca | BR
+            <span class="block text-[10px] text-zinc-500 font-normal">R$ 20,00/dia • Dominação Top 1</span>
+          </button>
+
+          <button onclick="selecionarCampanhaModal('camp-2')" id="btn-camp-2" class="w-full text-left p-3 rounded-xl font-mono text-xs transition-all hover:bg-zinc-100 border border-transparent text-zinc-700 cursor-pointer">
+            2. Search | Produtora-Video-B2B
+            <span class="block text-[10px] text-zinc-500 font-normal">R$ 50,00/dia • Vendas Direct</span>
+          </button>
+
+          <button onclick="selecionarCampanhaModal('camp-3')" id="btn-camp-3" class="w-full text-left p-3 rounded-xl font-mono text-xs transition-all hover:bg-zinc-100 border border-transparent text-zinc-700 cursor-pointer">
+            3. Search | Concorrentes | BR
+            <span class="block text-[10px] text-zinc-500 font-normal">R$ 20,00/dia • Comparativo</span>
+          </button>
+
+          <button onclick="selecionarCampanhaModal('camp-4')" id="btn-camp-4" class="w-full text-left p-3 rounded-xl font-mono text-xs transition-all hover:bg-zinc-100 border border-transparent text-zinc-700 cursor-pointer">
+            4. PMax | Performance-Showreel
+            <span class="block text-[10px] text-zinc-500 font-normal">R$ 26,00/dia • Multicanal</span>
+          </button>
+        </div>
+
+        <!-- Right Content Details -->
+        <div class="md:col-span-3 p-6 overflow-y-auto space-y-6">
+          <div id="conteudoCampanhaModal" class="space-y-6 font-sans text-xs">
+            <!-- Dynamic Content populated via JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="bg-white border-t border-zinc-200 px-6 py-3 flex justify-between items-center font-mono text-xs">
+        <span class="text-zinc-500">Configurações sincronizadas em tempo real com as informações da Anamnese</span>
+        <button onclick="fecharModalGoogleAds()" class="bg-zinc-900 hover:bg-black text-white font-bold px-5 py-2 rounded-xl cursor-pointer">
+          Fechar Visualizador
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Scripts -->
+
+  <script src="../js/Google_Ads-ui.js"></script>
+  <script src="../js/portal.js"></script>
+</body>
+</html>
