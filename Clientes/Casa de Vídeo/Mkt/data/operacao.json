@@ -1,0 +1,53 @@
+{
+  "updatedAt": "2026-10-02",
+  "tasks": [
+    {
+      "area": "all",
+      "title": "Configurar credenciais e validar primeira coleta de cada fonte",
+      "status": "Dependência de acesso à plataforma",
+      "owner": "Agência"
+    },
+    {
+      "area": "seo",
+      "title": "Confirmar propriedade Search Console e acesso da conta de serviço",
+      "status": "Pendente",
+      "owner": "Administrador do Search Console"
+    },
+    {
+      "area": "seo",
+      "title": "Validar schema mínimo, conteúdo e dados institucionais no site",
+      "status": "Pendente de evidências",
+      "owner": "Casa de Vídeo / agência"
+    },
+    {
+      "area": "seo",
+      "title": "Habilitar Chrome UX Report API e verificar disponibilidade de amostra",
+      "status": "Pendente",
+      "owner": "Administrador Google Cloud"
+    },
+    {
+      "area": "ads",
+      "title": "Configurar OAuth, developer token e Customer ID Google Ads",
+      "status": "Pendente",
+      "owner": "Administrador Google Ads"
+    },
+    {
+      "area": "ads",
+      "title": "Revisar anamnese, orçamento e eventos de conversão antes da ativação",
+      "status": "Planejamento",
+      "owner": "Casa de Vídeo / agência"
+    },
+    {
+      "area": "geo",
+      "title": "Executar rodada de prompts e registrar respostas, modelo e evidências",
+      "status": "Pendente de medição",
+      "owner": "Agência"
+    },
+    {
+      "area": "all",
+      "title": "Publicar serviço de coleta com volume persistente e validar operação",
+      "status": "Pendente de implantação em produção",
+      "owner": "Agência"
+    }
+  ]
+}

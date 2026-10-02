@@ -8,3 +8,6 @@ coverage/
 .antigravity/
 geo-brocket-ae1f778b51b8.json
 *google_service_account_key.json
+
+.private/
+.runtime/

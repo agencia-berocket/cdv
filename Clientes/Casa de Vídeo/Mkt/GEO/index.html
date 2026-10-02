@@ -173,28 +173,28 @@
         <!-- Card 1: GEO SCORE INICIAL -->
         <div class="admin-card p-6 text-center space-y-2">
           <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GEO SCORE INICIAL</span>
-          <strong class="font-display font-black text-4xl text-slate-800 block">55%</strong>
-          <span class="font-mono text-[10px] text-slate-400 block font-medium">23/09/2026, 18:30:59</span>
+          <strong id="geoInitial" class="font-display font-black text-4xl text-slate-800 block">—</strong>
+          <span class="font-mono text-[10px] text-slate-400 block font-medium">Sem rodada verificada</span>
         </div>
 
         <!-- Card 2: GEO SCORE ATUAL -->
         <div class="admin-card p-6 text-center space-y-2 border-emerald-200">
           <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GEO SCORE ATUAL</span>
-          <strong class="font-display font-black text-4xl text-emerald-600 block">84%</strong>
-          <span class="font-mono text-[10px] text-emerald-600 block font-bold">24/09/2026 (Pós-Implantação)</span>
+          <strong id="geoCurrent" class="font-display font-black text-4xl text-emerald-600 block">—</strong>
+          <span class="font-mono text-[10px] text-emerald-600 block font-bold">Sem rodada verificada</span>
         </div>
 
         <!-- Card 3: VARIAÇÃO DE PONTOS -->
         <div class="admin-card p-6 text-center space-y-2">
           <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">VARIAÇÃO DE PONTOS</span>
-          <strong class="font-display font-black text-4xl text-emerald-600 block">+29 pts</strong>
+          <strong id="geoDelta" class="font-display font-black text-4xl text-emerald-600 block">—</strong>
           <span class="font-mono text-[10px] text-slate-400 block font-medium">diferença total acumulada</span>
         </div>
 
         <!-- Card 4: GANHO DE EVOLUÇÃO -->
         <div class="admin-card p-6 text-center space-y-2">
           <span class="font-mono text-[11px] text-slate-400 font-bold uppercase tracking-wider block">GANHO DE EVOLUÇÃO</span>
-          <strong class="font-display font-black text-4xl text-emerald-600 block">+52.7%</strong>
+          <strong id="geoGrowth" class="font-display font-black text-4xl text-emerald-600 block">—</strong>
           <span class="font-mono text-[10px] text-emerald-600 block font-bold">melhoria acumulada</span>
         </div>
       </section>
@@ -231,39 +231,39 @@
             <tbody class="divide-y divide-slate-100 font-sans">
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">robots.txt para IAs</td>
-                <td class="py-3.5 px-4 text-slate-600 font-medium">✓ Liberado</td>
-                <td class="py-3.5 px-4 font-bold text-slate-900">✓ Liberado (GPTBot, Perplexity, Claude)</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">Schema Organization</td>
-                <td class="py-3.5 px-4 text-slate-400">✕ Ausente</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-700">✓ Ativo (@graph 5 Nós • Fundação 1990)</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Corrigido</td>
+                <td class="py-3.5 px-4 text-slate-400">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">Arquivo /llms.txt</td>
-                <td class="py-3.5 px-4 text-slate-400">✕ Ausente</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-700">✓ Publicado (Markdown Canônico 1990)</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Corrigido</td>
+                <td class="py-3.5 px-4 text-slate-400">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">Resposta AEO (&lt;60 palavras)</td>
-                <td class="py-3.5 px-4 text-slate-600 font-medium">✓ Sim (Parcial)</td>
-                <td class="py-3.5 px-4 font-bold text-slate-900">✓ Sim (Blocos H2 Answer-First)</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">Citation Share nas IAs</td>
-                <td class="py-3.5 px-4 text-slate-600 font-medium">32%</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-700">75% (15 de 20 Prompts)</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Medido (+43%)</td>
+                <td class="py-3.5 px-4 text-slate-600 font-medium">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-700">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
                 <td class="py-3.5 px-4 font-semibold text-slate-900">Propriedades sameAs (Redes)</td>
-                <td class="py-3.5 px-4 text-slate-400">✕ Disperso</td>
-                <td class="py-3.5 px-4 font-bold text-slate-900">✓ LinkedIn, Vimeo, Insta & YouTube</td>
-                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">✓ Otimizado</td>
+                <td class="py-3.5 px-4 text-slate-400">A verificar</td>
+                <td class="py-3.5 px-4 font-bold text-slate-900">A verificar</td>
+                <td class="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">A verificar</td>
               </tr>
             </tbody>
           </table>
@@ -275,7 +275,7 @@
         <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
           <span class="text-xl">📅</span>
           <h2 class="font-display font-bold text-lg text-slate-900">
-            Linha do Tempo de Relatórios Salvos no Firestore
+            Linha do Tempo de Relatórios de Auditoria
           </h2>
         </div>
 
@@ -286,8 +286,8 @@
               <span class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider block">RELATÓRIO #1</span>
               <div class="flex items-center gap-3">
                 <span class="font-mono text-xs text-slate-600 font-semibold">🕒 23/09/2026, 18:30:59</span>
-                <span class="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Score: 55%</span>
-                <span class="font-mono text-xs font-bold text-slate-600">Citation Share: 32%</span>
+                <span class="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Score declarado: 55% (histórico)</span>
+                <span class="font-mono text-xs font-bold text-slate-600">Citabilidade declarada: 32% (não verificada)</span>
               </div>
             </div>
 
@@ -299,11 +299,11 @@
           <!-- Relatório #2 -->
           <div class="admin-sunken p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-emerald-50/50 border border-emerald-200">
             <div class="space-y-1">
-              <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">RELATÓRIO #2 (ATUAL)</span>
+              <span class="font-mono text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">RELATÓRIO #2 (REGISTRO ANTERIOR)</span>
               <div class="flex items-center gap-3">
                 <span class="font-mono text-xs text-slate-700 font-semibold">🕒 24/09/2026, 19:30:00</span>
-                <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Score: 84%</span>
-                <span class="font-mono text-xs font-bold text-emerald-700">Citation Share: 75% (+43%)</span>
+                <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">Score declarado: 84% (histórico)</span>
+                <span class="font-mono text-xs font-bold text-emerald-700">Citabilidade declarada: 75% (não verificada)</span>
               </div>
             </div>
 
@@ -333,8 +333,8 @@
           <!-- Gráfico 1: Evolução do Score -->
           <div class="lg:col-span-2 admin-sunken p-5 bg-white space-y-3">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-              <h4 class="font-display font-bold text-xs text-slate-950 uppercase">📈 Evolução Histórica do GEO Score (55% → 84%)</h4>
-              <span class="font-mono text-[10px] text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-bold">+29 pts acumulados</span>
+              <h4 class="font-display font-bold text-xs text-slate-950 uppercase">📈 Evolução Histórica do GEO Score</h4>
+              <span class="font-mono text-[10px] text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-bold">Aguardando rodada verificada</span>
             </div>
             <div class="h-64 relative">
               <canvas id="chartGeoEvolutionMain"></canvas>
@@ -352,10 +352,10 @@
               </div>
             </div>
             <div class="font-mono text-[10px] space-y-1 border-t border-slate-100 pt-2 text-slate-600">
-              <div class="flex justify-between"><span>• ChatGPT (gpt-4o-mini):</span> <strong class="text-emerald-700">80% Recomendado</strong></div>
-              <div class="flex justify-between"><span>• Perplexity (sonar):</span> <strong class="text-emerald-700">80% Recomendado</strong></div>
-              <div class="flex justify-between"><span>• Gemini (2.5 flash):</span> <strong class="text-emerald-700">70% Recomendado</strong></div>
-              <div class="flex justify-between"><span>• Claude (haiku 4.5):</span> <strong class="text-emerald-700">70% Recomendado</strong></div>
+              <div class="flex justify-between"><span>• ChatGPT (gpt-4o-mini):</span> <strong class="text-emerald-700">—</strong></div>
+              <div class="flex justify-between"><span>• Perplexity (sonar):</span> <strong class="text-emerald-700">—</strong></div>
+              <div class="flex justify-between"><span>• Gemini (2.5 flash):</span> <strong class="text-emerald-700">—</strong></div>
+              <div class="flex justify-between"><span>• Claude (haiku 4.5):</span> <strong class="text-emerald-700">—</strong></div>
             </div>
           </div>
         </div>
@@ -366,32 +366,32 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-xs">
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-emerald-500">
-              <span class="font-mono font-bold text-slate-900 block">1. Technical Gatekeeper (18 pts) • Nota: 16/18</span>
+              <span class="font-mono font-bold text-slate-900 block">1. Technical Gatekeeper (18 pts) • Nota: a verificar</span>
               <p class="text-slate-600"><strong>O que faz:</strong> Libera os robôs de busca por IA no <code>robots.txt</code> e garante carregamento rápido em menos de 500ms.</p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-indigo-500">
-              <span class="font-mono font-bold text-slate-900 block">2. Metadata Entity & Graph (15 pts) • Nota: 14/15</span>
-              <p class="text-slate-600"><strong>O que faz:</strong> Publica o mapa corporativo <code>llms.txt</code> e conecta a fundação de 1990 no Grafo Schema.org.</p>
+              <span class="font-mono font-bold text-slate-900 block">2. Metadata Entity & Graph (15 pts) • Nota: a verificar</span>
+              <p class="text-slate-600"><strong>O que faz:</strong> Publica o mapa corporativo <code>llms.txt</code> e conecta os dados institucionais validados no Grafo Schema.org.</p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-violet-500">
-              <span class="font-mono font-bold text-slate-900 block">3. Content Absorption (18 pts) • Nota: 15/18</span>
+              <span class="font-mono font-bold text-slate-900 block">3. Content Absorption (18 pts) • Nota: a verificar</span>
               <p class="text-slate-600"><strong>O que faz:</strong> Aplica regras Princeton AEO de respostas de 60 palavras nos H2s e citações ESG.</p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-amber-500">
-              <span class="font-mono font-bold text-slate-900 block">4. SEO Optimizer (14 pts) • Nota: 12/14</span>
+              <span class="font-mono font-bold text-slate-900 block">4. SEO Optimizer (14 pts) • Nota: a verificar</span>
               <p class="text-slate-600"><strong>O que faz:</strong> Otimiza títulos, meta descrições e hierarquia H1-H3 para busca geográfica em São Paulo.</p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-blue-500">
-              <span class="font-mono font-bold text-slate-900 block">5. Semantic Explorer (13 pts) • Nota: 10/13</span>
+              <span class="font-mono font-bold text-slate-900 block">5. Semantic Explorer (13 pts) • Nota: a verificar</span>
               <p class="text-slate-600"><strong>O que faz:</strong> Mapeia tópicos ausentes para dominar o nicho de vídeos corporativos B2B.</p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 border-l-4 border-l-rose-500">
-              <span class="font-mono font-bold text-slate-900 block">6. Off-Page Entity Monitor (10 pts) • Nota: 8/10</span>
+              <span class="font-mono font-bold text-slate-900 block">6. Off-Page Entity Monitor (10 pts) • Nota: a verificar</span>
               <p class="text-slate-600"><strong>O que faz:</strong> Vincula perfis oficiais do LinkedIn, Vimeo, Instagram e YouTube para citabilidade vetorial.</p>
             </div>
           </div>
@@ -428,7 +428,7 @@
 
         <div class="font-mono text-xs text-slate-500 flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
           <span>Mostrando <strong id="countPromptsVisiveis" class="text-slate-900">56</strong> de 56 testes executados</span>
-          <span class="text-[11px] text-emerald-700 font-bold">Citation Share Medido: 32% (Baseline 23/09)</span>
+          <span class="text-[11px] text-emerald-700 font-bold">Registro de 23/09 · taxa ainda não verificada</span>
         </div>
 
         <!-- CARDS DOS 56 TESTES DE PROMPTS E RESPOSTAS -->
@@ -2834,102 +2834,8 @@ Se quiser, posso também explicar **como funciona tecnicamente** a geração de 
   </footer>
 
   <!-- Scripts para Troca de Abas, Gráficos & Filtro dos 56 Prompts -->
-  <script>
-    function showTab(tabId) {
-      // Esconde todas as panes
-      const panes = document.querySelectorAll('.tab-pane');
-      panes.forEach(pane => {
-        pane.classList.remove('active-pane');
-      });
 
-      // Exibe a pane selecionada
-      const activePane = document.getElementById('pane-' + tabId);
-      if (activePane) {
-        activePane.classList.add('active-pane');
-      }
-
-      // Desativa todos os botões de abas
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      tabBtns.forEach(btn => {
-        btn.classList.remove('tab-active');
-      });
-
-      // Ativa o botão selecionado
-      const activeBtn = document.getElementById('btn-tab-' + tabId);
-      if (activeBtn) {
-        activeBtn.classList.add('tab-active');
-      }
-    }
-
-    // Gráfico 1: Evolução Temporal
-    const ctxEvolutionMain = document.getElementById('chartGeoEvolutionMain').getContext('2d');
-    new Chart(ctxEvolutionMain, {
-      type: 'line',
-      data: {
-        labels: ['Audit #1 (23/09 18h)', 'Audit #2 (24/09 19h)', 'Meta Rodada #3 (08/10)'],
-        datasets: [{
-          label: 'GEO Score (%)',
-          data: [55, 84, 92],
-          borderColor: '#059669',
-          backgroundColor: 'rgba(5, 150, 105, 0.08)',
-          fill: true,
-          tension: 0.3,
-          borderWidth: 3,
-          pointRadius: 5,
-          pointBackgroundColor: '#059669'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: { min: 0, max: 100, ticks: { font: { family: 'JetBrains Mono', size: 10 } } },
-          x: { ticks: { font: { family: 'JetBrains Mono', size: 10 } } }
-        },
-        plugins: { legend: { display: false } }
-      }
-    });
-
-    // Gráfico 2: Donut Citabilidade por IA
-    const ctxLlmDonutMain = document.getElementById('chartLlmDonutMain').getContext('2d');
-    new Chart(ctxLlmDonutMain, {
-      type: 'doughnut',
-      data: {
-        labels: ['ChatGPT', 'Perplexity', 'Google Gemini', 'Claude'],
-        datasets: [{
-          data: [80, 80, 70, 70],
-          backgroundColor: ['#059669', '#2563EB', '#7C3AED', '#D97706'],
-          borderWidth: 2,
-          borderColor: '#ffffff'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        cutout: '65%'
-      }
-    });
-
-    // Filtro dos 56 Prompts
-    function filtrar56Prompts() {
-      const input = document.getElementById('inputBusca56Prompts');
-      const filter = input.value.toLowerCase();
-      const items = document.querySelectorAll('.card-prompt-item');
-      let count = 0;
-
-      items.forEach(item => {
-        const text = item.textContent || item.innerText;
-        if (text.toLowerCase().indexOf(filter) > -1) {
-          item.style.display = "";
-          count++;
-        } else {
-          item.style.display = "none";
-        }
-      });
-
-      document.getElementById('countPromptsVisiveis').innerText = count;
-    }
-  </script>
+  <script src="../js/GEO-ui.js"></script>
+  <script src="../js/portal.js"></script>
 </body>
 </html>

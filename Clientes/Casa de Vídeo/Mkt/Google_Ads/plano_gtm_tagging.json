@@ -1,61 +1,32 @@
 {
-  "cliente": "Casa de Vídeo Produções Audiovisuais",
-  "dataSetup": "2026-09-25",
-  "agenteResponsavel": "Agente Tráfego Pago • b.rocket",
-  "infraestruturaDados": {
+  "cliente": "Casa de Vídeo",
+  "statusDocumento": "PLANEJAMENTO — validar no site e nas plataformas antes de ativar",
+  "identificadoresRegistrados": {
     "gtmContainerId": "GTM-K7QVV6C8",
-    "googleAdsConversionId": "AW-18470288256",
-    "ga4PropertyId": "G-QF8MC5BX95",
-    "modoEspecialista": true,
-    "vinculadorConversoes": {
-      "status": "Ativo",
-      "acionador": "Todas as Páginas (All Pages)",
-      "primeiraParteCookies": true,
-      "crossDomainTracking": ["casadevideo.com.br"]
-    }
+    "ga4MeasurementId": "G-QF8MC5BX95",
+    "ga4PropertyId": "555545561",
+    "googleAdsConversionId": "AW-18470288256"
   },
   "acoesConversao": [
     {
-      "nome": "Lead - Envio de Formulário Orçamento",
-      "categoria": "Enviar formulário de lead",
-      "tipoMeta": "Primária",
-      "contagem": "Uma conversão",
-      "idConversao": "AW-18470288256",
-      "rotuloConversao": "cK98CIL_xPMZEL6q",
-      "valorPadrao": "R$ 200.00",
-      "acionadorGtm": {
-        "tipo": "Envio de Formulário",
-        "condicao": "Page URL contém /#contato OU Form ID eq 'form-orcamento'",
-        "dataLayerEvent": "form_submission_lead"
-      }
-    },
-    {
-      "nome": "Lead - Clique Botão WhatsApp",
-      "categoria": "Contato / WhatsApp",
-      "tipoMeta": "Primária",
-      "contagem": "Uma conversão",
-      "idConversao": "AW-18470288256",
-      "rotuloConversao": "wP98CIL_xPMZEL6q",
-      "valorPadrao": "R$ 150.00",
-      "acionadorGtm": {
-        "tipo": "Cliques em Links Específicos",
-        "condicao": "Click URL contém 'api.whatsapp.com' OU Click Classes contém 'whatsapp-float'",
-        "observacao": "Restrito a links de WhatsApp para evitar contagens duplas ou disparos acidentais"
-      }
-    },
-    {
-      "nome": "Lead Qualificado - CRM (Conversão Offline)",
-      "categoria": "Qualificação de Vendas B2B",
-      "tipoMeta": "Primária (Offline)",
-      "contagem": "Uma conversão",
-      "metodoImportacao": "Data Manager / CRM via GCLID",
-      "campoOcultoFormulario": "gclid_field",
-      "janelaAtribuicao": "90 dias"
+      "nome": "Envio confirmado do formulário de orçamento",
+      "eventoProposto": "form_submission_lead",
+      "condicao": "Disparar somente após resposta de sucesso do backend do formulário. Não disparar por visita à seção contato ou clique no botão.",
+      "googleAdsConversionLabel": null,
+      "valorConversao": null,
+      "status": "A validar na plataforma"
     }
   ],
+  "whatsapp": {
+    "habilitado": false,
+    "motivo": "Escopo atual prioriza formulário no site."
+  },
+  "qualificacaoComercial": {
+    "status": "Não integrada",
+    "observacao": "Lead qualificado e receita exigem evidência no CRM; não são inferidos de toda conversão."
+  },
   "capturaGclid": {
-    "status": "Configurado",
-    "scriptCapture": "Captura parâmetro ?gclid= na URL e armazena em cookie first-party por 30 dias",
-    "integracaoCrm": "Injeta GCLID no envio do formulário de proposta audiovisual para rastreamento de receita no CRM"
+    "status": "A validar",
+    "observacao": "Definir captura e consentimento conforme implementação do site; não presumir campo ou cookie instalado."
   }
 }

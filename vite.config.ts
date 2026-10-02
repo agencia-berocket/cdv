@@ -12,6 +12,7 @@ export default defineConfig(() => {
       },
     },
     server: {
+      proxy: { '/api/cdv': 'http://127.0.0.1:3100' },
       // Configuração para controle do Hot Module Replacement (HMR) e do file watcher
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {},

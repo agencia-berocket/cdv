@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '.env.local', quiet: true });
 const express = require('express');
 const path = require('path');
 const crypto = require('crypto');
@@ -31,8 +32,8 @@ const app = express();
 app.use(express.json({ limit: '25mb' }));
 app.use('/audits', express.static(path.join(__dirname, 'public', 'audits')));
 app.use('/notes', express.static(path.join(__dirname, 'public', 'notes')));
-app.use('/mkt', express.static(path.join(__dirname, 'public', 'mkt')));
-app.use('/mkt', express.static(path.join(__dirname, 'mkt')));
+const { mountPortal } = require('./lib/cdv-data.cjs');
+mountPortal(app, express);
 
 
 function getAuditFolder(entityType, entityId) {

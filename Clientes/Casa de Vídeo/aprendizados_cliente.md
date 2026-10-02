@@ -1,3 +1,5 @@
+> **Revisão de 02/10/2026:** os registros históricos abaixo descrevem declarações de execuções anteriores e não comprovam os resultados atuais. Scores 84/75, citabilidade de 75% e Core Web Vitals estimados foram retirados do portal ativo por falta de evidências no conjunto revisado. Use `Mkt/PLANO_IMPLANTACAO_DADOS_REAIS.md` e as leituras da API para acompanhar o estado atual. GA4 foi validado com consulta real; Search Console ainda respondeu 403; Ads requer credenciais próprias.
+
 # 🏢 Aprendizados do Cliente — Casa de Vídeo
 
 Este documento é a base de conhecimento contínua sobre a **Casa de Vídeo**. Armazena particularidades do modelo de negócio, objeções de vendas observadas, perfil do comprador ideal (ICP) e histórico de entregas.

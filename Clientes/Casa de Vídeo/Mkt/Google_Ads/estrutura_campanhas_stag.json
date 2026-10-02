@@ -1,4 +1,5 @@
 {
+  "statusDocumento": "PLANEJAMENTO — não comprova criação, ativação, mensuração ou publicação; validar todos os identificadores antes de implementar.",
   "cliente": "Casa de Vídeo Produções Audiovisuais",
   "nicho": "Produtora Audiovisual B2B",
   "metodologia": "Nova Gestão de Tráfego (Sobral Framework) & STAG (Single Theme Ad Groups)",
@@ -57,10 +58,26 @@
           },
           "extensoes": {
             "sitelinks": [
-              { "texto": "Showreel 2026", "descricao": "Assista aos nossos melhores filmes 4K", "url": "https://www.casadevideo.com.br/#showreel" },
-              { "texto": "Vídeos Corporativos", "descricao": "Soluções B2B para grandes empresas", "url": "https://www.casadevideo.com.br/#servicos" },
-              { "texto": "Filmes Publicitários", "descricao": "Comerciais para TV e Digital", "url": "https://www.casadevideo.com.br/#publicidade" },
-              { "texto": "Solicitar Orçamento", "descricao": "Atendimento comercial rápido em 24h", "url": "https://www.casadevideo.com.br/#contato" }
+              {
+                "texto": "Showreel 2026",
+                "descricao": "Assista aos nossos melhores filmes 4K",
+                "url": "https://www.casadevideo.com.br/#showreel"
+              },
+              {
+                "texto": "Vídeos Corporativos",
+                "descricao": "Soluções B2B para grandes empresas",
+                "url": "https://www.casadevideo.com.br/#servicos"
+              },
+              {
+                "texto": "Filmes Publicitários",
+                "descricao": "Comerciais para TV e Digital",
+                "url": "https://www.casadevideo.com.br/#publicidade"
+              },
+              {
+                "texto": "Solicitar Orçamento",
+                "descricao": "Atendimento comercial rápido em 24h",
+                "url": "https://www.casadevideo.com.br/#contato"
+              }
             ],
             "frasesDestaque": [
               "Qualidade 4K Cinema",
@@ -118,10 +135,26 @@
           },
           "extensoes": {
             "sitelinks": [
-              { "texto": "Portfólio B2B", "descricao": "Casos de sucesso de grandes marcas", "url": "https://www.casadevideo.com.br/#portfolio" },
-              { "texto": "Vídeos Institucionais", "descricao": "Comunicação corporativa de impacto", "url": "https://www.casadevideo.com.br/#institucional" },
-              { "texto": "Comerciais de TV", "descricao": "Produções publicitárias 4K", "url": "https://www.casadevideo.com.br/#comerciais" },
-              { "texto": "Falar com Diretor", "descricao": "Consultoria audiovisual sem compromisso", "url": "https://www.casadevideo.com.br/#contato" }
+              {
+                "texto": "Portfólio B2B",
+                "descricao": "Casos de sucesso de grandes marcas",
+                "url": "https://www.casadevideo.com.br/#portfolio"
+              },
+              {
+                "texto": "Vídeos Institucionais",
+                "descricao": "Comunicação corporativa de impacto",
+                "url": "https://www.casadevideo.com.br/#institucional"
+              },
+              {
+                "texto": "Comerciais de TV",
+                "descricao": "Produções publicitárias 4K",
+                "url": "https://www.casadevideo.com.br/#comerciais"
+              },
+              {
+                "texto": "Falar com Diretor",
+                "descricao": "Consultoria audiovisual sem compromisso",
+                "url": "https://www.casadevideo.com.br/#contato"
+              }
             ],
             "frasesDestaque": [
               "Roteiro Estratégico B2B",
@@ -178,7 +211,13 @@
       "objetivo": "Escala visual em nível nacional no YouTube, Display, Gmail, Search e Maps com showreel 4K",
       "estrategiaLances": "Maximizar Conversões",
       "geotargeting": "Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
-      "canais": ["YouTube 4K", "Display Banner", "Gmail", "Search", "Maps"],
+      "canais": [
+        "YouTube 4K",
+        "Display Banner",
+        "Gmail",
+        "Search",
+        "Maps"
+      ],
       "sinaisPublico": {
         "interesses": [
           "Produção Audiovisual",
@@ -195,12 +234,16 @@
         ]
       },
       "recursosMidia": {
-        "videos": ["https://youtube.com/watch?v=showreel_casadevideo_4k"],
+        "videos": [
+          "https://youtube.com/watch?v=showreel_casadevideo_4k"
+        ],
         "imagens": [
           "set_filmagens_4k.webp",
           "estudio_pos_producao.webp"
         ],
-        "logos": ["logo_casadevideo_dark.png"]
+        "logos": [
+          "logo_casadevideo_dark.png"
+        ]
       }
     }
   ]

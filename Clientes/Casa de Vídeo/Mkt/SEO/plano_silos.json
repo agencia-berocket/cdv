@@ -1,4 +1,5 @@
 {
+  "statusDocumento": "PLANEJAMENTO — não comprova criação, ativação, mensuração ou publicação; validar todos os identificadores antes de implementar.",
   "cliente": "Casa de Vídeo Produções Audiovisuais",
   "dataPlanejamento": "2026-09-24",
   "estrategia": "Topic Clusters & Arquitetura de Silos Semânticos B2B",
@@ -126,6 +127,11 @@
   ],
   "matrizLinksInternos": {
     "regraGlobal": "Nenhum artigo órfão. Toda página pilar recebe no mínimo 3 links de volta dos seus satélites com âncoras exatas.",
-    "ancorasProibidas": ["clique aqui", "saiba mais", "acesse este link", "confira"]
+    "ancorasProibidas": [
+      "clique aqui",
+      "saiba mais",
+      "acesse este link",
+      "confira"
+    ]
   }
 }

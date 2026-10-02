@@ -1,64 +1,7 @@
 {
-  "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-29T00:25:58.082588Z",
-  "modo_operacao": "LIVE_GOOGLE_GA4_API_CONNECTED",
-  "semanas": [
-    {
-      "id": "sem_real_live",
-      "rotulo": "Semana de Entrada em Operação Real: 24/Set - 30/Set 2026 (Live em Produção)",
-      "data_inicio": "2026-09-24",
-      "data_fim": "2026-09-30",
-      "status": "atual",
-      "is_dados_reais": true,
-      "google_ads": {
-        "investimento": 0.0,
-        "investimento_fmt": "R$ 0,00",
-        "diff_investimento": "🟢 Operação Iniciada",
-        "leads": 0,
-        "leads_fmt": "0 Leads",
-        "diff_leads": "⏳ Aguardando Deploy do Cliente",
-        "cpl": 0.0,
-        "cpl_fmt": "R$ 0,00",
-        "diff_cpl": "Em Coleta Reais",
-        "ctr": 0.0,
-        "ctr_fmt": "0.0%",
-        "diff_ctr": "Em Coleta Reais",
-        "iq_score": "Conectado GTM/Ads",
-        "status_cpl": "Conectado Live API Google Ads via GA4"
-      },
-      "seo": {
-        "impressoes_gsc": 0,
-        "impressoes_fmt": "0 Imp. (GSC Inicial)",
-        "trafego_fmt": "23 Sessões (15 Usuários GA4)",
-        "usuarios_ga4": 15,
-        "eventos_ga4": 77,
-        "diff_impressoes": "🟢 Live GA4 API (15 Usuários / 77 Eventos)",
-        "top10_termos": 0,
-        "top10_fmt": "0 Termos (Em Indexação)",
-        "diff_top10": "Aguardando Leitura Google",
-        "lcp": "1.8s (LCP)",
-        "lcp_status": "Aprovado (BOM)",
-        "answer_first_pct": "100%",
-        "answer_first_status": "Ativo no Código",
-        "realtime_ga4": 2
-      },
-      "geo": {
-        "score": 84,
-        "score_fmt": "84 / 100",
-        "diff_score": "🟢 llms.txt & @graph OK",
-        "citation_share": 75,
-        "citation_share_fmt": "75%",
-        "diff_citation": "Medido nas 4 LLMs",
-        "grafo_entidades": 7,
-        "grafo_fmt": "7 Entidades",
-        "llms_txt_status": "Publicado no Código do Site"
-      },
-      "origem_leads": {
-        "google_ads_pct": 0,
-        "seo_organico_pct": 0,
-        "geo_ias_pct": 0
-      },
-      "status_api": "🔴 LIVE GA4 API (Propriedade 555545561)"
-    }
-  ]
+  "version": 2,
+  "cliente": "Casa de Vídeo",
+  "modo_operacao": "SUBSTITUIDO_PELA_API",
+  "semanas": [],
+  "nota": "As medições antigas não foram importadas como resultados verificados. O servidor coleta, mantém cache e arquiva snapshots no volume privado CDV_DATA_DIR."
 }
