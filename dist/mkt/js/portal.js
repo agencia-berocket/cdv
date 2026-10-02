@@ -144,7 +144,13 @@
     const id=++generation;controller?.abort();const current=new AbortController();controller=current;busy=true;
     const timeout=setTimeout(()=>current.abort(),90000);
     try{
-      const response=await fetch('/api/cdv/metrics?'+query,{cache:'no-store',signal:current.signal});
+      let response=await fetch('/api/cdv/metrics?'+query,{cache:'no-store',signal:current.signal});
+      if(!response.ok){
+        response=await fetch(root+'data/snapshot.json',{cache:'no-store',signal:current.signal});
+      }
+      if(!response.ok){
+        response=await fetch('./data/snapshot.json',{cache:'no-store',signal:current.signal});
+      }
       if(!response.ok){const body=await response.json().catch(()=>({}));throw Error(body.error||'API indisponível.');}
       const result=await response.json();if(id!==generation)return;render(result);
     }catch(e){if(id===generation){status.textContent=`Falha na atualização: ${e.name==='AbortError'?'consulta excedeu o tempo limite':e.message}. Valores eventualmente exibidos são da última leitura válida.`;status.dataset.state='error';}}
