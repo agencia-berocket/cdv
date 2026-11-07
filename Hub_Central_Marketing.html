@@ -114,7 +114,7 @@
         <h1 class="font-display font-black text-3xl sm:text-5xl tracking-tight leading-[1.1] uppercase text-tactile-3d-dark">Evolução em gráficos</h1>
         <p class="mt-3 text-zinc-600 max-w-3xl text-[15px] leading-relaxed">
           Como o site da Casa de Vídeo está sendo encontrado e visitado: pelo Google (busca orgânica), pelos anúncios e no site em si.
-          Passe o mouse sobre os gráficos para ver os números de cada semana e escolha o período que quiser comparar.
+          Passe o mouse sobre os gráficos para ver os números de cada dia (ou semana, em períodos longos) e escolha o período que quiser comparar.
         </p>
         <p class="mt-2 font-mono text-[11px] text-zinc-500 font-bold uppercase tracking-wider">Dados atualizados em <span id="atualizadoEm"></span> · atualização semanal</p>
       </div>
@@ -124,8 +124,8 @@
         <div class="flex flex-wrap items-center gap-3">
           <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Período</span>
           <div class="tactile-sunken p-1 flex gap-1 font-mono text-xs overflow-x-auto" id="presets">
-            <button class="seg-btn" data-dias="28">4 semanas</button>
-            <button class="seg-btn" data-dias="56">8 semanas</button>
+            <button class="seg-btn" data-dias="7">Últimos 7 dias</button>
+            <button class="seg-btn" data-dias="30">Últimos 30 dias</button>
             
             <button class="seg-btn" data-dias="0">Desde o início</button>
           </div>
@@ -260,7 +260,7 @@
 
     const mapa = Object.fromEntries(DADOS.dias.map(d => [d.data, d]));
     const PRIMEIRO = DADOS.dias[0]?.data, ULTIMO = DADOS.dias[DADOS.dias.length - 1]?.data;
-    const estado = { ini: PRIMEIRO, fim: ULTIMO, g: "semana", preset: 0 };
+    const estado = { ini: PRIMEIRO, fim: ULTIMO, preset: 0 };
 
     Chart.defaults.font.family = "Inter, sans-serif";
     Chart.defaults.color = "#52525b";
@@ -347,8 +347,10 @@
     const tituloTooltip = s => items => { const g = s[items[0].dataIndex]; return g.ini === g.fim ? fmtDataLonga(g.fim) : `${fmtDataLonga(g.ini)} a ${fmtDataLonga(g.fim)}`; };
 
     function render() {
-      const { ini, fim, g } = estado;
+      const { ini, fim } = estado;
       const n = diffDias(ini, fim) + 1;
+      // Até 31 dias o gráfico mostra cada dia; acima disso agrupa em semanas
+      const g = n <= 31 ? "dia" : "semana";
       const antFim = addDias(ini, -1), antIni = addDias(ini, -n);
       const temAnterior = diffDias(PRIMEIRO, antFim) >= 0;
       const T = totais(ini, fim), A = temAnterior ? totais(diffDias(PRIMEIRO, antIni) >= 0 ? antIni : PRIMEIRO, antFim) : {};
