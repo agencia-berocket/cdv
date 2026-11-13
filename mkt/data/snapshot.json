@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T12:25:59.395Z",
+  "generatedAt": "2026-11-13T19:06:47.049Z",
   "range": {
-    "startDate": "2026-09-29",
-    "endDate": "2026-10-05"
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-13"
   },
   "reportingTimezone": "America/Sao_Paulo",
   "refreshSeconds": 60,
@@ -11,80 +11,26 @@
     "ga4": {
       "source": "ga4",
       "range": {
-        "startDate": "2026-09-29",
-        "endDate": "2026-10-05"
+        "startDate": "2026-11-07",
+        "endDate": "2026-11-13"
       },
-      "status": "ok",
-      "attemptedAt": "2026-10-05T12:25:48.908Z",
-      "updatedAt": "2026-10-05T12:25:51.599Z",
-      "data": {
-        "users": 26,
-        "sessions": 35,
-        "events": 147,
-        "engagementRate": 0.42857142857142855,
-        "averageSessionDuration": 130.99605991428572,
-        "timezone": "America/Rio_Branco",
-        "daily": [
-          {
-            "date": "20260929",
-            "sessions": 8,
-            "users": 6
-          },
-          {
-            "date": "20260930",
-            "sessions": 6,
-            "users": 3
-          },
-          {
-            "date": "20261001",
-            "sessions": 6,
-            "users": 6
-          },
-          {
-            "date": "20261002",
-            "sessions": 5,
-            "users": 2
-          },
-          {
-            "date": "20261003",
-            "sessions": 6,
-            "users": 6
-          },
-          {
-            "date": "20261004",
-            "sessions": 4,
-            "users": 4
-          }
-        ],
-        "channels": [
-          {
-            "channel": "Direct",
-            "sessions": 22
-          },
-          {
-            "channel": "Organic Search",
-            "sessions": 11
-          },
-          {
-            "channel": "AI Assistant",
-            "sessions": 2
-          },
-          {
-            "channel": "Unassigned",
-            "sessions": 1
-          }
-        ]
-      },
-      "error": null
+      "status": "error",
+      "attemptedAt": "2026-11-13T19:06:20.326Z",
+      "updatedAt": null,
+      "data": null,
+      "error": {
+        "code": "network_error",
+        "message": "Não foi possível consultar a fonte. A última coleta válida foi preservada."
+      }
     },
     "realtime": {
       "source": "realtime",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-10-05T12:25:49.043Z",
-      "updatedAt": "2026-10-05T12:25:51.431Z",
+      "attemptedAt": "2026-11-13T19:06:20.395Z",
+      "updatedAt": "2026-11-13T19:06:26.426Z",
       "data": {
-        "activeUsers": 0,
+        "activeUsers": 1,
         "windowMinutes": 30
       },
       "error": null
@@ -92,11 +38,11 @@
     "gsc": {
       "source": "gsc",
       "range": {
-        "startDate": "2026-09-29",
-        "endDate": "2026-10-05"
+        "startDate": "2026-11-07",
+        "endDate": "2026-11-13"
       },
       "status": "error",
-      "attemptedAt": "2026-10-05T11:54:51.771Z",
+      "attemptedAt": "2026-11-13T19:06:20.395Z",
       "updatedAt": null,
       "data": null,
       "error": {
@@ -107,11 +53,11 @@
     "ads": {
       "source": "ads",
       "range": {
-        "startDate": "2026-09-29",
-        "endDate": "2026-10-05"
+        "startDate": "2026-11-07",
+        "endDate": "2026-11-13"
       },
       "status": "not_configured",
-      "attemptedAt": "2026-10-05T12:25:49.043Z",
+      "attemptedAt": "2026-11-13T19:06:20.400Z",
       "updatedAt": null,
       "data": null,
       "error": {
@@ -123,8 +69,8 @@
       "source": "geo",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-10-05T12:25:49.048Z",
-      "updatedAt": "2026-10-05T12:25:49.242Z",
+      "attemptedAt": "2026-11-13T19:06:20.400Z",
+      "updatedAt": "2026-11-13T19:06:20.482Z",
       "data": {
         "latest": {
           "id": "rodada-2026-09-24",
@@ -689,7 +635,7 @@
       "source": "cwv",
       "range": null,
       "status": "not_configured",
-      "attemptedAt": "2026-10-05T11:54:51.781Z",
+      "attemptedAt": "2026-11-13T19:06:20.408Z",
       "updatedAt": null,
       "data": null,
       "error": {

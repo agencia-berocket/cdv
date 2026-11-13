@@ -19,9 +19,9 @@ Metodologia: Nova Gestão de Tráfego (Sobral Framework) & Agente BE | Ads • b
 - **Pilar 1: Oferta & Serviços Prioritários**:
   Vídeos Corporativos B2B, Filmes Publicitários para TV/Digital, Vídeos Institucionais 4K e Vídeos de Treinamento Executivo.
 - **Pilar 2: Tráfego, Verba & Metas de CPL**:
-  Verba Mensal: R$ 3.500,00/mês. Meta de CPL Alvo: R$ 180,00 (Faixa aceitável R$ 150 a R$ 250 por lead B2B qualificado).
+  Verba Mensal própria: R$ 1.200,00/mês. Existe crédito promocional potencial de até R$ 1.200,00, condicionado às regras da conta e não recorrente. A meta de CPL será definida após os primeiros dados.
 - **Pilar 3: Conversão no Site Oficial (casadevideo.com.br)**:
-  Direcionamento total de tráfego para os formulários de orçamento do site oficial casadevideo.com.br. Captura de nome, e-mail corporativo, empresa e necessidade do projeto.
+  Direcionamento para contato exclusivamente por WhatsApp e e-mail comercial. Cliques devem ser medidos separadamente de contatos confirmados; formulário fica fora do escopo atual.
 
 ---
 
@@ -76,3 +76,10 @@ Metodologia: Nova Gestão de Tráfego (Sobral Framework) & Agente BE | Ads • b
 
 ---
 *Gerado via Portal BE | Ads • b.rocket para continuidade operacional.*
+
+## 7. Decisões posteriores ao preenchimento
+
+- Vídeos com IA são prioridade estratégica: a Casa de Vídeo deve ser posicionada como referência em produção profissional com inteligência artificial, roteiro, direção e pós-produção.
+- Concorrentes ficam para a segunda fase, após a validação das campanhas de marca e serviços.
+- Performance Max fica para a segunda fase, condicionada a showreel e demais ativos reais, páginas de destino válidas e conversões confiáveis.
+- O prazo rigorosamente garantido em contrato permanece como diferencial autorizado, desde que a operação possa sustentá-lo.

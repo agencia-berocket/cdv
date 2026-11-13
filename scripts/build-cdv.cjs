@@ -5,7 +5,7 @@ const { SOURCE, createDataService } = require('../lib/cdv-data.cjs');
 const ROOT = path.resolve(__dirname, '..');
 
 const files = [
-  'index.html', 'login.html', 'Hub_Central_Marketing.html', 'js/session-guard.js', 'js/portal.js', 'js/hub-ui.js', 'js/SEO-ui.js', 'js/GEO-ui.js', 'js/Google_Ads-ui.js',
+  'index.html', 'login.html', 'Hub_Central_Marketing.html', 'Relatorio_Graficos.html', 'js/session-guard.js', 'js/portal.js', 'js/hub-ui.js', 'js/SEO-ui.js', 'js/GEO-ui.js', 'js/Google_Ads-ui.js',
   'data/operacao.json', 'PLANO_IMPLANTACAO_DADOS_REAIS.md', 'INSTRUCOES_TI_CASA_DE_VIDEO.md',
   'GEO/Relatorio_GEO_Auditoria_23092026.html', 'GEO/Relatorio_GEO_Auditoria_https___casadevideo_com_br___no_rag_-_small_.html',
   'SEO/index.html', 'SEO/Dashboard_SEO.html', 'SEO/Passo_a_Passo_SEO.html', 'SEO/schema_graph.json', 'SEO/checklist_onpage.json', 'SEO/plano_silos.json', 'SEO/palavras_chave_alvo.json',

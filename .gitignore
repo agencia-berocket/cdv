@@ -11,3 +11,7 @@ geo-brocket-ae1f778b51b8.json
 
 .private/
 .runtime/
+
+.tools/
+.vscode/
+scratch/

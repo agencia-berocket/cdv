@@ -47,5 +47,18 @@ Este documento é a base de conhecimento contínua sobre a **Casa de Vídeo**. A
   - **Hover Tooltips Didáticos nos Indicadores**: Adicionadas explicações interativas ao passar o mouse em cada KPI do Dashboard (*O que é*, *Para que serve*, *Como ler*).
   - **Entregáveis Atualizados**: `plano_gtm_tagging.json`, `estrutura_campanhas_stag.json`, `termos_negativos.txt`, `anamnese_trafego_pago_casa_de_video.md`, `Passo_a_Passo_Google_Ads.html` e `index.html`.
 
+- **22/10/2026 — Atualização operacional do Agente Google Ads**:
+  - Verba própria confirmada em **R$ 1.200/mês**, com crédito promocional potencial de até R$ 1.200 condicionado às regras da conta e não recorrente.
+  - Conversão aprovada exclusivamente por WhatsApp e e-mail; formulário retirado do escopo principal.
+  - Vídeos com IA, filmes publicitários com IA, corporativo/institucional, treinamento e motion graphics definidos como prioridades comerciais.
+  - Campanha de concorrentes e Performance Max movidas para a Fase 2, após validação de Search Marca e Search Serviços.
+  - Nova arquitetura segue o ciclo **ler → cruzar → atuar → automatizar**, com human-in-the-loop para publicação, orçamento e ações externas.
 
 
+
+## 2026-11-03 — Google Ads: ritmo para a promoção de crédito (R$ 1.200 até 22/11, meta interna 21/11)
+- Gasto acumulado em 03/11: R$ 422,69 (desde 22/10). Ritmo real ~R$ 32/dia; necessário ~R$ 42/dia até 21/11.
+- Serviços perdia 70–89% da parcela de impressões por classificação (lance), não por orçamento. Marca não entrega (lances R$ 0,50–0,71 vs. 1ª página ~R$ 5; provável disputa com a varejista Casa&Vídeo).
+- Aplicado com aprovação: orçamento Serviços R$ 34 → R$ 48/dia; lances Produção de Vídeos R$ 2,00 → R$ 2,50; Vídeos com IA R$ 1,00 → R$ 1,30. Marca sem alteração.
+- Os termos de exclusão já são negativos no nível do grupo de anúncios (o keyword_view os lista junto das palavras ativas — conferir o campo `negative` antes de concluir que há vazamento).
+- Checkpoints: 10/11 e 17/11 (abaixo de R$ 40/dia → subir lance; acima de R$ 50/dia → reduzir).

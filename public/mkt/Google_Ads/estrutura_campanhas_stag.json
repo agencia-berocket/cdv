@@ -4,21 +4,24 @@
   "nicho": "Produtora Audiovisual B2B",
   "metodologia": "Nova Gestão de Tráfego (Sobral Framework) & STAG (Single Theme Ad Groups)",
   "trianguloDeOuro": {
-    "oferta": "Comunicação B2B Audiovisual com Showreel 4K no Site Oficial casadevideo.com.br",
-    "trafego": "Google Ads Search (Intenção Direta) + PMax Showreel Multicanal",
-    "conversao": "Formulário de Orçamento Corporativo no Site Oficial casadevideo.com.br"
+    "oferta": "Produção audiovisual B2B com prioridade para vídeos e filmes com inteligência artificial, publicidade, vídeos corporativos/institucionais, treinamento e motion graphics",
+    "trafego": "Google Ads Search de intenção direta; PMax e concorrentes somente em fase posterior",
+    "conversao": "Clique e contato confirmado por WhatsApp ou e-mail comercial; não usar formulário como conversão principal"
   },
   "logicaIntencao": "Lógica do 'Bolo de Cenoura Fofinho' — Captura da busca exata de quem procura por produtora audiovisual no Brasil",
   "geotargetingOficial": "Brasil (Foco nas Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
-  "dataExecucaoAgente": "2026-09-25",
-  "verbaMensalMidia": "R$ 3.500,00",
-  "orcamentoDiarioTotal": "R$ 116,00",
+  "dataExecucaoAgente": "2026-10-22",
+  "verbaMensalMidia": "R$ 1.200,00",
+  "creditoPromocionalGoogle": "Até R$ 1.200,00, condicionado aos termos da oferta e não recorrente",
+  "orcamentoDiarioTotal": "R$ 40,00",
+  "faseAtual": "Fase 1 — Search Marca + Search Serviços",
   "campanhasDeOuro": [
     {
       "id": "CAMP-01",
       "nomeCampanha": "Search | Lead | Marca-CasaDeVideo | BR",
       "tipoOuro": "Campanha 3 — Dominação Top 1 no Google (Branded)",
-      "orcamentoDiario": "R$ 20,00",
+      "status": "Fase 1 — aprovada para planejamento",
+      "orcamentoDiario": "R$ 6,00",
       "objetivo": "Proteção da 1ª Posição em buscas institucionais Casa de Vídeo no Brasil",
       "estrategiaLances": "Maximizar Conversões (Fase 1)",
       "geotargeting": "Brasil (Principais Capitais Comerciais)",
@@ -52,7 +55,7 @@
               "Produtora especializada em filmes publicitários, institucionais e vídeos corporativos de alta performance.",
               "Eleve a comunicação da sua marca com produções cinematográficas B2B atendendo todo o Brasil. Peça uma proposta!",
               "Estrutura completa de produção audiovisual para empresas, marcas e agências. Confira nosso showreel.",
-              "Mais de 15 anos produzindo vídeos de impacto para o mercado publicitário e corporativo. Solicite orçamento!"
+              "Experiência em produção audiovisual para marcas, empresas e agências. Fale com nossa equipe."
             ],
             "triadePAPScore": "10/10"
           },
@@ -75,7 +78,7 @@
               },
               {
                 "texto": "Solicitar Orçamento",
-                "descricao": "Atendimento comercial rápido em 24h",
+                "descricao": "Fale com nossa equipe por WhatsApp ou e-mail",
                 "url": "https://www.casadevideo.com.br/#contato"
               }
             ],
@@ -83,7 +86,7 @@
               "Qualidade 4K Cinema",
               "Equipe Técnica Própria",
               "Atendimento B2B Nacional",
-              "Orçamento em 24h"
+              "Atendimento por WhatsApp e e-mail"
             ]
           }
         }
@@ -93,14 +96,20 @@
       "id": "CAMP-02",
       "nomeCampanha": "Search | Lead | Produtora-Video-B2B | BR",
       "tipoOuro": "Campanha 2 & 4 — Vendas 1:1 e Intenção Comercial Fundo de Funil",
-      "orcamentoDiario": "R$ 50,00",
+      "status": "Fase 1 — aprovada para planejamento",
+      "orcamentoDiario": "R$ 34,00",
       "objetivo": "Captura de leads corporativos buscando produtoras B2B nas principais capitais do Brasil",
-      "estrategiaLances": "Maximizar Conversões (Transição para tCPL R$ 180,00 pós-30 conversões)",
+      "estrategiaLances": "Maximizar Conversões; definir meta de CPL somente após dados reais",
       "geotargeting": "Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",
       "gruposAnuncios": [
         {
           "nomeGrupo": "STAG - Produtora de Vídeo B2B",
-          "palavrasChave": [
+            "palavrasChave": [
+              "produtora de video com ia",
+              "produtora de vídeo com inteligência artificial",
+              "filmes com ia para empresas",
+              "vídeo institucional com ia",
+              "filme publicitário com ia",
             "produtora de video b2b",
             "\"produtora de video corporativo\"",
             "\"produtora de filmes publicitarios\"",
@@ -122,13 +131,13 @@
               "Equipe Técnica Especializada",
               "Vídeos de Alta Performance",
               "Produtora Audiovisual Premium",
-              "Proposta Comercial em 24h",
+              "Fale com nossa equipe",
               "Estúdio e Câmeras 4K"
             ],
             "descricoes": [
               "Sua empresa precisa de vídeos que geram resultados reais? Produção audiovisual B2B com roteiro estratégico.",
               "Transforme sua comunicação corporativa com filmes publicitários e institucionais de alto impacto.",
-              "Atendemos Diretores de Marketing e Agências de Publicidade no Brasil. Receba seu orçamento em 24h!",
+              "Atendemos diretores de marketing e agências. Fale com a Casa de Vídeo por WhatsApp ou e-mail.",
               "Produções em 4K e Cinema com equipe completa de direção, captação e pós-produção. Fale conosco!"
             ],
             "triadePAPScore": "9.8/10"
@@ -169,8 +178,9 @@
     {
       "id": "CAMP-03",
       "nomeCampanha": "Search | Lead | Concorrentes-Audiovisuais | BR",
+      "status": "Fase 2 — somente após validação de marca e serviços",
       "tipoOuro": "Campanha 4 — Conquista de Tráfego Comparativo",
-      "orcamentoDiario": "R$ 20,00",
+      "orcamentoDiario": "R$ 0,00 na Fase 1",
       "objetivo": "Captura de tomadores de decisão pesquisando marcas concorrentes de grande porte no Brasil",
       "estrategiaLances": "Maximizar Conversões",
       "geotargeting": "Brasil (Principais Capitais Comerciais)",
@@ -206,8 +216,9 @@
     {
       "id": "CAMP-04",
       "nomeCampanha": "PMax | Lead | Performance-Showreel-4K | BR",
+      "status": "Fase 2 — depende de ativos reais e conversões confiáveis",
       "tipoOuro": "Campanha 4 — Multicanal PMax & Descoberta Visual",
-      "orcamentoDiario": "R$ 26,00",
+      "orcamentoDiario": "R$ 0,00 na Fase 1",
       "objetivo": "Escala visual em nível nacional no YouTube, Display, Gmail, Search e Maps com showreel 4K",
       "estrategiaLances": "Maximizar Conversões",
       "geotargeting": "Brasil (Principais Capitais Comerciais: SP, RJ, BH, Curitiba, Porto Alegre, Brasília, Salvador)",

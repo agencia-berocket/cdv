@@ -1,6 +1,6 @@
 {
   "cliente": "Casa de Vídeo",
-  "statusDocumento": "PLANEJAMENTO — validar no site e nas plataformas antes de ativar",
+  "statusDocumento": "PLANEJAMENTO APROVADO — validar implementação no site e na plataforma antes de ativar",
   "identificadoresRegistrados": {
     "gtmContainerId": "GTM-K7QVV6C8",
     "ga4MeasurementId": "G-QF8MC5BX95",
@@ -9,17 +9,33 @@
   },
   "acoesConversao": [
     {
-      "nome": "Envio confirmado do formulário de orçamento",
-      "eventoProposto": "form_submission_lead",
-      "condicao": "Disparar somente após resposta de sucesso do backend do formulário. Não disparar por visita à seção contato ou clique no botão.",
+      "nome": "Clique no WhatsApp comercial",
+      "eventoProposto": "whatsapp_click",
+      "condicao": "Disparar somente em clique no link oficial do WhatsApp; validar URL e não contar visualização da página.",
       "googleAdsConversionLabel": null,
       "valorConversao": null,
-      "status": "A validar na plataforma"
+      "status": "A implementar e validar"
+    },
+    {
+      "nome": "Clique no e-mail comercial",
+      "eventoProposto": "email_click",
+      "condicao": "Disparar somente em clique em mailto oficial de contato comercial.",
+      "googleAdsConversionLabel": null,
+      "valorConversao": null,
+      "status": "A implementar e validar"
+    },
+    {
+      "nome": "Envio confirmado do formulário de orçamento (fora do escopo atual)",
+      "eventoProposto": "form_submission_lead",
+      "condicao": "Não ativar no escopo atual. Só reavaliar mediante nova aprovação e confirmação de que o formulário voltou a ser canal comercial.",
+      "googleAdsConversionLabel": null,
+      "valorConversao": null,
+      "status": "Despriorizado"
     }
   ],
   "whatsapp": {
-    "habilitado": false,
-    "motivo": "Escopo atual prioriza formulário no site."
+    "habilitado": true,
+    "motivo": "Canal comercial aprovado; medir clique e, quando possível, contato confirmado sem confundir clique com lead qualificado."
   },
   "qualificacaoComercial": {
     "status": "Não integrada",

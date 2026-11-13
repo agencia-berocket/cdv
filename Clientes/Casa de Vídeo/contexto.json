@@ -10,9 +10,13 @@
   },
   "servicosContratados": {
     "trafegoPago": {
-      "plataformas": ["Google Ads (Search & PMax)"],
-      "metaCPL": "R$ 150 - R$ 250",
-      "focoCampanhas": ["Filmes Publicitários", "Vídeos Corporativos B2B", "Produtora de Vídeo SP"]
+      "plataformas": ["Google Ads Search (PMax em fase posterior)"],
+      "verbaMensal": "R$ 1.200,00",
+      "creditoPromocional": "Até R$ 1.200,00, condicionado aos termos da oferta Google Ads",
+      "metaCPL": "A definir após os primeiros dados",
+      "focoCampanhas": ["Vídeos com IA", "Filmes Publicitários com IA", "Vídeos Corporativos e Institucionais", "Vídeos de Treinamento", "Animação e Motion Graphics"],
+      "conversoes": ["Clique no WhatsApp", "Clique no e-mail", "Contato confirmado"],
+      "faseInicial": "Search Marca + Search Serviços; sem concorrentes e sem PMax"
     },
     "seo": {
       "foco": ["SEO On-Page", "Core Web Vitals", "Google Search Console", "Google Meu Negócio"],
