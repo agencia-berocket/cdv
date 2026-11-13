@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-13T19:06:47.049Z",
+  "generatedAt": "2026-11-13T19:09:01.367Z",
   "range": {
     "startDate": "2026-11-07",
     "endDate": "2026-11-13"
@@ -27,8 +27,8 @@
       "source": "realtime",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-11-13T19:06:20.395Z",
-      "updatedAt": "2026-11-13T19:06:26.426Z",
+      "attemptedAt": "2026-11-13T19:08:57.769Z",
+      "updatedAt": "2026-11-13T19:08:58.925Z",
       "data": {
         "activeUsers": 1,
         "windowMinutes": 30
@@ -69,8 +69,8 @@
       "source": "geo",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-11-13T19:06:20.400Z",
-      "updatedAt": "2026-11-13T19:06:20.482Z",
+      "attemptedAt": "2026-11-13T19:08:57.817Z",
+      "updatedAt": "2026-11-13T19:08:57.880Z",
       "data": {
         "latest": {
           "id": "rodada-2026-09-24",
