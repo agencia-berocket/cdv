@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-13T19:09:01.367Z",
+  "generatedAt": "2026-11-20T13:40:57.029Z",
   "range": {
-    "startDate": "2026-11-07",
-    "endDate": "2026-11-13"
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-20"
   },
   "reportingTimezone": "America/Sao_Paulo",
   "refreshSeconds": 60,
@@ -11,53 +11,53 @@
     "ga4": {
       "source": "ga4",
       "range": {
-        "startDate": "2026-11-07",
-        "endDate": "2026-11-13"
+        "startDate": "2026-11-14",
+        "endDate": "2026-11-20"
       },
-      "status": "error",
-      "attemptedAt": "2026-11-13T19:06:20.326Z",
+      "status": "not_configured",
+      "attemptedAt": "2026-11-20T13:40:41.564Z",
       "updatedAt": null,
       "data": null,
       "error": {
-        "code": "network_error",
-        "message": "Não foi possível consultar a fonte. A última coleta válida foi preservada."
+        "code": "not_configured",
+        "message": "Configure a conta de serviço Google no servidor."
       }
     },
     "realtime": {
       "source": "realtime",
       "range": null,
-      "status": "ok",
-      "attemptedAt": "2026-11-13T19:08:57.769Z",
-      "updatedAt": "2026-11-13T19:08:58.925Z",
-      "data": {
-        "activeUsers": 1,
-        "windowMinutes": 30
-      },
-      "error": null
+      "status": "not_configured",
+      "attemptedAt": "2026-11-20T13:40:41.565Z",
+      "updatedAt": null,
+      "data": null,
+      "error": {
+        "code": "not_configured",
+        "message": "Configure a conta de serviço Google no servidor."
+      }
     },
     "gsc": {
       "source": "gsc",
       "range": {
-        "startDate": "2026-11-07",
-        "endDate": "2026-11-13"
+        "startDate": "2026-11-14",
+        "endDate": "2026-11-20"
       },
-      "status": "error",
-      "attemptedAt": "2026-11-13T19:06:20.395Z",
+      "status": "not_configured",
+      "attemptedAt": "2026-11-20T13:40:41.566Z",
       "updatedAt": null,
       "data": null,
       "error": {
-        "code": "permission_denied",
-        "message": "A fonte retornou HTTP 403. Habilite a API correspondente no projeto Google Cloud da conta de serviço."
+        "code": "not_configured",
+        "message": "Configure a conta de serviço Google no servidor."
       }
     },
     "ads": {
       "source": "ads",
       "range": {
-        "startDate": "2026-11-07",
-        "endDate": "2026-11-13"
+        "startDate": "2026-11-14",
+        "endDate": "2026-11-20"
       },
       "status": "not_configured",
-      "attemptedAt": "2026-11-13T19:06:20.400Z",
+      "attemptedAt": "2026-11-20T13:40:41.566Z",
       "updatedAt": null,
       "data": null,
       "error": {
@@ -69,8 +69,8 @@
       "source": "geo",
       "range": null,
       "status": "ok",
-      "attemptedAt": "2026-11-13T19:08:57.817Z",
-      "updatedAt": "2026-11-13T19:08:57.880Z",
+      "attemptedAt": "2026-11-20T13:40:41.566Z",
+      "updatedAt": "2026-11-20T13:40:41.572Z",
       "data": {
         "latest": {
           "id": "rodada-2026-09-24",
@@ -635,7 +635,7 @@
       "source": "cwv",
       "range": null,
       "status": "not_configured",
-      "attemptedAt": "2026-11-13T19:06:20.408Z",
+      "attemptedAt": "2026-11-20T13:40:41.570Z",
       "updatedAt": null,
       "data": null,
       "error": {
